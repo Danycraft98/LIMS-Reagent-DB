@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+	<title>Reagent DB</title>
+</head>
+<body>
+<header class="site-header">
+	<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+		<div class="container">
+			<a class="navbar-brand mr-4" href="/">Reagent DB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+			        aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarToggle">
+				<div class="navbar-nav mr-auto">
+					<a class="nav-item nav-link" href="/">Home</a>
+					<a class="nav-item nav-link" href="/manufacturer">Manufacturer</a>
+					<a class="nav-item nav-link" href="/kit">Kit</a>
+					<a class="nav-item nav-link" href="/reagent">Reagent</a>
+					<a class="nav-item nav-link" href="/made-reagent">Made-Reagent</a>
+				</div>
+				<!-- Navbar Right Side -->
+				<div class="navbar-nav">
+					<form class="navbar-form navbar-left" action="{{ url_for('home') }}" method="post">
+						<div class="input-group">
+							<input id="autocomplete-search" type="text" class="form-control"
+							       placeholder="Search" name="searchbox-search">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="fas fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<a class="nav-item nav-link" href="/login">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+<main role="main" class="container">
+	<div>
+		{% block content %}
+		{% endblock content %}
+	</div>
+</main>
+</body>
+</html>

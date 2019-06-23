@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form class="kit" name="kit" action="/add_manufacturer_redirect" onkeypress="return event.keyCode != 13;"
+      onsubmit="return validateForm()" method="post">
+	<div class="container my-container">
+		<div class="row my-row">
+			<div class="col">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h1>Kit</h1>
+				<h4>Master Information</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3 form-group">
+				<label for="name_m">Master Name:</label>
+				<input type="text" class="form-control" name="name_m" id="name_m">
+			</div>
+			<div class="col-3 form-group">
+				<label for="manufacturer">Manufacturer:</label>
+				<select class="form-control" name="manufacturer" id="manufacturer"
+				        onchange="change_masterstat(event)">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+				</select>
+				<!--div class="dropdown">
+				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+					Dropdown button
+				    </button>
+				    <div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Link 1</a>
+					<a class="dropdown-item" href="#">Link 2</a>
+					<a class="dropdown-item" href="#">Link 3</a>
+				    </div>
+				  </div-->
+			</div>
+			<div class="col-4 form-group">
+				<label for="boxlot">Box Lot Barcode:</label>
+				<input type="text" class="form-control" name="boxlot" id="boxlot"
+				       onkeypress="if (event.keyCode==13){ barcode_event(this); }">
+			</div>
+			<div class="col-2 form-group">
+				<label for="copynum">Copy #:</label>
+				<input type="text" class="form-control" name="copynum" id="copynum">
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col">
+				<hr/>
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col">
+				<h4>Component Information</h4>
+			</div>
+		</div>
+		<div id="containers_div">
+			<div id="container_div">
+				<div class="row my-row">
+					<div class="col-3 form-group">
+						<label for="name_c">Component Name:</label>
+						<input type="text" class="form-control" name="name_c" id="name_c">
+					</div>
+					<div class="col-3 form-group">
+						<label for="condition">Component Condition:</label>
+						<input type="text" class="form-control" name="condition" id="condition">
+					</div>
+				</div>
+				<div class="row my-row">
+					<div class="col-3 form-group">
+						<label for="compnum">Component #:</label>
+						<input type="text" class="form-control" name="compnum" id="compnum">
+					</div>
+					<div class="col-3 form-group">
+						<label for="partnum">Part #:</label>
+						<input type="text" class="form-control" name="partnum" id="partnum">
+					</div>
+					<div class="col-3 form-group">
+						<label for="lotnum">Lot #:</label>
+						<input type="text" class="form-control" name="lotnum" id="lotnum">
+					</div>
+				</div>
+				<div class="row my-row">
+					<div class="col-3 form-group">
+						<label for="expdate">Expiry Date:</label>
+						<input type="date" class="form-control" name="expdate_kit" id="expdate">
+					</div>
+					<div class="col-3 form-group">
+						<label for="lab_expiry_date">Lab Expiry Date:</label>
+						<select class="form-control" name="lab_expiry_date" id="lab_expiry_date"
+						        onchange="change_masterstat(event)">
+							<option value="1">1 Year (After Open)</option>
+							<option value="10">10 Years (After Open)</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row my-row col-3">
+			<button type="button" name="append" id="add_component" onclick="add_element()">Add Component</button>
+		</div>
+		<br/>
+		<div class="row my-row">
+			<div class="col-1">
+				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#print_div">
+					Print...
+				</button>
+			</div>
+			<div class="col-1">
+				<button type="submit" class="btn btn-info" name="submit" id="submit">Save
+				</button>
+			</div>
+			<div class="col-1">
+				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel"
+				        onclick="openWindow();">
+					Cancel
+				</button>
+			</div>
+		</div>
+
+		<hr/>
+		<div id="print_div" class="collapse">
+			<div class="row my-row">
+				<div class="col">
+					<h2>Print</h2>
+				</div>
+			</div>
+			<div class="row my-row">
+				<div class="col-4 form-group">
+					<label for="small_label">Small Label Copies:</label>
+					<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+					       name="small_label" id="small_label"/>
+				</div>
+			</div>
+			<div class="row my-row">
+				<div class="col-4 form-group">
+					<label for="medium_label">Medium Label Copies:</label>
+					<input type="number" value="0" min="0" max="100" step="1" name="medium_label"
+					       id="medium_label"/>
+				</div>
+			</div>
+			<div class="row my-row">
+				<div class="col-3">
+					<button type="button" class="btn btn-info" name="append" id="aaa" onclick="add_element()">
+						Print
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script>
+	var _counter = 0;
+	function add_element() {
+		_counter++;
+		var oClone = document.getElementById("container_div").cloneNode(true);
+		oClone.id += (_counter + "");
+		document.getElementById("containers_div").appendChild(oClone);
+	}
+
+	function remove() {
+		var last_chq_no = $('#total_chq').val();
+
+		if (last_chq_no > 1) {
+			$('#new_' + last_chq_no).remove();
+			$('#total_chq').val(last_chq_no - 1);
+		}
+	}
+
+</script>
+{% endblock content %}

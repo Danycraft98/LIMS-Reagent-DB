@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+	<form action="{{ url_for('reagent_add') }}" method="post">
+		<button type="submit" class="btn btn-info" name="kit" value="test">Add Reagent</button>
+	</form>
+</div>
+{% endblock content %}

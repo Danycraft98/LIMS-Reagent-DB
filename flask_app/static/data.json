@@ -1,0 +1,37 @@
+[
+	{
+		"Stage": "Rec>Ext",
+		"POCP": 3,
+		"AGILE": 2,
+		"OCT": 2,
+		"IDH": 2
+	},
+	{
+		"Stage": "Ext>Test",
+		"POCP": 5,
+		"AGILE": 6,
+		"OCT": 2,
+		"IDH": 3
+	},
+	{
+		"Stage": "Test>Com",
+		"POCP": 9,
+		"AGILE": 0,
+		"OCT": 12,
+		"IDH": 1
+	},
+	{
+		"Stage": "Com>Rep",
+		"POCP": 11,
+		"AGILE": 23,
+		"OCT": 1,
+		"IDH": 0
+	},
+	{
+		"Stage": "Rec>Rep",
+		"POCP": 28,
+		"AGILE": 31,
+		"OCT": 19,
+		"IDH": 6
+	}
+]
