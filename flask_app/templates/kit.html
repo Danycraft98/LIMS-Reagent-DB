@@ -2,19 +2,24 @@
 {% block content %}
 <div>
 	<form action="{{ url_for('add_kit') }}" method="post">
-		<button type="submit" class="btn btn-info" name="kit" value="test">Add Manufacturer</button>
+		<button type="submit" class="btn btn-info" name="kit" value="test">Add Kit</button>
 	</form>
+	<br/>
 	<table class="table table-hover">
-		<tr>
-			<th>ID</th>
-			<th>Manufacturer Name</th>
-		</tr>
-		{% for item in manu_info %}
-		<tr>
-			<td>{{ item['ID'] }}</td>
-			<td>{{ item['Manufacturer'] }}</td>
-		</tr>
-		{% endfor %}
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Master Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in kit_master %}
+			<tr>
+				<td>{{ item['id'] }}</td>
+				<td>{{ item['master_name'] }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
 	</table>
 </div>
 {% endblock content %}

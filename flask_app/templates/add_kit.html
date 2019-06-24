@@ -16,88 +16,74 @@
 		</div>
 		<div class="row">
 			<div class="col-3 form-group">
-				<label for="name_m">Master Name:</label>
+				<label for="name_m">Kit Name:</label>
 				<input type="text" class="form-control" name="name_m" id="name_m">
 			</div>
 			<div class="col-3 form-group">
 				<label for="manufacturer">Manufacturer:</label>
 				<select class="form-control" name="manufacturer" id="manufacturer"
 				        onchange="change_masterstat(event)">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
+					{% for item in manu_name%}
+					<option>{{ item['Manufacturer'] }}</option>
+					{% endfor %}
 				</select>
-				<!--div class="dropdown">
-				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-					Dropdown button
-				    </button>
-				    <div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Link 1</a>
-					<a class="dropdown-item" href="#">Link 2</a>
-					<a class="dropdown-item" href="#">Link 3</a>
-				    </div>
-				  </div-->
 			</div>
 			<div class="col-4 form-group">
 				<label for="boxlot">Box Lot Barcode:</label>
 				<input type="text" class="form-control" name="boxlot" id="boxlot"
 				       onkeypress="if (event.keyCode==13){ barcode_event(this); }">
 			</div>
-			<div class="col-2 form-group">
-				<label for="copynum">Copy #:</label>
-				<input type="text" class="form-control" name="copynum" id="copynum">
-			</div>
 		</div>
 		<div class="row my-row">
-			<div class="col">
-				<hr/>
+			<div class="col-3 form-group">
+				<label for="partnum">Part Number:</label>
+				<input type="text" class="form-control" name="partnum" id="partnum">
+			</div>
+			<div class="col-3 form-group">
+				<label for="lotnum">Lot Number:</label>
+				<input type="text" class="form-control" name="lotnum" id="lotnum">
+			</div>
+			<div class="col-3 form-group">
+				<label for="expdate">Expiry Date:</label>
+				<input type="date" class="form-control" name="expdate_kit" id="expdate">
+			</div>
+			<div class="col-2 form-group">
+				<label for="copynum">Quantity:</label>
+				<input type="number" value="0" min="0" max="100" step="1" name="copynum"
+				       class="form-control" id="copynum"/>
 			</div>
 		</div>
+		<hr/>
 		<div class="row my-row">
 			<div class="col">
 				<h4>Component Information</h4>
 			</div>
 		</div>
 		<div id="containers_div">
-			<div id="container_div">
+			<div id="container_div" style="padding-bottom:30px">
 				<div class="row my-row">
 					<div class="col-3 form-group">
 						<label for="name_c">Component Name:</label>
-						<input type="text" class="form-control" name="name_c" id="name_c"
-						       readonly="readonly">
+						<input type="text" class="form-control" name="name_c" id="name_c">
 					</div>
 					<div class="col-3 form-group">
-						<label for="condition">Component Condition:</label>
-						<input type="text" class="form-control" name="condition" id="condition">
-					</div>
-				</div>
-				<div class="row my-row">
-					<div class="col-3 form-group">
-						<label for="compnum">Component #:</label>
+						<label for="compnum">Component Barcode:</label>
 						<input type="text" class="form-control" name="compnum" id="compnum">
 					</div>
 					<div class="col-3 form-group">
-						<label for="partnum">Part #:</label>
+						<label for="partnum">Part Number:</label>
 						<input type="text" class="form-control" name="partnum" id="partnum">
 					</div>
 					<div class="col-3 form-group">
-						<label for="lotnum">Lot #:</label>
+						<label for="lotnum">Lot Number:</label>
 						<input type="text" class="form-control" name="lotnum" id="lotnum">
 					</div>
 				</div>
-				<div class="row my-row">
-					<div class="col-3 form-group">
-						<label for="expdate">Expiry Date:</label>
-						<input type="date" class="form-control" name="expdate_kit" id="expdate">
-					</div>
-					<div class="col-3 form-group">
-						<label for="lab_expiry_date">Lab Expiry Date:</label>
-						<select class="form-control" name="lab_expiry_date" id="lab_expiry_date"
-						        onchange="change_masterstat(event)">
-							<option value="1">1 Year (After Open)</option>
-							<option value="10">10 Years (After Open)</option>
-						</select>
+				<label for="condition"><a data-toggle="collapse" data-parent="#accordion" href="#condition_div">Component
+					Condition:</a></label>
+				<div id="condition_div" class="row my-row collapse">
+					<div class="col-9 form-group">
+						<input type="text" class="form-control" name="condition" id="condition">
 					</div>
 				</div>
 			</div>
@@ -132,17 +118,17 @@
 				</div>
 			</div>
 			<div class="row my-row">
-				<div class="col-4 form-group">
+				<div class="col-2 form-group">
 					<label for="small_label">Small Label Copies:</label>
 					<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
-					       name="small_label" id="small_label"/>
+					       class="form-control" name="small_label" id="small_label"/>
 				</div>
 			</div>
 			<div class="row my-row">
-				<div class="col-4 form-group">
+				<div class="col-2 form-group">
 					<label for="medium_label">Medium Label Copies:</label>
 					<input type="number" value="0" min="0" max="100" step="1" name="medium_label"
-					       id="medium_label"/>
+					       class="form-control" id="medium_label"/>
 				</div>
 			</div>
 			<div class="row my-row">
@@ -159,6 +145,9 @@
 <script>
 	var _counter = 0;
 	function add_element() {
+		var structure_kit = $('<div class="append-wrap"></div>');
+
+		//$(".containers_div").append(structure_kit.clone());
 		_counter++;
 		var oClone = document.getElementById("container_div").cloneNode(true);
 		oClone.id += (_counter + "");
@@ -173,6 +162,10 @@
 			$('#total_chq').val(last_chq_no - 1);
 		}
 	}
+
+	$('#my-link').click(function(e) {
+		$('#condition_div').collapse('hide');
+	});
 
 </script>
 {% endblock content %}

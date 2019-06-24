@@ -1,5 +1,131 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h3>add reagent</h3>
+<form class="kit" name="kit" action="/add_manufacturer_redirect" onkeypress="return event.keyCode != 13;"
+      onsubmit="return validateForm()" method="post">
+	<div class="container my-container">
+		<div class="row my-row">
+			<div class="col">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h1>Manufacturer</h1>
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col-3 form-group">
+				<label for="manu_name">Manufacturer Name:</label>
+				<input type="text" class="form-control" name="manu_name" id="manu_name">
+			</div>
+			<div class="col-4 form-group">
+				<label for="manu_name">Box Lot Barcode:</label>
+				<input type="text" class="form-control" name="manu_name" id="barcode">
+			</div>
+		</div>
+		<label>Component Fields:</label>
+		<div class="row my-row">
+			<div class="col-2 form-group">
+				<label class="comp_select">Part Number
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Lot Number
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Expiry Date
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Lab Expiry Date
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col-3">
+				<label for="part_num">Part Number:</label>
+				<input type="text" class="form-control" name="part_num" id="part_num">
+			</div>
+			<div class="col-3">
+				<label for="lot_num">Lot Number:</label>
+				<input type="text" class="form-control" name="lot_num" id="lot_num">
+			</div>
+		</div>
+		<hr/>
+		<div class="row my-row">
+			<div class="col-4 form-group">
+				<label for="manu_name">Box Lot Barcode:</label>
+				<input type="text" class="form-control" name="manu_name" id="barcode">
+			</div>
+		</div>
+		<label>Component Fields:</label>
+		<div class="row my-row">
+			<div class="col-2 form-group">
+				<label class="comp_select">Component Lot
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Part Number
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Lot Number
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Expiry Date
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-2 form-group">
+				<label class="comp_select">Lab Expiry Date
+					<input type="checkbox" checked="checked">
+					<span class="checkmark"></span>
+				</label>
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col-3">
+				<label for="comp_lot">Component Lot:</label>
+				<input type="text" class="form-control" name="comp_lot" id="comp_lot">
+			</div>
+			<div class="col-3">
+				<label for="part_num">Part Number:</label>
+				<input type="text" class="form-control" name="part_num" id="part_num">
+			</div>
+			<div class="col-3">
+				<label for="lot_num">Lot Number:</label>
+				<input type="text" class="form-control" name="lot_num" id="lot_num">
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col-1">
+				<button type="submit" class="btn btn-info" name="submit" id="submit">Save
+				</button>
+			</div>
+			<div class="col-1">
+				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel"
+				        onclick="openWindow();">
+					Cancel
+				</button>
+			</div>
+		</div>
+	</div>
+</form>
 {% endblock content %}

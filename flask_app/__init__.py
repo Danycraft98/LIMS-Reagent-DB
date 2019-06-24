@@ -6,7 +6,7 @@ import os
 
 # "Global" search bar variable
 search_in = ''
-mySQL_con = 'mysql://root:@127.0.0.1/RK_LIMS'
+mySQL_con = 'mysql://root:@127.0.0.1/reagent_db'
 host = '127.0.0.1:3307'
 port = '3307'
 
@@ -21,9 +21,6 @@ args = parser.parse_args()
 # App Setup
 app = Flask(__name__)
 app.config.update({
-	#'SECRET_KEY': '5791628bb0b13ce0c676dfde280ba245',
-	'SQLALCHEMY_DATABASE_URI': 'sqlite:///site.db',
-
 	'SECRET_KEY': os.urandom(24),
 	'OIDC_CLIENT_SECRETS': 'client_secrets.json',
 	'OIDC_VALID_ISSUERS': ['http://localhost:8080/auth/realms/RK_LIMS'],
