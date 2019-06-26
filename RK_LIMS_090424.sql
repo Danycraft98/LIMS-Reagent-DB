@@ -25,19 +25,16 @@ DROP TABLE IF EXISTS `manu_info`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `manu_info` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `manufacturer_name` varchar(255) NOT NULL DEFAULT 'n/a',
-  `m_part_num` tinyint(1) NOT NULL DEFAULT '1',
-  `m_lot_num` tinyint(1) NOT NULL DEFAULT '1',
-  `m_exp_date` tinyint(1) NOT NULL DEFAULT '1',
-  `m_part_start` int(11) NOT NULL DEFAULT '-1',
-  `m_part_end` int(11) NOT NULL DEFAULT '-1',
-  `m_lot_start` int(11) NOT NULL DEFAULT '-1',
-  `m_lot_end` int(11) NOT NULL DEFAULT '-1',
+  `manu_name` varchar(255) NOT NULL DEFAULT 'n/a',
+  `master_part_num` tinyint(1) NOT NULL DEFAULT '1',
+  `master_lot_num` tinyint(1) NOT NULL DEFAULT '1',
+  `master_exp_date` tinyint(1) NOT NULL DEFAULT '1',
+  `master_part_start` int(11) NOT NULL DEFAULT '-1',
+  `master_part_end` int(11) NOT NULL DEFAULT '-1',
+  `master_lot_start` int(11) NOT NULL DEFAULT '-1',
+  `master_lot_end` int(11) NOT NULL DEFAULT '-1',
   `component_lot` tinyint(1) NOT NULL DEFAULT '1',
-  `part_num` tinyint(1) NOT NULL DEFAULT '1',
-  `lot_num` tinyint(1) NOT NULL DEFAULT '1',
-  `com_start` int(11) NOT NULL DEFAULT '-1',
-  `com_end` int(11) NOT NULL DEFAULT '-1',
+  `comp_start` int(11) NOT NULL DEFAULT '-1',
   `part_start` int(11) NOT NULL DEFAULT '-1',
   `part_end` int(11) NOT NULL DEFAULT '-1',
   `lot_start` int(11) NOT NULL DEFAULT '-1',
@@ -56,13 +53,13 @@ DROP TABLE IF EXISTS `kit_master`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `kit_master` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `master_name` varchar(255) DEFAULT NULL,
+  `kit_name` varchar(255) DEFAULT NULL,
   `box_lot_barcode` varchar(255) NOT NULL DEFAULT 'n/a',
   `part_num` int(255) DEFAULT NULL,
   `lot_num` int(255) DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
   `quantity` int(255) DEFAULT NULL,
-  `manufacturer_fk` int(11) NOT NULL DEFAULT '0',
+  `manu_fk` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

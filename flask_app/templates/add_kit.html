@@ -1,13 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="kit" name="kit" action="/add_kit_redirect" onkeypress="return event.keyCode != 13;"
-      onsubmit="return validateForm()" method="post">
+<form class="kit" name="kit" action="/add_kit_redirect" onsubmit="return validateForm()" method="post">
 	<div class="container my-container">
-		<div class="row my-row">
-			<div class="col">
-			</div>
-		</div>
 		<div class="row">
 			<div class="col">
 				<h1>Kit</h1>
@@ -16,36 +11,35 @@
 		</div>
 		<div class="row">
 			<div class="col-3 form-group">
-				<label for="name_m">Kit Name:</label>
-				<input type="text" class="form-control" name="name_m" id="name_m">
+				<label for="master_name">Kit Name:</label>
+				<input type="text" class="form-control" id="master_name" name="master_name" required>
 			</div>
 			<div class="col-3 form-group">
-				<label for="manufacturer">Manufacturer:</label>
-				<select class="form-control" name="manufacturer" id="manufacturer"
-				        onchange="change_masterstat(event)">
+				<label for="manu_name">Manufacturer:</label>
+				<select class="form-control" id="manu_name" name="manu_name" required>
+					<option value=""></option>
 					{% for item in manu_name%}
-					<option>{{ item['Manufacturer'] }}</option>
+					<option>{{ item['manu_name'] }}</option>
 					{% endfor %}
 				</select>
 			</div>
 			<div class="col-4 form-group">
-				<label for="boxlot">Box Lot Barcode:</label>
-				<input type="text" class="form-control" name="boxlot" id="boxlot"
-				       onkeypress="if (event.keyCode==13){ barcode_event(this); }">
+				<label for="master_barcode">Box Lot Barcode:</label>
+				<input type="text" class="form-control" id="master_barcode" name="master_barcode" oninput="update()">
 			</div>
 		</div>
 		<div class="row my-row">
 			<div class="col-3 form-group">
-				<label for="partnum">Part Number:</label>
-				<input type="text" class="form-control" name="partnum" id="partnum">
+				<label for="master_part_num">Part Number:</label>
+				<input type="text" class="form-control" id="master_part_num" name="master_part_num" readonly>
 			</div>
 			<div class="col-3 form-group">
-				<label for="lotnum">Lot Number:</label>
-				<input type="text" class="form-control" name="lotnum" id="lotnum">
+				<label for="master_lot_num">Lot Number:</label>
+				<input type="text" class="form-control" id="master_lot_num" name="master_lot_num" readonly>
 			</div>
 			<div class="col-3 form-group">
-				<label for="expdate">Expiry Date:</label>
-				<input type="date" class="form-control" name="expdate_kit" id="expdate">
+				<label for="expiry_date">Expiry Date:</label>
+				<input type="date" class="form-control" id="expiry_date" name="expiry_date">
 			</div>
 			<div class="col-2 form-group">
 				<label for="copynum">Quantity:</label>
@@ -145,13 +139,18 @@
 <script>
 	var _counter = 0;
 	function add_element() {
-		var structure_kit = $('<div class="append-wrap"></div>');
+		var structure_kit = $('<div class="append-wrap">test</div>');
 
-		//$(".containers_div").append(structure_kit.clone());
+		$(".containers_div").append(structure_kit.clone());
 		_counter++;
 		var oClone = document.getElementById("container_div").cloneNode(true);
 		oClone.id += (_counter + "");
 		document.getElementById("containers_div").appendChild(oClone);
+	}
+
+	function update() {
+		document.getElementById("m_part_num").value = document.getElementById("box_lot_barcode").value.slice(0, 5);
+		document.getElementById("m_lot_num").value = document.getElementById("box_lot_barcode").value;
 	}
 
 	function remove() {
@@ -166,6 +165,8 @@
 	$('#my-link').click(function(e) {
 		$('#condition_div').collapse('hide');
 	});
+
+
 
 </script>
 {% endblock content %}
