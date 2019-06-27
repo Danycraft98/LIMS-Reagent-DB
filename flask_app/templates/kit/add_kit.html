@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="kit" name="kit" action="/add_kit_redirect" onsubmit="return validateForm()" method="post">
+<form class="kit" name="kit" action="/add_kit_redirect" method="post">
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
@@ -11,40 +11,40 @@
 		</div>
 		<div class="row">
 			<div class="col-3 form-group">
-				<label for="master_name">Kit Name:</label>
-				<input type="text" class="form-control" id="master_name" name="master_name" required>
+				<label for="kit_name">Kit Name:</label>
+				<input type="text" class="form-control" id="kit_name" name="kit_name" required>
 			</div>
 			<div class="col-3 form-group">
 				<label for="manu_name">Manufacturer:</label>
-				<select class="form-control" id="manu_name" name="manu_name" required>
+				<select class="form-control" id="manu_name" name="manu_name"  onchange="enable(this)">
 					<option value=""></option>
 					{% for item in manu_name%}
-					<option>{{ item['manu_name'] }}</option>
+					<option>{{ item.name }}</option>
 					{% endfor %}
 				</select>
 			</div>
 			<div class="col-4 form-group">
-				<label for="master_barcode">Box Lot Barcode:</label>
-				<input type="text" class="form-control" id="master_barcode" name="master_barcode" oninput="update()">
+				<label for="kit_barcode">Box Lot Barcode:</label>
+				<input type="text" class="form-control" id="kit_barcode" name="kit_barcode" oninput="update()" disabled>
 			</div>
 		</div>
 		<div class="row my-row">
 			<div class="col-3 form-group">
-				<label for="master_part_num">Part Number:</label>
-				<input type="text" class="form-control" id="master_part_num" name="master_part_num" readonly>
+				<label for="kit_part_num">Part Number:</label>
+				<input type="text" class="form-control" id="kit_part_num" name="kit_part_num" readonly>
 			</div>
 			<div class="col-3 form-group">
-				<label for="master_lot_num">Lot Number:</label>
-				<input type="text" class="form-control" id="master_lot_num" name="master_lot_num" readonly>
+				<label for="kit_lot_num">Lot Number:</label>
+				<input type="text" class="form-control" id="kit_lot_num" name="kit_lot_num" readonly>
 			</div>
 			<div class="col-3 form-group">
-				<label for="expiry_date">Expiry Date:</label>
-				<input type="date" class="form-control" id="expiry_date" name="expiry_date">
+				<label for="exp_date">Expiry Date:</label>
+				<input type="date" class="form-control" id="exp_date" name="exp_date" disabled>
 			</div>
 			<div class="col-2 form-group">
-				<label for="copynum">Quantity:</label>
-				<input type="number" value="0" min="0" max="100" step="1" name="copynum"
-				       class="form-control" id="copynum"/>
+				<label for="quantity">Quantity:</label>
+				<input type="number" value="0" min="0" max="100" step="1" name="quantity"
+				       class="form-control" id="quantity"/>
 			</div>
 		</div>
 		<hr/>
@@ -57,24 +57,23 @@
 			<div id="container_div" style="padding-bottom:30px">
 				<div class="row my-row">
 					<div class="col-3 form-group">
-						<label for="name_c">Component Name:</label>
-						<input type="text" class="form-control" name="name_c" id="name_c">
+						<label for="comp_name">Component Name:</label>
+						<input type="text" class="form-control" name="comp_name" id="comp_name">
 					</div>
 					<div class="col-3 form-group">
-						<label for="compnum">Component Barcode:</label>
-						<input type="text" class="form-control" name="compnum" id="compnum">
+						<label for="comp_barcode">Component Barcode:</label>
+						<input type="text" class="form-control" name="comp_barcode" id="comp_barcode">
 					</div>
 					<div class="col-3 form-group">
-						<label for="partnum">Part Number:</label>
-						<input type="text" class="form-control" name="partnum" id="partnum">
+						<label for="part_num">Part Number:</label>
+						<input type="text" class="form-control" name="part_num" id="part_num">
 					</div>
 					<div class="col-3 form-group">
-						<label for="lotnum">Lot Number:</label>
-						<input type="text" class="form-control" name="lotnum" id="lotnum">
+						<label for="lot_num">Lot Number:</label>
+						<input type="text" class="form-control" name="lot_num" id="lot_num">
 					</div>
 				</div>
-				<label for="condition"><a data-toggle="collapse" data-parent="#accordion" href="#condition_div">Component
-					Condition:</a></label>
+				<label for="condition"><a data-toggle="collapse" data-parent="#accordion" href="#condition_div">Component Condition:</a></label>
 				<div id="condition_div" class="row my-row collapse">
 					<div class="col-9 form-group">
 						<input type="text" class="form-control" name="condition" id="condition">
@@ -83,7 +82,7 @@
 			</div>
 		</div>
 		<div class="row my-row col-3">
-			<button type="button" name="append" id="add_component" onclick="add_element()">Add Component</button>
+			<button type="button" name="append" id="add_comp" onclick="add_element()">Add Component</button>
 		</div>
 		<br/>
 		<div class="row my-row">
@@ -127,9 +126,7 @@
 			</div>
 			<div class="row my-row">
 				<div class="col-3">
-					<button type="button" class="btn btn-info" name="append" id="aaa" onclick="add_element()">
-						Print
-					</button>
+					<button type="button" class="btn btn-info" name="append" id="aaa" onclick="add_element()">Print</button>
 				</div>
 			</div>
 		</div>
@@ -139,34 +136,24 @@
 <script>
 	var _counter = 0;
 	function add_element() {
-		var structure_kit = $('<div class="append-wrap">test</div>');
+		//var structure_kit = $('<div class="append-wrap">test</div>');
 
-		$(".containers_div").append(structure_kit.clone());
+		//$(".containers_div").append(structure_kit.clone());
 		_counter++;
 		var oClone = document.getElementById("container_div").cloneNode(true);
 		oClone.id += (_counter + "");
 		document.getElementById("containers_div").appendChild(oClone);
 	}
 
+	function enable(element) {
+            $("#kit_barcode").prop('disabled', false);
+            $("#exp_date").prop('disabled', false);
+
+	}
+
 	function update() {
-		document.getElementById("m_part_num").value = document.getElementById("box_lot_barcode").value.slice(0, 5);
-		document.getElementById("m_lot_num").value = document.getElementById("box_lot_barcode").value;
+		document.getElementById("kit_part_num").setAttribute("value", document.getElementById("kit_barcode").value.slice(0, 5));
+		document.getElementById("kit_lot_num").setAttribute("value", document.getElementById("kit_barcode").value.slice(10, 15));
 	}
-
-	function remove() {
-		var last_chq_no = $('#total_chq').val();
-
-		if (last_chq_no > 1) {
-			$('#new_' + last_chq_no).remove();
-			$('#total_chq').val(last_chq_no - 1);
-		}
-	}
-
-	$('#my-link').click(function(e) {
-		$('#condition_div').collapse('hide');
-	});
-
-
-
 </script>
 {% endblock content %}

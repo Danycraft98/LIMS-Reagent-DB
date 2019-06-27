@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+	<table class="table table-hover">
+		<tr>
+			<th>Manufacturer Name</th>
+			<td>{{ manufacturer.name }}</td>
+		</tr>
+		<tr>
+			<th>Part Number</th>
+			<td>{{ manufacturer.part_num }}</td>
+		</tr>
+		<tr>
+			<th>Lot Number</th>
+			<td>{{ manufacturer.lot_num }}</td>
+		</tr>
+		<tr>
+			<th>Expiry Date</th>
+			<td>{{ manufacturer.exp_date }}</td>
+		</tr>
+	</table>
+	<br/>
+	<table class="table table-hover">
+		<thead>
+		<tr>
+			<th>Kit Name</th>
+			<th>Kit Barcode</th>
+			<th>Part Number</th>
+			<th>Lot Number</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for kit in manufacturer.kits %}
+		<tr>
+			<td>{{ kit.name }}</td>
+			<td>{{ kit.barcode }}</td>
+			<td>{{ kit.part_num }}</td>
+			<td>{{ kit.lot_num }}</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+{% endblock content %}

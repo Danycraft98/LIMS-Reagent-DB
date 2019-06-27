@@ -22,14 +22,16 @@ args = parser.parse_args()
 app = Flask(__name__)
 app.config.update({
 	'SECRET_KEY': os.urandom(24),
-	'OIDC_CLIENT_SECRETS': 'client_secrets.json',
-	'OIDC_VALID_ISSUERS': ['http://localhost:8080/auth/realms/RK_LIMS'],
-	'OVERWRITE_REDIRECT_URI': 'http://localhost:5000/main',
-	'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post',
-	'OIDC_TOKEN_TYPE_HINT': 'access_token',
-	'OIDC_OPENID_REALM': 'RK_LIMS',
-	'TESTING': True,
-	'DEBUG': True
+	'SQLALCHEMY_DATABASE_URI':'sqlite:///site.db'
+})
+"""'OIDC_CLIENT_SECRETS': 'client_secrets.json',
+'OIDC_VALID_ISSUERS': ['http://localhost:8080/auth/realms/RK_LIMS'],
+'OVERWRITE_REDIRECT_URI': 'http://localhost:5000/main',
+'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post',
+'OIDC_TOKEN_TYPE_HINT': 'access_token',
+'OIDC_OPENID_REALM': 'RK_LIMS',
+'TESTING': True,
+'DEBUG': True
 })
 
 if args.dbhost:
@@ -41,10 +43,12 @@ if args.dbhost:
 		mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + ':' + port + '/RK_LIMS'
 	else:
 		mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + '/RK_LIMS'
-
+"""
 app.config['SQLALCHEMY_BINDS'] = {'RK_LIMS': mySQL_con}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
 engine_RK = create_engine(mySQL_con)
 db = SQLAlchemy(app)
 
-from flask_app import routes
+from flask_app import routes, kit_routes, manufacturer_routes

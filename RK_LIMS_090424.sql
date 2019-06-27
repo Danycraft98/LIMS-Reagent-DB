@@ -23,23 +23,26 @@
 DROP TABLE IF EXISTS `manu_info`;
 /*!40101 SET @saved_cs_client = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `manu_info` (
+CREATE TABLE `manufacturer` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `manu_name` varchar(255) NOT NULL DEFAULT 'n/a',
-  `master_part_num` tinyint(1) NOT NULL DEFAULT '1',
-  `master_lot_num` tinyint(1) NOT NULL DEFAULT '1',
-  `master_exp_date` tinyint(1) NOT NULL DEFAULT '1',
-  `master_part_start` int(11) NOT NULL DEFAULT '-1',
-  `master_part_end` int(11) NOT NULL DEFAULT '-1',
-  `master_lot_start` int(11) NOT NULL DEFAULT '-1',
-  `master_lot_end` int(11) NOT NULL DEFAULT '-1',
-  `component_lot` tinyint(1) NOT NULL DEFAULT '1',
-  `comp_start` int(11) NOT NULL DEFAULT '-1',
+  `name` varchar(255) NOT NULL DEFAULT 'n/a',
+  
+  `kit_part_num` tinyint(1) NOT NULL DEFAULT '1',
+  `kit_lot_num` tinyint(1) NOT NULL DEFAULT '1',	
+  `kit_exp_date` tinyint(1) NOT NULL DEFAULT '1',
+  `kit_part_start` int(11) NOT NULL DEFAULT '-1',
+  `kit_part_end` int(11) NOT NULL DEFAULT '-1',
+  `kit_lot_start` int(11) NOT NULL DEFAULT '-1',
+  `kit_lot_end` int(11) NOT NULL DEFAULT '-1',
+  
+  `comp_barcode` tinyint(1) NOT NULL DEFAULT '1',
+  `part_num` tinyint(1) NOT NULL DEFAULT '1',
+  `lot_num` tinyint(1) NOT NULL DEFAULT '1',
   `part_start` int(11) NOT NULL DEFAULT '-1',
   `part_end` int(11) NOT NULL DEFAULT '-1',
   `lot_start` int(11) NOT NULL DEFAULT '-1',
   `lot_end` int(11) NOT NULL DEFAULT '-1',
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,14 +56,14 @@ DROP TABLE IF EXISTS `kit_master`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `kit_master` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kit_name` varchar(255) DEFAULT NULL,
-  `box_lot_barcode` varchar(255) NOT NULL DEFAULT 'n/a',
+  `name` varchar(255) DEFAULT NULL,
+  `barcode` varchar(255) NOT NULL DEFAULT 'n/a',
   `part_num` int(255) DEFAULT NULL,
   `lot_num` int(255) DEFAULT NULL,
-  `expiry_date` date DEFAULT NULL,
+  `exp_date` date DEFAULT NULL,
   `quantity` int(255) DEFAULT NULL,
   `manu_fk` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -70,7 +73,7 @@ CREATE TABLE `kit_master` (
 --
 
 DROP TABLE IF EXISTS `kit_comp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `kit_comp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -78,7 +81,7 @@ CREATE TABLE `kit_comp` (
   `comp_num` int(255) DEFAULT NULL,
   `part_num` int(255) DEFAULT NULL,
   `lot_num` int(255) DEFAULT NULL,
-  `master_fk` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `kit_fk` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

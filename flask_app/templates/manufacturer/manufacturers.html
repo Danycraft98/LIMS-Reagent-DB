@@ -13,10 +13,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for item in manu_info %}
+			{% for manufacturer in manufacturers %}
 			<tr>
-				<td>{{ item['id'] }}</td>
-				<td><a href="">{{ item['manu_name'] }}</a></td>
+				<td>{{ manufacturer.id }}</td>
+				<td><a href="{{ url_for('manufacturer', manufacturer_id=manufacturer.id) }}">{{ manufacturer.name }}</a></td>
 			</tr>
 			{% endfor %}
 		</tbody>
