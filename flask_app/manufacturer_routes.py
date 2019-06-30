@@ -76,4 +76,4 @@ def add_manufacturer_redirect():
 	db.session.add(manufacturer)
 	db.session.commit()
 
-	return redirect(url_for("manufacturer"))
+	return redirect(url_for("manufacturers"))

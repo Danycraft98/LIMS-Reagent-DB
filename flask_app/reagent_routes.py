@@ -1,29 +1,29 @@
 from flask import render_template, url_for, redirect, request
-from flask_app import app
+from flask_app import app, db
 from flask_app.models import *
 from datetime import datetime
 
 
-@app.route("/kits")
-def kits():
+@app.route("/reagents")
+def reagents():
 	kits = Kit.query.all()
-	return render_template("kit/kits.html", title="Kit", kits=kits)
+	return render_template("reagent/reagents.html", kits=kits)
 
 
-@app.route("/kit/<int:kit_id>")
-def kit(kit_id):
-	kit = Kit.query.get(kit_id)
-	return render_template("kit/kit.html", title="Kit", kit=kit)
+@app.route("/reagent/<int:reagent_id>")
+def reagent(reagent_id):
+	kit = Kit.query.get(reagent_id)
+	return render_template("reagent/reagent.html", kit=kit)
 
 
-@app.route("/add_kit", methods=["GET", "POST"])
-def add_kit():
+@app.route("/add_reagent", methods=["GET", "POST"])
+def add_reagent():
 	manu_name = Manufacturer.query.all()
-	return render_template("kit/add_kit.html", title="Add", manu_name=manu_name)
+	return render_template("reagent/add_reagent.html", manu_name=manu_name)
 
 
-@app.route("/add_kit_redirect", methods=["GET", "POST"])
-def add_kit_redirect():
+@app.route("/add_reagent_redirect", methods=["GET", "POST"])
+def add_reagent_redirect():
 	manu_id = Manufacturer.query.filter_by(name=request.form.get("manu_name")).first().id
 	try:
 		m_part_num = int(request.form.get("kit_part_num"))
@@ -38,8 +38,6 @@ def add_kit_redirect():
 	exp_date = request.form.get("exp_date")
 	if exp_date == "":
 		exp_date = None
-	else:
-		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
 
 	kit = Kit(
@@ -47,7 +45,7 @@ def add_kit_redirect():
 		barcode=request.form.get("kit_barcode"),
 		part_num=m_part_num,
 		lot_num = m_lot_num,
-		exp_date =  exp_date,
+		exp_date = datetime.strptime(exp_date, "%Y-%m-%d"),
 		quantity = quantity,
 		manufacturer_fk = manu_id,
 	)
@@ -73,4 +71,4 @@ def add_kit_redirect():
 		db.session.add(component)
 		db.session.commit()
 
-	return redirect(url_for("kits"))
+	return redirect(url_for("reagents"))

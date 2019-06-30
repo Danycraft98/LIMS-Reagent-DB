@@ -51,4 +51,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 engine_RK = create_engine(mySQL_con)
 db = SQLAlchemy(app)
 
-from flask_app import routes, kit_routes, manufacturer_routes
+from flask_app import routes, kit_routes, manufacturer_routes, reagent_routes, made_reagent_routes
