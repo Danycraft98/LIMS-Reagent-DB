@@ -7,13 +7,13 @@ from datetime import datetime
 @app.route("/kits")
 def kits():
 	kits = Kit.query.all()
-	return render_template("kit/kits.html", title="Kit", kits=kits)
+	return render_template("kit/kits.html", kits=kits)
 
 
 @app.route("/kit/<int:kit_id>")
 def kit(kit_id):
 	kit = Kit.query.get(kit_id)
-	return render_template("kit/kit.html", title="Kit", kit=kit)
+	return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer)
 
 
 @app.route("/add_kit", methods=["GET", "POST"])
@@ -24,29 +24,28 @@ def add_kit():
 
 @app.route("/add_kit_redirect", methods=["GET", "POST"])
 def add_kit_redirect():
-	manu_id = Manufacturer.query.filter_by(name=request.form.get("manu_name")).first().id
+	manu_id = Manufacturer.query.filter_by(name=request.values.get("manu_name").split(",")[-1]).first().id
 	try:
-		m_part_num = int(request.form.get("kit_part_num"))
+		part_num = int(request.form.get("part_num"))
 	except:
-		m_part_num = -1
+		part_num = -1
 
 	try:
-		m_lot_num = int(request.form.get("kit_lot_num"))
+		lot_num = int(request.form.get("lot_num"))
 	except:
-		m_lot_num = -1
+		lot_num = -1
 
 	exp_date = request.form.get("exp_date")
-	if exp_date == "":
-		exp_date = None
-	else:
+	if exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
 
 	kit = Kit(
-		name=request.form.get("kit_name"),
-		barcode=request.form.get("kit_barcode"),
-		part_num=m_part_num,
-		lot_num = m_lot_num,
+		name=request.form.get("name"),
+		barcode=request.form.get("barcode"),
+		part_num=part_num,
+		lot_num = lot_num,
+		date_entered = datetime.today(),
 		exp_date =  exp_date,
 		quantity = quantity,
 		manufacturer_fk = manu_id,
@@ -57,18 +56,19 @@ def add_kit_redirect():
 
 	names = request.form.getlist("comp_name")
 	comp_nums = request.form.getlist("comp_barcode")
-	part_nums = request.form.getlist("part_num")
-	lot_nums = request.form.getlist("lot_num")
+	comp_part_nums = request.form.getlist("comp_part_num")
+	comp_lot_nums = request.form.getlist("comp_lot_num")
 	conditions = request.form.getlist("condition")
 
-	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, part_nums, lot_nums, conditions):
+	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, conditions):
 		component = Component(
 			name=name,
 			barcode=comp_num,
 			part_num=part_num,
 			lot_num=lot_num,
 			condition=condition,
-			kit_fk=kit.id
+			kit_fk=kit.id,
+			madereagent_fk=None
 		)
 		db.session.add(component)
 		db.session.commit()

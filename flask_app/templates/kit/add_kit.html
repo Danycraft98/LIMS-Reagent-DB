@@ -11,34 +11,34 @@
 		</div>
 		<div class="row">
 			<div class="col-3 form-group">
-				<label for="kit_name">Kit Name:</label>
-				<input type="text" class="form-control" id="kit_name" name="kit_name" required>
+				<label for="name">Kit Name:</label>
+				<input type="text" class="form-control" id="name" name="name" required>
 			</div>
 			<div class="col-3 form-group">
 				<label for="manu_name">Manufacturer:</label>
 				<select class="form-control" id="manu_name" name="manu_name" onchange="enable(this)">
-					<option value=""></option>
+					<option></option>
 					{% for item in manu_name%}
 					<option
-						value="{{item.kit_part_num}},{{item.kit_lot_num}},{{item.exp_date}},{{item.kit_part_start}},{{item.kit_part_end}},{{item.kit_lot_start}},{{item.kit_lot_end}},{{item.comp_barcode}},{{item.part_num}},{{item.lot_num}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.kit_lot_end}}">
+						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{item.comp_barcode}},{{item.comp_part_num}},{{item.comp_lot_num}},{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{ item.name }}">
 						{{ item.name }}
 					</option>
 					{% endfor %}
 				</select>
 			</div>
 			<div class="col-4 form-group">
-				<label for="kit_barcode">Box Lot Barcode:</label>
-				<input type="text" class="form-control" id="kit_barcode" name="kit_barcode" oninput="update()">
+				<label for="barcode">Box Lot Barcode:</label>
+				<input type="text" class="form-control" id="barcode" name="barcode" oninput="update()">
 			</div>
 		</div>
 		<div class="row my-row">
 			<div class="col-3 form-group">
-				<label for="kit_part_num">Part Number:</label>
-				<input type="text" class="form-control" id="kit_part_num" name="kit_part_num" readonly>
+				<label for="part_num">Part Number:</label>
+				<input type="text" class="form-control" id="part_num" name="part_num" readonly>
 			</div>
 			<div class="col-3 form-group">
-				<label for="kit_lot_num">Lot Number:</label>
-				<input type="text" class="form-control" id="kit_lot_num" name="kit_lot_num" readonly>
+				<label for="lot_num">Lot Number:</label>
+				<input type="text" class="form-control" id="lot_num" name="lot_num" readonly>
 			</div>
 			<div class="col-3 form-group">
 				<label for="exp_date">Expiry Date:</label>
@@ -81,15 +81,14 @@
 				</div>
 				<div class="row my-row">
 					<div class="col-3 form-group">
-						<label for="part_num">Part Number:</label>
-						<input type="text" class="form-control" name="part_num" id="part_num" readonly>
+						<label for="comp_part_num">Part Number:</label>
+						<input type="text" class="form-control" name="comp_part_num" id="comp_part_num" readonly>
 					</div>
 					<div class="col-3 form-group">
-						<label for="lot_num">Lot Number:</label>
-						<input type="text" class="form-control" name="lot_num" id="lot_num" readonly>
+						<label for="comp_lot_num">Lot Number:</label>
+						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num" readonly>
 					</div>
-
-					<div id="condition_div" class="col-6 form-group">
+					<div class="col-6 form-group">
 						<label for="condition">Component Condition:</label>
 						<input type="text" class="form-control" name="condition" id="condition">
 					</div>
@@ -117,9 +116,8 @@
 				</button>
 			</div>
 		</div>
-
-		<hr/>
 		<div id="print_div" class="collapse">
+			<hr/>
 			<div class="row my-row">
 				<div class="col">
 					<h2>Print</h2>
@@ -156,7 +154,7 @@
 		var tag = document.createElement("div");
 		tag.setAttribute("id", "container_div"+_counter)
 		tag.setAttribute("style", "padding-bottom:30px")
-		tag.innerHTML = '<div class="row my-row"> <div class="col-3 form-group"> <label for="comp_name">Component Name:</label> <input type="text" class="form-control" name="comp_name" id="comp_name"> </div> <div class="col-4 form-group"> <label for="comp_barcode">Component Barcode:</label> <input type="text" class="form-control" name="comp_barcode" id="comp_barcode" oninput="update_comp()"> </div> <div class="col-3 form-group"></div> <div class="col-2 form-group"> <label for="comp_barcode" style="visibility: hidden;">Traaaaaaaaaaash:</label> <button type="button" class="btn btn-default" name="clone" id="clone" onclick="clone_element(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div> <div class="row my-row"> <div class="col-3 form-group"> <label for="part_num">Part Number:</label> <input type="text" class="form-control" name="part_num" id="part_num" readonly> </div> <div class="col-3 form-group"> <label for="lot_num">Lot Number:</label> <input type="text" class="form-control" name="lot_num" id="lot_num" readonly> </div> <div id="condition_div" class="col-6 form-group"> <label for="condition">Component Condition:</label> <input type="text" class="form-control" name="condition" id="condition"> </div> </div>';
+		tag.innerHTML = '<div class="row my-row"> <div class="col-3 form-group"> <label for="comp_name">Component Name:</label> <input type="text" class="form-control" name="comp_name" id="comp_name"> </div> <div class="col-4 form-group"> <label for="comp_barcode">Component Barcode:</label> <input type="text" class="form-control" name="comp_barcode" id="comp_barcode" oninput="update_comp()"> </div> <div class="col-3 form-group"></div> <div class="col-2 form-group"> <label for="comp_barcode" style="visibility: hidden;">Traaaaaaaaaaash:</label> <button type="button" class="btn btn-default" name="clone" id="clone" onclick="clone_element(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div> <div class="row my-row"> <div class="col-3 form-group"> <label for="comp_part_num">Part Number:</label> <input type="text" class="form-control" name="comp_part_num" id="comp_part_num" readonly> </div> <div class="col-3 form-group"> <label for="comp_lot_num">Lot Number:</label> <input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num" readonly> </div> <div class="col-6 form-group"> <label for="condition">Component Condition:</label> <input type="text" class="form-control" name="condition" id="condition"> </div> </div>';
 		document.getElementById("containers_div").appendChild(tag);
 		_counter++;
 	}
@@ -186,10 +184,10 @@
 
 	function update() {
 		if (properties[0] == 1) {
-			document.getElementById("kit_part_num").setAttribute("value", document.getElementById("kit_barcode").value.slice(properties[3], properties[4]));
+			document.getElementById("part_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[3], properties[4]));
 		}
 		if (properties[1] == 1) {
-			document.getElementById("kit_lot_num").setAttribute("value", document.getElementById("kit_barcode").value.slice(properties[5], properties[6]));
+			document.getElementById("lot_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[5], properties[6]));
 		}
 	}
 
@@ -198,10 +196,10 @@
 			document.getElementById("comp_barcode").setAttribute("disable", false);
 		}
 		if (properties[8] == 1) {
-			document.getElementById("part_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[10], properties[11]));
+			document.getElementById("comp_part_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[10], properties[11]));
 		}
 		if (properties[9] == 1) {
-			document.getElementById("lot_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[12], properties[13]));
+			document.getElementById("comp_lot_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[12], properties[13]));
 		}
 	}
 

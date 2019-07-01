@@ -1,19 +1,19 @@
 from flask import render_template, url_for, redirect, request
-from flask_app import app, db
+from flask_app import app
 from flask_app.models import *
 from datetime import datetime
 
 
 @app.route("/reagents")
 def reagents():
-	kits = Kit.query.all()
-	return render_template("reagent/reagents.html", kits=kits)
+	reagents = Reagent.query.all()
+	return render_template("reagent/reagents.html", reagents=reagents)
 
 
 @app.route("/reagent/<int:reagent_id>")
 def reagent(reagent_id):
-	kit = Kit.query.get(reagent_id)
-	return render_template("reagent/reagent.html", kit=kit)
+	reagent = Reagent.query.get(reagent_id)
+	return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer)
 
 
 @app.route("/add_reagent", methods=["GET", "POST"])
@@ -24,51 +24,34 @@ def add_reagent():
 
 @app.route("/add_reagent_redirect", methods=["GET", "POST"])
 def add_reagent_redirect():
-	manu_id = Manufacturer.query.filter_by(name=request.form.get("manu_name")).first().id
+	manu_id = Manufacturer.query.filter_by(name=request.values.get("manu_name").split(",")[-1]).first().id
 	try:
-		m_part_num = int(request.form.get("kit_part_num"))
+		part_num = int(request.form.get("part_num"))
 	except:
-		m_part_num = -1
+		part_num = -1
 
 	try:
-		m_lot_num = int(request.form.get("kit_lot_num"))
+		lot_num = int(request.form.get("lot_num"))
 	except:
-		m_lot_num = -1
+		lot_num = -1
 
 	exp_date = request.form.get("exp_date")
-	if exp_date == "":
-		exp_date = None
+	if exp_date:
+		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
 
-	kit = Kit(
-		name=request.form.get("kit_name"),
-		barcode=request.form.get("kit_barcode"),
-		part_num=m_part_num,
-		lot_num = m_lot_num,
-		exp_date = datetime.strptime(exp_date, "%Y-%m-%d"),
+	reagent = Reagent(
+		name=request.form.get("name"),
+		barcode=request.form.get("barcode"),
+		part_num=part_num,
+		lot_num = lot_num,
+		date_entered=datetime.today(),
+		exp_date = exp_date,
 		quantity = quantity,
 		manufacturer_fk = manu_id,
 	)
 
-	db.session.add(kit)
+	db.session.add(reagent)
 	db.session.commit()
-
-	names = request.form.getlist("comp_name")
-	comp_nums = request.form.getlist("comp_barcode")
-	part_nums = request.form.getlist("part_num")
-	lot_nums = request.form.getlist("lot_num")
-	conditions = request.form.getlist("condition")
-
-	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, part_nums, lot_nums, conditions):
-		component = Component(
-			name=name,
-			barcode=comp_num,
-			part_num=part_num,
-			lot_num=lot_num,
-			condition=condition,
-			kit_fk=kit.id
-		)
-		db.session.add(component)
-		db.session.commit()
 
 	return redirect(url_for("reagents"))

@@ -8,7 +8,7 @@
 		</tr>
 		<tr>
 			<th>Manufacturer</th>
-			<td>{{ kit.manufacturer_fk }}</td>
+			<td>{{ Manufacturer.query.get(kit.manufacturer_fk).name }}</td>
 		</tr>
 		<tr>
 			<th>Box Lot Barcode</th>
@@ -21,6 +21,10 @@
 		<tr>
 			<th>Lot Number</th>
 			<td>{{ kit.lot_num }}</td>
+		</tr>
+		<tr>
+			<th>Date Entered</th>
+			<td>{{ kit.date_entered }}</td>
 		</tr>
 		<tr>
 			<th>Expiry Date</th>

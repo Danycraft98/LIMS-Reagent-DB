@@ -1,35 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
 <div>
-	<br/>
-	<div class="container my-container">
-		<div class="row">
-			<div class="col-10">
-					<h3>Reagents</h3>
-			</div>
-			<div class="col">
-				<form action="{{ url_for('add_reagent') }}" method="post">
-					<button type="submit" class="btn btn-info" value="test">Add Reagent</button>
-				</form>
-			</div>
-		</div>
-	</div>
-	<br/>
 	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Reagent Name</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for reagent in reagents %}
-			<tr>
-				<td>{{ reagent.id }}</td>
-				<td><a href="{{ url_for('reagent', reagent_id=reagent.id) }}">{{ reagent.name }}</a></td>
-			</tr>
-			{% endfor %}
-		</tbody>
+		<tr>
+			<th>Reagent Name</th>
+			<td>{{ reagent.name }}</td>
+		</tr>
+		<tr>
+			<th>Manufacturer</th>
+			<td>{{ Manufacturer.query.get(reagent.manufacturer_fk).name }}</td>
+		</tr>
+		<tr>
+			<th>Box Lot Barcode</th>
+			<td>{{ reagent.barcode }}</td>
+		</tr>
+		<tr>
+			<th>Part Number</th>
+			<td>{{ reagent.part_num }}</td>
+		</tr>
+		<tr>
+			<th>Lot Number</th>
+			<td>{{ reagent.lot_num }}</td>
+		</tr>
+		<tr>
+			<th>Expiry Date</th>
+			<td>{{ reagent.exp_date }}</td>
+		</tr>
 	</table>
 </div>
 {% endblock content %}

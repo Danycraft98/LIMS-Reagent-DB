@@ -40,11 +40,12 @@ def add_made_reagent_redirect():
 		exp_date = None
 	quantity = request.form.get("quantity")
 
-	made_reagent = Kit(
+	made_reagent = MadeReagent(
 		name=request.form.get("made_reagent_name"),
 		barcode=request.form.get("made_reagent_barcode"),
 		part_num=m_part_num,
 		lot_num = m_lot_num,
+		date_entered=datetime.today(),
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d"),
 		quantity = quantity,
 		manufacturer_fk = manu_id,
