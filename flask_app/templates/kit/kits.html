@@ -1,35 +1,54 @@
 {% extends "layout.html" %}
 {% block content %}
-<div>
-	<br/>
-	<div class="container my-container">
-		<div class="row">
-			<div class="col-10">
-				<h3>Kits</h3>
-			</div>
-			<div class="col">
-				<form action="{{ url_for('add_kit') }}" method="post">
-					<button type="submit" class="btn btn-info" name="kit">Add Kit</button>
-				</form>
-			</div>
+<div class="container my-container">
+	<div class="row">
+		<div class="col-7">
+			<h2>Kits</h2>
+		</div>
+		<div class="col-3">
+			<form class="navbar-form navbar-left" action="{{ url_for('home') }}" method="post">
+				<div class="input-group">
+					<input id="autocomplete-search" type="text" class="form-control"
+					       placeholder="Search" name="searchbox-search" oninput="search(this)">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col">
+			<form action="{{ url_for('add_kit') }}" method="post">
+				<button type="submit" class="btn btn-info" name="kit">Add Kit</button>
+			</form>
 		</div>
 	</div>
 	<br/>
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Kit Name</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for kit in kits %}
-			<tr>
-				<td>{{ kit.id }}</td>
-				<td><a href="{{ url_for('kit', kit_id=kit.id) }}">{{ kit.name }}</a></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-12">
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>Kit Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for kit in kits %}
+				<tr>
+					<td>{{ kit.id }}</td>
+					<td><a href="{{ url_for('kit', kit_id=kit.id) }}">{{ kit.name }}</a></td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
+<script>
+	function search(element) {
+		for kit
+	}
+</script>
 {% endblock content %}

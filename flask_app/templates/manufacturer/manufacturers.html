@@ -1,35 +1,38 @@
 {% extends "layout.html" %}
 {% block content %}
-<div>
-	<br/>
-	<div class="container my-container">
-		<div class="row">
-			<div class="col-9">
-					<h3>Manufacturers</h3>
-			</div>
-			<div class="col">
-				<form action="{{ url_for('add_manufacturer') }}" method="post">
-					<button type="submit" class="btn btn-info">Add Manufacturer</button>
-				</form>
-			</div>
+<div class="container my-container">
+	<div class="row">
+		<div class="col-9">
+			<h2>Manufacturers</h2>
+		</div>
+		<div class="col">
+			<form action="{{ url_for('add_manufacturer') }}" method="post">
+				<button type="submit" class="btn btn-info">Add Manufacturer</button>
+			</form>
 		</div>
 	</div>
 	<br/>
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Manufacturer Name</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for manufacturer in manufacturers %}
-			<tr>
-				<td>{{ manufacturer.id }}</td>
-				<td><a href="{{ url_for('manufacturer', manufacturer_id=manufacturer.id) }}">{{ manufacturer.name }}</a></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-12">
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>Manufacturer Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for manufacturer in manufacturers %}
+				<tr>
+					<td>{{ manufacturer.id }}</td>
+					<td><a href="{{ url_for('manufacturer', manufacturer_id=manufacturer.id) }}">{{
+						manufacturer.name
+						}}</a></td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 {% endblock content %}

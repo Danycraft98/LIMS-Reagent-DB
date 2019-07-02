@@ -1,37 +1,47 @@
 {% extends "layout.html" %}
-{% block content %}
-<div>
-	<table class="table table-hover">
-		<tr>
-			<th>Manufacturer Name</th>
-			<td>{{ manufacturer.name }}</td>
-		</tr>
-		<tr>
-			<th>Date Entered</th>
-			<td>{{ manufacturer.date_entered }}</td>
-		</tr>
-	</table>
-	<br/>
-	<table class="table table-hover">
-		<thead>
-		<tr>
-			<th>Kit Name</th>
-			<th>Kit Barcode</th>
-			<th>Part Number</th>
-			<th>Lot Number</th>
-		</tr>
-		</thead>
-		<tbody>
-		{% for kit in manufacturer.kits %}
-		<tr>
-			<td>{{ kit.name }}</td>
-			<td>{{ kit.barcode }}</td>
-			<td>{{ kit.part_num }}</td>
-			<td>{{ kit.lot_num }}</td>
-		</tr>
-		{% endfor %}
-		</tbody>
-	</table>
 
+{% block content %}
+<div class="container my-container">
+	<div class="row">
+		<div class="col-10">
+			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-12">
+			<table class="table table-hover">
+				<tr>
+					<th>Manufacturer Name</th>
+					<td>{{ manufacturer.name }}</td>
+				</tr>
+				<tr>
+					<th>Date Entered</th>
+					<td>{{ manufacturer.date_entered }}</td>
+				</tr>
+			</table>
+			<br/>
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>Kit Name</th>
+					<th>Kit Barcode</th>
+					<th>Part Number</th>
+					<th>Lot Number</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for kit in manufacturer.kits %}
+				<tr>
+					<td>{{ kit.name }}</td>
+					<td>{{ kit.barcode }}</td>
+					<td>{{ kit.part_num }}</td>
+					<td>{{ kit.lot_num }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 {% endblock content %}
