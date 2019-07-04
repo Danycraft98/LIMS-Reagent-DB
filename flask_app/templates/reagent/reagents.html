@@ -2,10 +2,28 @@
 {% block content %}
 <div class="container my-container">
 	<div class="row">
-		<div class="col-10">
+		<div class="col-7">
 			<h2>Reagents</h2>
 		</div>
-		<div class="col">
+		<div class="col-3">
+			<form class="navbar-form navbar-left" action="{{ url_for('reagents') }}" method="post">
+				<div class="input-group">
+					<input id="searchbox" type="text" class="form-control"
+					       placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
+					<datalist id='listid'>
+						{% for reagent in reagents %}
+						<option>{{ reagent.name }}</option>
+						{% endfor %}
+					</datalist>
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-1">
 			<form action="{{ url_for('add_reagent') }}" method="post">
 				<button type="submit" class="btn btn-info" name="reagent">Add Reagent</button>
 			</form>
@@ -18,7 +36,7 @@
 				<thead>
 				<tr>
 					<th>ID</th>
-					<th>Kit Name</th>
+					<th>Reagent Name</th>
 				</tr>
 				</thead>
 				<tbody>

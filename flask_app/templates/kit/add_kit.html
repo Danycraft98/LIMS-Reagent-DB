@@ -72,10 +72,12 @@
 					<div class="col-3 form-group"></div>
 					<div class="col-2 form-group">
 						<label for="comp_barcode" style="visibility: hidden;">Traaaaaaaaaaash:</label>
-						<button type="button" class="btn btn-default" name="clone" id="clone" onclick="clone_element(this)">
+						<button type="button" class="btn btn-default" name="clone" id="clone"
+						        onclick="clone_element(this)">
 							<i class="fa fa-clone" style="font-size:24px"></i>
 						</button>
-						<button type="button" class="btn btn-default" name="trash" id="trash" onclick="remove_element(this)">
+						<button type="button" class="btn btn-default" name="trash" id="trash"
+						        onclick="remove_element(this)">
 							<i class="fa fa-trash-o" style="font-size:24px"></i>
 						</button>
 					</div>
@@ -83,11 +85,14 @@
 				<div class="row my-row">
 					<div class="col-3 form-group">
 						<label for="comp_part_num">Part Number:</label>
-						<input type="text" class="form-control" name="comp_part_num" id="comp_part_num" readonly>
+						<input type="text" class="form-control" name="comp_part_num"
+						       id="comp_part_num"
+						       readonly>
 					</div>
 					<div class="col-3 form-group">
 						<label for="comp_lot_num">Lot Number:</label>
-						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num" readonly>
+						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num"
+						       readonly>
 					</div>
 					<div class="col-6 form-group">
 						<label for="condition">Component Condition:</label>
@@ -102,7 +107,8 @@
 		<br/>
 		<div class="row my-row">
 			<div class="col-1">
-				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#print_div">
+				<button type="button" class="btn btn-info" data-toggle="collapse"
+				        data-target="#print_div">
 					Print...
 				</button>
 			</div>
@@ -117,34 +123,48 @@
 				</button>
 			</div>
 		</div>
-		<div id="print_div" class="collapse">
-			<hr/>
-			<div class="row my-row">
-				<div class="col">
-					<h2>Print</h2>
-				</div>
+	</div>
+</form>
+<br/>
+
+<form method="post">
+	<div id="print_div" class="collapse">
+		<hr/>
+		<div class="row my-row">
+			<div class="col">
+				<h2>Print</h2>
 			</div>
-			<div class="row my-row">
-				<div class="col-3 form-group">
-					<label for="small_label">Small Label Copies:</label>
-					<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
-					       class="form-control" name="small_label" id="small_label"/>
-				</div>
-				<div class="col-3 form-group">
-					<label for="medium_label">Medium Label Copies:</label>
-					<input type="number" value="0" min="0" max="100" step="1" name="medium_label"
-					       class="form-control" id="medium_label"/>
-				</div>
-			</div>
-			<div class="row my-row">
-				<div class="col-3">
-					<button type="button" class="btn btn-info" name="append" id="append" onclick="add_element()">
-						Print
-					</button>
-				</div>
-			</div>
-			<br/>
 		</div>
+		<div class="row my-row">
+			<div class="col-3 form-group">
+				<label for="kit_label">Kit Label Copies</label>
+				<select class="form-control" id="kit_label_size" name="kit_label_size">
+					<option value="s">Small</option>
+					<option value="m">Medium</option>
+				</select>
+				<br/>
+				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+				       class="form-control" name="kit_label" id="kit_label"/>
+			</div>
+			<div class="col-3 form-group">
+				<label for="comp_label">Component Label Copies</label>
+				<select class="form-control" id="comp_label_size" name="comp_label_size">
+					<option value="s">Small</option>
+					<option value="m">Medium</option>
+				</select>
+				<br/>
+				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+				       class="form-control" name="comp_label" id="comp_label"/>
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col-3">
+				<button type="submit" class="btn btn-info" name="print" id="print" value="print">
+					Print
+				</button>
+			</div>
+		</div>
+		<br/>
 	</div>
 </form>
 
@@ -203,6 +223,5 @@
 			document.getElementById("comp_lot_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[12], properties[13]));
 		}
 	}
-
 </script>
 {% endblock content %}

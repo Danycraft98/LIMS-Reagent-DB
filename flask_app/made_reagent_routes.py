@@ -6,7 +6,9 @@ from datetime import datetime
 
 @app.route("/made_reagents")
 def made_reagents():
-	made_reagents = Kit.query.all()
+	if request.method == 'POST':
+		return redirect(url_for("made_reagent", made_reagent_id=MadeReagent.query.filter_by(name=request.form.get('searchbox'))[0].id))
+	made_reagents = MadeReagent.query.all()
 	return render_template("made_reagent/made_reagents.html", made_reagents=made_reagents)
 
 

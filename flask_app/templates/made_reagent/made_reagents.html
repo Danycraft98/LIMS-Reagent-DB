@@ -4,10 +4,29 @@
 	<br/>
 	<div class="container my-container">
 		<div class="row">
-			<div class="col-9 ">
+			<div class="col-7 ">
 				<h3>Made Reagents</h3>
 			</div>
-			<div class="col">
+			<div class="col-3">
+				<form class="navbar-form navbar-left" action="{{ url_for('reagents') }}" method="post">
+					<div class="input-group">
+						<input id="searchbox" type="text" class="form-control"
+						       placeholder="Search" name="searchbox" list="listid"
+						       onautocomplete="search(this)">
+						<datalist id='listid'>
+							{% for reagent in reagents %}
+							<option>{{ reagent.name }}</option>
+							{% endfor %}
+						</datalist>
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-1">
 				<form action="{{ url_for('add_made_reagent') }}" method="post">
 					<button type="submit" class="btn btn-info" name="made_reagent">Add Made Reagent</button>
 				</form>
@@ -17,18 +36,19 @@
 	<br/>
 	<table class="table table-hover">
 		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Kit Name</th>
-			</tr>
+		<tr>
+			<th>ID</th>
+			<th>Made Reagent Name</th>
+		</tr>
 		</thead>
 		<tbody>
-			{% for reagent in reagents %}
-			<tr>
-				<td>{{ reagent.id }}</td>
-				<td><a href="{{ url_for('reagent', reagent_id=reagent.id) }}">{{ reagent.name }}</a></td>
-			</tr>
-			{% endfor %}
+		{% for made_reagent in made_reagents %}
+		<tr>
+			<td>{{ made_reagent.id }}</td>
+			<td><a href="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}">{{ made_reagent.name
+				}}</a></td>
+		</tr>
+		{% endfor %}
 		</tbody>
 	</table>
 </div>

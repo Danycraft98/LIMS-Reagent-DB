@@ -2,14 +2,19 @@
 {% block content %}
 <div class="container my-container">
 	<div class="row">
-		<div class="col-7">
+		<div class="col-8">
 			<h2>Kits</h2>
 		</div>
 		<div class="col-3">
-			<form class="navbar-form navbar-left" action="{{ url_for('home') }}" method="post">
+			<form class="navbar-form navbar-left" action="{{ url_for('kits') }}" method="post">
 				<div class="input-group">
-					<input id="autocomplete-search" type="text" class="form-control"
-					       placeholder="Search" name="searchbox-search" oninput="search(this)">
+					<input id="searchbox" type="text" class="form-control"
+					       placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
+					<datalist id='listid'>
+						{% for kit in kits %}
+						<option>{{ kit.name }}</option>
+						{% endfor %}
+					</datalist>
 					<div class="input-group-btn">
 						<button class="btn btn-default" type="submit">
 							<i class="fas fa-search"></i>
@@ -18,7 +23,7 @@
 				</div>
 			</form>
 		</div>
-		<div class="col">
+		<div class="col-1">
 			<form action="{{ url_for('add_kit') }}" method="post">
 				<button type="submit" class="btn btn-info" name="kit">Add Kit</button>
 			</form>
@@ -46,9 +51,4 @@
 		</div>
 	</div>
 </div>
-<script>
-	function search(element) {
-		for kit
-	}
-</script>
 {% endblock content %}

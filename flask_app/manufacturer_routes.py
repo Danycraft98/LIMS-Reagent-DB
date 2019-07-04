@@ -4,8 +4,10 @@ from flask_app.models import Manufacturer
 from datetime import datetime
 
 
-@app.route("/manufacturers")
+@app.route("/manufacturers", methods=['GET', 'POST'])
 def manufacturers():
+	if request.method == 'POST':
+		return redirect(url_for("manufacturer", manufacturer_id=Manufacturer.query.filter_by(name=request.form.get('searchbox'))[0].id))
 	manufacturers = Manufacturer.query.all()
 	return render_template("manufacturer/manufacturers.html", manufacturers=manufacturers)
 

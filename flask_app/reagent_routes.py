@@ -4,8 +4,10 @@ from flask_app.models import *
 from datetime import datetime
 
 
-@app.route("/reagents")
+@app.route("/reagents", methods=['GET', 'POST'])
 def reagents():
+	if request.method == 'POST':
+		return redirect(url_for("reagent", reagent_id=Reagent.query.filter_by(name=request.form.get('searchbox'))[0].id))
 	reagents = Reagent.query.all()
 	return render_template("reagent/reagents.html", reagents=reagents)
 

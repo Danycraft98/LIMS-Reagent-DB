@@ -1,11 +1,19 @@
+from wtforms import Form, StringField, SelectField
 from flask import render_template, url_for, redirect, request
 from flask_app import app
 from flask_app.models import *
 from datetime import datetime
+from flask_app.print import print_label
 
 
-@app.route("/kits")
+class MusicSearchForm(Form):
+	search = StringField('')
+
+
+@app.route("/kits", methods=['GET', 'POST'])
 def kits():
+	if request.method == 'POST':
+		return redirect(url_for("kit", kit_id=Kit.query.filter_by(name=request.form.get('searchbox'))[0].id))
 	kits = Kit.query.all()
 	return render_template("kit/kits.html", kits=kits)
 
@@ -19,6 +27,28 @@ def kit(kit_id):
 @app.route("/add_kit", methods=["GET", "POST"])
 def add_kit():
 	manu_name = Manufacturer.query.all()
+	if request.method == 'POST':
+		if request.form.get('print') == 'print':
+			comp_names = request.form.getlist("comp_name")
+
+			kit_label_size = request.form.get('kit_label_size')
+			kit_label = int(request.form.get('kit_label'))
+			comp_label_size = request.form.get('comp_label_size')
+			comp_label = request.form.get('comp_label')
+
+			batchpartnum = 1
+			while batchpartnum <= kit_label:
+				printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
+				print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
+				batchpartnum += 1
+
+			for name in comp_names:
+				batchpartnum = 1
+				while batchpartnum <= kit_label:
+					printcont = (name, request.form.get("exp_date"), datetime.now())
+					print_label(printcont, "kit", comp_label_size, None, str(batchpartnum) + '/' + str(comp_label))
+					batchpartnum += 1
+
 	return render_template("kit/add_kit.html", title="Add", manu_name=manu_name)
 
 
