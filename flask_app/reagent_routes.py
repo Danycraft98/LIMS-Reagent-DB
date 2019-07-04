@@ -1,6 +1,7 @@
 from flask import render_template, url_for, redirect, request
 from flask_app import app
 from flask_app.models import *
+from flask_app.print import print_label
 from datetime import datetime
 
 
@@ -41,6 +42,15 @@ def add_reagent_redirect():
 	if exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
+
+	reagent_label_size = request.form.get('reagent_label_size')
+	reagent_label = int(request.form.get('reagent_label'))
+
+	batchpartnum = 1
+	while batchpartnum <= reagent_label:
+		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
+		print_label(printcont, "reagent", reagent_label_size, None, str(batchpartnum) + '/' + str(reagent_label))
+		batchpartnum += 1
 
 	reagent = Reagent(
 		name=request.form.get("name"),

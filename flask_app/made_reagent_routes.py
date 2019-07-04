@@ -1,6 +1,7 @@
 from flask import render_template, url_for, redirect, request
 from flask_app import app, db
-from flask_app.models import *
+from flask_app.models import Manufacturer, MadeReagent, Component
+from flask_app.print import print_label
 from datetime import datetime
 
 
@@ -14,8 +15,8 @@ def made_reagents():
 
 @app.route("/made_reagent/<int:made_reagent_id>")
 def made_reagent(made_reagent_id):
-	made_reagent = Kit.query.get(made_reagent_id)
-	return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent)
+	made_reagent = MadeReagent.query.get(made_reagent_id)
+	return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, Manufacturer=Manufacturer)
 
 
 @app.route("/add_made_reagent", methods=["GET", "POST"])
@@ -61,6 +62,17 @@ def add_made_reagent_redirect():
 	part_nums = request.form.getlist("part_num")
 	lot_nums = request.form.getlist("lot_num")
 	conditions = request.form.getlist("condition")
+
+	made_reagent_label_size = request.form.get('kit_label_size')
+	made_reagent_label = int(request.form.get('kit_label'))
+	comp_label_size = request.form.get('comp_label_size')
+	comp_label = request.form.get('comp_label')
+
+	batchpartnum = 1
+	while batchpartnum <= made_reagent_label:
+		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
+		print_label(printcont, "kit", made_reagent_label_size, None, str(batchpartnum) + '/' + str(made_reagent_label))
+		batchpartnum += 1
 
 	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, part_nums, lot_nums, conditions):
 		component = Component(

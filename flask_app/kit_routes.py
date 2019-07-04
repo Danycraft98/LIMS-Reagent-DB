@@ -1,13 +1,8 @@
-from wtforms import Form, StringField, SelectField
 from flask import render_template, url_for, redirect, request
-from flask_app import app
-from flask_app.models import *
+from flask_app import app, db
+from flask_app.models import Kit, Manufacturer, Component
 from datetime import datetime
 from flask_app.print import print_label
-
-
-class MusicSearchForm(Form):
-	search = StringField('')
 
 
 @app.route("/kits", methods=['GET', 'POST'])
@@ -29,25 +24,7 @@ def add_kit():
 	manu_name = Manufacturer.query.all()
 	if request.method == 'POST':
 		if request.form.get('print') == 'print':
-			comp_names = request.form.getlist("comp_name")
-
-			kit_label_size = request.form.get('kit_label_size')
-			kit_label = int(request.form.get('kit_label'))
-			comp_label_size = request.form.get('comp_label_size')
-			comp_label = request.form.get('comp_label')
-
-			batchpartnum = 1
-			while batchpartnum <= kit_label:
-				printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-				print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
-				batchpartnum += 1
-
-			for name in comp_names:
-				batchpartnum = 1
-				while batchpartnum <= kit_label:
-					printcont = (name, request.form.get("exp_date"), datetime.now())
-					print_label(printcont, "kit", comp_label_size, None, str(batchpartnum) + '/' + str(comp_label))
-					batchpartnum += 1
+			pass
 
 	return render_template("kit/add_kit.html", title="Add", manu_name=manu_name)
 
@@ -74,11 +51,11 @@ def add_kit_redirect():
 		name=request.form.get("name"),
 		barcode=request.form.get("barcode"),
 		part_num=part_num,
-		lot_num = lot_num,
-		date_entered = datetime.today(),
-		exp_date =  exp_date,
-		quantity = quantity,
-		manufacturer_fk = manu_id,
+		lot_num=lot_num,
+		date_entered=datetime.today(),
+		exp_date=exp_date,
+		quantity=quantity,
+		manufacturer_fk=manu_id,
 	)
 
 	db.session.add(kit)
@@ -90,7 +67,24 @@ def add_kit_redirect():
 	comp_lot_nums = request.form.getlist("comp_lot_num")
 	conditions = request.form.getlist("condition")
 
+	kit_label_size = request.form.get('kit_label_size')
+	kit_label = int(request.form.get('kit_label'))
+	comp_label_size = request.form.get('comp_label_size')
+	comp_label = request.form.get('comp_label')
+
+	batchpartnum = 1
+	while batchpartnum <= kit_label:
+		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
+		print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
+		batchpartnum += 1
+
 	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, conditions):
+		batchpartnum = 1
+		while batchpartnum <= kit_label:
+			printcont = (name, request.form.get("exp_date"), datetime.now())
+			print_label(printcont, "kit", comp_label_size, None, str(batchpartnum) + '/' + str(comp_label))
+			batchpartnum += 1
+
 		component = Component(
 			name=name,
 			barcode=comp_num,

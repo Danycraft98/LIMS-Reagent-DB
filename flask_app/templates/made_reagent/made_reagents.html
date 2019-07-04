@@ -1,21 +1,20 @@
 {% extends "layout.html" %}
+
 {% block content %}
 <div>
-	<br/>
 	<div class="container my-container">
 		<div class="row">
 			<div class="col-7 ">
 				<h3>Made Reagents</h3>
 			</div>
 			<div class="col-3">
-				<form class="navbar-form navbar-left" action="{{ url_for('reagents') }}" method="post">
+				<form class="navbar-form navbar-left" action="{{ url_for('made_reagents') }}" method="post">
 					<div class="input-group">
-						<input id="searchbox" type="text" class="form-control"
-						       placeholder="Search" name="searchbox" list="listid"
+						<input id="searchbox" type="text" class="form-control" placeholder="Search" name="searchbox" list="listid"
 						       onautocomplete="search(this)">
 						<datalist id='listid'>
-							{% for reagent in reagents %}
-							<option>{{ reagent.name }}</option>
+							{% for made_reagent in made_reagents %}
+							<option>{{ made_reagent.name }}</option>
 							{% endfor %}
 						</datalist>
 						<div class="input-group-btn">
@@ -45,8 +44,7 @@
 		{% for made_reagent in made_reagents %}
 		<tr>
 			<td>{{ made_reagent.id }}</td>
-			<td><a href="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}">{{ made_reagent.name
-				}}</a></td>
+			<td><a href="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}">{{ made_reagent.name }}</a></td>
 		</tr>
 		{% endfor %}
 		</tbody>

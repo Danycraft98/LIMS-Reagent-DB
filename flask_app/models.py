@@ -22,6 +22,7 @@ class Manufacturer(db.Model):
 	comp_lot_end = db.Column(db.Integer)
 	kits = db.relationship('Kit', lazy=True)
 	reagents = db.relationship('Reagent', lazy=True)
+	made_reagents = db.relationship('MadeReagent', lazy=True)
 
 
 class Kit(db.Model):
@@ -59,6 +60,7 @@ class MadeReagent(db.Model):
 	exp_date = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
 	components = db.relationship('Component', lazy=True)
+	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
 
 
 class Component(db.Model):

@@ -10,7 +10,7 @@
 	<br/>
 	<div class="row">
 		<div class="col-12">
-			<table class="table table-hover">
+			<table class="table table-hover master">
 				<tr>
 					<th>Manufacturer Name</th>
 					<td>{{ manufacturer.name }}</td>
@@ -37,6 +37,48 @@
 					<td>{{ kit.barcode }}</td>
 					<td>{{ kit.part_num }}</td>
 					<td>{{ kit.lot_num }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			<br/>
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>Reagent Name</th>
+					<th>Reagent Barcode</th>
+					<th>Part Number</th>
+					<th>Lot Number</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for reagent in manufacturer.reagents %}
+				<tr>
+					<td>{{ reagent.name }}</td>
+					<td>{{ reagent.barcode }}</td>
+					<td>{{ reagent.part_num }}</td>
+					<td>{{ reagent.lot_num }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			<br/>
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>Made Reagent Name</th>
+					<th>Made Reagent Barcode</th>
+					<th>Part Number</th>
+					<th>Lot Number</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for made_reagent in manufacturer.made_reagents %}
+				<tr>
+					<td>{{ made_reagent.name }}</td>
+					<td>{{ made_reagent.barcode }}</td>
+					<td>{{ made_reagent.part_num }}</td>
+					<td>{{ made_reagent.lot_num }}</td>
 				</tr>
 				{% endfor %}
 				</tbody>

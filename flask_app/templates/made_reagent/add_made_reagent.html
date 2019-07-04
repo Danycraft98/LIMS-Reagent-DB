@@ -15,6 +15,18 @@
 				<label for="name">Reagent Name:</label>
 				<input type="text" class="form-control" id="name" name="name" required>
 			</div>
+			<div class="col-3 form-group">
+				<label for="manu_name">Manufacturer:</label>
+				<select class="form-control" id="manu_name" name="manu_name" onchange="enable(this)">
+					<option></option>
+					{% for item in manu_name%}
+					<option
+						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{item.comp_barcode}},{{item.comp_part_num}},{{item.comp_lot_num}},{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{ item.name }}">
+						{{ item.name }}
+					</option>
+					{% endfor %}
+				</select>
+			</div>
 			<div class="col-4 form-group">
 				<label for="barcode">Box Lot Barcode:</label>
 				<input type="text" class="form-control" id="barcode" name="barcode" oninput="update()">
@@ -92,19 +104,19 @@
 		</div>
 		<br/>
 		<div class="row my-row">
-			<div class="col-1">
+			<div class="col-2">
 				<button type="button" class="btn btn-info" data-toggle="collapse"
 				        data-target="#print_div">
-					Print...
+					Print Option
 				</button>
 			</div>
-			<div class="col-1">
-				<button type="submit" class="btn btn-info" name="submit" id="submit">Save
+			<div class="col-2">
+				<button type="submit" class="btn btn-info" name="submit" id="submit">
+					Save and Print
 				</button>
 			</div>
-			<div class="col-1">
-				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel"
-				        onclick="openWindow();">
+			<div class="col-2">
+				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel">
 					Cancel
 				</button>
 			</div>
@@ -118,7 +130,7 @@
 		<hr/>
 		<div class="row my-row">
 			<div class="col">
-				<h2>Print</h2>
+				<h2>Print Option</h2>
 			</div>
 		</div>
 		<div class="row my-row">
@@ -141,13 +153,6 @@
 				<br/>
 				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
 				       class="form-control" name="comp_label" id="comp_label"/>
-			</div>
-		</div>
-		<div class="row my-row">
-			<div class="col-3">
-				<button type="submit" class="btn btn-info" name="print" id="print" value="print">
-					Print
-				</button>
 			</div>
 		</div>
 		<br/>
