@@ -26,19 +26,36 @@
 				</tr>
 				<tr>
 					<th>Part Number</th>
+					{% if kit.part_num != -1 %}
 					<td>{{ kit.part_num }}</td>
+					{% elif kit.part_num == -1 %}
+					<td>N/A</td>
+					{% endif %}
 				</tr>
 				<tr>
 					<th>Lot Number</th>
+					{% if kit.lot_num != -1 %}
 					<td>{{ kit.lot_num }}</td>
+					{% elif kit.lot_num == -1 %}
+					<td>N/A</td>
+					{% endif %}
 				</tr>
 				<tr>
 					<th>Date Entered</th>
-					<td>{{ kit.date_entered }}</td>
+					{% if kit.date_entered %}
+					<td>{{ kit.date_entered.strftime("%B %e, %Y") }}</td>
+					{% elif not kit.exp_date %}
+					<td>N/A</td>
+					{% endif %}
+
 				</tr>
 				<tr>
 					<th>Expiry Date</th>
-					<td>{{ kit.exp_date }}</td>
+					{% if kit.exp_date %}
+					<td>{{ kit.exp_date.strftime("%B %e, %Y") }}</td>
+					{% elif not kit.exp_date %}
+					<td>N/A</td>
+					{% endif %}
 				</tr>
 			</table>
 			<br/>

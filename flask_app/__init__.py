@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from argparse import ArgumentParser
 from sqlalchemy import create_engine
@@ -52,10 +52,4 @@ engine_RK = create_engine(mySQL_con)
 db = SQLAlchemy(app)
 
 
-@app.route("/", methods=['GET', 'POST'])
-@app.route("/home", methods=['GET', 'POST'])
-def home():
-	return render_template('home.html')
-
-
-from flask_app import kit_routes, manufacturer_routes, reagent_routes, made_reagent_routes
+from flask_app import kit_routes, manufacturer_routes, reagent_routes, made_reagent_routes, routes

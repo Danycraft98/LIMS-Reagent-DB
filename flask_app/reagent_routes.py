@@ -7,10 +7,10 @@ from datetime import datetime
 
 @app.route("/reagents", methods=['GET', 'POST'])
 def reagents():
+	all_reagents = Reagent.query.all()
 	if request.method == 'POST':
-		return redirect(url_for("reagent", reagent_id=Reagent.query.filter_by(name=request.form.get('searchbox'))[0].id))
-	reagents = Reagent.query.all()
-	return render_template("reagent/reagents.html", reagents=reagents)
+		return render_template("reagent/reagents.html", reagents=Reagent.query.filter_by(name=request.form.get('searchbox')), all_reagents=all_reagents)
+	return render_template("reagent/reagents.html", reagents=all_reagents, all_reagents=all_reagents)
 
 
 @app.route("/reagent/<int:reagent_id>")
@@ -39,7 +39,9 @@ def add_reagent_redirect():
 		lot_num = -1
 
 	exp_date = request.form.get("exp_date")
-	if exp_date:
+	if exp_date == '':
+		exp_date = None
+	elif exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
 

@@ -117,7 +117,9 @@
 				<button type="submit" class="btn btn-info" id="submit">Save</button>
 			</div>
 			<div class="col-1">
-				<button type="button" class="btn btn-outline-info"  id="cancel">Cancel</button>
+				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel" onclick="window.location.href='{{ url_for('manufacturers') }}'">
+					Cancel
+				</button>
 			</div>
 		</div>
 	</div>

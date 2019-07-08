@@ -1,6 +1,12 @@
 from flask_app import db
 
 
+class User(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(255), nullable=False)
+	username = db.Column(db.String(255), nullable=False)
+	password = db.Column(db.String(255), nullable=False)
+
 class Manufacturer(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(255), nullable=False)
@@ -44,8 +50,8 @@ class Reagent(db.Model):
 	barcode = db.Column(db.String(255), nullable=False)
 	part_num = db.Column(db.Integer)
 	lot_num = db.Column(db.Integer)
-	date_entered = db.Column(db.DateTime)
 	exp_date = db.Column(db.DateTime)
+	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
 
@@ -56,8 +62,8 @@ class MadeReagent(db.Model):
 	barcode = db.Column(db.String(255), nullable=False)
 	part_num = db.Column(db.Integer)
 	lot_num = db.Column(db.Integer)
-	date_entered = db.Column(db.DateTime)
 	exp_date = db.Column(db.DateTime)
+	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
 	components = db.relationship('Component', lazy=True)
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)

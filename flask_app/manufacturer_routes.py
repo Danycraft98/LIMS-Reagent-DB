@@ -7,7 +7,7 @@ from datetime import datetime
 @app.route("/manufacturers", methods=['GET', 'POST'])
 def manufacturers():
 	if request.method == 'POST':
-		return redirect(url_for("manufacturer", manufacturer_id=Manufacturer.query.filter_by(name=request.form.get('searchbox'))[0].id))
+		return render_template("manufacturer/manufacturers.html", manufacturers=Manufacturer.query.filter_by(name=request.form.get('searchbox')))
 	manufacturers = Manufacturer.query.all()
 	return render_template("manufacturer/manufacturers.html", manufacturers=manufacturers)
 

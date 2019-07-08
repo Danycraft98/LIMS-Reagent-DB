@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="reagent" name="reagent" action="/add_reagent_redirect" method="post">
+<form class="reagent" name="reagent" action="/add_made_reagent_redirect" method="post">
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
-				<h2>Made Reagent</h2>
+				<h2>Made-Reagent</h2>
 				<hr/>
 				<h4>Master Information</h4>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-3 form-group">
-				<label for="name">Reagent Name:</label>
+				<label for="name">Made-Reagent Name:</label>
 				<input type="text" class="form-control" id="name" name="name" required>
 			</div>
 			<div class="col-3 form-group">
@@ -35,11 +35,11 @@
 		<div class="row my-row">
 			<div class="col-3 form-group">
 				<label for="part_num">Part Number:</label>
-				<input type="text" class="form-control" id="part_num" name="part_num">
+				<input type="text" class="form-control" id="part_num" name="part_num" readonly>
 			</div>
 			<div class="col-3 form-group">
 				<label for="lot_num">Lot Number:</label>
-				<input type="text" class="form-control" id="lot_num" name="lot_num">
+				<input type="text" class="form-control" id="lot_num" name="lot_num" readonly>
 			</div>
 			<div class="col-3 form-group">
 				<label for="exp_date">Expiry Date:</label>
@@ -86,11 +86,11 @@
 					<div class="col-3 form-group">
 						<label for="comp_part_num">Part Number:</label>
 						<input type="text" class="form-control" name="comp_part_num"
-						       id="comp_part_num">
+						       id="comp_part_num" readonly>
 					</div>
 					<div class="col-3 form-group">
 						<label for="comp_lot_num">Lot Number:</label>
-						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num">
+						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num" readonly>
 					</div>
 					<div class="col-6 form-group">
 						<label for="condition">Component Condition:</label>
@@ -116,16 +116,14 @@
 				</button>
 			</div>
 			<div class="col-2">
-				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel">
+				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel" onclick="window.location.href='{{ url_for('made_reagents') }}'">
 					Cancel
 				</button>
 			</div>
 		</div>
 	</div>
-</form>
-<br/>
+	<br/>
 
-<form method="post">
 	<div id="print_div" class="collapse">
 		<hr/>
 		<div class="row my-row">
@@ -135,14 +133,14 @@
 		</div>
 		<div class="row my-row">
 			<div class="col-3 form-group">
-				<label for="reagent_label">Reagent Label Copies</label>
-				<select class="form-control" id="reagent_label_size" name="reagent_label_size">
+				<label for="made_reagent_label">Made-Reagent Label Copies</label>
+				<select class="form-control" id="made_reagent_label_size" name="made_reagent_label_size">
 					<option value="s">Small</option>
 					<option value="m">Medium</option>
 				</select>
 				<br/>
-				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
-				       class="form-control" name="reagent_label" id="reagent_label"/>
+				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+				       class="form-control" name="made_reagent_label" id="made_reagent_label"/>
 			</div>
 			<div class="col-3 form-group">
 				<label for="comp_label">Component Label Copies</label>
@@ -151,7 +149,7 @@
 					<option value="m">Medium</option>
 				</select>
 				<br/>
-				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
 				       class="form-control" name="comp_label" id="comp_label"/>
 			</div>
 		</div>

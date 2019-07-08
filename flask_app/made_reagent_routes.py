@@ -5,12 +5,12 @@ from flask_app.print import print_label
 from datetime import datetime
 
 
-@app.route("/made_reagents")
+@app.route("/made_reagents", methods=['GET', 'POST'])
 def made_reagents():
+	all_made_reagents = MadeReagent.query.all()
 	if request.method == 'POST':
-		return redirect(url_for("made_reagent", made_reagent_id=MadeReagent.query.filter_by(name=request.form.get('searchbox'))[0].id))
-	made_reagents = MadeReagent.query.all()
-	return render_template("made_reagent/made_reagents.html", made_reagents=made_reagents)
+		return render_template("made_reagent/made_reagents.html", made_reagents=MadeReagent.query.filter_by(name=request.form.get('searchbox')), all_made_reagents=all_made_reagents)
+	return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents)
 
 
 @app.route("/made_reagent/<int:made_reagent_id>")
@@ -27,7 +27,7 @@ def add_made_reagent():
 
 @app.route("/add_made_reagent_redirect", methods=["GET", "POST"])
 def add_made_reagent_redirect():
-	manu_id = Manufacturer.query.filter_by(name=request.form.get("manu_name")).first().id
+	manu_id = Manufacturer.query.filter_by(name=request.form.get("manu_name").split(',')[-1]).first().id
 	try:
 		m_part_num = int(request.form.get("made_reagent_part_num"))
 	except:
@@ -39,17 +39,19 @@ def add_made_reagent_redirect():
 		m_lot_num = -1
 
 	exp_date = request.form.get("exp_date")
-	if exp_date == "":
+	if exp_date == '':
 		exp_date = None
+	elif exp_date:
+		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
 
 	made_reagent = MadeReagent(
-		name=request.form.get("made_reagent_name"),
-		barcode=request.form.get("made_reagent_barcode"),
+		name=request.form.get("name"),
+		barcode=request.form.get("barcode"),
 		part_num=m_part_num,
 		lot_num = m_lot_num,
+		exp_date = exp_date,
 		date_entered=datetime.today(),
-		exp_date = datetime.strptime(exp_date, "%Y-%m-%d"),
 		quantity = quantity,
 		manufacturer_fk = manu_id,
 	)
@@ -63,8 +65,8 @@ def add_made_reagent_redirect():
 	lot_nums = request.form.getlist("lot_num")
 	conditions = request.form.getlist("condition")
 
-	made_reagent_label_size = request.form.get('kit_label_size')
-	made_reagent_label = int(request.form.get('kit_label'))
+	made_reagent_label_size = request.form.get('made_reagent_label_size')
+	made_reagent_label = int(request.form.get('made_reagent_label'))
 	comp_label_size = request.form.get('comp_label_size')
 	comp_label = request.form.get('comp_label')
 
@@ -81,6 +83,7 @@ def add_made_reagent_redirect():
 			part_num=part_num,
 			lot_num=lot_num,
 			condition=condition,
+			kit_fk=None,
 			made_reagent_fk=made_reagent.id
 		)
 		db.session.add(component)

@@ -11,7 +11,7 @@
 					<input id="searchbox" type="text" class="form-control"
 					       placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
 					<datalist id='listid'>
-						{% for reagent in reagents %}
+						{% for reagent in all_reagents %}
 						<option>{{ reagent.name }}</option>
 						{% endfor %}
 					</datalist>
@@ -37,6 +37,8 @@
 				<tr>
 					<th>ID</th>
 					<th>Reagent Name</th>
+					<th>Quantity</th>
+					<th>Date Entered</th>
 				</tr>
 				</thead>
 				<tbody>

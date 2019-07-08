@@ -7,10 +7,10 @@ from flask_app.print import print_label
 
 @app.route("/kits", methods=['GET', 'POST'])
 def kits():
+	all_kits = Kit.query.all()
 	if request.method == 'POST':
-		return redirect(url_for("kit", kit_id=Kit.query.filter_by(name=request.form.get('searchbox'))[0].id))
-	kits = Kit.query.all()
-	return render_template("kit/kits.html", kits=kits)
+		return render_template("kit/kits.html", kits=Kit.query.filter_by(name=request.form.get('searchbox')), all_kits=all_kits)
+	return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits)
 
 
 @app.route("/kit/<int:kit_id>")
@@ -43,7 +43,9 @@ def add_kit_redirect():
 		lot_num = -1
 
 	exp_date = request.form.get("exp_date")
-	if exp_date:
+	if exp_date == '':
+		exp_date = None
+	elif exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = request.form.get("quantity")
 
@@ -70,7 +72,7 @@ def add_kit_redirect():
 	kit_label_size = request.form.get('kit_label_size')
 	kit_label = int(request.form.get('kit_label'))
 	comp_label_size = request.form.get('comp_label_size')
-	comp_label = request.form.get('comp_label')
+	comp_label = int(request.form.get('comp_label'))
 
 	batchpartnum = 1
 	while batchpartnum <= kit_label:
@@ -80,7 +82,7 @@ def add_kit_redirect():
 
 	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, conditions):
 		batchpartnum = 1
-		while batchpartnum <= kit_label:
+		while batchpartnum <= comp_label:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
 			print_label(printcont, "kit", comp_label_size, None, str(batchpartnum) + '/' + str(comp_label))
 			batchpartnum += 1

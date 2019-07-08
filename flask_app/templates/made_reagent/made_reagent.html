@@ -25,19 +25,31 @@
 				</tr>
 				<tr>
 					<th>Part Number</th>
+					{% if made_reagent.part_num != -1 %}
 					<td>{{ made_reagent.part_num }}</td>
+					{% elif made_reagent.part_num == -1 %}
+					<td>N/A</td>
+					{% endif %}
 				</tr>
 				<tr>
 					<th>Lot Number</th>
+					{% if made_reagent.lot_num != -1 %}
 					<td>{{ made_reagent.lot_num }}</td>
+					{% elif made_reagent.lot_num == -1 %}
+					<td>N/A</td>
+					{% endif %}
 				</tr>
 				<tr>
 					<th>Date Entered</th>
-					<td>{{ made_reagent.date_entered }}</td>
+					<td>{{ made_reagent.date_entered.strftime("%B %e, %Y") }}</td>
 				</tr>
 				<tr>
 					<th>Expiry Date</th>
-					<td>{{ made_reagent.exp_date }}</td>
+					{% if made_reagent.exp_date %}
+					<td>{{ made_reagent.exp_date.strftime("%B %e, %Y") }}</td>
+					{% elif not made_reagent.exp_date %}
+					<td>N/A</td>
+					{% endif %}
 				</tr>
 			</table>
 			<br/>

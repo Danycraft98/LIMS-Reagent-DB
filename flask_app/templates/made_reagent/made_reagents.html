@@ -5,7 +5,7 @@
 	<div class="container my-container">
 		<div class="row">
 			<div class="col-7 ">
-				<h3>Made Reagents</h3>
+				<h3>Made-Reagents</h3>
 			</div>
 			<div class="col-3">
 				<form class="navbar-form navbar-left" action="{{ url_for('made_reagents') }}" method="post">
@@ -13,7 +13,7 @@
 						<input id="searchbox" type="text" class="form-control" placeholder="Search" name="searchbox" list="listid"
 						       onautocomplete="search(this)">
 						<datalist id='listid'>
-							{% for made_reagent in made_reagents %}
+							{% for made_reagent in all_made_reagents %}
 							<option>{{ made_reagent.name }}</option>
 							{% endfor %}
 						</datalist>
@@ -37,7 +37,9 @@
 		<thead>
 		<tr>
 			<th>ID</th>
-			<th>Made Reagent Name</th>
+			<th>Made-Reagent Name</th>
+			<th>Quantity</th>
+			<th>Date Entered</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -45,6 +47,8 @@
 		<tr>
 			<td>{{ made_reagent.id }}</td>
 			<td><a href="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}">{{ made_reagent.name }}</a></td>
+			<td>{{ made_reagent.quantity }}</td>
+			<td>{{ made_reagent.date_entered.strftime("%B %e, %Y") }}</td>
 		</tr>
 		{% endfor %}
 		</tbody>
