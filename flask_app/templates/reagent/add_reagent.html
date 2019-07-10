@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="kit" name="kit" action="/add_reagent_redirect" method="post">
+<form action="/add_reagent_redirect" method="post"  onsubmit="return confirmMsg();">
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
@@ -61,7 +61,7 @@
 			</div>
 			<div class="col-2">
 				<button type="submit" class="btn btn-info" name="submit" id="submit">
-					Save and Print
+					Save & Print
 				</button>
 			</div>
 			<div class="col-2">
@@ -85,7 +85,7 @@
 						<option value="m">Medium</option>
 					</select>
 					<br/>
-					<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+					<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
 					       class="form-control" name="reagent_label" id="reagent_label"/>
 				</div>
 				<div class="col-3 form-group">
@@ -95,7 +95,7 @@
 						<option value="m">Medium</option>
 					</select>
 					<br/>
-					<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+					<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
 					       class="form-control" name="comp_label" id="comp_label"/>
 				</div>
 			</div>
@@ -103,28 +103,4 @@
 		</div>
 	</div>
 </form>
-
-<script>
-	var _counter = 0;
-	var properties;
-	function enable(element) {
-		properties = element.value.split(",");
-		console.log(properties);
-            if (properties[2] == 1) {
-                  $("#exp_date").prop('disabled', false);
-            }
-            update()
-            update_comp()
-	}
-
-	function update() {
-		if (properties[0] == 1) {
-			document.getElementById("part_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[3], properties[4]));
-		}
-		if (properties[1] == 1) {
-			document.getElementById("lot_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[5], properties[6]));
-		}
-	}
-
-</script>
 {% endblock content %}

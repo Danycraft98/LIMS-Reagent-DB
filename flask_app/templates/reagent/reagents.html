@@ -44,8 +44,10 @@
 				<tbody>
 				{% for reagent in reagents %}
 				<tr>
-					<td>{{ reagent.id }}</td>
+					<td>{{ loop.index }}</td>
 					<td><a href="{{ url_for('reagent', reagent_id=reagent.id) }}">{{ reagent.name }}</a></td>
+					<td>{{ reagent.quantity }}</td>
+					<td>{{ reagent.date_entered.strftime("%B %e, %Y") }}</td>
 				</tr>
 				{% endfor %}
 				</tbody>

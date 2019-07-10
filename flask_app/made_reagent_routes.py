@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request
-from flask_app import app, db
+from flask_app import app, db, current_user
 from flask_app.models import Manufacturer, MadeReagent, Component
 from flask_app.print import print_label
 from datetime import datetime
@@ -7,6 +7,8 @@ from datetime import datetime
 
 @app.route("/made_reagents", methods=['GET', 'POST'])
 def made_reagents():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	all_made_reagents = MadeReagent.query.all()
 	if request.method == 'POST':
 		return render_template("made_reagent/made_reagents.html", made_reagents=MadeReagent.query.filter_by(name=request.form.get('searchbox')), all_made_reagents=all_made_reagents)
@@ -15,14 +17,18 @@ def made_reagents():
 
 @app.route("/made_reagent/<int:made_reagent_id>")
 def made_reagent(made_reagent_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	made_reagent = MadeReagent.query.get(made_reagent_id)
 	return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, Manufacturer=Manufacturer)
 
 
 @app.route("/add_made_reagent", methods=["GET", "POST"])
 def add_made_reagent():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	manu_name = Manufacturer.query.all()
-	return render_template("made_reagent/add_made_reagent.html", title="Add", manu_name=manu_name)
+	return render_template("made_reagent/add_made_reagent.html", manu_name=manu_name)
 
 
 @app.route("/add_made_reagent_redirect", methods=["GET", "POST"])

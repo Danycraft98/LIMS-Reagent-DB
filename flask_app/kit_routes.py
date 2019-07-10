@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request
-from flask_app import app, db
+from flask_app import app, db, current_user
 from flask_app.models import Kit, Manufacturer, Component
 from datetime import datetime
 from flask_app.print import print_label
@@ -7,6 +7,8 @@ from flask_app.print import print_label
 
 @app.route("/kits", methods=['GET', 'POST'])
 def kits():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	all_kits = Kit.query.all()
 	if request.method == 'POST':
 		return render_template("kit/kits.html", kits=Kit.query.filter_by(name=request.form.get('searchbox')), all_kits=all_kits)
@@ -15,18 +17,19 @@ def kits():
 
 @app.route("/kit/<int:kit_id>")
 def kit(kit_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	kit = Kit.query.get(kit_id)
 	return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer)
 
 
 @app.route("/add_kit", methods=["GET", "POST"])
 def add_kit():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	manu_name = Manufacturer.query.all()
-	if request.method == 'POST':
-		if request.form.get('print') == 'print':
-			pass
-
-	return render_template("kit/add_kit.html", title="Add", manu_name=manu_name)
+	today = datetime.today().date()
+	return render_template("kit/add_kit.html", title="Add", manu_name=manu_name, today=today)
 
 
 @app.route("/add_kit_redirect", methods=["GET", "POST"])

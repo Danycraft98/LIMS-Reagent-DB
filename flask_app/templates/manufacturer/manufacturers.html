@@ -11,7 +11,7 @@
 					<input id="searchbox" type="text" class="form-control"
 					       placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
 					<datalist id='listid'>
-						{% for manufacturer in manufacturers %}
+						{% for manufacturer in all_manufacturers %}
 						<option>{{ manufacturer.name }}</option>
 						{% endfor %}
 					</datalist>
@@ -42,7 +42,7 @@
 				<tbody>
 				{% for manufacturer in manufacturers %}
 				<tr>
-					<td>{{ manufacturer.id }}</td>
+					<td>{{ loop.index }}</td>
 					<td><a href="{{ url_for('manufacturer', manufacturer_id=manufacturer.id) }}">{{
 						manufacturer.name
 						}}</a></td>

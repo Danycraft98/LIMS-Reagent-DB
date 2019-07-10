@@ -44,7 +44,7 @@
 				<tbody>
 				{% for kit in kits %}
 				<tr>
-					<td>{{ kit.id }}</td>
+					<td>{{ loop.index }}</td>
 					<td><a href="{{ url_for('kit', kit_id=kit.id) }}">{{ kit.name }}</a></td>
 					<td>{{ kit.quantity }}</td>
 					<td>{{ kit.date_entered.strftime("%B %e, %Y") }}</td>

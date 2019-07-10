@@ -1,12 +1,14 @@
 from flask import render_template, url_for, redirect, request
-from flask_app import app
-from flask_app.models import *
+from flask_app import app, db, current_user
+from flask_app.models import Reagent, Manufacturer
 from flask_app.print import print_label
 from datetime import datetime
 
 
 @app.route("/reagents", methods=['GET', 'POST'])
 def reagents():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	all_reagents = Reagent.query.all()
 	if request.method == 'POST':
 		return render_template("reagent/reagents.html", reagents=Reagent.query.filter_by(name=request.form.get('searchbox')), all_reagents=all_reagents)
@@ -15,12 +17,16 @@ def reagents():
 
 @app.route("/reagent/<int:reagent_id>")
 def reagent(reagent_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	reagent = Reagent.query.get(reagent_id)
 	return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer)
 
 
 @app.route("/add_reagent", methods=["GET", "POST"])
 def add_reagent():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	manu_name = Manufacturer.query.all()
 	return render_template("reagent/add_reagent.html", manu_name=manu_name)
 

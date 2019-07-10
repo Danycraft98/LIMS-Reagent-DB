@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="reagent" name="reagent" action="/add_made_reagent_redirect" method="post">
+<form action="/add_made_reagent_redirect" method="post"  onsubmit="return confirmMsg();">
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
@@ -112,7 +112,7 @@
 			</div>
 			<div class="col-2">
 				<button type="submit" class="btn btn-info" name="submit" id="submit">
-					Save and Print
+					Save & Print
 				</button>
 			</div>
 			<div class="col-2">
@@ -156,63 +156,4 @@
 		<br/>
 	</div>
 </form>
-
-<script>
-	var _counter = 0;
-	var properties;
-	function add_element() {
-		var tag = document.createElement("div");
-		tag.setAttribute("id", "container_div"+_counter)
-		tag.setAttribute("style", "padding-bottom:30px")
-		tag.innerHTML = '<div class="row my-row"> <div class="col-3 form-group"> <label for="comp_name">Component Name:</label> <input type="text" class="form-control" name="comp_name" id="comp_name"> </div> <div class="col-4 form-group"> <label for="comp_barcode">Component Barcode:</label> <input type="text" class="form-control" name="comp_barcode" id="comp_barcode" oninput="update_comp()"> </div> <div class="col-3 form-group"></div> <div class="col-2 form-group"> <label for="comp_barcode" style="visibility: hidden;">Traaaaaaaaaaash:</label> <button type="button" class="btn btn-default" name="clone" id="clone" onclick="clone_element(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div> <div class="row my-row"> <div class="col-3 form-group"> <label for="comp_part_num">Part Number:</label> <input type="text" class="form-control" name="comp_part_num" id="comp_part_num" readonly> </div> <div class="col-3 form-group"> <label for="comp_lot_num">Lot Number:</label> <input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num" readonly> </div> <div class="col-6 form-group"> <label for="condition">Component Condition:</label> <input type="text" class="form-control" name="condition" id="condition"> </div> </div>';
-		document.getElementById("containers_div").appendChild(tag);
-		_counter++;
-	}
-
-	function clone_element(element) {
-	      var containerDiv = element.parentElement.parentElement.parentElement.id
-		var clone = document.getElementById(containerDiv).cloneNode(true);
-		clone.id = containerDiv + _counter;
-		document.getElementById("containers_div").appendChild(clone);
-		_counter++;
-	}
-
-	function remove_element(element) {
-	      var containerDiv = element.parentElement.parentElement.parentElement.id
-		document.getElementById(containerDiv).remove();
-	}
-
-	function enable(element) {
-		properties = element.value.split(",");
-		console.log(properties);
-            if (properties[2] == 1) {
-                  $("#exp_date").prop('disabled', false);
-            }
-            update()
-            update_comp()
-	}
-
-	function update() {
-		if (properties[0] == 1) {
-			document.getElementById("part_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[3], properties[4]));
-		}
-		if (properties[1] == 1) {
-			document.getElementById("lot_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[5], properties[6]));
-		}
-	}
-
-	function update_comp() {
-		if (properties[7] == 1) {
-			document.getElementById("comp_barcode").setAttribute("disable", false);
-		}
-		if (properties[8] == 1) {
-			document.getElementById("comp_part_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[10], properties[11]));
-		}
-		if (properties[9] == 1) {
-			document.getElementById("comp_lot_num").setAttribute("value", document.getElementById("comp_barcode").value.slice(properties[12], properties[13]));
-		}
-	}
-
-
-</script>
 {% endblock content %}

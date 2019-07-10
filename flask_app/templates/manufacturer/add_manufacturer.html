@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="kit" action="/add_manufacturer_redirect" onsubmit="return validateForm()" method="post">
+<form action="/add_manufacturer_redirect" method="post" onsubmit="return confirmMsg()">
 	<div class="container my-container">
 		<div class="row my-row">
 			<div class="col">
@@ -20,15 +20,15 @@
 				<input type="text" class="form-control" id="barcode" name="barcode">
 			</div>
 		</div>
-		<label>Component Fields:</label>
+		<label>Master Fields:</label>
 		<div class="row my-row">
 			<div class="col-3 form-group">
 				<input  type="checkbox" class="form-group big_cb" id="part_num_cb"  name="cb" value="part_num"
-				        checked="checked" onchange="document.getElementById('part_num_btn').disabled = !this.checked;">Part Number
+				        checked="checked" onchange="checkbox_pressed(this)">Part Number
 			</div>
 			<div class="col-3 form-group">
 				<input type="checkbox" class="form-group big_cb" id="lot_num_cb" name="cb" value="lot_num"
-				       checked="checked" onchange="document.getElementById('lot_num_btn').disabled = !this.checked;">Lot Number
+				       checked="checked" onchange="checkbox_pressed(this)">Lot Number
 			</div>
 			<div class="col-3 form-group">
 				<input type="checkbox" class="form-group big_cb" id="exp_date_cb" name="cb" value="exp_date"
@@ -71,15 +71,15 @@
 		<div class="row my-row">
 			<div class="col-3 form-group">
 				<input type="checkbox" class="form-group big_cb" name="comp_cb"  value="barcode"
-				       checked="checked" onchange="document.getElementById('barcode').disabled = !this.checked;">Component Barcode
+				       checked="checked" onchange="document.getElementById('comp_barcode').disabled = !this.checked;">Component Barcode
 			</div>
 			<div class="col-3 form-group">
-				<input type="checkbox" class="form-group big_cb" name="comp_cb" value="part_num"
-				       checked="checked" onchange="document.getElementById('comp_part_num_btn').disabled = !this.checked;">Part Number
+				<input type="checkbox" class="form-group big_cb" id="comp_part_num_cb" name="comp_cb" value="part_num"
+				       checked="checked" onchange="checkbox_pressed(this)">Part Number
 			</div>
 			<div class="col-3 form-group">
-				<input type="checkbox" class="form-group big_cb" name="comp_cb"  value="lot_num"
-				       checked="checked" onchange="document.getElementById('comp_lot_num_btn').disabled = !this.checked;" >Lot Number
+				<input type="checkbox" class="form-group big_cb" id="comp_lot_num_cb" name="comp_cb"  value="lot_num"
+				       checked="checked" onchange="checkbox_pressed(this)" >Lot Number
 			</div>
 		</div>
 		<div class="row my-row">

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="kit" name="kit" action="/add_kit_redirect" method="post">
+<form action="/add_kit_redirect" method="post" onsubmit="return confirmMsg();">
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
@@ -43,7 +43,7 @@
 			</div>
 			<div class="col-3 form-group">
 				<label for="exp_date">Expiry Date:</label>
-				<input type="date" class="form-control" id="exp_date" name="exp_date" disabled>
+				<input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}" disabled">
 			</div>
 			<div class="col-2 form-group">
 				<label for="quantity">Quantity:</label>
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<div id="containers_div">
-			<div id="container_div" style="padding-bottom:30px">
+			<div id="container_div0" style="padding-bottom:30px">
 				<div class="row my-row">
 					<div class="col-3 form-group">
 						<label for="comp_name0">Component Name:</label>
@@ -85,12 +85,11 @@
 				<div class="row my-row">
 					<div class="col-3 form-group">
 						<label for="comp_part_num0">Part Number:</label>
-						<input type="text" class="form-control" name="comp_part_num" id="comp_part_num0" readonly>
+						<input type="text" class="form-control" name="comp_part_num" id="comp_part_num0">
 					</div>
 					<div class="col-3 form-group">
 						<label for="comp_lot_num0">Lot Number:</label>
-						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num0"
-						       readonly>
+						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num0">
 					</div>
 					<div class="col-6 form-group">
 						<label for="condition">Component Condition:</label>
@@ -112,11 +111,12 @@
 			</div>
 			<div class="col-2">
 				<button type="submit" class="btn btn-info" name="submit" id="submit">
-					Save and Print
+					Save & Print
 				</button>
 			</div>
 			<div class="col-2">
-				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel" onclick="window.location.href='{{ url_for('kits') }}'">
+				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel"
+				        onclick="window.location.href='{{ url_for('kits') }}'">
 					Cancel
 				</button>
 			</div>
@@ -139,7 +139,7 @@
 					<option value="m">Medium</option>
 				</select>
 				<br/>
-				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
 				       class="form-control" name="kit_label" id="kit_label"/>
 			</div>
 			<div class="col-3 form-group">
@@ -149,80 +149,11 @@
 					<option value="m">Medium</option>
 				</select>
 				<br/>
-				<input data-prefix="Copies" type="number" value="0" min="0" max="100" step="1"
+				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
 				       class="form-control" name="comp_label" id="comp_label"/>
 			</div>
 		</div>
 		<br/>
 	</div>
 </form>
-
-<script>
-	var counter = 1;
-	var properties;
-	function add_element() {
-		var tag = document.createElement("div");
-		tag.setAttribute("id", "container_div"+counter)
-		tag.setAttribute("style", "padding-bottom:30px")
-		tag.innerHTML = '<div class="row my-row"> <div class="col-3 form-group"> <label for="comp_name'+counter+'">Component Name:</label> <input type="text" class="form-control" name="comp_name" id="comp_name'+counter+'"> </div> <div class="col-4 form-group"> <label for="comp_barcode'+counter+'">Component Barcode:</label> <input type="text" class="form-control" name="comp_barcode" id="comp_barcode'+counter+'" oninput="update_comp(this)"> </div> <div class="col-3 form-group"></div> <div class="col-2 form-group"> <label for="comp_barcode'+counter+'" style="visibility: hidden;">Traaaaaaaaaaash:</label> <button type="button" class="btn btn-default" name="clone" id="clone" onclick="clone_element(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash'+counter+'" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> <div class="row my-row"> <div class="col-3 form-group"> <label for="comp_part_num'+counter+'">Part Number:</label> <input type="text" class="form-control" name="comp_part_num" id="comp_part_num'+counter+'" readonly> </div> <div class="col-3 form-group"> <label for="comp_lot_num'+counter+'">Lot Number:</label> <input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num'+counter+'" readonly> </div> <div class="col-6 form-group"> <label for="condition'+counter+'">Component Condition:</label> <input type="text" class="form-control" name="condition" id="condition'+counter+'"> </div> </div>';
-		document.getElementById("containers_div").appendChild(tag);
-		counter++;
-	}
-
-	function clone_element(element) {
-	      var containerDiv = element.parentElement.parentElement.parentElement.id
-		var clone = document.getElementById(containerDiv).cloneNode(true);
-		clone.id = containerDiv + counter;
-		document.getElementById("containers_div").appendChild(clone);
-		var nodeList = clone.childNodes;
-		for (i = 0; i < nodeList.length; i++) {
-			if (nodeList[i].tagName == 'DIV') {
-				var subNodeList = nodeList[i].childNodes;
-				for (j = 0; j < subNodeList.length; j++) {
-					if (subNodeList[j].childNodes[3] != undefined) {
-						var id = subNodeList[j].childNodes[3].id;
-						subNodeList[j].childNodes[3].id = id.substring(0,id.length-1) + counter;
-					}
-				}
-			}
-		}
-		counter++;
-	}
-
-	function remove_element(element) {
-	      var containerDiv = element.parentElement.parentElement.parentElement.id
-		document.getElementById(containerDiv).remove();
-	}
-
-	function enable(element) {
-		properties = element.value.split(",");
-		console.log(properties);
-            if (properties[2] == 1) {
-                  $("#exp_date").prop('disabled', false);
-            }
-            update()
-            update_comp()
-	}
-
-	function update() {
-		if (properties[0] == 1) {
-			document.getElementById("part_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[3], properties[4]));
-		}
-		if (properties[1] == 1) {
-			document.getElementById("lot_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[5], properties[6]));
-		}
-	}
-
-	function update_comp(element) {
-		if (properties[7] == 1) {
-			element.setAttribute("disable", false);
-		}
-		if (properties[8] == 1) {
-			document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[10], properties[11]));
-		}
-		if (properties[9] == 1) {
-			document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[12], properties[13]));
-		}
-	}
-</script>
 {% endblock content %}

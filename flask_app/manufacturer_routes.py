@@ -1,26 +1,32 @@
 from flask import render_template, url_for, redirect, request
-from flask_app import app, db
+from flask_app import app, db, current_user
 from flask_app.models import Manufacturer
 from datetime import datetime
 
 
 @app.route("/manufacturers", methods=['GET', 'POST'])
 def manufacturers():
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
+	all_manufacturers = Manufacturer.query.all()
 	if request.method == 'POST':
-		return render_template("manufacturer/manufacturers.html", manufacturers=Manufacturer.query.filter_by(name=request.form.get('searchbox')))
-	manufacturers = Manufacturer.query.all()
-	return render_template("manufacturer/manufacturers.html", manufacturers=manufacturers)
+		return render_template("manufacturer/manufacturers.html", manufacturers=Manufacturer.query.filter_by(name=request.form.get('searchbox')), all_manufacturers=all_manufacturers)
+	return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers, all_manufacturers=all_manufacturers)
 
 
 @app.route("/manufacturer/<int:manufacturer_id>")
 def manufacturer(manufacturer_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
 	manufacturer = Manufacturer.query.get(manufacturer_id)
 	return render_template("manufacturer/manufacturer.html", manufacturer=manufacturer)
 
 
 @app.route("/add_manufacturer", methods=["GET", "POST"])
 def add_manufacturer():
-	return render_template("manufacturer/add_manufacturer.html", title="Add")
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
+	return render_template("manufacturer/add_manufacturer.html")
 
 
 @app.route("/add_manufacturer_redirect", methods=["GET", "POST"])

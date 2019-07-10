@@ -1,8 +1,19 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from argparse import ArgumentParser
 from sqlalchemy import create_engine
 import os
+
+
+class CurrentUser:
+	user = None
+
+	def set_user(self, user):
+		self.user = user
+
+	def logged_in(self):
+		return self.user is not None
+
 
 # "Global" search bar variable
 search_in = ''
@@ -20,6 +31,7 @@ args = parser.parse_args()
 
 # App Setup
 app = Flask(__name__)
+current_user = CurrentUser()
 app.config.update({
 	'SECRET_KEY': os.urandom(24),
 	'SQLALCHEMY_DATABASE_URI':'sqlite:///site.db'
@@ -52,4 +64,4 @@ engine_RK = create_engine(mySQL_con)
 db = SQLAlchemy(app)
 
 
-from flask_app import kit_routes, manufacturer_routes, reagent_routes, made_reagent_routes, routes
+from flask_app import routes, kit_routes, manufacturer_routes, reagent_routes, made_reagent_routes

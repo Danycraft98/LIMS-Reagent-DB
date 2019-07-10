@@ -4,8 +4,12 @@
 
 <div class="container my-container">
 	<div class="row">
-		<div class="col-10">
+		<div class="col-10"></div>
+		<div class="col-1">
 			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
+		</div>
+		<div class="col-1">
+			<button type="button" class="btn btn-info" onclick="window.location.href='{{ url_for('kits') }}'">Back</button>
 		</div>
 	</div>
 	<br/>
@@ -59,13 +63,16 @@
 				</tr>
 			</table>
 			<br/>
+			<h4>Components</h4>
+			<hr/>
 			<table class="table table-hover">
 				<thead>
 				<tr>
-					<th>Component Name</th>
-					<th>Component Barcode</th>
+					<th>Name</th>
+					<th>Barcode</th>
 					<th>Part Number</th>
 					<th>Lot Number</th>
+					<th>Condition</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -75,6 +82,7 @@
 					<td>{{ component.barcode }}</td>
 					<td>{{ component.part_num }}</td>
 					<td>{{ component.lot_num }}</td>
+					<td>{{ component.condition }}</td>
 				</tr>
 				{% endfor %}
 				</tbody>
