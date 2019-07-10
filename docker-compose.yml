@@ -10,3 +10,10 @@ services:
                   - "3307:3306"
             volumes:
                   - ./data:/docker-entrypoint-initdb.d
+
+      web:
+            build: .
+            ports:
+                  - "5000:5000"
+      redis:
+            image: "redis:alpine"

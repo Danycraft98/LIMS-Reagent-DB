@@ -20,6 +20,7 @@ RUN apt-get update \
 COPY . /srv/RK_LIMS/server/
 WORKDIR /srv/RK_LIMS/server
 RUN pip3 install -r requirements.txt
+RUN pip3 install mysqlclient-1.4.2-cp37-cp37m-win32.whl
 
 # Configure printing requirements
 COPY printers.conf /etc/cups/
