@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+      mysql:
+            image: mysql
+            environment:
+                  MYSQL_DATABASE: RK_LIMS
+                  MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+            ports:
+                  - "3307:3306"
+            volumes:
+                  - ./data:/docker-entrypoint-initdb.d
