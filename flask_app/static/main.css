@@ -45,6 +45,21 @@ th {
       padding-left: 30px;
 }
 
-datalist {
-    display: none;
+.add {
+	width:160px;
+}
+
+.button {
+	margin-right: 30px;
+	width:120px;
+}
+
+.user_card {
+	padding-top:80px;
+	margin-top:1000px;
+	margin:0 auto;
+	height: 380px;
+	width: 340px;
+	background: #c2cdcf;
+	border-radius: 5px;
 }

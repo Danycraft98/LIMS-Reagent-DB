@@ -113,11 +113,9 @@
 			</div>
 		</div>
 		<div class="row my-row">
-			<div class="col-1">
-				<button type="submit" class="btn btn-info" id="submit">Save</button>
-			</div>
-			<div class="col-1">
-				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel" onclick="window.location.href='{{ url_for('manufacturers') }}'">
+			<div class="col-12">
+				<button type="submit" class="btn btn-info button" id="submit">Save</button>
+				<button type="button" class="btn btn-outline-info button" name="cancel" id="cancel" onclick="window.history.back();">
 					Cancel
 				</button>
 			</div>

@@ -103,20 +103,16 @@
 		</div>
 		<br/>
 		<div class="row my-row">
-			<div class="col-2">
+			<div class="col-12">
 				<button type="button" class="btn btn-info" data-toggle="collapse"
 				        data-target="#print_div">
 					Print Option
 				</button>
-			</div>
-			<div class="col-2">
-				<button type="submit" class="btn btn-info" name="submit" id="submit">
+				<button type="submit" class="btn btn-info button" name="submit" id="submit">
 					Save & Print
 				</button>
-			</div>
-			<div class="col-2">
-				<button type="button" class="btn btn-outline-info" name="cancel" id="cancel"
-				        onclick="window.location.href='{{ url_for('kits') }}'">
+				<button type="button" class="btn btn-outline-info button" name="cancel" id="cancel"
+				        onclick="window.history.back();">
 					Cancel
 				</button>
 			</div>
