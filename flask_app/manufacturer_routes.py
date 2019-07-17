@@ -48,39 +48,44 @@ def add_manufacturer_redirect():
 	except:
 		lot_start = lot_end = -1
 
-	comp_cb = {"barcode":0,"part_num": 0, "lot_num": 0}
-	for item in request.form.getlist("comp_cb"):
+	comp_cb = {"barcode": 0, "part_num": 0, "lot_num": 0}
+	for i, item in enumerate(request.form.getlist("comp_cb")):
 		comp_cb[item] = 1
 
+	comp_part_start = request.form.get("comp_part_start")
+	comp_part_num = request.form.get("comp_part_num")
+	comp_lot_start = request.form.get("comp_lot_start")
+	comp_lot_num = request.form.get("comp_lot_num")
 	try:
-		comp_part_start = int(request.form.get("comp_part_start"))
-		comp_part_end = len(request.form.get("comp_part_num")) + comp_part_start
+		comp_part_start = int(comp_part_start)
+		comp_part_end = len(comp_part_num) + comp_part_start
 	except:
 		comp_part_start = comp_part_end = -1
 
 	try:
-		comp_lot_start = int(request.form.get("comp_lot_start"))
-		comp_lot_end = len(request.form.get("comp_lot_num")) + comp_lot_start
+		comp_lot_start = int(comp_lot_start)
+		comp_lot_end = len(comp_lot_num) + comp_lot_start
 	except:
 		comp_lot_start = comp_lot_end = -1
 
 	manufacturer = Manufacturer(
-		name = request.form.get("manu_name"),
+		name=request.form.get("manu_name"),
 		date_entered=datetime.today(),
-		exp_date = cb["exp_date"],
-		part_num = cb["part_num"],
-		lot_num = cb["lot_num"],
-		part_start = part_start,
-		part_end = part_end,
-		lot_start = lot_start,
-		lot_end = lot_end,
-		comp_barcode = comp_cb["barcode"],
-		comp_part_num = comp_cb["part_num"],
-		comp_lot_num = comp_cb["lot_num"],
-		comp_part_start = comp_part_start,
-		comp_part_end = comp_part_end,
-		comp_lot_start = comp_lot_start,
-		comp_lot_end = comp_lot_end
+		exp_date=cb["exp_date"],
+		part_num=cb["part_num"],
+		lot_num=cb["lot_num"],
+		part_start=part_start,
+		part_end=part_end,
+		lot_start=lot_start,
+		lot_end=lot_end,
+		
+		comp_barcode=comp_cb["barcode"],
+		comp_part_num=comp_cb["part_num"],
+		comp_lot_num=comp_cb["lot_num"],
+		comp_part_start=comp_part_start,
+		comp_part_end=comp_part_end,
+		comp_lot_start=comp_lot_start,
+		comp_lot_end= comp_lot_end
 	)
 
 	db.session.add(manufacturer)

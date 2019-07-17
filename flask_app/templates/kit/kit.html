@@ -4,15 +4,17 @@
 
 <div class="container my-container">
 	<div class="row">
-		<div class="col-10"></div>
+		<div class="col-10">
+			<h2>Kit </h2>
+		</div>
 		<div class="col-1">
 			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
 		</div>
 		<div class="col-1">
-			<button type="button" class="btn btn-info" onclick="window.location.href='{{ url_for('kits') }}'">Back</button>
+			<button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
 		</div>
 	</div>
-	<br/>
+	<hr/>
 	<div class="row">
 		<div class="col-12">
 			<table class="table table-hover master">
@@ -63,7 +65,7 @@
 				</tr>
 			</table>
 			<br/>
-			<h4>Components</h4>
+			<h2>Components</h2>
 			<hr/>
 			<table class="table table-hover">
 				<thead>

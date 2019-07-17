@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'sofachrome';
+  src: url('sofachrome.eot'); /* IE9 Compat Modes */
+  src: url('sofachrome.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('sofachrome.woff') format('woff'), /* Modern Browsers */
+       url('sofachrome.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('sofachrome.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
 body {
 	background: #fafafa;
 	color: #333333;
@@ -60,6 +69,6 @@ th {
 	margin:0 auto;
 	height: 380px;
 	width: 340px;
-	background: #c2cdcf;
+	background: #187078;
 	border-radius: 5px;
 }

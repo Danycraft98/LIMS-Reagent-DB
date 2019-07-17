@@ -3,15 +3,17 @@
 {% block content %}
 <div class="container my-container">
 	<div class="row">
-		<div class="col-10"></div>
+		<div class="col-10">
+			<h2>Manufacturer</h2>
+		</div>
 		<div class="col-1">
 			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
 		</div>
 		<div class="col-1">
-			<button type="button" class="btn btn-info" onclick="window.location.href='{{ url_for('manufacturers') }}'">Back</button>
+			<button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
 		</div>
 	</div>
-	<br/>
+	<hr/>
 	<div class="row">
 		<div class="col-12">
 			<table class="table table-hover master">
@@ -55,7 +57,7 @@
 				<tbody>
 				{% for kit in manufacturer.kits %}
 				<tr>
-					<td>{{ kit.name }}</td>
+					<td><a href="{{ url_for('kit', kit_id=kit.id) }}">{{ kit.name }}</a></td>
 					<td>{{ kit.barcode }}</td>
 
 					{% if kit.part_num != -1 %}
@@ -90,7 +92,7 @@
 				<tbody>
 				{% for reagent in manufacturer.reagents %}
 				<tr>
-					<td>{{ reagent.name }}</td>
+					<td><a href="{{ url_for('reagent', reagent_id=reagent.id) }}">{{ reagent.name }}</a></td>
 					<td>{{ reagent.barcode }}</td>
 
 					{% if reagent.part_num != -1 %}
@@ -125,7 +127,7 @@
 				<tbody>
 				{% for made_reagent in manufacturer.made_reagents %}
 				<tr>
-					<td>{{ made_reagent.name }}</td>
+					<td><a href="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}">{{ made_reagent.name }}</a></td>
 					<td>{{ made_reagent.barcode }}</td>
 					{% if made_reagent.part_num != -1 %}
 					<td>{{ made_reagent.part_num }}</td>

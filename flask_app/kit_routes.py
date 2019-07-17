@@ -34,7 +34,6 @@ def add_kit():
 
 @app.route("/add_kit_redirect", methods=["GET", "POST"])
 def add_kit_redirect():
-	manu_id = Manufacturer.query.filter_by(name=request.values.get("manu_name").split(",")[-1]).first().id
 	try:
 		part_num = int(request.form.get("part_num"))
 	except:
@@ -60,7 +59,7 @@ def add_kit_redirect():
 		date_entered=datetime.today(),
 		exp_date=exp_date,
 		quantity=quantity,
-		manufacturer_fk=manu_id,
+		manufacturer_fk=request.values.get("manu_name").split(",")[-1],
 	)
 
 	db.session.add(kit)

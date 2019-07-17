@@ -5,7 +5,7 @@
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
-				<h2>Kit</h2>
+				<h2>Add  Kit</h2>
 				<hr/>
 				<h4>Master Information</h4>
 			</div>
@@ -21,7 +21,7 @@
 					<option selected="selected"></option>
 					{% for item in manu_name%}
 					<option
-						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{item.comp_barcode}},{{item.comp_part_num}},{{item.comp_lot_num}},{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{ item.name }}">
+						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{item.comp_barcode}},{{item.comp_part_num}},{{item.comp_lot_num}},{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{ item.id }}">
 						{{ item.name }}
 					</option>
 					{% endfor %}
@@ -69,9 +69,18 @@
 						<input type="text" class="form-control" name="comp_barcode" id="comp_barcode0"
 						       oninput="update_comp(this)">
 					</div>
-					<div class="col-3 form-group"></div>
+					<div class="col-2 form-group"></div>
+					<div class="col-1 form-group">
+						<label style="visibility: hidden;">Traaaaaaaaaaash:</label>
+						<select class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>Other</option>
+						</select>
+					</div>
 					<div class="col-2 form-group">
-						<label for="comp_barcode0" style="visibility: hidden;">Traaaaaaaaaaash:</label>
+						<label style="visibility: hidden;">Traaaaaaaaaaash:</label>
 						<button type="button" class="btn btn-default" name="clone" id="clone"
 						        onclick="clone_element(this)">
 							<i class="fa fa-clone" style="font-size:24px"></i>

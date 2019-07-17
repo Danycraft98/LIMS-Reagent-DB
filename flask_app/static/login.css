@@ -48,10 +48,6 @@ html {
 	border: 2px solid white;
 }
 
-.form_container {
-	margin-top: 100px;
-}
-
 .login_btn, .register_btn {
 	width: 80%;
 	color: white !important;
