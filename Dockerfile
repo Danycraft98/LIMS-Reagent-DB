@@ -1,9 +1,22 @@
-FROM python:3.7-alpine
+FROM ubuntu
+
 WORKDIR /code
 ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-COPY . .
+
+# Update the sources list
+RUN apt-get update \
+ && apt-get update -y \
+ && apt-get install -y python3-pip python3-dev \
+ && cd /usr/local/bin \
+ && ln -s /usr/bin/python3 python \
+ && pip3 install --upgrade pip \
+ && apt-get install -y libmysqlclient-dev \
+ && apt-get install -y cups
+
+# Configure the python requirements
+COPY ./ ./
+
+RUN pip3 install -r requirements.txt
+EXPOSE 5000
 CMD ["python3", "main.py", "--dbhost", "10.0.2.2"]
