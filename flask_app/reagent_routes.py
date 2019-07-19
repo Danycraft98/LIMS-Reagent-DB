@@ -28,12 +28,12 @@ def add_reagent():
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	manu_name = Manufacturer.query.all()
-	return render_template("reagent/add_reagent.html", manu_name=manu_name)
+	today = datetime.today().date()
+	return render_template("reagent/add_reagent.html", manu_name=manu_name, today=today)
 
 
 @app.route("/add_reagent_redirect", methods=["GET", "POST"])
 def add_reagent_redirect():
-	manu_id = Manufacturer.query.filter_by(name=request.values.get("manu_name").split(",")[-1]).first().id
 	try:
 		part_num = int(request.form.get("part_num"))
 	except:
@@ -57,7 +57,7 @@ def add_reagent_redirect():
 	batchpartnum = 1
 	while batchpartnum <= reagent_label:
 		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-		print_label(printcont, "reagent", reagent_label_size, None, str(batchpartnum) + '/' + str(reagent_label))
+		print_label(printcont, reagent_label_size, str(batchpartnum) + '/' + str(reagent_label))
 		batchpartnum += 1
 
 	reagent = Reagent(
@@ -68,7 +68,7 @@ def add_reagent_redirect():
 		date_entered=datetime.today(),
 		exp_date = exp_date,
 		quantity = quantity,
-		manufacturer_fk = manu_id,
+		manufacturer_fk = request.values.get("manu_name").split(',')[-1],
 	)
 
 	db.session.add(reagent)

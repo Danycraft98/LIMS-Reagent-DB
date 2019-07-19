@@ -37,13 +37,13 @@ app.config.update({
 	'SQLALCHEMY_DATABASE_URI':'sqlite:///site.db'
 })
 """'OIDC_CLIENT_SECRETS': 'client_secrets.json',
-'OIDC_VALID_ISSUERS': ['http://localhost:8080/auth/realms/RK_LIMS'],
-'OVERWRITE_REDIRECT_URI': 'http://localhost:5000/main',
-'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post',
-'OIDC_TOKEN_TYPE_HINT': 'access_token',
-'OIDC_OPENID_REALM': 'RK_LIMS',
-'TESTING': True,
-'DEBUG': True
+	'OIDC_VALID_ISSUERS': ['http://localhost:8080/auth/realms/RK_LIMS'],
+	'OVERWRITE_REDIRECT_URI': 'http://localhost:5000/main',
+	'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post',
+	'OIDC_TOKEN_TYPE_HINT': 'access_token',
+	'OIDC_OPENID_REALM': 'RK_LIMS',
+	'TESTING': True,
+	'DEBUG': True
 })
 
 if args.dbhost:

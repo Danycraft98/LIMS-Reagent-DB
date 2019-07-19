@@ -21,7 +21,7 @@
 					<option value=""></option>
 					{% for item in manu_name%}
 					<option
-						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{ item.name }}">
+						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{ item.id }}">
 						{{ item.name }}
 					</option>
 					{% endfor %}
@@ -43,7 +43,7 @@
 			</div>
 			<div class="col-3 form-group">
 				<label for="exp_date">Expiry Date:</label>
-				<input type="date" class="form-control" id="exp_date" name="exp_date" disabled>
+				<input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}" disabled>
 			</div>
 			<div class="col-2 form-group">
 				<label for="quantity">Quantity:</label>
@@ -76,7 +76,7 @@
 			</div>
 			<div class="row my-row">
 				<div class="col-3 form-group">
-					<label for="reagent_label">Kit Label Copies</label>
+					<label for="reagent_label">Reagent Label Copies</label>
 					<select class="form-control" id="reagent_label_size" name="reagent_label_size">
 						<option value="s">Small</option>
 						<option value="m">Medium</option>
@@ -84,16 +84,6 @@
 					<br/>
 					<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
 					       class="form-control" name="reagent_label" id="reagent_label"/>
-				</div>
-				<div class="col-3 form-group">
-					<label for="comp_label">Component Label Copies</label>
-					<select class="form-control" id="comp_label_size" name="comp_label_size">
-						<option value="s">Small</option>
-						<option value="m">Medium</option>
-					</select>
-					<br/>
-					<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-					       class="form-control" name="comp_label" id="comp_label"/>
 				</div>
 			</div>
 			<br/>

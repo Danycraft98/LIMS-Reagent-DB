@@ -79,14 +79,14 @@ def add_kit_redirect():
 	batchpartnum = 1
 	while batchpartnum <= kit_label:
 		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-		print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
+		print_label(printcont, kit_label_size, str(batchpartnum) + '/' + str(kit_label))
 		batchpartnum += 1
 
 	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, conditions):
 		batchpartnum = 1
 		while batchpartnum <= comp_label:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
-			print_label(printcont, "kit", comp_label_size, None, str(batchpartnum) + '/' + str(comp_label))
+			print_label(printcont, comp_label_size, str(batchpartnum) + '/' + str(comp_label))
 			batchpartnum += 1
 
 		component = Component(

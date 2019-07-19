@@ -1,6 +1,6 @@
 function checkbox_pressed(element) {
 	document.getElementById(element.id.slice(0,-3)+"_btn").disabled = !element.checked;
-	document.getElementById(element.id.slice(0,-3)).value = "";
+	document.getElementById(element.id.slice(0,-3)).setAttribute("value","")
 }
 
 var counter = 1;
@@ -71,18 +71,22 @@ function update() {
 
 function update_comp(element) {
 	if (properties[7] == 1) {
-		element.setAttribute("disable", false);
+		element.disabled = true;
+	} else {
+		element.disabled = false;
 	}
 	if (properties[8] == 1) {
 		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[10], properties[11]));
 	} else {
-		document.getElementById("comp_part_num").setAttribute("value", "");
+		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", "");
+		document.getElementById("comp_part_num"+element.id.substr(-1)).disabled = true;
 	}
 
 	if (properties[9] == 1) {
 		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[12], properties[13]));
 	} else {
-		document.getElementById("comp_lot_num").setAttribute("value", "");
+		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", "");
+		document.getElementById("comp_lot_num"+element.id.substr(-1)).disabled = true;
 	}
 }
 

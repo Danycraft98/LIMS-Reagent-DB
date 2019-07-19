@@ -5,9 +5,11 @@
 # in the order that they should be in in setup.py
 
 Flask==1.1.1
-Flask-SQLAlchemy==2.4.0
-Flask-WTF==0.14.2
+Flask-Bootstrap4==4.0.2
 Flask-MySQLdb==0.2.0
+Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
+Flask-OIDC==1.4.0
 Werkzeug==0.15.4
 Jinja2==2.10.1
 WTForms==2.2.1

@@ -28,19 +28,19 @@ def add_made_reagent():
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	manu_name = Manufacturer.query.all()
-	return render_template("made_reagent/add_made_reagent.html", manu_name=manu_name)
+	today = datetime.today().date()
+	return render_template("made_reagent/add_made_reagent.html", manu_name=manu_name, today=today)
 
 
 @app.route("/add_made_reagent_redirect", methods=["GET", "POST"])
 def add_made_reagent_redirect():
-	manu_id = Manufacturer.query.filter_by(name=request.form.get("manu_name").split(',')[-1]).first().id
 	try:
-		m_part_num = int(request.form.get("made_reagent_part_num"))
+		m_part_num = int(request.form.get("part_num"))
 	except:
 		m_part_num = -1
 
 	try:
-		m_lot_num = int(request.form.get("made_reagent_lot_num"))
+		m_lot_num = int(request.form.get("lot_num"))
 	except:
 		m_lot_num = -1
 
@@ -59,7 +59,7 @@ def add_made_reagent_redirect():
 		exp_date = exp_date,
 		date_entered=datetime.today(),
 		quantity = quantity,
-		manufacturer_fk = manu_id,
+		manufacturer_fk = request.form.get("manu_name"),
 	)
 
 	db.session.add(made_reagent)
@@ -74,15 +74,20 @@ def add_made_reagent_redirect():
 	made_reagent_label_size = request.form.get('made_reagent_label_size')
 	made_reagent_label = int(request.form.get('made_reagent_label'))
 	comp_label_size = request.form.get('comp_label_size')
-	comp_label = request.form.get('comp_label')
+	comp_label = int(request.form.get('comp_label'))
 
 	batchpartnum = 1
 	while batchpartnum <= made_reagent_label:
 		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-		print_label(printcont, "kit", made_reagent_label_size, None, str(batchpartnum) + '/' + str(made_reagent_label))
+		print_label(printcont, made_reagent_label_size, str(batchpartnum) + '/' + str(made_reagent_label))
 		batchpartnum += 1
 
 	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, part_nums, lot_nums, conditions):
+		while batchpartnum <= comp_label:
+			printcont = (name, request.form.get("exp_date"), datetime.now())
+			print_label(printcont, comp_label_size, str(batchpartnum) + '/' + str(comp_label))
+			batchpartnum += 1
+
 		component = Component(
 			name=name,
 			barcode=comp_num,
@@ -90,7 +95,7 @@ def add_made_reagent_redirect():
 			lot_num=lot_num,
 			condition=condition,
 			kit_fk=None,
-			made_reagent_fk=made_reagent.id
+			madereagent_fk=made_reagent.id
 		)
 		db.session.add(component)
 		db.session.commit()
