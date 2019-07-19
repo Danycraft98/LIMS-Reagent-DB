@@ -4,7 +4,7 @@ services:
       mysql:
             image: mysql
             environment:
-                  MYSQL_DATABASE: RK_LIMS
+                  MYSQL_DATABASE: reagent_db
                   MYSQL_ALLOW_EMPTY_PASSWORD: "true"
             ports:
                   - "3307:3306"
