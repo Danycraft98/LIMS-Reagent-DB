@@ -32,7 +32,7 @@ app = Flask(__name__)
 current_user = CurrentUser()
 app.config.update({
 	'SECRET_KEY': os.urandom(24),
-	'SQLALCHEMY_DATABASE_URI':'mysql://root:@127.0.0.1/reagent_db'
+	'SQLALCHEMY_DATABASE_URI':'sqlite:///site.db'
 })
 
 """
@@ -47,7 +47,7 @@ if args.dbhost:
 		mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + '/reagent_db'
 """
 
-app.config['SQLALCHEMY_BINDS'] = {'RK_LIMS': mySQL_con}
+app.config['SQLALCHEMY_BINDS'] = {'reagent_db': mySQL_con}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

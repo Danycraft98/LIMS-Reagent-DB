@@ -4,7 +4,7 @@ html {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background: #ffffff !important;
+	background: url(images/bg.jpg);
 }
 
 .error_msg {

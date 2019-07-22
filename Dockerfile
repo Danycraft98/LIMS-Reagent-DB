@@ -15,7 +15,10 @@ RUN apt-get update \
  && apt-get install -y cups
 
 # Configure the python requirements
-COPY ./ ./
+COPY . /srv/reagent_db/server/
+WORKDIR /srv/reagent_db/server
+
+COPY printers.conf /etc/cups/
 
 RUN pip3 install -r requirements.txt
 EXPOSE 5000
