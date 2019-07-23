@@ -1,5 +1,5 @@
-# Reagents-DB (RK_LIMS) -- Server Configuration (Everything You Need)
-The following repository contains all files required to spin up the Reagents-DB 
+# Reagent-DB -- Server Configuration (Everything You Need)
+The following repository contains all files required to spin up the Reagent-DB 
 web-app on UHN servers. As of writing this readme, currently Wes's TGH lab will
 be using the web-app. The web-app helps store and access inventory (referred to
 as Kits, Made Reagents, Reagents with respective components) as well as their
