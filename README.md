@@ -90,7 +90,7 @@ $ mysql.server start
 Open MySQL (password is nothing so just hit enter):
 
 ```
-$ mysql -u root -p
+$ mysql -u irene -p
 ```
 
 Create the reagent_db Database:
@@ -103,7 +103,7 @@ Exit out of MySQL and go into the reagent_db folder containing the latest .sql f
 and run:
 
 ```
-$ mysql -u root -p reagent_db < reagent_db_<latestschemadate>.sql
+$ mysql -u irene -p reagent_db < reagent_db_<latestschemadate>.sql
 ```
 
 Anytime after this, only the ``` $ mysql.server start ``` command will be
