@@ -130,7 +130,7 @@ $ ssh -p 5059 <account>@192.75.165.28
 $ ssh -p 10025 <account>@node12
 ```
 ```
-$ cd /home/bstebliy/reagentsDB/reagents-db
+$ cd /home/irene/reagents-db
 ```
 
 Now you can pull ad update the server.
@@ -140,7 +140,7 @@ Now you can pull ad update the server.
 $ ssh -p 10022 <account>@node12
 ```
 ```
-$ cd /home/bstebliy
+$ cd /home/irene
 ```
 
 Here you have can run (Ask Richard for permissions):
