@@ -72,11 +72,12 @@ function update() {
 function update_comp(element) {
 	console.log(properties)
 	if (properties[7] == 1) {
-		element.disabled = true;
-	} else {
 		element.disabled = false;
+	} else {
+		element.disabled = true;
 	}
 	if (properties[8] == 1) {
+	    document.getElementById("comp_part_num"+element.id.substr(-1)).disabled = false;
 		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[10], properties[11]));
 	} else {
 		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", "");
@@ -84,6 +85,7 @@ function update_comp(element) {
 	}
 
 	if (properties[9] == 1) {
+	    document.getElementById("comp_lot_num"+element.id.substr(-1)).disabled = false;
 		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[12], properties[13]));
 	} else {
 		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", "");
