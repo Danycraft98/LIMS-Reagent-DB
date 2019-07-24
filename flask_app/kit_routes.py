@@ -45,7 +45,7 @@ def add_kit_redirect():
 		lot_num = -1
 
 	exp_date = request.form.get("exp_date")
-	if exp_date == '':
+	if exp_date == "":
 		exp_date = None
 	elif exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")

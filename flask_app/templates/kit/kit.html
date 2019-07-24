@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<th>Part Number</th>
-					{% if kit.part_num != -1 %}
+					{% if kit.part_num != '-1' %}
 					<td>{{ kit.part_num }}</td>
 					{% elif kit.part_num == '-1' %}
 					<td>N/A</td>
@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<th>Lot Number</th>
-					{% if kit.lot_num != -1 %}
+					{% if kit.lot_num != '-1' %}
 					<td>{{ kit.lot_num }}</td>
 					{% elif kit.lot_num == '-1' %}
 					<td>N/A</td>

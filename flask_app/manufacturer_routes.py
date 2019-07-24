@@ -48,7 +48,7 @@ def add_manufacturer_redirect():
 	except:
 		lot_start = lot_end = -1
 
-	comp_cb = {"comp_barcode": 0, "comp_part_num": 0, "comp_lot_num": 0}
+	comp_cb = {"barcode": 0, "part_num": 0, "lot_num": 0}
 	for i, item in enumerate(request.form.getlist("comp_cb")):
 		comp_cb[item] = 1
 
@@ -79,9 +79,9 @@ def add_manufacturer_redirect():
 		lot_start=lot_start,
 		lot_end=lot_end,
 		
-		comp_barcode=comp_cb["comp_barcode"],
-		comp_part_num=comp_cb["comp_part_num"],
-		comp_lot_num=comp_cb["comp_lot_num"],
+		comp_barcode=comp_cb["barcode"],
+		comp_part_num=comp_cb["part_num"],
+		comp_lot_num=comp_cb["lot_num"],
 		comp_part_start=comp_part_start,
 		comp_part_end=comp_part_end,
 		comp_lot_start=comp_lot_start,

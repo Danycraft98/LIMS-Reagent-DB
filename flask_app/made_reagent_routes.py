@@ -67,7 +67,7 @@ def add_made_reagent_redirect():
 
 	names = request.form.getlist("comp_name")
 	comp_nums = request.form.getlist("comp_barcode")
-	part_nums = request.form.getlist("part_num")
+	part_nums = request.form.getlist("comp_part_num")
 	lot_nums = request.form.getlist("lot_num")
 	conditions = request.form.getlist("condition")
 

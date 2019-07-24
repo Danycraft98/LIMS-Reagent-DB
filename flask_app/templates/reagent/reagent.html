@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<th>Part Number</th>
-					{% if reagent.part_num != -1 %}
+					{% if reagent.part_num != '-1' %}
 					<td>{{ reagent.part_num }}</td>
 					{% elif reagent.part_num == '-1' %}
 					<td>N/A</td>
@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<th>Lot Number</th>
-					{% if reagent.lot_num != -1 %}
+					{% if reagent.lot_num != '-1' %}
 					<td>{{ reagent.lot_num }}</td>
 					{% elif reagent.lot_num == '-1' %}
 					<td>N/A</td>

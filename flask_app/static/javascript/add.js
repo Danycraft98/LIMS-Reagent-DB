@@ -70,6 +70,7 @@ function update() {
 }
 
 function update_comp(element) {
+	console.log(properties)
 	if (properties[7] == 1) {
 		element.disabled = true;
 	} else {
