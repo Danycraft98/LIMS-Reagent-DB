@@ -22,4 +22,5 @@ COPY printers.conf /etc/cups/
 
 RUN pip3 install -r requirements.txt
 EXPOSE 5000
-CMD ["python3", "main.py", "--dbhost", "10.0.2.2"]
+# CMD ["python3", "main.py", "--dbhost", "10.0.2.2"]
+CMD service cups start && python3 main.py --dbhost 10.0.2.2
