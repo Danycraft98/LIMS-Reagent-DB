@@ -72,3 +72,7 @@ th {
 	background: #187078;
 	border-radius: 5px;
 }
+
+a, a:hover {
+    color: #333333;
+}
