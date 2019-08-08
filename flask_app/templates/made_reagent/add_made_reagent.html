@@ -65,13 +65,13 @@
 						<input type="text" class="form-control" name="comp_name" id="comp_name">
 					</div>
 					<div class="col-4 form-group">
-						<label for="comp_barcode">Component Barcode:</label>
-						<input type="text" class="form-control" name="comp_barcode" id="comp_barcode"
-						       oninput="update_comp()">
+						<label for="comp_barcode0">Component Barcode:</label>
+						<input type="text" class="form-control" name="comp_barcode" id="comp_barcode0"
+						       oninput="update_comp(this)">
 					</div>
 					<div class="col-3 form-group"></div>
 					<div class="col-2 form-group">
-						<label for="comp_barcode" style="visibility: hidden;">Traaaaaaaaaaash:</label>
+						<label for="comp_barcode0" style="visibility: hidden;">Traaaaaaaaaaash:</label>
 						<button type="button" class="btn btn-default" name="clone" id="clone"
 						        onclick="clone_element(this)">
 							<i class="fa fa-clone" style="font-size:24px"></i>
@@ -84,13 +84,13 @@
 				</div>
 				<div class="row my-row">
 					<div class="col-3 form-group">
-						<label for="comp_part_num">Part Number:</label>
+						<label for="comp_part_num0">Part Number:</label>
 						<input type="text" class="form-control" name="comp_part_num"
-						       id="comp_part_num" readonly>
+						       id="comp_part_num0">
 					</div>
 					<div class="col-3 form-group">
-						<label for="comp_lot_num">Lot Number:</label>
-						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num" readonly>
+						<label for="comp_lot_num0">Lot Number:</label>
+						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num0">
 					</div>
 					<div class="col-6 form-group">
 						<label for="condition">Component Condition:</label>

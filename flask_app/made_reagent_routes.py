@@ -59,7 +59,7 @@ def add_made_reagent_redirect():
 		exp_date = exp_date,
 		date_entered=datetime.today(),
 		quantity = quantity,
-		manufacturer_fk = request.form.get("manu_name"),
+		manufacturer_fk = request.form.get("manu_name").split(',')[-1],
 	)
 
 	db.session.add(made_reagent)
