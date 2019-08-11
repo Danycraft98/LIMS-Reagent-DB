@@ -46,12 +46,12 @@ def add_reagent():
 def add_reagent_redirect():
 	try:
 		part_num = int(request.form.get("part_num"))
-	except:
+	except Exception:
 		part_num = -1
 
 	try:
 		lot_num = int(request.form.get("lot_num"))
-	except:
+	except Exception:
 		lot_num = -1
 
 	exp_date = request.form.get("exp_date")

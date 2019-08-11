@@ -28,7 +28,6 @@ class Manufacturer(db.Model):
 	comp_lot_end = db.Column(db.Integer)
 	kits = db.relationship('Kit', lazy=True)
 	reagents = db.relationship('Reagent', lazy=True)
-	made_reagents = db.relationship('MadeReagent', lazy=True)
 
 
 class Kit(db.Model):
@@ -59,14 +58,10 @@ class Reagent(db.Model):
 class MadeReagent(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(255), nullable=False)
-	barcode = db.Column(db.String(255), nullable=False)
-	part_num = db.Column(db.String(255))
-	lot_num = db.Column(db.String(255))
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
 	components = db.relationship('Component', lazy=True)
-	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
 
 
 class Component(db.Model):

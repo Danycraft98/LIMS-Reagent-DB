@@ -26,7 +26,14 @@ def manufacturer(manufacturer_id):
 def manufacturer_delete(manufacturer_id):
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
+
 	manufacturer = Manufacturer.query.get(manufacturer_id)
+	for kit in manufacturer.kits:
+		db.session.delete(kit)
+
+	for reagent in manufacturer.reagents:
+		db.session.delete(reagent)
+
 	db.session.delete(manufacturer)
 	db.session.commit()
 	return redirect(url_for('manufacturers'))
@@ -49,13 +56,13 @@ def add_manufacturer_redirect():
 	try:
 		part_start = int(request.form.get("part_start"))
 		part_end = len(request.form.get("part_num")) + part_start
-	except:
+	except Exception:
 		part_start = part_end = -1
 
 	try:
 		lot_start = int(request.form.get("lot_start"))
 		lot_end = len(request.form.get("lot_num")) + lot_start
-	except:
+	except Exception:
 		lot_start = lot_end = -1
 
 	comp_cb = {"barcode": 0, "part_num": 0, "lot_num": 0}
@@ -75,7 +82,7 @@ def add_manufacturer_redirect():
 	try:
 		comp_lot_start = int(comp_lot_start)
 		comp_lot_end = len(comp_lot_num) + comp_lot_start
-	except:
+	except Exception:
 		comp_lot_start = comp_lot_end = -1
 
 	manufacturer = Manufacturer(
