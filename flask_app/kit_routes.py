@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, request
 from flask_app import app, db, current_user
 from flask_app.models import Kit, Manufacturer, Component
 from datetime import datetime
-from flask_app.print import print_label
+from flask_app.printer import print_label
 
 
 @app.route("/kits", methods=['GET', 'POST'])

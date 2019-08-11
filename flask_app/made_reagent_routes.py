@@ -1,7 +1,7 @@
 from flask import render_template, url_for, redirect, request
 from flask_app import app, db, current_user
 from flask_app.models import Manufacturer, MadeReagent, Component
-from flask_app.print import print_label
+from flask_app.printer import print_label
 from datetime import datetime
 
 
