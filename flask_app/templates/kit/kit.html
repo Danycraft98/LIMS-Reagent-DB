@@ -3,93 +3,98 @@
 {% block content %}
 
 <div class="container my-container">
-	<div class="row">
-		<div class="col-10">
-			<h2>Kit </h2>
-		</div>
-		<div class="col-1">
-			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
-		</div>
-		<div class="col-1">
-			<button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
-		</div>
-	</div>
-	<hr/>
-	<div class="row">
-		<div class="col-12">
-			<table class="table table-hover master">
-				<tr>
-					<th>Kit Name</th>
-					<td>{{ kit.name }}</td>
-				</tr>
-				<tr>
-					<th>Manufacturer</th>
-					<td>{{ Manufacturer.query.get(kit.manufacturer_fk).name }}</td>
-				</tr>
-				<tr>
-					<th>Box Lot Barcode</th>
-					<td>{{ kit.barcode }}</td>
-				</tr>
-				<tr>
-					<th>Part Number</th>
-					{% if kit.part_num != '-1' %}
-					<td>{{ kit.part_num }}</td>
-					{% elif kit.part_num == '-1' %}
-					<td>N/A</td>
-					{% endif %}
-				</tr>
-				<tr>
-					<th>Lot Number</th>
-					{% if kit.lot_num != '-1' %}
-					<td>{{ kit.lot_num }}</td>
-					{% elif kit.lot_num == '-1' %}
-					<td>N/A</td>
-					{% endif %}
-				</tr>
-				<tr>
-					<th>Date Entered</th>
-					{% if kit.date_entered %}
-					<td>{{ kit.date_entered.strftime("%B %e, %Y") }}</td>
-					{% elif not kit.exp_date %}
-					<td>N/A</td>
-					{% endif %}
+    <div class="row">
+        <div class="col-9">
+            <h2>Kit</h2>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
+        </div>
+        <div class="col-1">
+            <form action="/kit_delete/{{ kit.id }}">
+                <button type="submit" class="btn btn-info">Delete</button>
+            </form>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover master">
+                <tr>
+                    <th>Kit Name</th>
+                    <td>{{ kit.name }}</td>
+                </tr>
+                <tr>
+                    <th>Manufacturer</th>
+                    <td>{{ Manufacturer.query.get(kit.manufacturer_fk).name }}</td>
+                </tr>
+                <tr>
+                    <th>Box Lot Barcode</th>
+                    <td>{{ kit.barcode }}</td>
+                </tr>
+                <tr>
+                    <th>Part Number</th>
+                    {% if kit.part_num != '-1' %}
+                    <td>{{ kit.part_num }}</td>
+                    {% elif kit.part_num == '-1' %}
+                    <td>N/A</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Lot Number</th>
+                    {% if kit.lot_num != '-1' %}
+                    <td>{{ kit.lot_num }}</td>
+                    {% elif kit.lot_num == '-1' %}
+                    <td>N/A</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Date Entered</th>
+                    {% if kit.date_entered %}
+                    <td>{{ kit.date_entered.strftime("%B %e, %Y") }}</td>
+                    {% elif not kit.exp_date %}
+                    <td>N/A</td>
+                    {% endif %}
 
-				</tr>
-				<tr>
-					<th>Expiry Date</th>
-					{% if kit.exp_date %}
-					<td>{{ kit.exp_date.strftime("%B %e, %Y") }}</td>
-					{% elif not kit.exp_date %}
-					<td>N/A</td>
-					{% endif %}
-				</tr>
-			</table>
-			<br/>
-			<h2>Components</h2>
-			<hr/>
-			<table class="table table-hover">
-				<thead>
-				<tr>
-					<th>Name</th>
-					<th>Barcode</th>
-					<th>Part Number</th>
-					<th>Lot Number</th>
-					<th>Condition</th>
-				</tr>
-				</thead>
-				<tbody>
-				{% for component in kit.components %}
-				<tr>
-					<td>{{ component.name }}</td>
-					<td>{{ component.barcode }}</td>
-					<td>{{ component.part_num }}</td>
-					<td>{{ component.lot_num }}</td>
-					<td>{{ component.condition }}</td>
-				</tr>
-				{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
+                </tr>
+                <tr>
+                    <th>Expiry Date</th>
+                    {% if kit.exp_date %}
+                    <td>{{ kit.exp_date.strftime("%B %e, %Y") }}</td>
+                    {% elif not kit.exp_date %}
+                    <td>N/A</td>
+                    {% endif %}
+                </tr>
+            </table>
+            <br/>
+            <h2>Components</h2>
+            <hr/>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Barcode</th>
+                    <th>Part Number</th>
+                    <th>Lot Number</th>
+                    <th>Condition</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for component in kit.components %}
+                <tr>
+                    <td>{{ component.name }}</td>
+                    <td>{{ component.barcode }}</td>
+                    <td>{{ component.part_num }}</td>
+                    <td>{{ component.lot_num }}</td>
+                    <td>{{ component.condition }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock content %}

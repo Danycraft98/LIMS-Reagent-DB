@@ -3,12 +3,17 @@
 {% block content %}
 <div class="container my-container">
 	<div class="row">
-		<div class="col-10">
+		<div class="col-9">
 			<h2>Made-Reagent</h2>
 		</div>
 		<div class="col-1">
 			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
 		</div>
+		<div class="col-1">
+            <form action="/made_reagent_delete/{{ made_reagent.id }}">
+                <button type="submit" class="btn btn-info">Delete</button>
+            </form>
+        </div>
 		<div class="col-1">
 			<button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
 		</div>

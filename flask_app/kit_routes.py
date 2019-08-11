@@ -23,6 +23,16 @@ def kit(kit_id):
 	return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer)
 
 
+@app.route("/kit_delete/<int:kit_id>")
+def kit_delete(kit_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
+	kit = Kit.query.get(kit_id)
+	db.session.delete(kit)
+	db.session.commit()
+	return redirect(url_for('kits'))
+
+
 @app.route("/add_kit", methods=["GET", "POST"])
 def add_kit():
 	if not current_user.logged_in():

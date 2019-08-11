@@ -22,6 +22,16 @@ def manufacturer(manufacturer_id):
 	return render_template("manufacturer/manufacturer.html", manufacturer=manufacturer)
 
 
+@app.route("/manufacturer_delete/<int:manufacturer_id>")
+def manufacturer_delete(manufacturer_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
+	manufacturer = Manufacturer.query.get(manufacturer_id)
+	db.session.delete(manufacturer)
+	db.session.commit()
+	return redirect(url_for('manufacturers'))
+
+
 @app.route("/add_manufacturer", methods=["GET", "POST"])
 def add_manufacturer():
 	if not current_user.logged_in():

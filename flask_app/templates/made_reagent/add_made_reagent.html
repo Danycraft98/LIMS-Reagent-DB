@@ -16,32 +16,6 @@
 				<input type="text" class="form-control" id="name" name="name" required>
 			</div>
 			<div class="col-3 form-group">
-				<label for="manu_name">Manufacturer:</label>
-				<select class="form-control" id="manu_name" name="manu_name" onchange="enable(this)">
-					<option></option>
-					{% for item in manu_name%}
-					<option
-						value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{item.comp_barcode}},{{item.comp_part_num}},{{item.comp_lot_num}},{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{ item.id }}">
-						{{ item.name }}
-					</option>
-					{% endfor %}
-				</select>
-			</div>
-			<div class="col-4 form-group">
-				<label for="barcode">Box Lot Barcode:</label>
-				<input type="text" class="form-control" id="barcode" name="barcode" oninput="update()">
-			</div>
-		</div>
-		<div class="row my-row">
-			<div class="col-3 form-group">
-				<label for="part_num">Part Number:</label>
-				<input type="text" class="form-control" id="part_num" name="part_num" readonly>
-			</div>
-			<div class="col-3 form-group">
-				<label for="lot_num">Lot Number:</label>
-				<input type="text" class="form-control" id="lot_num" name="lot_num" readonly>
-			</div>
-			<div class="col-3 form-group">
 				<label for="exp_date">Expiry Date:</label>
 				<input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}" disabled>
 			</div>
@@ -80,21 +54,6 @@
 						        onclick="remove_element(this)">
 							<i class="fa fa-trash-o" style="font-size:24px"></i>
 						</button>
-					</div>
-				</div>
-				<div class="row my-row">
-					<div class="col-3 form-group">
-						<label for="comp_part_num0">Part Number:</label>
-						<input type="text" class="form-control" name="comp_part_num"
-						       id="comp_part_num0">
-					</div>
-					<div class="col-3 form-group">
-						<label for="comp_lot_num0">Lot Number:</label>
-						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num0">
-					</div>
-					<div class="col-6 form-group">
-						<label for="condition">Component Condition:</label>
-						<input type="text" class="form-control" name="condition" id="condition">
 					</div>
 				</div>
 			</div>

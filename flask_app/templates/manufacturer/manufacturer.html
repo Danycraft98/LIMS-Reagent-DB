@@ -10,6 +10,11 @@
 			<button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
 		</div>
 		<div class="col-1">
+            <form action="/manufacturer_delete/{{ manufacturer.id }}">
+                <button type="submit" class="btn btn-info">Delete</button>
+            </form>
+        </div>
+		<div class="col-1">
 			<button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
 		</div>
 	</div>

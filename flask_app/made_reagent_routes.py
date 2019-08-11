@@ -23,6 +23,16 @@ def made_reagent(made_reagent_id):
 	return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, Manufacturer=Manufacturer)
 
 
+@app.route("/made_reagent_delete/<int:made_reagent_id>")
+def made_reagent_delete(made_reagent_id):
+	if not current_user.logged_in():
+		return redirect(url_for('login'))
+	made_reagent = MadeReagent.query.get(made_reagent_id)
+	db.session.delete(made_reagent)
+	db.session.commit()
+	return redirect(url_for('made_reagents'))
+
+
 @app.route("/add_made_reagent", methods=["GET", "POST"])
 def add_made_reagent():
 	if not current_user.logged_in():
