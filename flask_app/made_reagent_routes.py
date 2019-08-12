@@ -44,16 +44,6 @@ def add_made_reagent():
 
 @app.route("/add_made_reagent_redirect", methods=["GET", "POST"])
 def add_made_reagent_redirect():
-	try:
-		m_part_num = int(request.form.get("part_num"))
-	except Exception:
-		m_part_num = -1
-
-	try:
-		m_lot_num = int(request.form.get("lot_num"))
-	except Exception:
-		m_lot_num = -1
-
 	exp_date = request.form.get("exp_date")
 	if exp_date == '':
 		exp_date = None
@@ -64,12 +54,9 @@ def add_made_reagent_redirect():
 	made_reagent = MadeReagent(
 		name=request.form.get("name"),
 		barcode=request.form.get("barcode"),
-		part_num=m_part_num,
-		lot_num = m_lot_num,
 		exp_date = exp_date,
 		date_entered=datetime.today(),
-		quantity = quantity,
-		manufacturer_fk = request.form.get("manu_name").split(',')[-1],
+		quantity = quantity
 	)
 
 	db.session.add(made_reagent)
@@ -77,9 +64,6 @@ def add_made_reagent_redirect():
 
 	names = request.form.getlist("comp_name")
 	comp_nums = request.form.getlist("comp_barcode")
-	part_nums = request.form.getlist("comp_part_num")
-	lot_nums = request.form.getlist("lot_num")
-	conditions = request.form.getlist("condition")
 
 	made_reagent_label_size = request.form.get('made_reagent_label_size')
 	made_reagent_label = int(request.form.get('made_reagent_label'))
@@ -101,9 +85,9 @@ def add_made_reagent_redirect():
 		component = Component(
 			name=name,
 			barcode=comp_num,
-			part_num=part_num,
-			lot_num=lot_num,
-			condition=condition,
+			part_num=0,
+			lot_num=0,
+			condition='',
 			kit_fk=None,
 			madereagent_fk=made_reagent.id
 		)

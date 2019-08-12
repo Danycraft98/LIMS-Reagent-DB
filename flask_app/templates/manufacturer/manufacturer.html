@@ -24,11 +24,29 @@
 			<table class="table table-hover master">
 				<tr>
 					<th>Manufacturer Name</th>
-					<td>{{ manufacturer.name }}</td>
+					<td colspan="2">{{ manufacturer.name }}</td>
 				</tr>
 				<tr>
 					<th>Date Entered</th>
-					<td>{{ manufacturer.date_entered.strftime("%B %e, %Y") }}</td>
+					<td colspan="2">{{ manufacturer.date_entered.strftime("%B %e, %Y") }}</td>
+				</tr>
+				<tr>
+					<th>Sample Barcode</th>
+					<td colspan="2">{{ manufacturer.barcode }}</td>
+				</tr>
+				<tr>
+					<th>Sample Part Number / Lot Number</th>
+					<td>{{ manufacturer.barcode[manufacturer.part_start:manufacturer.part_end] }}</td>
+					<td>{{ manufacturer.barcode[manufacturer.lot_start:manufacturer.lot_end] }}</td>
+				</tr>
+				<tr>
+					<th>Sample Component Barcode</th>
+					<td colspan="2">{{ manufacturer.barcode }}</td>
+				</tr>
+				<tr>
+					<th>Sample Component Part Number / Lot Number</th>
+					<td>{{ manufacturer.barcode[manufacturer.part_start:manufacturer.part_end] }}</td>
+					<td>{{ manufacturer.barcode[manufacturer.lot_start:manufacturer.lot_end] }}</td>
 				</tr>
 			</table>
 		</div>

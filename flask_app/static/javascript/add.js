@@ -16,22 +16,24 @@ function add_element() {
 
 function clone_element(element) {
 	var containerDiv = element.parentElement.parentElement.parentElement.id
-	var clone = document.getElementById(containerDiv).cloneNode(true);
-	clone.id = containerDiv + counter;
-	document.getElementById("containers_div").appendChild(clone);
-	var nodeList = clone.childNodes;
-	for (i = 0; i < nodeList.length; i++) {
-		if (nodeList[i].tagName == 'DIV') {
-			var subNodeList = nodeList[i].childNodes;
-			for (j = 0; j < subNodeList.length; j++) {
-				if (subNodeList[j].childNodes[3] != undefined) {
-					var id = subNodeList[j].childNodes[3].id;
-					subNodeList[j].childNodes[3].id = id.substring(0,id.length-1) + counter;
-				}
-			}
-		}
-	}
-	counter++;
+	for (k = 0; k < document.getElementById('copy_num').value; k++) {
+        var clone = document.getElementById(containerDiv).cloneNode(true);
+        clone.id = containerDiv + counter;
+        document.getElementById("containers_div").appendChild(clone);
+        var nodeList = clone.childNodes;
+        for (i = 0; i < nodeList.length; i++) {
+            if (nodeList[i].tagName == 'DIV') {
+                var subNodeList = nodeList[i].childNodes;
+                for (j = 0; j < subNodeList.length; j++) {
+                    if (subNodeList[j].childNodes[3] != undefined) {
+                        var id = subNodeList[j].childNodes[3].id;
+                        subNodeList[j].childNodes[3].id = id.substring(0,id.length-1) + counter;
+                    }
+                }
+            }
+        }
+        counter++;
+    }
 }
 
 function remove_element(element) {

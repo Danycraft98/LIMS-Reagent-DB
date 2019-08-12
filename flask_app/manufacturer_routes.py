@@ -49,6 +49,8 @@ def add_manufacturer():
 @app.route("/add_manufacturer_redirect", methods=["GET", "POST"])
 def add_manufacturer_redirect():
 	# Request values from html inputs
+	barcode = request.form.get('barcode')
+
 	cb = {"part_num":0, "lot_num":0, "exp_date": 0}
 	for item in request.form.getlist("cb"):
 		cb[item] = 1
@@ -64,6 +66,8 @@ def add_manufacturer_redirect():
 		lot_end = len(request.form.get("lot_num")) + lot_start
 	except Exception:
 		lot_start = lot_end = -1
+
+	compo_barcode = request.form.get('comp_barcode')
 
 	comp_cb = {"barcode": 0, "part_num": 0, "lot_num": 0}
 	for i, item in enumerate(request.form.getlist("comp_cb")):
@@ -91,11 +95,13 @@ def add_manufacturer_redirect():
 		exp_date=cb["exp_date"],
 		part_num=cb["part_num"],
 		lot_num=cb["lot_num"],
+		barcode=barcode,
 		part_start=part_start,
 		part_end=part_end,
 		lot_start=lot_start,
 		lot_end=lot_end,
-		
+
+		compo_barcode=compo_barcode,
 		comp_barcode=comp_cb["barcode"],
 		comp_part_num=comp_cb["part_num"],
 		comp_lot_num=comp_cb["lot_num"],
