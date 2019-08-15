@@ -40,9 +40,11 @@ def made_reagent_delete(made_reagent_id):
 def add_made_reagent():
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
-	manu_name = Manufacturer.query.all()
+	comp_infos = {}
+	for comp in Component.query.all():
+		comp_infos[comp.barcode] = comp.name
 	today = datetime.today().date()
-	return render_template("made_reagent/add_made_reagent.html", manu_name=manu_name, today=today)
+	return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos = comp_infos)
 
 
 @app.route("/add_made_reagent_redirect", methods=["GET", "POST"])

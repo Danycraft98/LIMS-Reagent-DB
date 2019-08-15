@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-3 form-group">
 				<label for="exp_date">Expiry Date:</label>
-				<input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}" disabled>
+				<input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}">
 			</div>
 			<div class="col-2 form-group">
 				<label for="quantity">Quantity:</label>
@@ -35,13 +35,13 @@
 			<div id="container_div" style="padding-bottom:30px">
 				<div class="row my-row">
 					<div class="col-3 form-group">
-						<label for="comp_name">Component Name:</label>
-						<input type="text" class="form-control" name="comp_name" id="comp_name">
+						<label for="comp_name0">Component Name:</label>
+						<input type="text" class="form-control" name="comp_name" id="comp_name0">
 					</div>
 					<div class="col-4 form-group">
 						<label for="comp_barcode0">Component Barcode:</label>
 						<input type="text" class="form-control" name="comp_barcode" id="comp_barcode0"
-						       oninput="update_comp(this)">
+						       oninput="barcode_to_comp_name(this)">
 					</div>
 					<div class="col-3 form-group"></div>
 					<div class="col-2 form-group">
@@ -117,4 +117,20 @@
 		<br/>
 	</div>
 </form>
+
+<script>
+	function barcode_to_comp_name(element) {
+		var found = false;
+		var comp_infos = {{ comp_infos | safe }}
+		for (comp_info in comp_infos) {
+			if (element.value == comp_info) {
+				found = true;
+				document.getElementById('comp_name' + element.id.substr(-1)).setAttribute('value', comp_infos[comp_info]);
+			}
+		}
+		if (found == false) {
+			document.getElementById('comp_name' + element.id.substr(-1)).setAttribute('value', '');
+		}
+	}
+</script>
 {% endblock content %}
