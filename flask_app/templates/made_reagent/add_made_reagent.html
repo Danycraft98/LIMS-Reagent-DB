@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form action="/add_made_reagent_redirect" method="post"  onsubmit="return confirmMsg();">
+<form action="/add_made_reagent_redirect" method="post"  onsubmit="return confirmMsg();" onkeypress="return event.keyCode != 13;">
 	<div class="container my-container">
 		<div class="row">
 			<div class="col">
@@ -98,14 +98,20 @@
 				       class="form-control" name="made_reagent_label" id="made_reagent_label"/>
 			</div>
 			<div class="col-3 form-group">
-				<label for="comp_label">Component Label Copies</label>
-				<select class="form-control" id="comp_label_size" name="comp_label_size">
-					<option value="s">Small</option>
-					<option value="m">Medium</option>
-				</select>
+				<label for="comp_label_s">Component Label Copies</label>
+				<br/>
+				<label>Small</label>
 				<br/>
 				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-				       class="form-control" name="comp_label" id="comp_label"/>
+				       class="form-control" name="comp_label_s" id="comp_label_s"/>
+			</div>
+			<div class="col-3 form-group">
+				<label for="comp_label_m" style="visibility: hidden">Component Label Copies</label>
+				<br/>
+				<label>Medium</label>
+				<br/>
+				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+				       class="form-control" name="comp_label_m" id="comp_label_m"/>
 			</div>
 		</div>
 		<br/>

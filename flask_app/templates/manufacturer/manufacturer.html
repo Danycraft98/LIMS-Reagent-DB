@@ -40,13 +40,17 @@
 					<td>{{ manufacturer.barcode[manufacturer.lot_start:manufacturer.lot_end] }}</td>
 				</tr>
 				<tr>
+					<th>Sample Expire Date</th>
+					<td colspan="2">{{ manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}</td>
+				</tr>
+				<tr>
 					<th>Sample Component Barcode</th>
-					<td colspan="2">{{ manufacturer.barcode }}</td>
+					<td colspan="2">{{ manufacturer.compo_barcode }}</td>
 				</tr>
 				<tr>
 					<th>Sample Component Part Number / Lot Number</th>
-					<td>{{ manufacturer.barcode[manufacturer.part_start:manufacturer.part_end] }}</td>
-					<td>{{ manufacturer.barcode[manufacturer.lot_start:manufacturer.lot_end] }}</td>
+					<td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end] }}</td>
+					<td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end] }}</td>
 				</tr>
 			</table>
 		</div>
@@ -59,9 +63,6 @@
 			</button>
 			<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#reagent_div">
 				Reagent Table
-			</button>
-			<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#made_reagent_div">
-				Made-Reagent Table
 			</button>
 		</div>
 	</div>
@@ -127,40 +128,6 @@
 					{% if reagent.lot_num != -1 %}
 					<td>{{ reagent.lot_num }}</td>
 					{% elif reagent.lot_num == -1 %}
-					<td>N/A</td>
-					{% endif %}
-				</tr>
-				{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<br/>
-	<div id="made_reagent_div" class="row collapse">
-		<div class="col-12">
-			<table class="table table-hover">
-				<thead>
-				<tr>
-					<th>Made-Reagent Name</th>
-					<th>Made-Reagent Barcode</th>
-					<th>Part Number</th>
-					<th>Lot Number</th>
-				</tr>
-				</thead>
-				<tbody>
-				{% for made_reagent in manufacturer.made_reagents %}
-				<tr>
-					<td><a href="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}">{{ made_reagent.name }}</a></td>
-					<td>{{ made_reagent.barcode }}</td>
-					{% if made_reagent.part_num != -1 %}
-					<td>{{ made_reagent.part_num }}</td>
-					{% elif made_reagent.part_num == -1 %}
-					<td>N/A</td>
-					{% endif %}
-
-					{% if made_reagent.lot_num != -1 %}
-					<td>{{ made_reagent.lot_num }}</td>
-					{% elif made_reagent.lot_num == -1 %}
 					<td>N/A</td>
 					{% endif %}
 				</tr>

@@ -69,26 +69,30 @@ function update() {
 	} else {
 		document.getElementById("lot_num").setAttribute("value", "");
 	}
+
+	if (document.getElementById("exp_date").disabled == false) {
+		document.getElementById("exp_date").setAttribute("value",document.getElementById("barcode").value.slice(properties[7], properties[8]).replace(/\//g, "-") +"-28");
+	}
 }
 
 function update_comp(element) {
 	console.log(properties)
-	if (properties[7] == 1) {
+	if (properties[9] == 1) {
 		element.disabled = false;
 	} else {
 		element.disabled = true;
 	}
-	if (properties[8] == 1) {
-	    document.getElementById("comp_part_num"+element.id.substr(-1)).disabled = false;
-		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[10], properties[11]));
+	if (properties[10] == 1) {
+	      document.getElementById("comp_part_num"+element.id.substr(-1)).disabled = false;
+		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[12], properties[13]));
 	} else {
 		document.getElementById("comp_part_num"+element.id.substr(-1)).setAttribute("value", "");
 		document.getElementById("comp_part_num"+element.id.substr(-1)).disabled = true;
 	}
 
-	if (properties[9] == 1) {
+	if (properties[11] == 1) {
 	    document.getElementById("comp_lot_num"+element.id.substr(-1)).disabled = false;
-		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[12], properties[13]));
+		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", element.value.slice(properties[14], properties[15]));
 	} else {
 		document.getElementById("comp_lot_num"+element.id.substr(-1)).setAttribute("value", "");
 		document.getElementById("comp_lot_num"+element.id.substr(-1)).disabled = true;

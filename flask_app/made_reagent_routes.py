@@ -28,6 +28,9 @@ def made_reagent_delete(made_reagent_id):
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	made_reagent = MadeReagent.query.get(made_reagent_id)
+	current_time = datetime.today()
+	if (current_time - made_reagent.date_entered).total_seconds() > 3 * 3600:
+		return redirect(url_for('made_reagent', made_reagent_id=made_reagent_id))
 	db.session.delete(made_reagent)
 	db.session.commit()
 	return redirect(url_for('made_reagents'))
@@ -67,8 +70,8 @@ def add_made_reagent_redirect():
 
 	made_reagent_label_size = request.form.get('made_reagent_label_size')
 	made_reagent_label = int(request.form.get('made_reagent_label'))
-	comp_label_size = request.form.get('comp_label_size')
-	comp_label = int(request.form.get('comp_label'))
+	comp_label_s = int(request.form.get('comp_label_s'))
+	comp_label_m = int(request.form.get('comp_label_m'))
 
 	batchpartnum = 1
 	while batchpartnum <= made_reagent_label:
@@ -76,10 +79,15 @@ def add_made_reagent_redirect():
 		print_label(printcont, made_reagent_label_size, str(batchpartnum) + '/' + str(made_reagent_label))
 		batchpartnum += 1
 
-	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, part_nums, lot_nums, conditions):
-		while batchpartnum <= comp_label:
+	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums):
+		while batchpartnum <= comp_label_s:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
-			print_label(printcont, comp_label_size, str(batchpartnum) + '/' + str(comp_label))
+			print_label(printcont, 's', str(batchpartnum) + '/' + str(comp_label_s))
+			batchpartnum += 1
+
+		while batchpartnum <= comp_label_m:
+			printcont = (name, request.form.get("exp_date"), datetime.now())
+			print_label(printcont, 'm', str(batchpartnum) + '/' + str(comp_label_m))
 			batchpartnum += 1
 
 		component = Component(
@@ -88,7 +96,7 @@ def add_made_reagent_redirect():
 			part_num=0,
 			lot_num=0,
 			condition='',
-			kit_fk=None,
+			made_reagent_fk=None,
 			madereagent_fk=made_reagent.id
 		)
 		db.session.add(component)

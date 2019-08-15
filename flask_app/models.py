@@ -19,6 +19,8 @@ class Manufacturer(db.Model):
 	part_end = db.Column(db.Integer)
 	lot_start = db.Column(db.Integer)
 	lot_end = db.Column(db.Integer)
+	exp_date_start = db.Column(db.Integer)
+	exp_date_end = db.Column(db.Integer)
 
 	comp_barcode = db.Column(db.Integer)
 	comp_part_num = db.Column(db.Integer)

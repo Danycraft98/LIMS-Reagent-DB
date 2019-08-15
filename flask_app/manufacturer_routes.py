@@ -28,6 +28,10 @@ def manufacturer_delete(manufacturer_id):
 		return redirect(url_for('login'))
 
 	manufacturer = Manufacturer.query.get(manufacturer_id)
+	current_time = datetime.today()
+	if (current_time - manufacturer.date_entered).total_seconds() > 3 * 3600:
+		return redirect(url_for('manufacturer', manufacturer_id=manufacturer_id))
+	
 	for kit in manufacturer.kits:
 		db.session.delete(kit)
 
@@ -67,15 +71,21 @@ def add_manufacturer_redirect():
 	except Exception:
 		lot_start = lot_end = -1
 
-	compo_barcode = request.form.get('comp_barcode')
+	try:
+		exp_date_start = int(request.form.get("exp_date_start"))
+		exp_date_end = exp_date_start + 7
+	except Exception:
+		exp_date_start = exp_date_end = -1
+
+	compo_barcode = request.form.get('compo_barcode')
 
 	comp_cb = {"barcode": 0, "part_num": 0, "lot_num": 0}
 	for i, item in enumerate(request.form.getlist("comp_cb")):
 		comp_cb[item] = 1
 
-	comp_part_start = request.form.get("comp_part_num_start")
+	comp_part_start = request.form.get("comp_part_start")
 	comp_part_num = request.form.get("comp_part_num")
-	comp_lot_start = request.form.get("comp_lot_num_start")
+	comp_lot_start = request.form.get("comp_lot_start")
 	comp_lot_num = request.form.get("comp_lot_num")
 	try:
 		comp_part_start = int(comp_part_start)
@@ -100,6 +110,8 @@ def add_manufacturer_redirect():
 		part_end=part_end,
 		lot_start=lot_start,
 		lot_end=lot_end,
+		exp_date_start=exp_date_start,
+		exp_date_end=exp_date_end,
 
 		compo_barcode=compo_barcode,
 		comp_barcode=comp_cb["barcode"],

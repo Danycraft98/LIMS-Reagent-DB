@@ -11,7 +11,9 @@ def reagents():
 		return redirect(url_for('login'))
 	all_reagents = Reagent.query.all()
 	if request.method == 'POST':
-		return render_template("reagent/reagents.html", reagents=Reagent.query.filter_by(name=request.form.get('searchbox')), all_reagents=all_reagents)
+		return render_template("reagent/reagents.html",
+					     reagents=Reagent.query.filter_by(name=request.form.get('searchbox')),
+					     all_reagents=all_reagents)
 	return render_template("reagent/reagents.html", reagents=all_reagents, all_reagents=all_reagents)
 
 
@@ -28,6 +30,9 @@ def reagent_delete(reagent_id):
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	reagent = Reagent.query.get(reagent_id)
+	current_time = datetime.today()
+	if (current_time - reagent.date_entered).total_seconds() > 3 * 3600:
+		return redirect(url_for('reagent', reagent_id=reagent_id))
 	db.session.delete(reagent)
 	db.session.commit()
 	return redirect(url_for('reagents'))
@@ -74,11 +79,11 @@ def add_reagent_redirect():
 		name=request.form.get("name"),
 		barcode=request.form.get("barcode"),
 		part_num=part_num,
-		lot_num = lot_num,
+		lot_num=lot_num,
 		date_entered=datetime.today(),
-		exp_date = exp_date,
-		quantity = quantity,
-		manufacturer_fk = request.values.get("manu_name").split(',')[-1],
+		exp_date=exp_date,
+		quantity=quantity,
+		manufacturer_fk=request.values.get("manu_name").split(',')[-1],
 	)
 
 	db.session.add(reagent)
