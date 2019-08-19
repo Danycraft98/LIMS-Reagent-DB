@@ -68,7 +68,7 @@ CREATE TABLE `kit` (
   PRIMARY KEY (`id`),
   KEY `manufacturer_fk` (`manufacturer_fk`),
   CONSTRAINT `kit_ibfk_1` FOREIGN KEY (`manufacturer_fk`) REFERENCES `manufacturer` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,6 @@ CREATE TABLE `kit` (
 
 LOCK TABLES `kit` WRITE;
 /*!40000 ALTER TABLE `kit` DISABLE KEYS */;
-INSERT INTO `kit` VALUES (1,'kkk1','1234gggg1234hhhh','1234','1234',NULL,'2019-07-19 11:46:45',0,1);
 /*!40000 ALTER TABLE `kit` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,16 +90,10 @@ DROP TABLE IF EXISTS `made_reagent`;
 CREATE TABLE `made_reagent` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `barcode` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `part_num` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `lot_num` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `exp_date` datetime DEFAULT NULL,
   `date_entered` datetime DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `manufacturer_fk` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `manufacturer_fk` (`manufacturer_fk`),
-  CONSTRAINT `made_reagent_ibfk_1` FOREIGN KEY (`manufacturer_fk`) REFERENCES `manufacturer` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,6 +117,7 @@ CREATE TABLE `manufacturer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `date_entered` datetime DEFAULT NULL,
+  `barcode` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `part_num` int(11) DEFAULT NULL,
   `lot_num` int(11) DEFAULT NULL,
   `exp_date` int(11) DEFAULT NULL,
@@ -131,15 +125,18 @@ CREATE TABLE `manufacturer` (
   `part_end` int(11) DEFAULT NULL,
   `lot_start` int(11) DEFAULT NULL,
   `lot_end` int(11) DEFAULT NULL,
+  `exp_date_start` int(11) DEFAULT NULL,
+  `exp_date_end` int(11) DEFAULT NULL,
   `comp_barcode` int(11) DEFAULT NULL,
   `comp_part_num` int(11) DEFAULT NULL,
   `comp_lot_num` int(11) DEFAULT NULL,
+  `compo_barcode` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `comp_part_start` int(11) DEFAULT NULL,
   `comp_part_end` int(11) DEFAULT NULL,
   `comp_lot_start` int(11) DEFAULT NULL,
   `comp_lot_end` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +145,6 @@ CREATE TABLE `manufacturer` (
 
 LOCK TABLES `manufacturer` WRITE;
 /*!40000 ALTER TABLE `manufacturer` DISABLE KEYS */;
-INSERT INTO `manufacturer` VALUES (1,'m-test','2019-07-19 11:45:46',1,1,1,0,4,8,12,0,0,0,-1,-1,-1,-1),(2,'m-test-1','2019-07-19 11:57:35',0,0,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1);
 /*!40000 ALTER TABLE `manufacturer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +168,7 @@ CREATE TABLE `reagent` (
   PRIMARY KEY (`id`),
   KEY `manufacturer_fk` (`manufacturer_fk`),
   CONSTRAINT `reagent_ibfk_1` FOREIGN KEY (`manufacturer_fk`) REFERENCES `manufacturer` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +177,6 @@ CREATE TABLE `reagent` (
 
 LOCK TABLES `reagent` WRITE;
 /*!40000 ALTER TABLE `reagent` DISABLE KEYS */;
-INSERT INTO `reagent` VALUES (1,'a b c reagent','1234gggg1234hhhh','1234','1234',NULL,'2019-07-19 11:47:06',0,1);
 /*!40000 ALTER TABLE `reagent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +202,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Irene','Irene','1111');
+INSERT INTO `user` VALUES (1,'Irene','admin','1111');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -220,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-19 16:27:22
+-- Dump completed on 2019-08-18 21:35:42
