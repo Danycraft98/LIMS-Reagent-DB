@@ -2,6 +2,8 @@ from flask import render_template, url_for, redirect, request
 from flask_app import app, db, current_user
 from flask_app.models import Manufacturer, MadeReagent, Component
 from flask_app.printer import print_label
+
+from collections import Counter
 from datetime import datetime
 
 
@@ -54,11 +56,10 @@ def add_made_reagent_redirect():
 		exp_date = None
 	elif exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-	quantity = request.form.get("quantity")
+	quantity = int(request.form.get("quantity"))
 
 	made_reagent = MadeReagent(
 		name=request.form.get("name"),
-		barcode=request.form.get("barcode"),
 		exp_date = exp_date,
 		date_entered=datetime.today(),
 		quantity = quantity
@@ -67,41 +68,50 @@ def add_made_reagent_redirect():
 	db.session.add(made_reagent)
 	db.session.commit()
 
-	names = request.form.getlist("comp_name")
-	comp_nums = request.form.getlist("comp_barcode")
+	names = Counter(request.form.getlist("comp_name"))
 
 	made_reagent_label_size = request.form.get('made_reagent_label_size')
 	made_reagent_label = int(request.form.get('made_reagent_label'))
 	comp_label_s = int(request.form.get('comp_label_s'))
 	comp_label_m = int(request.form.get('comp_label_m'))
+	acquired_stat = request.form.get('acquired_stat')
 
+	batchnum = 1
 	batchpartnum = 1
-	while batchpartnum <= made_reagent_label:
+	while batchnum <= made_reagent_label:
 		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-		print_label(printcont, made_reagent_label_size, str(batchpartnum) + '/' + str(made_reagent_label))
+		print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(made_reagent_label))
 		batchpartnum += 1
+		if batchpartnum > quantity:
+			batchpartnum = 1
+		batchnum += 1
 
-	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums):
-		while batchpartnum <= comp_label_s:
+	for name in names:
+		batchnum = 1
+		batchpartnum = 1
+		while batchnum <= comp_label_s:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
-			print_label(printcont, 's', str(batchpartnum) + '/' + str(comp_label_s))
+			print_label(printcont, "made reagent", "s", acquired_stat, str(batchpartnum) + '/' + str(quantity))
 			batchpartnum += 1
+			if batchpartnum > quantity:
+				batchpartnum = 1
+			batchnum += 1
 
-		while batchpartnum <= comp_label_m:
+		batchnum = 1
+		batchpartnum = 1
+		while batchnum <= comp_label_m:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
-			print_label(printcont, 'm', str(batchpartnum) + '/' + str(comp_label_m))
+			print_label(printcont, "made reagent", "m" , acquired_stat, str(batchpartnum) + '/' + str(quantity))
 			batchpartnum += 1
+			if batchpartnum > quantity:
+				batchpartnum = 1
+			batchnum += 1
 
-		component = Component(
-			name=name,
-			barcode=comp_num,
-			part_num=0,
-			lot_num=0,
-			condition='',
-			made_reagent_fk=None,
-			madereagent_fk=made_reagent.id
-		)
-		db.session.add(component)
+		for component in Component.query.filter_by(name=name):
+			if component.madereagent_fk is None:
+				component.madereagent_fk = made_reagent.id
+				component.copies += names[name]
+				break
 		db.session.commit()
 
 	return redirect(url_for("made_reagents"))

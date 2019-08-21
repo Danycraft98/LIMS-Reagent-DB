@@ -62,7 +62,7 @@ def add_kit_redirect():
 		exp_date = None
 	elif exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-	quantity = request.form.get("quantity")
+	quantity = int(request.form.get("quantity"))
 
 	kit = Kit(
 		name=request.form.get("name"),
@@ -89,23 +89,36 @@ def add_kit_redirect():
 	comp_label_s = int(request.form.get('comp_label_s'))
 	comp_label_m = int(request.form.get('comp_label_m'))
 
+	batchnum = 1
 	batchpartnum = 1
-	while batchpartnum <= kit_label:
+	while batchnum <= kit_label:
 		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-		print_label(printcont, kit_label_size, str(batchpartnum) + '/' + str(kit_label))
+		print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
 		batchpartnum += 1
+		if batchpartnum > quantity:
+			batchpartnum = 1
+		batchnum += 1
 
 	for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, conditions):
+		batchnum = 1
 		batchpartnum = 1
-		while batchpartnum <= comp_label_s:
+		while batchnum <= comp_label_s:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
-			print_label(printcont, 's', str(batchpartnum) + '/' + str(comp_label_s))
+			print_label(printcont, "kit", "s", None, str(batchpartnum) + '/' + str(comp_label_s))
 			batchpartnum += 1
+			if batchpartnum > quantity:
+				batchpartnum = 1
+			batchnum += 1
 
-		while batchpartnum <= comp_label_m:
+		batchnum = 1
+		batchpartnum = 1
+		while batchnum <= comp_label_m:
 			printcont = (name, request.form.get("exp_date"), datetime.now())
-			print_label(printcont, 'm', str(batchpartnum) + '/' + str(comp_label_m))
+			print_label(printcont, "kit", "m", None, str(batchpartnum) + '/' + str(comp_label_m))
 			batchpartnum += 1
+			if batchpartnum > quantity:
+				batchpartnum = 1
+			batchnum += 1
 
 		component = Component(
 			name=name,
@@ -113,6 +126,7 @@ def add_kit_redirect():
 			part_num=part_num,
 			lot_num=lot_num,
 			condition=condition,
+			copies=0,
 			kit_fk=kit.id,
 			madereagent_fk=None
 		)

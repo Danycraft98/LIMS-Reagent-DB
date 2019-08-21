@@ -75,5 +75,6 @@ class Component(db.Model):
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))
 	condition = db.Column(db.String(255), nullable=False)
+	copies = db.Column(db.Integer)
 	kit_fk = db.Column(db.Integer, db.ForeignKey('kit.id'))
 	madereagent_fk = db.Column(db.Integer, db.ForeignKey('made_reagent.id'))

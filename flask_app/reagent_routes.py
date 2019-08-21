@@ -64,16 +64,21 @@ def add_reagent_redirect():
 		exp_date = None
 	elif exp_date:
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-	quantity = request.form.get("quantity")
+	quantity = int(request.form.get("quantity"))
 
 	reagent_label_size = request.form.get('reagent_label_size')
 	reagent_label = int(request.form.get('reagent_label'))
+	acquired_stat = request.form.get('acquired_stat')
 
 	batchpartnum = 1
-	while batchpartnum <= reagent_label:
+	batchnum = 1
+	while batchnum <= reagent_label:
 		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
-		print_label(printcont, reagent_label_size, str(batchpartnum) + '/' + str(reagent_label))
+		print_label(printcont,"reagent", reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(quantity))
 		batchpartnum += 1
+		if batchpartnum > quantity:
+			batchpartnum = 1
+		batchnum += 1
 
 	reagent = Reagent(
 		name=request.form.get("name"),
