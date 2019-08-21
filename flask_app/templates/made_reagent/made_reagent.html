@@ -27,29 +27,6 @@
 					<td>{{ made_reagent.name }}</td>
 				</tr>
 				<tr>
-					<th>Manufacturer</th>
-					<td>{{ Manufacturer.query.get(made_reagent.manufacturer_fk).name }}</td>
-				</tr>
-				<tr>
-					<th>Box Lot Barcode</th>
-					<td>{{ made_reagent.barcode }}</td>
-				</tr>
-				<tr>
-					<th>Part Number</th>
-					{% if made_reagent.part_num != '-1' %}
-					{% elif made_reagent.part_num == '-1' %}
-					<td>N/A</td>
-					{% endif %}
-				</tr>
-				<tr>
-					<th>Lot Number</th>
-					{% if made_reagent.lot_num != '-1' %}
-					<td>{{ made_reagent.lot_num }}</td>
-					{% elif made_reagent.lot_num == '-1' %}
-					<td>N/A</td>
-					{% endif %}
-				</tr>
-				<tr>
 					<th>Date Entered</th>
 					<td>{{ made_reagent.date_entered.strftime("%B %e, %Y") }}</td>
 				</tr>
@@ -77,13 +54,15 @@
 				</thead>
 				<tbody>
 				{% for component in made_reagent.components %}
+				{% for comp in [component]*component.copies %}
 				<tr>
-					<td>{{ component.name }}</td>
-					<td>{{ component.barcode }}</td>
-					<td>{{ component.part_num }}</td>
-					<td>{{ component.lot_num }}</td>
-					<td>{{ component.condition }}</td>
+					<td>{{ comp.name }}</td>
+					<td>{{ comp.barcode }}</td>
+					<td>{{ comp.part_num }}</td>
+					<td>{{ comp.lot_num }}</td>
+					<td>{{ comp.condition }}</td>
 				</tr>
+				{% endfor %}
 				{% endfor %}
 				</tbody>
 			</table>
