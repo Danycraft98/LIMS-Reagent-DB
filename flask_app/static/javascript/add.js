@@ -54,12 +54,6 @@ function remove_element(element) {
 
 function enable(element) {
 	properties = element.value.split(",");
-	if (properties[2] == 1) {
-		$("#exp_date").prop("disabled", false);
-	} else {
-		$("#exp_date").prop("disabled", true);
-		document.getElementById("exp_date").setAttribute("value","");
-	}
 	update()
 	comps = document.getElementById("containers_div").childNodes;
 	for (i = 0; i < comps.length; i++) {
@@ -81,7 +75,7 @@ function update() {
 		document.getElementById("lot_num").setAttribute("value", "");
 	}
 
-	if (document.getElementById("exp_date").disabled == false) {
+	if (properties[2] == 1) {
 		document.getElementById("exp_date").setAttribute("value",document.getElementById("barcode").value.slice(properties[7], properties[8]).replace(/\//g, "-") +"-28");
 	}
 }
