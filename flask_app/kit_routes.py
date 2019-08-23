@@ -92,7 +92,7 @@ def add_kit_redirect():
 	batchnum = 1
 	batchpartnum = 1
 	while batchnum <= kit_label:
-		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
+		printcont = (request.form.get("name"), exp_date, datetime.now())
 		print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
 		batchpartnum += 1
 		if batchpartnum > quantity:
@@ -103,7 +103,7 @@ def add_kit_redirect():
 		batchnum = 1
 		batchpartnum = 1
 		while batchnum <= comp_label_s:
-			printcont = (name, request.form.get("exp_date"), datetime.now())
+			printcont = (name, exp_date, datetime.now())
 			print_label(printcont, "kit", "s", None, str(batchpartnum) + '/' + str(comp_label_s))
 			batchpartnum += 1
 			if batchpartnum > quantity:
@@ -113,7 +113,7 @@ def add_kit_redirect():
 		batchnum = 1
 		batchpartnum = 1
 		while batchnum <= comp_label_m:
-			printcont = (name, request.form.get("exp_date"), datetime.now())
+			printcont = (name, exp_date, datetime.now())
 			print_label(printcont, "kit", "m", None, str(batchpartnum) + '/' + str(comp_label_m))
 			batchpartnum += 1
 			if batchpartnum > quantity:

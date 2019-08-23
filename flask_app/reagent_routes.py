@@ -73,7 +73,7 @@ def add_reagent_redirect():
 	batchpartnum = 1
 	batchnum = 1
 	while batchnum <= reagent_label:
-		printcont = (request.form.get("name"), request.form.get("exp_date"), datetime.now())
+		printcont = (request.form.get("name"), exp_date, datetime.now())
 		print_label(printcont,"reagent", reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(quantity))
 		batchpartnum += 1
 		if batchpartnum > quantity:
