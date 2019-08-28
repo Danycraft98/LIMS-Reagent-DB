@@ -124,9 +124,7 @@ def add_kit_redirect():
 			part_num=part_num,
 			lot_num=lot_num,
 			condition=condition,
-			copies=0,
 			kit_fk=kit.id,
-			madereagent_fk=None
 		)
 		db.session.add(component)
 		db.session.commit()

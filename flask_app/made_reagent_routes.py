@@ -22,7 +22,7 @@ def made_reagent(made_reagent_id):
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	made_reagent = MadeReagent.query.get(made_reagent_id)
-	return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, Manufacturer=Manufacturer)
+	return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, reagent_list=eval(made_reagent.reagent_list), component_list=eval(made_reagent.component_list), Manufacturer=Manufacturer, Reagent=Reagent, Component=Component)
 
 
 @app.route("/made_reagent_delete/<int:made_reagent_id>")
@@ -89,6 +89,8 @@ def add_made_reagent_redirect():
 			batchpartnum = 1
 		batchnum += 1
 
+	reagent_list = {}
+	component_list = {}
 	for name in names:
 		batchnum = 1
 		batchpartnum = 1
@@ -104,23 +106,19 @@ def add_made_reagent_redirect():
 		batchpartnum = 1
 		while batchnum <= comp_label_m:
 			printcont = (name, exp_date, datetime.now())
-			print_label(printcont, "made reagent", "m" , acquired_stat, str(batchpartnum) + '/' + str(quantity))
+			print_label(printcont, "made reagent", "m", acquired_stat, str(batchpartnum) + '/' + str(quantity))
 			batchpartnum += 1
 			if batchpartnum > quantity:
 				batchpartnum = 1
 			batchnum += 1
 
-		for reagent in Reagent.query.filter_by(name=name):
-			if reagent.madereagent_fk is None:
-				reagent.madereagent_fk = made_reagent.id
-				reagent.copies += names[name]
-				break
-
-		for component in Component.query.filter_by(name=name):
-			if component.madereagent_fk is None:
-				component.madereagent_fk = made_reagent.id
-				component.copies += names[name]
-				break
-		db.session.commit()
+		#
+		if len(list(Reagent.query.filter_by(name=name))) > 0:
+			reagent_list[name] = names[name]
+		elif len(list(Component.query.filter_by(name=name))) > 0:
+			component_list[name] = names[name]
+	made_reagent.reagent_list = str(reagent_list)
+	made_reagent.component_list = str(component_list)
+	db.session.commit()
 
 	return redirect(url_for("made_reagents"))

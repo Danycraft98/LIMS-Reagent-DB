@@ -56,8 +56,6 @@ class Reagent(db.Model):
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
-	copies = db.Column(db.Integer)
-	madereagent_fk = db.Column(db.Integer, db.ForeignKey('made_reagent.id'))
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
 
 
@@ -67,7 +65,8 @@ class MadeReagent(db.Model):
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
-	components = db.relationship('Component', lazy=True)
+	reagent_list = db.Column(db.String(255))
+	component_list = db.Column(db.String(255))
 
 
 class Component(db.Model):
@@ -77,6 +76,4 @@ class Component(db.Model):
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))
 	condition = db.Column(db.String(255), nullable=False)
-	copies = db.Column(db.Integer)
 	kit_fk = db.Column(db.Integer, db.ForeignKey('kit.id'))
-	madereagent_fk = db.Column(db.Integer, db.ForeignKey('made_reagent.id'))
