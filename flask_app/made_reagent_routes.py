@@ -1,6 +1,6 @@
 from flask import render_template, url_for, redirect, request
 from flask_app import app, db, current_user
-from flask_app.models import Manufacturer, MadeReagent, Component
+from flask_app.models import Manufacturer, Reagent, MadeReagent, Component
 from flask_app.printer import print_label
 
 from collections import Counter
@@ -45,8 +45,11 @@ def add_made_reagent():
 	comp_infos = {}
 	for comp in Component.query.all():
 		comp_infos[comp.barcode] = comp.name
+
+	for reagent in Reagent.query.all():
+		comp_infos[reagent.barcode] = reagent.name
 	today = datetime.today().date()
-	return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos = comp_infos)
+	return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos=comp_infos)
 
 
 @app.route("/add_made_reagent_redirect", methods=["GET", "POST"])
@@ -106,6 +109,12 @@ def add_made_reagent_redirect():
 			if batchpartnum > quantity:
 				batchpartnum = 1
 			batchnum += 1
+
+		for reagent in Reagent.query.filter_by(name=name):
+			if reagent.madereagent_fk is None:
+				reagent.madereagent_fk = made_reagent.id
+				reagent.copies += names[name]
+				break
 
 		for component in Component.query.filter_by(name=name):
 			if component.madereagent_fk is None:

@@ -56,6 +56,8 @@ class Reagent(db.Model):
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
+	copies = db.Column(db.Integer)
+	madereagent_fk = db.Column(db.Integer, db.ForeignKey('made_reagent.id'))
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
 
 

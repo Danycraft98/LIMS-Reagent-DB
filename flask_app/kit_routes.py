@@ -47,14 +47,12 @@ def add_kit():
 
 @app.route("/add_kit_redirect", methods=["GET", "POST"])
 def add_kit_redirect():
-	try:
-		part_num = int(request.form.get("part_num"))
-	except Exception:
+	part_num = request.form.get("part_num")
+	if part_num == "":
 		part_num = -1
 
-	try:
-		lot_num = int(request.form.get("lot_num"))
-	except Exception:
+	lot_num = request.form.get("lot_num")
+	if lot_num == "":
 		lot_num = -1
 
 	exp_date = request.form.get("exp_date")
