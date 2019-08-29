@@ -4,11 +4,8 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Fixed errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/static/javascript/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/javascript/add.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -212,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567002445830</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fixed errors">
+      <created>1567013213853</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1567013213854</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,8 +243,8 @@
     <MESSAGE value="Fixed add.js function. Updated sql schema file." />
     <MESSAGE value="Fixed the expiry date error." />
     <MESSAGE value="Updated expiry date properties. Also undone __init__.py file error." />
-    <MESSAGE value="Fixed errors" />
     <MESSAGE value="Fixed copy_num error." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed copy_num error." />
+    <MESSAGE value="Fixed errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed errors" />
   </component>
 </project>

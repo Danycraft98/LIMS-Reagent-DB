@@ -77,7 +77,17 @@ function update() {
 	}
 
 	if (properties[2] == 1) {
-		document.getElementById("exp_date").setAttribute("value",document.getElementById("barcode").value.slice(properties[7], properties[8]).replace(/\//g, "-") +"-28");
+		var date = document.getElementById("barcode").value.slice(properties[7], properties[8]).replace(/\//g, "-");
+		var month = parseInt(date.slice(5,7), 10);
+		var large_month = [1,3,5,7,8,10,12];
+		if (large_month.includes(month)) {
+		    document.getElementById("exp_date").setAttribute("value",date+"-31");
+		} else if (month == 2) {
+		    document.getElementById("exp_date").setAttribute("value",date+"-28");
+		}  else {
+		    document.getElementById("exp_date").setAttribute("value",date+"-30");
+		}
+
 	}
 }
 
