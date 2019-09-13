@@ -97,7 +97,7 @@ def print_label(printitem, printtype, printsize, acquirymet, batchratio):
 	if destination:
 		lp_args += ["-d", destination]
 	lp_args.append("-")
-	sp = subprocess.Popen(lp_args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+	sp = subprocess.Popen(lp_args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
 	label_formatted = "\n" + label
 	sp.stdin.write(label_formatted.encode("utf-8"))
 	stdout, stderr = sp.communicate()
