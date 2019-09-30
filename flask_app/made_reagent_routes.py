@@ -122,3 +122,8 @@ def add_made_reagent_redirect():
 	db.session.commit()
 
 	return redirect(url_for("made_reagents"))
+
+
+@app.route("/print_made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
+def print_made_reagent(made_reagent_id):
+	return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id))
