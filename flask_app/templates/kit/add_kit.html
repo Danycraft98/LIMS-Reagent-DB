@@ -109,10 +109,6 @@
 		<br/>
 		<div class="row my-row">
 			<div class="col-12">
-				<button type="button" class="btn btn-info button" data-toggle="collapse"
-				        data-target="#print_div">
-					Print Option
-				</button>
 				<button type="submit" class="btn btn-info button" name="submit" id="submit">
 					Save & Print
 				</button>
@@ -124,43 +120,5 @@
 		</div>
 	</div>
 	<br/>
-
-	<div id="print_div" class="collapse">
-		<hr/>
-		<div class="row my-row">
-			<div class="col">
-				<h2>Print Option</h2>
-			</div>
-		</div>
-		<div class="row my-row">
-			<div class="col-3 form-group">
-				<label for="kit_label">Kit Label Copies</label>
-				<select class="form-control" id="kit_label_size" name="kit_label_size">
-					<option value="s">Small</option>
-					<option value="m">Medium</option>
-				</select>
-				<br/>
-				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-				       class="form-control" name="kit_label" id="kit_label"/>
-			</div>
-			<div class="col-3 form-group">
-				<label for="comp_label_s">Component Label Copies</label>
-				<br/>
-				<label>Small</label>
-				<br/>
-				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-				       class="form-control" name="comp_label_s" id="comp_label_s"/>
-			</div>
-			<div class="col-3 form-group">
-				<label for="comp_label_m" style="visibility: hidden">Component Label Copies</label>
-				<br/>
-				<label>Medium</label>
-				<br/>
-				<input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-				       class="form-control" name="comp_label_m" id="comp_label_m"/>
-			</div>
-		</div>
-		<br/>
-	</div>
 </form>
 {% endblock content %}
