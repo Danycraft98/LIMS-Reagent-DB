@@ -50,6 +50,7 @@ class Kit(db.Model):
 class Reagent(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(255), nullable=False)
+	#unique_id = db.Column(db.String(255), nullable=False) # TODO: fix later
 	barcode = db.Column(db.String(255), nullable=False)
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))

@@ -4,145 +4,11 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Fixed errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask-1.0.3.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/DESCRIPTION.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Flask_WTF-0.14.2.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/WTForms-2.2.1.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/WTForms-2.2.1.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/WTForms-2.2.1.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/WTForms-2.2.1.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/WTForms-2.2.1.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/_compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/csrf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/form.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/html5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/i18n.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/recaptcha/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/recaptcha/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/recaptcha/validators.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/recaptcha/widgets.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/csrf/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/csrf/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/csrf/session.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/appengine/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/appengine/db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/appengine/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/appengine/ndb.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/csrf/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/csrf/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/csrf/form.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/csrf/session.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/dateutil/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/dateutil/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/django/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/django/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/django/i18n.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/django/orm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/django/templatetags/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/django/templatetags/wtforms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/i18n/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/i18n/form.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/i18n/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/sqlalchemy/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/sqlalchemy/orm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/fields/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/fields/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/fields/html5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/fields/simple.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/form.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/i18n.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ar/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ar/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/bg/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/bg/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ca/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ca/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/cs_CZ/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/cs_CZ/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/cy/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/cy/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/de/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/de/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/de_CH/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/de_CH/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/el/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/el/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/en/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/en/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/es/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/es/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/et/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/et/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/fa/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/fa/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/fi/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/fi/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/fr/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/fr/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/he/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/he/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/hu/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/hu/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/it/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/it/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ja/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ja/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ko/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ko/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/nb/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/nb/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/nl/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/nl/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/pl/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/pl/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/pt/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/pt/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ru/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/ru/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/sk/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/sk/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/sv/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/sv/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/tr/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/tr/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/uk/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/uk/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/wtforms.pot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/zh/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/zh/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/zh_TW/LC_MESSAGES/wtforms.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/locale/zh_TW/LC_MESSAGES/wtforms.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/meta.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/validators.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/widgets/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/widgets/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wtforms/widgets/html5.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +34,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -366,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569866911941</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Moved and updated print label.">
+      <created>1569869970394</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1569869970394</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -397,6 +270,7 @@
     <MESSAGE value="Fixed errors" />
     <MESSAGE value="Updated expiry date capture. Fixed add made reagent layout." />
     <MESSAGE value="Moved print options." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved print options." />
+    <MESSAGE value="Moved and updated print label." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved and updated print label." />
   </component>
 </project>
