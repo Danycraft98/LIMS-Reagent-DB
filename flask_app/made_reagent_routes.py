@@ -31,7 +31,7 @@ def made_reagent_delete(made_reagent_id):
 		return redirect(url_for('login'))
 	made_reagent = MadeReagent.query.get(made_reagent_id)
 	current_time = datetime.today()
-	if (current_time - made_reagent.date_entered).total_seconds() > 3 * 3600:
+	if (current_time - made_reagent.date_entered).total_seconds() > 24 * 3600:
 		return redirect(url_for('made_reagent', made_reagent_id=made_reagent_id))
 	db.session.delete(made_reagent)
 	db.session.commit()

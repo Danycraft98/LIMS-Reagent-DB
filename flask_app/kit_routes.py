@@ -30,7 +30,7 @@ def kit_delete(kit_id):
         return redirect(url_for('login'))
     kit = Kit.query.get(kit_id)
     current_time = datetime.today()
-    if (current_time - kit.date_entered).total_seconds() > 3 * 3600:
+    if (current_time - kit.date_entered).total_seconds() > 24 * 3600:
         return redirect(url_for('kit', kit_id=kit_id))
     db.session.delete(kit)
     db.session.commit()

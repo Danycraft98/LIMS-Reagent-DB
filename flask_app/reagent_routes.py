@@ -31,7 +31,7 @@ def reagent_delete(reagent_id):
 		return redirect(url_for('login'))
 	reagent = Reagent.query.get(reagent_id)
 	current_time = datetime.today()
-	if (current_time - reagent.date_entered).total_seconds() > 3 * 3600:
+	if (current_time - reagent.date_entered).total_seconds() > 24 * 3600:
 		return redirect(url_for('reagent', reagent_id=reagent_id))
 	db.session.delete(reagent)
 	db.session.commit()
@@ -93,7 +93,7 @@ def print_reagent(reagent_id):
 	batchnum = 1
 	while batchnum <= reagent_label:
 		printcont = (request.form.get("name"), reagent.exp_date, datetime.now())
-		print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(quantity))
+		print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(reagent.quantity))
 		batchpartnum += 1
 		if batchpartnum > reagent.quantity:
 			batchpartnum = 1
