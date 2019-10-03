@@ -123,15 +123,13 @@ th {
 	outline: 0px !important;
 }
 
-a, a:hover, .white {
+.white, .white:hover {
 	color: white;
 }
 
 a, a:hover {
     color: #333333;
 }
-
-
 
 .error_msg {
 	height:10px;
