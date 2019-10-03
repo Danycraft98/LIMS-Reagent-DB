@@ -1,7 +1,7 @@
 from flask import render_template, url_for, redirect, request
 from flask_app import app, db, current_user
 from flask_app.models import Kit, Manufacturer, Component
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_app.printer import print_label
 
 
@@ -16,11 +16,22 @@ def kits():
     return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits)
 
 
-@app.route("/kit/<int:kit_id>")
+@app.route("/kit/<int:kit_id>", methods=['GET', 'POST'])
 def kit(kit_id):
     if not current_user.logged_in():
         return redirect(url_for('login'))
     kit = Kit.query.get(kit_id)
+    if request.method == 'POST':
+        id = request.form.get("comp_id")
+        component = Component.query.filter_by(id=id)[0]
+        component.name = request.form.get("comp_name")
+        component.barcode = request.form.get("comp_barcode")
+        component.part_num = request.form.get("part_num")
+        component.lot_num = request.form.get("lot_num")
+        #component.exp_date = request.form.get("exp_date")
+        component.condition = request.form.get("comp_condition")
+        db.session.commit()
+        return redirect(url_for(kit, kit_id=kit_id, Manufacturer=Manufacturer, range=range(kit.quantity)))
     return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity))
 
 
@@ -81,22 +92,29 @@ def add_kit_redirect():
     comp_nums = request.form.getlist("comp_barcode")
     comp_part_nums = request.form.getlist("comp_part_num")
     comp_lot_nums = request.form.getlist("comp_lot_num")
+    comp_exp_dates = request.form.getlist("comp_exp_date")
     conditions = request.form.getlist("condition")
     for value in range(kit.quantity):
-        for name, comp_num, part_num, lot_num, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, conditions):
+        for name, comp_num, part_num, lot_num, exp_date, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, conditions):
+            if exp_date == "":
+                exp_date = kit.date_entered.replace(year=kit.date_entered.year + 10)
+            elif exp_date:
+                exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
+
             component = Component(
                 name=name,
-                #unique_id=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")+" "+str(value)+"/"+str(kit.quantity),
+                #uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")+" "+str(value)+"/"+str(kit.quantity),
                 barcode=comp_num,
                 part_num=part_num,
                 lot_num=lot_num,
+                exp_date=exp_date,
                 condition=condition,
                 kit_fk=kit.id,
             )
             db.session.add(component)
             db.session.commit()
 
-        return redirect(url_for("kits"))
+    return redirect(url_for("kit", kit_id=kit.id))
 
 
 @app.route("/print_kit/<int:kit_id>", methods=["GET", "POST"])

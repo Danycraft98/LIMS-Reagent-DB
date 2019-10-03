@@ -8,7 +8,9 @@
             <h2>Kit</h2>
         </div>
         <div class="col-2">
-            <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#kit_modal">Print Label</button>
+            <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#kit_modal">Print
+                Label
+            </button>
         </div>
         <div class="col-2">
             <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print</button>
@@ -73,32 +75,50 @@
                 </tr>
             </table>
             <br/>
-            <h2>Components</h2>
+            <h3>Components</h3>
             <hr/>
             {% for i in range %}
-            <h4>Kit Unique ID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }}</h4>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Barcode</th>
-                    <th>Part Number</th>
-                    <th>Lot Number</th>
-                    <th>Condition</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for component in kit.components[(i) * kit.components|length // kit.quantity:(i+1) * kit.components|length // kit.quantity] %}
-                <tr>
-                    <td>{{ component.name }}</td>
-                    <td>{{ component.barcode }}</td>
-                    <td>{{ component.part_num }}</td>
-                    <td>{{ component.lot_num }}</td>
-                    <td>{{ component.condition }}</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <h4>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#comp_div{{i}}">Kit
+                    UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }}
+                </button>
+            </h4>
+            <div id="comp_div{{i}}" class="row collapse">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Part Number</th>
+                        <th>Lot Number</th>
+                        <th>Expiry Date</th>
+                        <th>Condition</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for component in kit.components[i * kit.components|length // kit.quantity:(i+1) *
+                    kit.components|length // kit.quantity] %}
+                    <tr>
+                        <td>{{ component.name }}</td>
+                        <td>{{ component.part_num }}</td>
+                        <td>{{ component.lot_num }}</td>
+                        {% if component.exp_date %}
+                        <td>{{ component.exp_date.strftime("%B %e, %Y") }}</td>
+                        {% elif not component.exp_date %}
+                        <td>N/A</td>
+                        {% endif %}
+                        <td>{{ component.condition }}</td>
+                        <td>
+                            <button class="btn btn-info"
+                                    id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}"
+                                    data-toggle="modal" data-target="#comp_modal" onclick="edit_comp(this);">Edit
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             <br/>
             {% endfor %}
         </div>
@@ -107,13 +127,14 @@
 {% endblock content %}
 
 {% block modal %}
-<div class="modal fade" id="kit_modal" tabindex="-1" role="" aria-labelledby="kit_modal" aria-hidden="true">
+<div class="modal fade" id="kit_modal" tabindex="-1" aria-labelledby="kit_modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Print Label</h5>
+                <h5 class="modal-title">Print Label</h5>
             </div>
-            <form action="/print_kit/{{ kit.id }}" method="post" onsubmit="return confirmMsg();" onkeypress="return event.keyCode != 13;">
+            <form action="/print_kit/{{ kit.id }}" method="post" onsubmit="return confirmMsg();"
+                  onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
                         <div class="col-4 form-group">
@@ -152,4 +173,69 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="comp_modal" tabindex="-1" aria-labelledby="kit_modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Component</h5>
+            </div>
+            <form action="/kit/{{ kit.id }}" method="post" onsubmit="return confirmMsg();"
+                  onkeypress="return event.keyCode != 13;">
+                <div class="modal-body">
+                    <input class="form-control" name="comp_id" id="comp_id" type="hidden">
+                    <div class="row my-row">
+                        <div class="col-4 form-group">
+                            <label for="comp_name">Name</label>
+                            <input class="form-control" name="comp_name" id="comp_name">
+                        </div>
+                        <div class="col-5 form-group">
+                            <label for="comp_barcode">Barcode</label>
+                            <input class="form-control" name="comp_barcode" id="comp_barcode">
+                        </div>
+                    </div>
+                    <div class="row my-row">
+                        <div class="col-4 form-group">
+                            <label for="part_num">Part Number</label>
+                            <input class="form-control" name="part_num" id="part_num">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="lot_num">Lot Number</label>
+                            <input class="form-control" name="lot_num" id="lot_num">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="exp_date">Expiry Date</label>
+                            <input class="form-control" name="exp_date" id="exp_date" type="date">
+                        </div>
+                    </div>
+                    <div class="row my-row">
+                        <div class="col-6 form-group">
+                            <label for="part_num">Condition</label>
+                            <input class="form-control" name="comp_condition" id="comp_condition">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-info">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function edit_comp(element) {
+        var info = element.id.split(",");
+        document.getElementById("comp_id").setAttribute("value",info[0]);
+        document.getElementById("comp_name").setAttribute("value",info[1]);
+        document.getElementById("comp_barcode").setAttribute("value",info[2]);
+        document.getElementById("part_num").setAttribute("value",info[3]);
+        document.getElementById("lot_num").setAttribute("value",info[4]);
+        document.getElementById("exp_date").setAttribute("value",info[5]);
+        document.getElementById("comp_condition").setAttribute("value",info[6]);
+    }
+
+
+</script>
 {% endblock modal %}

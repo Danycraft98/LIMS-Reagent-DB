@@ -76,5 +76,6 @@ class Component(db.Model):
 	barcode = db.Column(db.String(255))
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))
+	exp_date = db.Column(db.DateTime)
 	condition = db.Column(db.String(255), nullable=False)
 	kit_fk = db.Column(db.Integer, db.ForeignKey('kit.id'))
