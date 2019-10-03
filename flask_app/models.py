@@ -50,6 +50,7 @@ class Kit(db.Model):
 class Reagent(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(255), nullable=False)
+	#unique_id = db.Column(db.String(255), nullable=False) # TODO: fix later
 	barcode = db.Column(db.String(255), nullable=False)
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))
@@ -75,5 +76,6 @@ class Component(db.Model):
 	barcode = db.Column(db.String(255))
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))
+	exp_date = db.Column(db.DateTime)
 	condition = db.Column(db.String(255), nullable=False)
 	kit_fk = db.Column(db.Integer, db.ForeignKey('kit.id'))

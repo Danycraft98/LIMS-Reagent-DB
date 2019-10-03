@@ -31,7 +31,7 @@ def reagent_delete(reagent_id):
 		return redirect(url_for('login'))
 	reagent = Reagent.query.get(reagent_id)
 	current_time = datetime.today()
-	if (current_time - reagent.date_entered).total_seconds() > 3 * 3600:
+	if (current_time - reagent.date_entered).total_seconds() > 24 * 3600:
 		return redirect(url_for('reagent', reagent_id=reagent_id))
 	db.session.delete(reagent)
 	db.session.commit()
@@ -64,20 +64,6 @@ def add_reagent_redirect():
 		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 	quantity = int(request.form.get("quantity"))
 
-	reagent_label_size = request.form.get('reagent_label_size')
-	reagent_label = int(request.form.get('reagent_label'))
-	acquired_stat = request.form.get('acquired_stat')
-
-	batchpartnum = 1
-	batchnum = 1
-	while batchnum <= reagent_label:
-		printcont = (request.form.get("name"), exp_date, datetime.now())
-		print_label(printcont,"reagent", reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(quantity))
-		batchpartnum += 1
-		if batchpartnum > quantity:
-			batchpartnum = 1
-		batchnum += 1
-
 	reagent = Reagent(
 		name=request.form.get("name"),
 		barcode=request.form.get("barcode"),
@@ -93,3 +79,23 @@ def add_reagent_redirect():
 	db.session.commit()
 
 	return redirect(url_for("reagents"))
+
+
+@app.route("/print_reagent/<int:reagent_id>", methods=["GET", "POST"])
+def print_reagent(reagent_id):
+	reagent = Reagent.query.filter_by(id=reagent_id)[0]
+
+	reagent_label_size = request.form.get('reagent_label_size')
+	reagent_label = int(request.form.get('reagent_label'))
+	acquired_stat = request.form.get('acquired_stat')
+
+	batchpartnum = 1
+	batchnum = 1
+	while batchnum <= reagent_label:
+		printcont = (request.form.get("name"), reagent.exp_date, datetime.now())
+		print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchpartnum) + '/' + str(reagent.quantity))
+		batchpartnum += 1
+		if batchpartnum > reagent.quantity:
+			batchpartnum = 1
+		batchnum += 1
+	return redirect(url_for("reagent", reagent_id=reagent_id))
