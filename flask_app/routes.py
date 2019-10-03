@@ -12,7 +12,7 @@ def login():
 			return redirect('home')
 		else:
 			flash("Wrong username or password")
-	return render_template('login.html')
+	return render_template('login.html', before_home=True)
 
 
 @app.route("/logout")
@@ -42,7 +42,7 @@ def register():
 				flash("Password is not matched")
 		else:
 			flash("Username already exist")
-	return render_template('register.html')
+	return render_template('register.html', before_home=True)
 
 
 @app.route("/home")

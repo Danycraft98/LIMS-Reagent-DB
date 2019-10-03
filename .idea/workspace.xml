@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Fixed errors">
+      <change afterPath="$PROJECT_DIR$/flask_app/static/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/javascript/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/javascript/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/static/javascript/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/static/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagents.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +40,16 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_app/static" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static\css" />
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
       <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db" />
     </key>
   </component>
@@ -281,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570071444048</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Moved js functions. Fixed formats.">
+      <created>1570143864315</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1570143864316</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -319,6 +338,7 @@
     <MESSAGE value="Fixed minor detail" />
     <MESSAGE value="Removed &quot;Print Option&quot; button as it is unnecessary." />
     <MESSAGE value="Added expiry date to component." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added expiry date to component." />
+    <MESSAGE value="Moved js functions. Fixed formats." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved js functions. Fixed formats." />
   </component>
 </project>

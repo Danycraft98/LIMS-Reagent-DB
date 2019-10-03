@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'sofachrome';
+  src: url('sofachrome.eot'); /* IE9 Compat Modes */
+  src: url('sofachrome.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('sofachrome.woff') format('woff'), /* Modern Browsers */
+       url('sofachrome.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('sofachrome.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+body {
+	background: #fafafa;
+	color: #333333;
+	margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #444444;
+}
+
+.bg-steel {
+	background-color: #187078;
+}
+
+.site-header .navbar-nav .nav-link {
+	color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+	color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+	font-weight: 500;
+}
+
+.content-section {
+	background: #ffffff;
+	padding: 10px 20px;
+	border: 1px solid #dddddd;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+.big_cb {
+	width:20px;
+	height:20px;
+}
+
+th {
+	background: #f0f0f0;
+}
+
+.master tr th, .master tr td  {
+      padding-left: 30px;
+}
+
+.add {
+	width:160px;
+}
+
+.button {
+	margin-right: 30px;
+	width:120px;
+}
+
+.button2 {
+    margin-left: 35px;
+	width:120px;
+}
+
+.user_card {
+	padding-top:80px;
+	margin-top:1000px;
+	margin:0 auto;
+	height: 380px;
+	width: 340px;
+	background: #187078;
+	border-radius: 5px;
+}
+
+a, a:hover {
+    color: #333333;
+}

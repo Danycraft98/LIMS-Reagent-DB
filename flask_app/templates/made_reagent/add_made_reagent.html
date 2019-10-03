@@ -1,86 +1,91 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form action="/add_made_reagent_redirect" method="post" onsubmit="return confirmMsg();"
-      onkeypress="return event.keyCode != 13;">
-	<div class="container my-container">
-		<div class="row">
-			<div class="col">
-				<h2>Add Made-Reagent</h2>
-				<hr/>
-				<h4>Master Information</h4>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-3 form-group">
-				<label for="name">Made-Reagent Name:</label>
-				<input type="text" class="form-control" id="name" name="name" required>
-			</div>
-			<div class="col-3 form-group">
-				<label for="exp_date">Expiry Date:</label>
-				<input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}" required>
-			</div>
-			<div class="col-2 form-group">
-				<label for="quantity">Quantity:</label>
-				<input type="number" value="0" min="0" max="100" step="1" name="quantity"
-				       class="form-control" id="quantity"/>
-			</div>
-		</div>
-		<hr/>
-		<div class="row my-row">
-			<div class="col">
-				<h4>Component Information</h4>
-			</div>
-		</div>
-		<div id="containers_div">
-			<div id="container_div0" style="padding-bottom:30px">
-				<div class="row my-row">
-					<div class="col-3 form-group">
-						<label for="comp_name0">Component Name:</label>
-						<input type="text" class="form-control" name="comp_name" id="comp_name0">
-					</div>
-					<div class="col-4 form-group">
-						<label for="comp_barcode0">Component Barcode:</label>
-						<input type="text" class="form-control" name="comp_barcode" id="comp_barcode0"
-						       oninput="barcode_to_comp_name(this)">
-					</div>
-					<div class="col-2 form-group"></div>
-					<div class="col-1 form-group">
-						<label style="visibility: hidden;">Traaaaaaaaaaash:</label>
-						<input type="number" value="1" min="1" max="100" step="1" name="copy_num"
-						       class="form-control" id="copy_num0"/>
-					</div>
-					<div class="col-2 form-group">
-						<label for="comp_barcode0" style="visibility: hidden;">Traaaaaaaaaaash:</label>
-						<button type="button" class="btn btn-default" name="clone" id="clone"
-						        onclick="clone_element(this)">
-							<i class="fa fa-clone" style="font-size:24px"></i>
-						</button>
-						<button type="button" class="btn btn-default" name="trash" id="trash"
-						        onclick="remove_element(this)">
-							<i class="fa fa-trash-o" style="font-size:24px"></i>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row my-row col-3">
-			<button type="button" name="append" id="add_comp" onclick="add_element()">Add Component</button>
-		</div>
-		<br/>
-		<div class="row my-row">
-			<div class="col-12">
-				<button type="submit" class="btn btn-info button" name="submit" id="submit">
-					Save
-				</button>
-				<button type="button" class="btn btn-outline-info button" name="cancel" id="cancel"
-				        onclick="window.history.back();">
-					Cancel
-				</button>
-			</div>
-		</div>
-	</div>
-</form>
+<main role="main" class="container">
+    <div>
+        <form action="/add_made_reagent_redirect" method="post" onsubmit="return confirmMsg();"
+              onkeypress="return event.keyCode != 13;">
+            <div class="container my-container">
+                <div class="row">
+                    <div class="col">
+                        <h2>Add Made-Reagent</h2>
+                        <hr/>
+                        <h4>Master Information</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 form-group">
+                        <label for="name">Made-Reagent Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="col-3 form-group">
+                        <label for="exp_date">Expiry Date:</label>
+                        <input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}"
+                               required>
+                    </div>
+                    <div class="col-2 form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" value="0" min="0" max="100" step="1" name="quantity"
+                               class="form-control" id="quantity"/>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row my-row">
+                    <div class="col">
+                        <h4>Component Information</h4>
+                    </div>
+                </div>
+                <div id="containers_div">
+                    <div id="container_div0" style="padding-bottom:30px">
+                        <div class="row my-row">
+                            <div class="col-3 form-group">
+                                <label for="comp_name0">Component Name:</label>
+                                <input type="text" class="form-control" name="comp_name" id="comp_name0">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label for="comp_barcode0">Component Barcode:</label>
+                                <input type="text" class="form-control" name="comp_barcode" id="comp_barcode0"
+                                       oninput="barcode_to_comp_name(this)">
+                            </div>
+                            <div class="col-2 form-group"></div>
+                            <div class="col-1 form-group">
+                                <label style="visibility: hidden;">Traaaaaaaaaaash:</label>
+                                <input type="number" value="1" min="1" max="100" step="1" name="copy_num"
+                                       class="form-control" id="copy_num0"/>
+                            </div>
+                            <div class="col-2 form-group">
+                                <label for="comp_barcode0" style="visibility: hidden;">Traaaaaaaaaaash:</label>
+                                <button type="button" class="btn btn-default" name="clone" id="clone"
+                                        onclick="clone_element(this)">
+                                    <i class="fa fa-clone" style="font-size:24px"></i>
+                                </button>
+                                <button type="button" class="btn btn-default" name="trash" id="trash"
+                                        onclick="remove_element(this)">
+                                    <i class="fa fa-trash-o" style="font-size:24px"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-row col-3">
+                    <button type="button" name="append" id="add_comp" onclick="add_element()">Add Component</button>
+                </div>
+                <br/>
+                <div class="row my-row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-info button" name="submit" id="submit">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-outline-info button" name="cancel" id="cancel"
+                                onclick="window.history.back();">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
 {% endblock content %}
 
 {% block script %}
@@ -109,5 +114,6 @@
 		document.getElementById("containers_div").appendChild(tag);
 		counter++;
 	}
+
 </script>
 {% endblock script %}

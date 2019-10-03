@@ -1,58 +1,62 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="container my-container">
-	<div class="row">
-		<div class="col-7">
-			<h2>Manufacturers</h2>
-		</div>
-		<div class="col-3">
-			<form class="navbar-form navbar-left" action="{{ url_for('manufacturers') }}" method="post">
-				<div class="input-group">
-					<input id="searchbox" type="text" class="form-control"
-					       placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
-					<datalist id='listid'>
-						{% for manufacturer in all_manufacturers %}
-						<option>{{ manufacturer.name }}</option>
-						{% endfor %}
-					</datalist>
-					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="col-1">
-			<form action="{{ url_for('add_manufacturer') }}" method="post">
-				<button type="submit" class="btn btn-info add" name="manufacturer">Add Manufacturer</button>
-			</form>
-		</div>
-	</div>
-</div>
-<br/>
-<div class="row">
-	<div class="col-12">
-		<table class="table table-hover">
-			<thead>
-			<tr>
-				<th style="width: 10%">ID</th>
-				<th style="width: 70%">Manufacturer Name</th>
-				<th>Date Entered</th>
-			</tr>
-			</thead>
-			<tbody>
-			{% for manufacturer in manufacturers %}
-			<tr>
-				<td>{{ loop.index }}</td>
-				<td><a href="{{ url_for('manufacturer', manufacturer_id=manufacturer.id) }}">{{
-					manufacturer.name
-					}}</a></td>
-				<td>{{ manufacturer.date_entered.strftime("%B %e, %Y") }}</td>
-			</tr>
-			{% endfor %}
-			</tbody>
-		</table>
-	</div>
-</div>
+<main role="main" class="container">
+    <div>
+        <div class="container my-container">
+            <div class="row">
+                <div class="col-7">
+                    <h2>Manufacturers</h2>
+                </div>
+                <div class="col-3">
+                    <form class="navbar-form navbar-left" action="{{ url_for('manufacturers') }}" method="post">
+                        <div class="input-group">
+                            <input id="searchbox" type="text" class="form-control"
+                                   placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
+                            <datalist id='listid'>
+                                {% for manufacturer in all_manufacturers %}
+                                <option>{{ manufacturer.name }}</option>
+                                {% endfor %}
+                            </datalist>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1">
+                    <form action="{{ url_for('add_manufacturer') }}" method="post">
+                        <button type="submit" class="btn btn-info add" name="manufacturer">Add Manufacturer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 10%">ID</th>
+                        <th style="width: 70%">Manufacturer Name</th>
+                        <th>Date Entered</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for manufacturer in manufacturers %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><a href="{{ url_for('manufacturer', manufacturer_id=manufacturer.id) }}">{{
+                            manufacturer.name
+                            }}</a></td>
+                        <td>{{ manufacturer.date_entered.strftime("%B %e, %Y") }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock content %}
