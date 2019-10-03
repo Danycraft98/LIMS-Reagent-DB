@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 from argparse import ArgumentParser
 import os
@@ -29,14 +29,16 @@ args = parser.parse_args()
 
 # App Setup
 app = Flask(__name__)
+
 current_user = CurrentUser()
 app.config.update({
 	'SECRET_KEY': os.urandom(24),
-	'SQLALCHEMY_DATABASE_URI':'mysql://irene:irene123@10.0.2.2/reagent_db'
-	#'SQLALCHEMY_DATABASE_URI':'sqlite:///site.db'
+	#'SQLALCHEMY_DATABASE_URI':'mysql://irene:irene123@10.0.2.2/reagent_db'
+	'SQLALCHEMY_DATABASE_URI':'sqlite:///site.db'
 	#'SQLALCHEMY_DATABASE_URI':'mysql://root:@localhost/reagent_db'
 })
 
+"""
 if args.dbhost:
 	host = args.dbhost
 	sqluser = os.environ['SQL_USER']
@@ -49,7 +51,7 @@ if args.dbhost:
 
 app.config['SQLALCHEMY_BINDS'] = {'reagent_db': mySQL_con}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+"""
 db = SQLAlchemy(app)
 
 
