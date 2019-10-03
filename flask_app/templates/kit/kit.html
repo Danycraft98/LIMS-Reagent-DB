@@ -223,7 +223,9 @@
         </div>
     </div>
 </div>
+{% endblock modal %}
 
+{% block script %}
 <script>
     function edit_comp(element) {
         var info = element.id.split(",");
@@ -235,7 +237,5 @@
         document.getElementById("exp_date").setAttribute("value",info[5]);
         document.getElementById("comp_condition").setAttribute("value",info[6]);
     }
-
-
 </script>
-{% endblock modal %}
+{% endblock script %}

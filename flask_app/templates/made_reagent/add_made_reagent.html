@@ -65,7 +65,7 @@
 			</div>
 		</div>
 		<div class="row my-row col-3">
-			<button type="button" name="append" id="add_comp" onclick="add_element2()">Add Component</button>
+			<button type="button" name="append" id="add_comp" onclick="add_element()">Add Component</button>
 		</div>
 		<br/>
 		<div class="row my-row">
@@ -81,7 +81,9 @@
 		</div>
 	</div>
 </form>
+{% endblock content %}
 
+{% block script %}
 <script>
 	function barcode_to_comp_name(element) {
 		var found = false;
@@ -97,5 +99,15 @@
 		}
 	}
 
+	var counter = 1;
+	var properties;
+	function add_element() {
+		var tag = document.createElement("div");
+		tag.setAttribute("id", "container_div"+counter)
+		tag.setAttribute("style", "padding-bottom:30px")
+		tag.innerHTML = '<div class="row my-row"> <div class="col-3 form-group"> <label for="comp_name'+counter+'">Component Name:</label> <input type="text" class="form-control" name="comp_name" id="comp_name'+counter+'"> </div> <div class="col-4 form-group"> <label for="comp_barcode'+counter+'">Component Barcode:</label> <input type="text" class="form-control" name="comp_barcode" id="comp_barcode'+counter+'" oninput="barcode_to_comp_name(this)"> </div> <div class="col-2 form-group"> </div> <div class="col-1 form-group"> <label style="visibility: hidden;">Traaaaaaaaaaash:</label> <input type="number" value="1" min="1" max="100" step="1" name="copy_num" class="form-control" id="copy_num'+counter+'"/> </div> <div class="col-2 form-group"> <label for="comp_barcode'+counter+'" style="visibility: hidden;">Traaaaaaaaaaash:</label> <button type="button" class="btn btn-default" name="clone" id="clone" onclick="clone_element(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash'+counter+'" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div>';
+		document.getElementById("containers_div").appendChild(tag);
+		counter++;
+	}
 </script>
-{% endblock content %}
+{% endblock script %}
