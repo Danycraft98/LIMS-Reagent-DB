@@ -96,6 +96,12 @@
 						<label for="comp_lot_num0">Lot Number:</label>
 						<input type="text" class="form-control" name="comp_lot_num" id="comp_lot_num0">
 					</div>
+					<div class="col-3 form-group">
+						<label for="comp_exp_date0">Expiry Date:</label>
+						<input type="date" class="form-control" id="comp_exp_date0" name="comp_exp_date" min="{{ today }}">
+					</div>
+				</div>
+				<div class="row my-row">
 					<div class="col-6 form-group">
 						<label for="condition">Component Condition:</label>
 						<input type="text" class="form-control" name="condition" id="condition">
@@ -110,7 +116,7 @@
 		<div class="row my-row">
 			<div class="col-12">
 				<button type="submit" class="btn btn-info button" name="submit" id="submit">
-					Save & Print
+					Save
 				</button>
 				<button type="button" class="btn btn-outline-info button" name="cancel" id="cancel"
 				        onclick="window.history.back();">
