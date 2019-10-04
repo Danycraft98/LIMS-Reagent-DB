@@ -101,6 +101,9 @@ def add_kit_redirect():
             elif exp_date:
                 exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 
+            if lot_num == "":
+                lot_num = kit.date_entered.strftime("%m-%d-%Y")
+
             component = Component(
                 name=name,
                 #uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")+" "+str(value)+"/"+str(kit.quantity),
