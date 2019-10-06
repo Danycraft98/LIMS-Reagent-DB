@@ -5,9 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -328,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570147109379</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Updated lot number for component in kit. Fixed collapse element.">
+      <created>1570147980198</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1570147980198</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,7 +351,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated" />
     <MESSAGE value="Added SQL file" />
     <MESSAGE value="Updated dockerfile" />
     <MESSAGE value="Fixed bugs in made_reagent and reagent" />
@@ -370,6 +375,7 @@
     <MESSAGE value="Updated templates. Added Favicon.ico. Moved css and js files." />
     <MESSAGE value="Updated layout." />
     <MESSAGE value="Moved css file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved css file." />
+    <MESSAGE value="Updated lot number for component in kit. Fixed collapse element." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated lot number for component in kit. Fixed collapse element." />
   </component>
 </project>

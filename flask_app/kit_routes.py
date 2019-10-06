@@ -31,7 +31,7 @@ def kit(kit_id):
         #component.exp_date = request.form.get("exp_date")
         component.condition = request.form.get("comp_condition")
         db.session.commit()
-        return redirect(url_for(kit, kit_id=kit_id, Manufacturer=Manufacturer, range=range(kit.quantity)))
+        return redirect(url_for("kit", kit_id=kit_id))
     return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity))
 
 
@@ -102,7 +102,7 @@ def add_kit_redirect():
                 exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 
             if lot_num == "":
-                lot_num = kit.date_entered.strftime("%m-%d-%Y")
+                lot_num = kit.date_entered.strftime("%Y-%m-%d")
 
             component = Component(
                 name=name,

@@ -78,6 +78,12 @@
                         </tr>
                     </table>
                     <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div style="margin-left: 7%; margin-right: 7%">
                     <h3>Components</h3>
                     <hr/>
                     {% for i in range %}
@@ -92,11 +98,13 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>UID</th>
+                                <th>Barcode</th>
                                 <th>Part Number</th>
                                 <th>Lot Number</th>
-                                <th>Expiry Date</th>
+                                <th style="width:150px">Expiry Date</th>
                                 <th>Condition</th>
-                                <th></th>
+                                <th style="width:100px"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -104,6 +112,8 @@
                             kit.components|length // kit.quantity] %}
                             <tr>
                                 <td>{{ component.name }}</td>
+                                <td>{{ component.uid }}</td>
+                                <td>{{ component.barcode }}</td>
                                 <td>{{ component.part_num }}</td>
                                 <td>{{ component.lot_num }}</td>
                                 {% if component.exp_date %}
@@ -126,11 +136,8 @@
                     </div>
                     <br/>
                     {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+</div>
+
 {% endblock content %}
 
 {% block modal %}

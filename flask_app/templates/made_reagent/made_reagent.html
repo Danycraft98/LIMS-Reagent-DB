@@ -55,8 +55,10 @@
                         <tr>
                             <th>Name</th>
                             <th>Barcode</th>
+                            <th>UID</th>
                             <th>Part Number</th>
                             <th>Lot Number</th>
+                            <th style="width:150px">Expiry Date</th>
                             <th>Condition</th>
                         </tr>
                         </thead>
@@ -66,8 +68,10 @@
                         <tr>
                             <td>{{ comp.name }}</td>
                             <td>{{ comp.barcode }}</td>
+                            <td>{{ comp.uid }}</td>
                             <td>{{ comp.part_num }}</td>
                             <td>{{ comp.lot_num }}</td>
+                            <td>{{ comp.exp_date }}</td>
                             <td>{{ comp.condition }}</td>
                         </tr>
                         {% endfor %}
