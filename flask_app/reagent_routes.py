@@ -67,6 +67,7 @@ def add_reagent_redirect():
 	reagent = Reagent(
 		name=request.form.get("name"),
 		barcode=request.form.get("barcode"),
+		uid = " ",
 		part_num=part_num,
 		lot_num=lot_num,
 		date_entered=datetime.today(),

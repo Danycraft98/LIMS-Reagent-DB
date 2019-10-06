@@ -95,6 +95,7 @@ def add_kit_redirect():
     comp_exp_dates = request.form.getlist("comp_exp_date")
     conditions = request.form.getlist("condition")
     for value in range(kit.quantity):
+        index = 1
         for name, comp_num, part_num, lot_num, exp_date, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, conditions):
             if exp_date == "":
                 exp_date = kit.date_entered.replace(year=kit.date_entered.year + 10)
@@ -106,7 +107,7 @@ def add_kit_redirect():
 
             component = Component(
                 name=name,
-                #uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")+" "+str(value)+"/"+str(kit.quantity),
+                uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(index) + "/" + str(len(names)) + " "+str(value)+"/"+str(kit.quantity),
                 barcode=comp_num,
                 part_num=part_num,
                 lot_num=lot_num,
@@ -116,6 +117,7 @@ def add_kit_redirect():
             )
             db.session.add(component)
             db.session.commit()
+            index += 1
 
     return redirect(url_for("kit", kit_id=kit.id))
 
