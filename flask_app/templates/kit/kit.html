@@ -5,25 +5,25 @@
     <div>
         <div class="container my-container">
             <div class="row">
-                <div class="col-4">
+                <div class="col-5">
                     <h2>Kit</h2>
                 </div>
-                <div class="col-2">
+                <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
                     <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#kit_modal">
                         Print
                         Label
                     </button>
                 </div>
-                <div class="col-2">
+                <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
                     <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print
                     </button>
                 </div>
-                <div class="col-2">
+                <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
                     <form action="/kit_delete/{{ kit.id }}">
                         <button type="submit" class="btn btn-info button2">Delete</button>
                     </form>
                 </div>
-                <div class="col-2">
+                <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
                     <button type="button" class="btn btn-info button2" onclick="window.history.back();">Back</button>
                 </div>
             </div>
@@ -245,6 +245,11 @@
 
 {% block script %}
 <script>
+    // Reset modal
+    $('.modal').on('hidden.bs.modal', function(){
+        $(this).find('form')[0].reset();
+    });
+
     function edit_comp(element) {
         var info = element.id.split(",");
         document.getElementById("comp_id").setAttribute("value",info[0]);
