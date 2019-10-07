@@ -42,6 +42,39 @@ def made_reagent_delete(made_reagent_id):
 def add_made_reagent():
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
+
+	if request.method == "POST":
+		exp_date = request.form.get("exp_date")
+		if exp_date == '':
+			exp_date = None
+		elif exp_date:
+			exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
+		quantity = int(request.form.get("quantity"))
+
+		made_reagent = MadeReagent(
+			name=request.form.get("name"),
+			exp_date=exp_date,
+			date_entered=datetime.today(),
+			quantity=quantity
+		)
+
+		db.session.add(made_reagent)
+		db.session.commit()
+
+		names = Counter(request.form.getlist("comp_name"))
+		reagent_list = {}
+		component_list = {}
+		for name in names:
+			if len(list(Reagent.query.filter_by(name=name))) > 0:
+				reagent_list[name] = names[name]
+			elif len(list(Component.query.filter_by(name=name))) > 0:
+				component_list[name] = names[name]
+		made_reagent.reagent_list = str(reagent_list)
+		made_reagent.component_list = str(component_list)
+		db.session.commit()
+
+		return redirect(url_for("made_reagent", made_reagent_id=made_reagent.id))
+
 	comp_infos = {}
 	for comp in Component.query.all():
 		comp_infos[comp.barcode] = comp.name
@@ -50,40 +83,6 @@ def add_made_reagent():
 		comp_infos[reagent.barcode] = reagent.name
 	today = datetime.today().date()
 	return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos=comp_infos)
-
-
-@app.route("/add_made_reagent_redirect", methods=["GET", "POST"])
-def add_made_reagent_redirect():
-	exp_date = request.form.get("exp_date")
-	if exp_date == '':
-		exp_date = None
-	elif exp_date:
-		exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-	quantity = int(request.form.get("quantity"))
-
-	made_reagent = MadeReagent(
-		name=request.form.get("name"),
-		exp_date = exp_date,
-		date_entered=datetime.today(),
-		quantity = quantity
-	)
-
-	db.session.add(made_reagent)
-	db.session.commit()
-
-	names = Counter(request.form.getlist("comp_name"))
-	reagent_list = {}
-	component_list = {}
-	for name in names:
-		if len(list(Reagent.query.filter_by(name=name))) > 0:
-			reagent_list[name] = names[name]
-		elif len(list(Component.query.filter_by(name=name))) > 0:
-			component_list[name] = names[name]
-	made_reagent.reagent_list = str(reagent_list)
-	made_reagent.component_list = str(component_list)
-	db.session.commit()
-
-	return redirect(url_for("made_reagents"))
 
 
 @app.route("/print_made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])

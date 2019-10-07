@@ -4,10 +4,13 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Updated layout.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagents.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagents.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagents.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -370,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570480135548</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Rearranged the add_kit">
+      <created>1570492219193</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1570492219194</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -387,7 +397,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Renamed print.py to printer.py and deleted unnecessary files" />
     <MESSAGE value="Fixed add.js function. Updated sql schema file." />
     <MESSAGE value="Fixed the expiry date error." />
     <MESSAGE value="Updated expiry date properties. Also undone __init__.py file error." />
@@ -412,6 +421,7 @@
     <MESSAGE value="Fixed main.py &quot;debug=True&quot;. Added colon to print modals. Fixed UID numbering. Fixed quantity default value." />
     <MESSAGE value="Fixed distance of buttons" />
     <MESSAGE value="UID layout fix for Reagent." />
-    <option name="LAST_COMMIT_MESSAGE" value="UID layout fix for Reagent." />
+    <MESSAGE value="Rearranged the add_kit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rearranged the add_kit" />
   </component>
 </project>
