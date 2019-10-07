@@ -152,7 +152,15 @@
                 <div class="modal-body">
                     <div class="row my-row">
                         <div class="col-4 form-group">
-                            <label for="kit_label">Kit Label Copies</label>
+                            <label for="kit_label">Kit Label Copies:</label>
+                        </div>
+                        <div class="col-8 form-group">
+                            <label for="comp_label_s">Component Label Copies:</label>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="row my-row">
+                        <div class="col-4 form-group">
                             <select class="form-control" id="kit_label_size" name="kit_label_size">
                                 <option value="s">Small</option>
                                 <option value="m">Medium</option>
@@ -162,16 +170,12 @@
                                    class="form-control" name="kit_label" id="kit_label"/>
                         </div>
                         <div class="col-4 form-group">
-                            <label for="comp_label_s">Component Label Copies</label>
-                            <br/>
                             <label>Small</label>
                             <br/>
                             <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
                                    class="form-control" name="comp_label_s" id="comp_label_s"/>
                         </div>
                         <div class="col-4 form-group">
-                            <label for="comp_label_m" style="visibility: hidden">Component Label Copies</label>
-                            <br/>
                             <label>Medium</label>
                             <br/>
                             <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
