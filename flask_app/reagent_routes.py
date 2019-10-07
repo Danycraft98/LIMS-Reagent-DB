@@ -22,7 +22,7 @@ def reagent(reagent_id):
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	reagent = Reagent.query.get(reagent_id)
-	return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer)
+	return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer, range=range(reagent.quantity))
 
 
 @app.route("/reagent_delete/<int:reagent_id>")
@@ -67,7 +67,6 @@ def add_reagent_redirect():
 	reagent = Reagent(
 		name=request.form.get("name"),
 		barcode=request.form.get("barcode"),
-		uid = " ",
 		part_num=part_num,
 		lot_num=lot_num,
 		date_entered=datetime.today(),

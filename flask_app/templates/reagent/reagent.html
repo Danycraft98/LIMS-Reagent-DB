@@ -71,8 +71,12 @@
                             {% endif %}
                         </tr>
                         <tr>
-                            <th>UID</th>
-                            <td>{{ reagent.uid }}<td>
+                            <th style="vertical-align:middle">UID</th>
+                            <td>
+                                {% for i in range %}
+                                {{ reagent.date_entered }} {{ i + 1 }} / {{ reagent.quantity }} <br/>
+                                {% endfor %}
+                            </td>
                         </tr>
                     </table>
                 </div>
