@@ -107,7 +107,7 @@ def add_kit_redirect():
 
             component = Component(
                 name=name,
-                uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(index) + "/" + str(len(names)) + " "+str(value)+"/"+str(kit.quantity),
+                uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(index) + "/" + str(len(names)) + " "+str(value + 1)+"/"+str(kit.quantity),
                 barcode=comp_num,
                 part_num=part_num,
                 lot_num=lot_num,
@@ -145,7 +145,7 @@ def print_kit(kit_id):
         batchnum = 1
         batchpartnum = 1
         while batchnum <= comp_label_s:
-            printcont = (component.name, kit.exp_date, kit.date_entered)
+            printcont = (component.name, component.exp_date, kit.date_entered)
             print_label(printcont, "kit", "s", None, str(batchpartnum) + '/' + str(comp_label_s))
             batchpartnum += 1
             if batchpartnum > kit.quantity:
@@ -155,7 +155,7 @@ def print_kit(kit_id):
         batchnum = 1
         batchpartnum = 1
         while batchnum <= comp_label_m:
-            printcont = (component.name, kit.exp_date, kit.date_entered)
+            printcont = (component.name, component.exp_date, kit.date_entered)
             print_label(printcont, "kit", "m", None, str(batchpartnum) + '/' + str(comp_label_m))
             batchpartnum += 1
             if batchpartnum > kit.quantity:
