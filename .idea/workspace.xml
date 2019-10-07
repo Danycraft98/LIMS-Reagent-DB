@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Fixed errors">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Updated layout.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/javascript/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/javascript/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,11 +32,16 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_app/static" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static\css" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
       <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db" />
     </key>
   </component>
@@ -255,7 +257,91 @@
       <option name="project" value="LOCAL" />
       <updated>1569956872416</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fixed &quot;Save &amp; Print&quot; button to &quot;Save&quot; button.">
+      <created>1570071287021</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1570071287021</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fixed minor detail">
+      <created>1570071346298</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1570071346298</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Removed &quot;Print Option&quot; button as it is unnecessary.">
+      <created>1570071411780</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1570071411780</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added expiry date to component.">
+      <created>1570071444048</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1570071444048</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Moved js functions. Fixed formats.">
+      <created>1570143864315</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1570143864316</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Updated templates. Added Favicon.ico. Moved css and js files.">
+      <created>1570146091046</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1570146091046</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Updated layout.">
+      <created>1570146593446</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1570146593446</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Updated layout.">
+      <created>1570146648975</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1570146648975</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Updated layout.">
+      <created>1570147073121</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1570147073121</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Moved css file.">
+      <created>1570147109379</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1570147109379</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Updated lot number for component in kit. Fixed collapse element.">
+      <created>1570147980198</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1570147980198</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fixed redirect error. Changed format to fit table in kit. Added UID section.">
+      <created>1570330520984</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1570330520985</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -272,8 +358,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated" />
-    <MESSAGE value="Added SQL file" />
     <MESSAGE value="Updated dockerfile" />
     <MESSAGE value="Fixed bugs in made_reagent and reagent" />
     <MESSAGE value="Added delete button function for each categories." />
@@ -289,6 +373,16 @@
     <MESSAGE value="Moved and updated print label." />
     <MESSAGE value="Updated project." />
     <MESSAGE value="&quot;Delete is available before 24-hour&quot; is set" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Delete is available before 24-hour&quot; is set" />
+    <MESSAGE value="Fixed &quot;Save &amp; Print&quot; button to &quot;Save&quot; button." />
+    <MESSAGE value="Fixed minor detail" />
+    <MESSAGE value="Removed &quot;Print Option&quot; button as it is unnecessary." />
+    <MESSAGE value="Added expiry date to component." />
+    <MESSAGE value="Moved js functions. Fixed formats." />
+    <MESSAGE value="Updated templates. Added Favicon.ico. Moved css and js files." />
+    <MESSAGE value="Updated layout." />
+    <MESSAGE value="Moved css file." />
+    <MESSAGE value="Updated lot number for component in kit. Fixed collapse element." />
+    <MESSAGE value="Fixed redirect error. Changed format to fit table in kit. Added UID section." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed redirect error. Changed format to fit table in kit. Added UID section." />
   </component>
 </project>

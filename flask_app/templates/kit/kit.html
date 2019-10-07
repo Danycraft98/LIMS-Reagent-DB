@@ -1,129 +1,143 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<div class="container my-container">
-    <div class="row">
-        <div class="col-4">
-            <h2>Kit</h2>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#kit_modal">Print
-                Label
-            </button>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print</button>
-        </div>
-        <div class="col-2">
-            <form action="/kit_delete/{{ kit.id }}">
-                <button type="submit" class="btn btn-info button2">Delete</button>
-            </form>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-info button2" onclick="window.history.back();">Back</button>
-        </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-hover master">
-                <tr>
-                    <th>Kit Name</th>
-                    <td>{{ kit.name }}</td>
-                </tr>
-                <tr>
-                    <th>Manufacturer</th>
-                    <td>{{ Manufacturer.query.get(kit.manufacturer_fk).name }}</td>
-                </tr>
-                <tr>
-                    <th>Box Lot Barcode</th>
-                    <td>{{ kit.barcode }}</td>
-                </tr>
-                <tr>
-                    <th>Part Number</th>
-                    {% if kit.part_num != '-1' %}
-                    <td>{{ kit.part_num }}</td>
-                    {% elif kit.part_num == '-1' %}
-                    <td>N/A</td>
-                    {% endif %}
-                </tr>
-                <tr>
-                    <th>Lot Number</th>
-                    {% if kit.lot_num != '-1' %}
-                    <td>{{ kit.lot_num }}</td>
-                    {% elif kit.lot_num == '-1' %}
-                    <td>N/A</td>
-                    {% endif %}
-                </tr>
-                <tr>
-                    <th>Date Entered</th>
-                    {% if kit.date_entered %}
-                    <td>{{ kit.date_entered.strftime("%B %e, %Y") }}</td>
-                    {% elif not kit.exp_date %}
-                    <td>N/A</td>
-                    {% endif %}
-
-                </tr>
-                <tr>
-                    <th>Expiry Date</th>
-                    {% if kit.exp_date %}
-                    <td>{{ kit.exp_date.strftime("%B %e, %Y") }}</td>
-                    {% elif not kit.exp_date %}
-                    <td>N/A</td>
-                    {% endif %}
-                </tr>
-            </table>
-            <br/>
-            <h3>Components</h3>
-            <hr/>
-            {% for i in range %}
-            <h4>
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#comp_div{{i}}">Kit
-                    UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }}
-                </button>
-            </h4>
-            <div id="comp_div{{i}}" class="row collapse">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Part Number</th>
-                        <th>Lot Number</th>
-                        <th>Expiry Date</th>
-                        <th>Condition</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for component in kit.components[i * kit.components|length // kit.quantity:(i+1) *
-                    kit.components|length // kit.quantity] %}
-                    <tr>
-                        <td>{{ component.name }}</td>
-                        <td>{{ component.part_num }}</td>
-                        <td>{{ component.lot_num }}</td>
-                        {% if component.exp_date %}
-                        <td>{{ component.exp_date.strftime("%B %e, %Y") }}</td>
-                        {% elif not component.exp_date %}
-                        <td>N/A</td>
-                        {% endif %}
-                        <td>{{ component.condition }}</td>
-                        <td>
-                            <button class="btn btn-info"
-                                    id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}"
-                                    data-toggle="modal" data-target="#comp_modal" onclick="edit_comp(this);">Edit
-                            </button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+<main role="main" class="container">
+    <div>
+        <div class="container my-container">
+            <div class="row">
+                <div class="col-4">
+                    <h2>Kit</h2>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#kit_modal">
+                        Print
+                        Label
+                    </button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print
+                    </button>
+                </div>
+                <div class="col-2">
+                    <form action="/kit_delete/{{ kit.id }}">
+                        <button type="submit" class="btn btn-info button2">Delete</button>
+                    </form>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-info button2" onclick="window.history.back();">Back</button>
+                </div>
             </div>
-            <br/>
-            {% endfor %}
+            <hr/>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hover master">
+                        <tr>
+                            <th>Kit Name</th>
+                            <td>{{ kit.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Manufacturer</th>
+                            <td>{{ Manufacturer.query.get(kit.manufacturer_fk).name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Box Lot Barcode</th>
+                            <td>{{ kit.barcode }}</td>
+                        </tr>
+                        <tr>
+                            <th>Part Number</th>
+                            {% if kit.part_num != '-1' %}
+                            <td>{{ kit.part_num }}</td>
+                            {% elif kit.part_num == '-1' %}
+                            <td>N/A</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Lot Number</th>
+                            {% if kit.lot_num != '-1' %}
+                            <td>{{ kit.lot_num }}</td>
+                            {% elif kit.lot_num == '-1' %}
+                            <td>N/A</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Date Entered</th>
+                            {% if kit.date_entered %}
+                            <td>{{ kit.date_entered.strftime("%B %e, %Y") }}</td>
+                            {% elif not kit.exp_date %}
+                            <td>N/A</td>
+                            {% endif %}
+
+                        </tr>
+                        <tr>
+                            <th>Expiry Date</th>
+                            {% if kit.exp_date %}
+                            <td>{{ kit.exp_date.strftime("%B %e, %Y") }}</td>
+                            {% elif not kit.exp_date %}
+                            <td>N/A</td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                    <br/>
+                </div>
+            </div>
         </div>
     </div>
+</main>
+<div style="margin-left: 7%; margin-right: 7%">
+                    <h3>Components</h3>
+                    <hr/>
+                    {% for i in range %}
+                    <h4>
+                        <button type="button" class="btn btn-default" data-toggle="collapse"
+                                data-target="#comp_div{{i}}">Kit
+                            UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }}
+                        </button>
+                    </h4>
+                    <div id="comp_div{{i}}" class="row collapse">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>UID</th>
+                                <th>Barcode</th>
+                                <th>Part Number</th>
+                                <th>Lot Number</th>
+                                <th style="width:150px">Expiry Date</th>
+                                <th>Condition</th>
+                                <th style="width:100px"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for component in kit.components[i * kit.components|length // kit.quantity:(i+1) *
+                            kit.components|length // kit.quantity] %}
+                            <tr>
+                                <td>{{ component.name }}</td>
+                                <td>{{ component.uid }}</td>
+                                <td>{{ component.barcode }}</td>
+                                <td>{{ component.part_num }}</td>
+                                <td>{{ component.lot_num }}</td>
+                                {% if component.exp_date %}
+                                <td>{{ component.exp_date.strftime("%B %e, %Y") }}</td>
+                                {% elif not component.exp_date %}
+                                <td>N/A</td>
+                                {% endif %}
+                                <td>{{ component.condition }}</td>
+                                <td>
+                                    <button class="btn btn-info"
+                                            id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}"
+                                            data-toggle="modal" data-target="#comp_modal" onclick="edit_comp(this);">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    {% endfor %}
 </div>
+
 {% endblock content %}
 
 {% block modal %}
@@ -223,7 +237,9 @@
         </div>
     </div>
 </div>
+{% endblock modal %}
 
+{% block script %}
 <script>
     function edit_comp(element) {
         var info = element.id.split(",");
@@ -236,6 +252,5 @@
         document.getElementById("comp_condition").setAttribute("value",info[6]);
     }
 
-
 </script>
-{% endblock modal %}
+{% endblock script %}

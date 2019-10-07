@@ -1,16 +1,6 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html>
-<head>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-	<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-</head>
-<body>
+{% block content %}
 <div class="error_msg" align="center">
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -71,9 +61,9 @@
 				<div class="d-flex justify-content-center mt-3 login_container">
 					<button type="submit" class="btn btn-info register_btn"> Create Account</button>
 				</div> <!-- form-group// -->
-				<p class="text-center">Have an account? <a href="/">Log In</a></p>
+				<p class="text-center">Have an account? <a href="/" class="white">Log In</a></p>
 			</form>
 		</div>
 	</div> <!-- card.// -->
 </div>
-</body>
+{% endblock content %}

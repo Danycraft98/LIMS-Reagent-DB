@@ -37,6 +37,7 @@ app.config.update({
 	#'SQLALCHEMY_DATABASE_URI':'mysql://root:@localhost/reagent_db'
 })
 
+
 if args.dbhost:
 	host = args.dbhost
 	sqluser = os.environ['SQL_USER']
