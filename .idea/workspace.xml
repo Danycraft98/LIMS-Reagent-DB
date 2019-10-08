@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Rearragned add formats.">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone the wrong commit/push.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturers.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -379,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570492581054</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Undone the wrong commit/push.">
+      <created>1570492719909</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1570492719909</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -396,7 +407,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed the expiry date error." />
     <MESSAGE value="Updated expiry date properties. Also undone __init__.py file error." />
     <MESSAGE value="Fixed copy_num error." />
     <MESSAGE value="Fixed errors" />
@@ -421,6 +431,7 @@
     <MESSAGE value="UID layout fix for Reagent." />
     <MESSAGE value="Rearranged the add_kit" />
     <MESSAGE value="Rearragned add formats." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rearragned add formats." />
+    <MESSAGE value="Undone the wrong commit/push." />
+    <option name="LAST_COMMIT_MESSAGE" value="Undone the wrong commit/push." />
   </component>
 </project>
