@@ -9,7 +9,12 @@ def print_label(printitem, printtype, printsize, acquirymet, batchratio):
 	credate = credate.strftime("%Y-%m-%d %H:%M:%S")
 	destination = ""
 
-	# Format for how everything is displayed on the label, different cases available for different situations - "s" for small label format, "m" for medium label format, acquiry can be purchased "p" (all info except name required on label) or made "m" (all info required on label)
+	"""Format for how everything is displayed on the label, different cases available for different situations
+	- 's' for small label format
+	- 'm' for medium label format
+	- acquiry can be: 
+		- 'p' for purchased
+		- ',' for made"""
 	TEMPLATES = {}
 	if printtype == "kit":
 		if printsize == "s":
