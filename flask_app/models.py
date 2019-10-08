@@ -43,8 +43,8 @@ class Kit(db.Model):
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
+	comment = db.Column(db.String(255))
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
-	#comment = db.Column(db.String(255))
 	components = db.relationship('Component', lazy=True)
 
 
