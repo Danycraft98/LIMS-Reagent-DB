@@ -44,13 +44,13 @@ class Kit(db.Model):
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
+	#comment = db.Column(db.String(255))
 	components = db.relationship('Component', lazy=True)
 
 
 class Reagent(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(255), nullable=False)
-	uid = db.Column(db.String(255)) #, nullable=False)
 	barcode = db.Column(db.String(255), nullable=False)
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))

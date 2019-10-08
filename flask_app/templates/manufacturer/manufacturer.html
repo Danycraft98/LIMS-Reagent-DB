@@ -2,172 +2,171 @@
 
 {% block content %}
 <main role="main" class="container">
-    <div>
-        <div class="container my-container">
-            <div class="row">
-                <div class="col-9">
-                    <h2>Manufacturer</h2>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-info" onclick="window.print();return false;">Print</button>
-                </div>
-                <div class="col-1">
-                    <form action="/manufacturer_delete/{{ manufacturer.id }}">
-                        <button type="submit" class="btn btn-info">Delete</button>
-                    </form>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-info" onclick="window.history.back();">Back</button>
-                </div>
+    <div class="container my-container">
+        <div class="row">
+            <div class="col-5">
+                <h2>Manufacturer</h2>
             </div>
-            <hr/>
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-hover master">
-                        <tr>
-                            <th>Manufacturer Name</th>
-                            <td colspan="2">{{ manufacturer.name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date Entered</th>
-                            <td colspan="2">{{ manufacturer.date_entered.strftime("%B %e, %Y") }}</td>
-                        </tr>
-                        <tr>
-                            <th>Sample Barcode</th>
-                            {% if manufacturer.barcode and manufacturer.barcode|length > 0 %}
-                            <td colspan="2">{{ manufacturer.barcode }}</td>
-                            {% else %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>Sample Part Number / Lot Number</th>
-                            {% if manufacturer.part_start != -1 %}
-                            <td>{{ manufacturer.barcode[manufacturer.part_start:manufacturer.part_end] }}</td>
-                            {% else %}
-                            <td>N/A</td>
-                            {% endif %}
-                            {% if manufacturer.lot_start != -1 %}
-                            <td>{{ manufacturer.barcode[manufacturer.lot_start:manufacturer.lot_end] }}</td>
-                            {% else %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>Sample Expire Date</th>
-                            {% if manufacturer.exp_date_start != -1 %}
-                            <td colspan="2">{{
-                                manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}
-                            </td>
-                            {% else %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>Sample Component Barcode</th>
-                            {% if manufacturer.compo_barcode %}
-                            <td colspan="2">{{ manufacturer.compo_barcode }}</td>
-                            {% else %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>Sample Component Part Number / Lot Number</th>
-                            {% if manufacturer.compo_barcode %}
-                            <td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end]
-                                }}
-                            </td>
-                            <td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end]
-                                }}
-                            </td>
-                            {% else %}
-                            <td>N/A</td>
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                    </table>
-                </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;"></div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print</button>
             </div>
-            <br/>
-            <div class="row">
-                <div class="col-6">
-                    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#kit_div">
-                        Kit Table
-                    </button>
-                    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#reagent_div">
-                        Reagent Table
-                    </button>
-                </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <form action="/manufacturer_delete/{{ manufacturer.id }}">
+                    <button type="submit" class="btn btn-info button2">Delete</button>
+                </form>
             </div>
-            <div id="kit_div" class="row collapse">
-                <div class="col-12">
-                    <br/>
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>Kit Name</th>
-                            <th>Kit Barcode</th>
-                            <th>Part Number</th>
-                            <th>Lot Number</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for kit in manufacturer.kits %}
-                        <tr>
-                            <td><a href="{{ url_for('kit', kit_id=kit.id) }}">{{ kit.name }}</a></td>
-                            <td>{{ kit.barcode }}</td>
-
-                            {% if kit.part_num != -1 %}
-                            <td>{{ kit.part_num }}</td>
-                            {% elif kit.part_num == -1 %}
-                            <td>N/A</td>
-                            {% endif %}
-
-                            {% if kit.lot_num != -1 %}
-                            <td>{{ kit.lot_num }}</td>
-                            {% elif kit.lot_num == -1 %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <button type="button" class="btn btn-info button2" onclick="window.history.back();">Back</button>
             </div>
-            <div id="reagent_div" class="row collapse">
-                <div class="col-12">
-                    <br/>
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>Reagent Name</th>
-                            <th>Reagent Barcode</th>
-                            <th>Part Number</th>
-                            <th>Lot Number</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for reagent in manufacturer.reagents %}
-                        <tr>
-                            <td><a href="{{ url_for('reagent', reagent_id=reagent.id) }}">{{ reagent.name }}</a></td>
-                            <td>{{ reagent.barcode }}</td>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover master">
+                    <tr>
+                        <th>Manufacturer Name</th>
+                        <td colspan="2">{{ manufacturer.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date Entered</th>
+                        <td colspan="2">{{ manufacturer.date_entered.strftime("%B %e, %Y") }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sample Barcode</th>
+                        {% if manufacturer.barcode and manufacturer.barcode|length > 0 %}
+                        <td colspan="2">{{ manufacturer.barcode }}</td>
+                        {% else %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Sample Part Number / Lot Number</th>
+                        {% if manufacturer.part_start != -1 %}
+                        <td>{{ manufacturer.barcode[manufacturer.part_start:manufacturer.part_end] }}</td>
+                        {% else %}
+                        <td>N/A</td>
+                        {% endif %}
+                        {% if manufacturer.lot_start != -1 %}
+                        <td>{{ manufacturer.barcode[manufacturer.lot_start:manufacturer.lot_end] }}</td>
+                        {% else %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Sample Expire Date</th>
+                        {% if manufacturer.exp_date_start != -1 %}
+                        <td colspan="2">{{
+                            manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}
+                        </td>
+                        {% else %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Sample Component Barcode</th>
+                        {% if manufacturer.compo_barcode %}
+                        <td colspan="2">{{ manufacturer.compo_barcode }}</td>
+                        {% else %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Sample Component Part Number / Lot Number</th>
+                        {% if manufacturer.compo_barcode %}
+                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end]
+                            }}
+                        </td>
+                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end]
+                            }}
+                        </td>
+                        {% else %}
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-6">
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#kit_div">
+                    Kit Table
+                </button>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#reagent_div">
+                    Reagent Table
+                </button>
+            </div>
+        </div>
+        <div id="kit_div" class="row collapse">
+            <div class="col-12">
+                <br/>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Kit Name</th>
+                        <th>Kit Barcode</th>
+                        <th>Part Number</th>
+                        <th>Lot Number</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for kit in manufacturer.kits %}
+                    <tr>
+                        <td><a href="{{ url_for('kit', kit_id=kit.id) }}">{{ kit.name }}</a></td>
+                        <td>{{ kit.barcode }}</td>
 
-                            {% if reagent.part_num != -1 %}
-                            <td>{{ reagent.part_num }}</td>
-                            {% elif reagent.part_num == -1 %}
-                            <td>N/A</td>
-                            {% endif %}
+                        {% if kit.part_num != -1 %}
+                        <td>{{ kit.part_num }}</td>
+                        {% elif kit.part_num == -1 %}
+                        <td>N/A</td>
+                        {% endif %}
 
-                            {% if reagent.lot_num != -1 %}
-                            <td>{{ reagent.lot_num }}</td>
-                            {% elif reagent.lot_num == -1 %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                        {% if kit.lot_num != -1 %}
+                        <td>{{ kit.lot_num }}</td>
+                        {% elif kit.lot_num == -1 %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="reagent_div" class="row collapse">
+            <div class="col-12">
+                <br/>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Reagent Name</th>
+                        <th>Reagent Barcode</th>
+                        <th>Part Number</th>
+                        <th>Lot Number</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reagent in manufacturer.reagents %}
+                    <tr>
+                        <td><a href="{{ url_for('reagent', reagent_id=reagent.id) }}">{{ reagent.name }}</a></td>
+                        <td>{{ reagent.barcode }}</td>
+
+                        {% if reagent.part_num != -1 %}
+                        <td>{{ reagent.part_num }}</td>
+                        {% elif reagent.part_num == -1 %}
+                        <td>N/A</td>
+                        {% endif %}
+
+                        {% if reagent.lot_num != -1 %}
+                        <td>{{ reagent.lot_num }}</td>
+                        {% elif reagent.lot_num == -1 %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

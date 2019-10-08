@@ -2,76 +2,82 @@
 
 {% block content %}
 <main role="main" class="container">
-    <div>
-        <div class="container my-container">
-            <div class="row">
-                <div class="col-4">
-                    <h2>Reagent</h2>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#reagent_modal">
-                        Print Label
-                    </button>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print
-                    </button>
-                </div>
-                <div class="col-2">
-                    <form action="/reagent_delete/{{ reagent.id }}">
-                        <button type="submit" class="btn btn-info button2">Delete</button>
-                    </form>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-info button2" onclick="window.history.back();">Back</button>
-                </div>
+    <div class="container my-container">
+        <div class="row">
+            <div class="col-5">
+                <h2>Reagent</h2>
             </div>
-            <hr/>
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-hover master">
-                        <tr>
-                            <th>Reagent Name</th>
-                            <td>{{ reagent.name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Manufacturer</th>
-                            <td>{{ Manufacturer.query.get(reagent.manufacturer_fk).name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Box Lot Barcode</th>
-                            <td>{{ reagent.barcode }}</td>
-                        </tr>
-                        <tr>
-                            <th>Part Number</th>
-                            {% if reagent.part_num != '-1' %}
-                            <td>{{ reagent.part_num }}</td>
-                            {% elif reagent.part_num == '-1' %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>Lot Number</th>
-                            {% if reagent.lot_num != '-1' %}
-                            <td>{{ reagent.lot_num }}</td>
-                            {% elif reagent.lot_num == '-1' %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>Date Entered</th>
-                            <td>{{ reagent.date_entered.strftime("%B %e, %Y") }}</td>
-                        </tr>
-                        <tr>
-                            <th>Expiry Date</th>
-                            {% if reagent.exp_date %}
-                            <td>{{ reagent.exp_date.strftime("%B %e, %Y") }}</td>
-                            {% elif not reagent.exp_date %}
-                            <td>N/A</td>
-                            {% endif %}
-                        </tr>
-                    </table>
-                </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#reagent_modal">
+                    Print Label
+                </button>
+            </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print
+                </button>
+            </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <form action="/reagent_delete/{{ reagent.id }}">
+                    <button type="submit" class="btn btn-info button2">Delete</button>
+                </form>
+            </div>
+            <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
+                <button type="button" class="btn btn-info button2" onclick="window.history.back();">Back</button>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover master">
+                    <tr>
+                        <th>Reagent Name</th>
+                        <td>{{ reagent.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Manufacturer</th>
+                        <td>{{ Manufacturer.query.get(reagent.manufacturer_fk).name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Box Lot Barcode</th>
+                        <td>{{ reagent.barcode }}</td>
+                    </tr>
+                    <tr>
+                        <th>Part Number</th>
+                        {% if reagent.part_num != '-1' %}
+                        <td>{{ reagent.part_num }}</td>
+                        {% elif reagent.part_num == '-1' %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Lot Number</th>
+                        {% if reagent.lot_num != '-1' %}
+                        <td>{{ reagent.lot_num }}</td>
+                        {% elif reagent.lot_num == '-1' %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Date Entered</th>
+                        <td>{{ reagent.date_entered.strftime("%B %e, %Y") }}</td>
+                    </tr>
+                    <tr>
+                        <th>Expiry Date</th>
+                        {% if reagent.exp_date %}
+                        <td>{{ reagent.exp_date.strftime("%B %e, %Y") }}</td>
+                        {% elif not reagent.exp_date %}
+                        <td>N/A</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th style="vertical-align:middle">UID</th>
+                        <td>
+                            {% for i in range %}
+                            {{ reagent.date_entered }} {{ i + 1 }} / {{ reagent.quantity }} <br/>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -125,5 +131,14 @@
         </div>
     </div>
 </div>
-
 {% endblock modal %}
+
+{% block script %}
+<script>
+    // Reset modal
+    $('.modal').on('hidden.bs.modal', function(){
+        $(this).find('form')[0].reset();
+    });
+
+</script>
+{% endblock script %}

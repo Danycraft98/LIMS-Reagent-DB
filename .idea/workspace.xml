@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Updated layout.">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="d">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -352,7 +349,56 @@
       <option name="project" value="LOCAL" />
       <updated>1570401152976</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed main.py &quot;debug=True&quot;. Added colon to print modals. Fixed UID numbering. Fixed quantity default value.">
+      <created>1570472156513</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1570472156513</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fixed distance of buttons">
+      <created>1570478009967</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1570478009968</updated>
+    </task>
+    <task id="LOCAL-00036" summary="UID layout fix for Reagent.">
+      <created>1570480135547</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1570480135548</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Rearranged the add_kit">
+      <created>1570492219193</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1570492219194</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Rearragned add formats.">
+      <created>1570492581054</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1570492581054</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Undone the wrong commit/push.">
+      <created>1570492719909</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1570492719909</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Rearranged the add_manufacturer.">
+      <created>1570492894031</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1570492894031</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,13 +415,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bugs in made_reagent and reagent" />
-    <MESSAGE value="Added delete button function for each categories." />
-    <MESSAGE value="Updated syntax and models" />
-    <MESSAGE value="Renamed print.py to printer.py and deleted unnecessary files" />
-    <MESSAGE value="Fixed add.js function. Updated sql schema file." />
-    <MESSAGE value="Fixed the expiry date error." />
-    <MESSAGE value="Updated expiry date properties. Also undone __init__.py file error." />
     <MESSAGE value="Fixed copy_num error." />
     <MESSAGE value="Fixed errors" />
     <MESSAGE value="Updated expiry date capture. Fixed add made reagent layout." />
@@ -394,6 +433,13 @@
     <MESSAGE value="Updated lot number for component in kit. Fixed collapse element." />
     <MESSAGE value="Fixed redirect error. Changed format to fit table in kit. Added UID section." />
     <MESSAGE value="Added UID for components and reagents" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UID for components and reagents" />
+    <MESSAGE value="Fixed main.py &quot;debug=True&quot;. Added colon to print modals. Fixed UID numbering. Fixed quantity default value." />
+    <MESSAGE value="Fixed distance of buttons" />
+    <MESSAGE value="UID layout fix for Reagent." />
+    <MESSAGE value="Rearranged the add_kit" />
+    <MESSAGE value="Rearragned add formats." />
+    <MESSAGE value="Undone the wrong commit/push." />
+    <MESSAGE value="Rearranged the add_manufacturer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rearranged the add_manufacturer." />
   </component>
 </project>
