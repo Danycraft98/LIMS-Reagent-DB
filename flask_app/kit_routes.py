@@ -77,7 +77,8 @@ def add_kit():
             date_entered=datetime.today(),
             exp_date=exp_date,
             quantity=quantity,
-            manufacturer_fk=request.values.get("manu_name").split(",")[-1],
+            comment=request.values.get("comment"),
+            manufacturer_fk=request.values.get("manu_name").split(",")[-1]
         )
 
         db.session.add(kit)
@@ -111,7 +112,7 @@ def add_kit():
                     lot_num=lot_num,
                     exp_date=exp_date,
                     condition=condition,
-                    kit_fk=kit.id,
+                    kit_fk=kit.id
                 )
                 db.session.add(component)
                 db.session.commit()

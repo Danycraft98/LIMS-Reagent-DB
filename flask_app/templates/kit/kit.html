@@ -31,7 +31,7 @@
             <div class="col-12">
                 <table class="table table-hover master">
                     <tr>
-                        <th>Kit Name</th>
+                        <th width="30%">Kit Name</th>
                         <td>{{ kit.name }}</td>
                     </tr>
                     <tr>
@@ -75,14 +75,12 @@
                         <td>N/A</td>
                         {% endif %}
                     </tr>
+                    <tr>
+                        <th>Comments</th>
+                        <td>{{ kit.comment }}</td>
+                    </tr>
                 </table>
                 <br/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h4>Comments</h4>
-                {{ kit.comment }}
             </div>
         </div>
     </div>
@@ -265,8 +263,5 @@
         document.getElementById("exp_date").setAttribute("value",info[5]);
         document.getElementById("comp_condition").setAttribute("value",info[6]);
     }
-
-
-
 </script>
 {% endblock script %}
