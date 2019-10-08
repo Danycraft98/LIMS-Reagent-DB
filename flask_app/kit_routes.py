@@ -9,10 +9,22 @@ from flask_app.printer import print_label
 def kits():
     if not current_user.logged_in():
         return redirect(url_for('login'))
+
     all_kits = Kit.query.all()
     if request.method == 'POST':
-        return render_template("kit/kits.html", kits=Kit.query.filter_by(name=request.form.get('searchbox')),
-                               all_kits=all_kits)
+        search = request.form.get('searchbox')
+        query_kits = Kit.query.filter_by(name=search)
+        if query_kits.count() == 0:
+            if len(search.split()) >= 3:
+                date_searched = datetime.strptime(search.split()[0], "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                batch = search.split()[2].split("/")
+                query_kits = Kit.query.filter(Kit.date_entered >= date_searched,
+                                              Kit.date_entered <= date_searched + timedelta(days=1),
+                                              Kit.quantity >= batch[0], Kit.quantity == batch[1])
+            else:
+                query_kits = Kit.query.filter_by(barcode=search) #123456782023-04
+
+        return render_template("kit/kits.html", kits=query_kits, all_kits=all_kits)
     return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits)
 
 
@@ -28,7 +40,7 @@ def kit(kit_id):
         component.barcode = request.form.get("comp_barcode")
         component.part_num = request.form.get("part_num")
         component.lot_num = request.form.get("lot_num")
-        #component.exp_date = request.form.get("exp_date")
+        component.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
         component.condition = request.form.get("comp_condition")
         db.session.commit()
         return redirect(url_for("kit", kit_id=kit_id))
@@ -138,7 +150,7 @@ def print_kit(kit_id):
     batchpartnum = 1
     while batchnum <= kit_label:
         printcont = (kit.name, kit.exp_date, kit.date_entered)
-        print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit_label))
+        print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit.quantity))
         batchpartnum += 1
         if batchpartnum > kit.quantity:
             batchpartnum = 1
