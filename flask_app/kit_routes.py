@@ -23,6 +23,8 @@ def kits():
                                               Kit.quantity >= batch[0], Kit.quantity == batch[1])
             else:
                 query_kits = Kit.query.filter_by(barcode=search) #123456782023-04
+                if query_kits.count() == 0:
+                    query_kits = Kit.query.filter(Kit.components.any(barcode=search)) #Kit.query.filter_by(id=Component.query.filter_by(barcode=search).first().kit_fk)
 
         return render_template("kit/kits.html", kits=query_kits, all_kits=all_kits)
     return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits)
@@ -101,11 +103,13 @@ def add_kit():
         comp_part_nums = request.form.getlist("comp_part_num")
         comp_lot_nums = request.form.getlist("comp_lot_num")
         comp_exp_dates = request.form.getlist("comp_exp_date")
+        sizes = request.form.getlist("size")
+        print(sizes)
         conditions = request.form.getlist("condition")
         for value in range(kit.quantity):
             index = 1
-            for name, comp_num, part_num, lot_num, exp_date, condition in zip(names, comp_nums, comp_part_nums,
-                                                                              comp_lot_nums, comp_exp_dates,
+            for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums,
+                                                                              comp_lot_nums, comp_exp_dates, sizes,
                                                                               conditions):
                 if exp_date == "":
                     exp_date = kit.date_entered.replace(year=kit.date_entered.year + 10)
@@ -123,6 +127,7 @@ def add_kit():
                     part_num=part_num,
                     lot_num=lot_num,
                     exp_date=exp_date,
+                    size=size,
                     condition=condition,
                     kit_fk=kit.id
                 )
@@ -147,33 +152,22 @@ def print_kit(kit_id):
     comp_label_m = int(request.form.get('comp_label_m'))
 
     batchnum = 1
-    batchpartnum = 1
-    while batchnum <= kit_label:
+    while batchnum <= kit.quantity:
         printcont = (kit.name, kit.exp_date, kit.date_entered)
-        print_label(printcont, "kit", kit_label_size, None, str(batchpartnum) + '/' + str(kit.quantity))
-        batchpartnum += 1
-        if batchpartnum > kit.quantity:
-            batchpartnum = 1
+        print_label(printcont, "kit", kit_label_size, None, kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(kit.quantity))
         batchnum += 1
 
+    """i = 1
+    length = kit.components.count() // kit.quantity
     for component in kit.components:
-        batchnum = 1
-        batchpartnum = 1
-        while batchnum <= comp_label_s:
-            printcont = (component.name, component.exp_date, kit.date_entered)
-            print_label(printcont, "kit", "s", None, str(batchpartnum) + '/' + str(comp_label_s))
-            batchpartnum += 1
-            if batchpartnum > kit.quantity:
-                batchpartnum = 1
-            batchnum += 1
+        if i > length:
+            i = 1
 
-        batchnum = 1
-        batchpartnum = 1
-        while batchnum <= comp_label_m:
-            printcont = (component.name, component.exp_date, kit.date_entered)
-            print_label(printcont, "kit", "m", None, str(batchpartnum) + '/' + str(comp_label_m))
-            batchpartnum += 1
-            if batchpartnum > kit.quantity:
-                batchpartnum = 1
-            batchnum += 1
+        printcont = (component.name, component.exp_date, kit.date_entered)
+        if i <= comp_label_s:
+            print_label(printcont, "kit", "s", None, component.uid)
+        if i <= comp_label_m:
+            print_label(printcont, "kit", "m", None, component.uid)
+
+        i += 1"""
     return redirect(url_for("kit", kit_id=kit_id))

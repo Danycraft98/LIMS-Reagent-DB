@@ -5,9 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/printer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -420,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570560557881</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Updated commenting. Updated exp_date editing. Fixed other html files.">
+      <created>1570565872498</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1570565872499</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -437,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Moved print options." />
     <MESSAGE value="Moved and updated print label." />
     <MESSAGE value="Updated project." />
     <MESSAGE value="&quot;Delete is available before 24-hour&quot; is set" />
@@ -462,6 +469,7 @@
     <MESSAGE value="Fixed unnecessary div tag" />
     <MESSAGE value="Fixed minor django error and added comment attribute to database type Kit." />
     <MESSAGE value="Updated comment attribute in Kit model." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated comment attribute in Kit model." />
+    <MESSAGE value="Updated commenting. Updated exp_date editing. Fixed other html files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated commenting. Updated exp_date editing. Fixed other html files." />
   </component>
 </project>
