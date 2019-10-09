@@ -67,6 +67,7 @@ def add_reagent():
             date_entered=datetime.today(),
             exp_date=exp_date,
             quantity=quantity,
+            comment=request.values.get("comment"),
             manufacturer_fk=request.values.get("manu_name").split(',')[-1],
         )
 

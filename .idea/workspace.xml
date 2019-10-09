@@ -4,8 +4,10 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="`d`">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -431,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570592637825</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Updated print in Kit route">
+      <created>1570593195879</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1570593195879</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -448,7 +457,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated project." />
     <MESSAGE value="&quot;Delete is available before 24-hour&quot; is set" />
     <MESSAGE value="Fixed &quot;Save &amp; Print&quot; button to &quot;Save&quot; button." />
     <MESSAGE value="Fixed minor detail" />
@@ -473,6 +481,7 @@
     <MESSAGE value="Updated comment attribute in Kit model." />
     <MESSAGE value="Updated commenting. Updated exp_date editing. Fixed other html files." />
     <MESSAGE value="Added size to Component." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added size to Component." />
+    <MESSAGE value="Updated print in Kit route" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated print in Kit route" />
   </component>
 </project>
