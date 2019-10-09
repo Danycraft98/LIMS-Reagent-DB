@@ -101,13 +101,14 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>UID</th>
+                <th width="250px">UID</th>
                 <th>Barcode</th>
                 <th>Part Number</th>
                 <th>Lot Number</th>
                 <th style="width:150px">Expiry Date</th>
                 <th>Condition</th>
-                <th style="width:100px"></th>
+                <th>Size</th>
+                <th width="100px"></th>
             </tr>
             </thead>
             <tbody>
@@ -124,6 +125,7 @@
                 <td>N/A</td>
                 {% endif %}
                 <td>{{ component.condition }}</td>
+                <td>{{ component.size.upper() }}</td>
                 <td>
                     <button class="btn btn-info"
                             id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}"

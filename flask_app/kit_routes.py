@@ -104,7 +104,6 @@ def add_kit():
         comp_lot_nums = request.form.getlist("comp_lot_num")
         comp_exp_dates = request.form.getlist("comp_exp_date")
         sizes = request.form.getlist("size")
-        print(sizes)
         conditions = request.form.getlist("condition")
         for value in range(kit.quantity):
             index = 1
@@ -157,17 +156,20 @@ def print_kit(kit_id):
         print_label(printcont, "kit", kit_label_size, None, kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(kit.quantity))
         batchnum += 1
 
-    """i = 1
+
+    i, small, medium = 1, 0, 0
     length = kit.components.count() // kit.quantity
     for component in kit.components:
         if i > length:
             i = 1
+            small, medium = 0, 0
 
         printcont = (component.name, component.exp_date, kit.date_entered)
-        if i <= comp_label_s:
+        if component.size == "s" and comp_label_s > small:
             print_label(printcont, "kit", "s", None, component.uid)
-        if i <= comp_label_m:
+            small += 1
+        if component.size == "m" and comp_label_m > medium:
             print_label(printcont, "kit", "m", None, component.uid)
-
-        i += 1"""
+            medium += 1
+        i += 1
     return redirect(url_for("kit", kit_id=kit_id))
