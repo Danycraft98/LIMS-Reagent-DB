@@ -76,6 +76,10 @@
                             {{ reagent.date_entered }} {{ i + 1 }} / {{ reagent.quantity }} <br/>
                             {% endfor %}
                         </td>
+                        <tr>
+                            <th>Comments</th>
+                            <td>{{ reagent.comment }}</td>
+                    </tr>
                     </tr>
                 </table>
             </div>
@@ -92,8 +96,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Print Label</h5>
             </div>
-            <form action="/print_reagent/{{ reagent.id }}" method="post" onsubmit="return confirmMsg();"
-                  onkeypress="return event.keyCode != 13;">
+            <form action="/print_reagent/{{ reagent.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
                         <div class="col-5 form-group">
@@ -110,7 +113,7 @@
                                 <option value="m">Medium</option>
                             </select>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+                            <input readonly data-prefix="Copies" type="number" value="{{reagent.quantity}}" step="1"
                                    class="form-control" name="reagent_label" id="reagent_label"/>
                         </div>
                         <div class="col-1 form-group"></div>

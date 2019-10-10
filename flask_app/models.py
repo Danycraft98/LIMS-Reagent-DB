@@ -45,7 +45,7 @@ class Kit(db.Model):
 	quantity = db.Column(db.Integer)
 	comment = db.Column(db.String(255))
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
-	components = db.relationship('Component', lazy=True)
+	components = db.relationship('Component', lazy='dynamic')
 
 
 class Reagent(db.Model):
@@ -57,6 +57,7 @@ class Reagent(db.Model):
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
+	comment = db.Column(db.String(255))
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
 
 
@@ -78,5 +79,6 @@ class Component(db.Model):
 	part_num = db.Column(db.String(255))
 	lot_num = db.Column(db.String(255))
 	exp_date = db.Column(db.DateTime)
-	condition = db.Column(db.String(255), nullable=False)
+	condition = db.Column(db.String(255))
+	size = db.Column(db.String(255), nullable=False)
 	kit_fk = db.Column(db.Integer, db.ForeignKey('kit.id'))

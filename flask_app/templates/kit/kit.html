@@ -101,18 +101,18 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>UID</th>
+                <th width="250px">UID</th>
                 <th>Barcode</th>
                 <th>Part Number</th>
                 <th>Lot Number</th>
                 <th style="width:150px">Expiry Date</th>
                 <th>Condition</th>
-                <th style="width:100px"></th>
+                <th>Size</th>
+                <th width="100px"></th>
             </tr>
             </thead>
             <tbody>
-            {% for component in kit.components[i * kit.components|length // kit.quantity:(i+1) *
-            kit.components|length // kit.quantity] %}
+            {% for component in kit.components[i * kit.components.count() // kit.quantity:(i+1) * kit.components.count() // kit.quantity] %}
             <tr>
                 <td>{{ component.name }}</td>
                 <td>{{ component.uid }}</td>
@@ -125,6 +125,7 @@
                 <td>N/A</td>
                 {% endif %}
                 <td>{{ component.condition }}</td>
+                <td>{{ component.size.upper() }}</td>
                 <td>
                     <button class="btn btn-info"
                             id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}"
@@ -150,8 +151,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Print Label</h5>
             </div>
-            <form action="/print_kit/{{ kit.id }}" method="post" onsubmit="return confirmMsg();"
-                  onkeypress="return event.keyCode != 13;">
+            <form action="/print_kit/{{ kit.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
                         <div class="col-4 form-group">
@@ -169,19 +169,19 @@
                                 <option value="m">Medium</option>
                             </select>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+                            <input readonly data-prefix="Copies" type="number" value="{{ kit.quantity }}"
                                    class="form-control" name="kit_label" id="kit_label"/>
                         </div>
                         <div class="col-4 form-group">
                             <label>Small</label>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+                            <input data-prefix="Copies" type="number" value="0" min="0" max="{{ kit.components.filter_by(size='s').count() // kit.quantity }}" step="1"
                                    class="form-control" name="comp_label_s" id="comp_label_s"/>
                         </div>
                         <div class="col-4 form-group">
                             <label>Medium</label>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+                            <input data-prefix="Copies" type="number" value="0" min="0" max="{{ kit.components.filter_by(size='m').count() }}" step="1"
                                    class="form-control" name="comp_label_m" id="comp_label_m"/>
                         </div>
                     </div>
@@ -201,8 +201,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Edit Component</h5>
             </div>
-            <form action="/kit/{{ kit.id }}" method="post" onsubmit="return confirmMsg();"
-                  onkeypress="return event.keyCode != 13;">
+            <form action="/kit/{{ kit.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <input class="form-control" name="comp_id" id="comp_id" type="hidden">
                     <div class="row my-row">
@@ -260,7 +259,7 @@
         document.getElementById("comp_barcode").setAttribute("value",info[2]);
         document.getElementById("part_num").setAttribute("value",info[3]);
         document.getElementById("lot_num").setAttribute("value",info[4]);
-        document.getElementById("exp_date").setAttribute("value",info[5]);
+        document.getElementById("exp_date").setAttribute("value",info[5].split(" ")[0]);
         document.getElementById("comp_condition").setAttribute("value",info[6]);
     }
 </script>

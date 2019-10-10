@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="`d`">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Updated Kit max component print.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/printer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -118,20 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Updated">
-      <created>1563935677440</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1563935677440</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added SQL file">
-      <created>1563936102840</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1563936102840</updated>
     </task>
     <task id="LOCAL-00003" summary="Added SQL file">
       <created>1565204026052</created>
@@ -420,7 +402,63 @@
       <option name="project" value="LOCAL" />
       <updated>1570560557881</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Updated commenting. Updated exp_date editing. Fixed other html files.">
+      <created>1570565872498</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1570565872499</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added size to Component.">
+      <created>1570592637824</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1570592637825</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Updated print in Kit route">
+      <created>1570593195879</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1570593195879</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Updated necessary parts">
+      <created>1570648099651</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1570648099653</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Fixed Reagent layout">
+      <created>1570657831555</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1570657831557</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Fixed Reagent layout">
+      <created>1570669258122</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1570669258122</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Updated Kit max component print.">
+      <created>1570670301894</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1570670301899</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Updated Kit max component print.">
+      <created>1570670321883</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1570670321883</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -437,12 +475,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Moved print options." />
-    <MESSAGE value="Moved and updated print label." />
-    <MESSAGE value="Updated project." />
-    <MESSAGE value="&quot;Delete is available before 24-hour&quot; is set" />
-    <MESSAGE value="Fixed &quot;Save &amp; Print&quot; button to &quot;Save&quot; button." />
-    <MESSAGE value="Fixed minor detail" />
     <MESSAGE value="Removed &quot;Print Option&quot; button as it is unnecessary." />
     <MESSAGE value="Added expiry date to component." />
     <MESSAGE value="Moved js functions. Fixed formats." />
@@ -462,6 +494,12 @@
     <MESSAGE value="Fixed unnecessary div tag" />
     <MESSAGE value="Fixed minor django error and added comment attribute to database type Kit." />
     <MESSAGE value="Updated comment attribute in Kit model." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated comment attribute in Kit model." />
+    <MESSAGE value="Updated commenting. Updated exp_date editing. Fixed other html files." />
+    <MESSAGE value="Added size to Component." />
+    <MESSAGE value="Updated print in Kit route" />
+    <MESSAGE value="Updated necessary parts" />
+    <MESSAGE value="Fixed Reagent layout" />
+    <MESSAGE value="Updated Kit max component print." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Kit max component print." />
   </component>
 </project>

@@ -116,8 +116,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Print Label</h5>
             </div>
-            <form action="/print_made_reagent/{{ made_reagent.id }}" method="post" onsubmit="return confirmMsg();"
-                  onkeypress="return event.keyCode != 13;">
+            <form action="/print_made_reagent/{{ made_reagent.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
                         <div class="col-4 form-group">
