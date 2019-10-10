@@ -97,10 +97,9 @@ def print_made_reagent(made_reagent_id):
 
 	batchnum = 1
 	batchpartnum = 1
-	while batchnum <= made_reagent_label:
-		printcont = (request.form.get("name"), made_reagent.exp_date, datetime.now())
-		print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat,
-					str(batchpartnum) + '/' + str(made_reagent_label))
+	while batchnum <= made_reagent.quantity:
+		printcont = (made_reagent.name, made_reagent.exp_date, datetime.now())
+		print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, str(batchnum) + '/' + str(made_reagent.quantity))
 		batchpartnum += 1
 		if batchpartnum > made_reagent.quantity:
 			batchpartnum = 1
