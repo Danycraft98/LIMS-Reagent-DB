@@ -45,7 +45,7 @@ class Kit(db.Model):
 	quantity = db.Column(db.Integer)
 	comment = db.Column(db.String(255))
 	manufacturer_fk = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=False)
-	components = db.relationship('Component', lazy=True)
+	components = db.relationship('Component', lazy='dynamic')
 
 
 class Reagent(db.Model):

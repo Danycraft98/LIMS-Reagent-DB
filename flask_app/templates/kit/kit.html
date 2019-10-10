@@ -112,7 +112,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for component in kit.components[i * kit.components|length // kit.quantity:(i+1) * kit.components|length // kit.quantity] %}
+            {% for component in kit.components[i * kit.components.count() // kit.quantity:(i+1) * kit.components.count() // kit.quantity] %}
             <tr>
                 <td>{{ component.name }}</td>
                 <td>{{ component.uid }}</td>
@@ -175,13 +175,13 @@
                         <div class="col-4 form-group">
                             <label>Small</label>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+                            <input data-prefix="Copies" type="number" value="0" min="0" max="{{ kit.components.filter_by(size='s').count() // kit.quantity }}" step="1"
                                    class="form-control" name="comp_label_s" id="comp_label_s"/>
                         </div>
                         <div class="col-4 form-group">
                             <label>Medium</label>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
+                            <input data-prefix="Copies" type="number" value="0" min="0" max="{{ kit.components.filter_by(size='m').count() }}" step="1"
                                    class="form-control" name="comp_label_m" id="comp_label_m"/>
                         </div>
                     </div>
