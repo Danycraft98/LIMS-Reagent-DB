@@ -3,9 +3,9 @@ function checkbox_pressed(element) {
 	document.getElementById(element.id.slice(0,-3)).setAttribute("value","")
 }
 
+var counter = 0
 function clone_element(element) {
 	var containerDiv = element.parentElement.parentElement.parentElement.id
-	console.log('copy_num' + containerDiv.substr(-1));
 	for (k = 0; k < document.getElementById('copy_num' + containerDiv.substr(-1)).value; k++) {
 		var clone = document.getElementById(containerDiv).cloneNode(true);
 		clone.id = containerDiv + counter;
