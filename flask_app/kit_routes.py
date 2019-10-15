@@ -22,9 +22,14 @@ def kits():
                                               Kit.date_entered <= date_searched + timedelta(days=1),
                                               Kit.quantity >= batch[0], Kit.quantity == batch[1])
             else:
-                query_kits = Kit.query.filter_by(barcode=search) #123456782023-04
-                if query_kits.count() == 0:
-                    query_kits = Kit.query.filter(Kit.components.any(barcode=search)) #Kit.query.filter_by(id=Component.query.filter_by(barcode=search).first().kit_fk)
+                if "-" in search:
+                    date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                    query_kits = Kit.query.filter(Kit.date_entered >= date_searched,
+                                              Kit.date_entered <= date_searched + timedelta(days=1))
+                else:
+                    query_kits = Kit.query.filter_by(barcode=search) #123456782023-04
+                    if query_kits.count() == 0:
+                        query_kits = Kit.query.filter(Kit.components.any(barcode=search))
 
         return render_template("kit/kits.html", kits=query_kits, all_kits=all_kits)
     return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits)

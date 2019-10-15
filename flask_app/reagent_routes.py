@@ -12,20 +12,24 @@ def reagents():
     all_reagents = Reagent.query.all()
     if request.method == 'POST':
         search = request.form.get('searchbox')
-        query_kits = Reagent.query.filter_by(name=search)
-        if query_kits.count() == 0:
+        query_reagents = Reagent.query.filter_by(name=search)
+        if query_reagents.count() == 0:
             if len(search.split()) >= 3:
                 date_searched = datetime.strptime(search.split()[0], "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
                 batch = search.split()[2].split("/")
-                query_kits = Reagent.query.filter(Reagent.date_entered >= date_searched,
-                                              Reagent.date_entered <= date_searched + timedelta(days=1),
-                                              Reagent.quantity >= batch[0], Reagent.quantity == batch[1])
+                query_reagents = Reagent.query.filter(Reagent.date_entered >= date_searched,
+                                                      Reagent.date_entered <= date_searched + timedelta(days=1),
+                                                      Reagent.quantity >= batch[0], Reagent.quantity == batch[1])
             else:
-                query_kits = Reagent.query.filter_by(barcode=search)  # 123456782023-04
-                if query_kits.count() == 0:
-                    pass  # Kit.query.filter_by(id=Component.query.filter_by(barcode=search).first().kit_fk)
+                if "-" in search:
+                    date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                    query_reagents = Reagent.query.filter(Reagent.date_entered >= date_searched,
+                                                         Reagent.date_entered <= date_searched + timedelta(
+                                                             days=1))
+                else:
+                    query_reagents = Reagent.query.filter_by(barcode=search)  # 123456782023-04
 
-        return render_template("reagent/reagents.html", reagents=query_kits, all_reagents=all_reagents)
+        return render_template("reagent/reagents.html", reagents=query_reagents, all_reagents=all_reagents)
     return render_template("reagent/reagents.html", reagents=all_reagents, all_reagents=all_reagents)
 
 
@@ -98,10 +102,8 @@ def print_reagent(reagent_id):
     reagent = Reagent.query.filter_by(id=reagent_id)[0]
 
     reagent_label_size = request.form.get('reagent_label_size')
-    reagent_label = int(request.form.get('reagent_label'))
     acquired_stat = request.form.get('acquired_stat')
 
-    batchpartnum = 1
     batchnum = 1
 
     while batchnum <= reagent.quantity:

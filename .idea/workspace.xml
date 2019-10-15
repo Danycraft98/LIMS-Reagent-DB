@@ -4,10 +4,10 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,20 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Fixed add.js function. Updated sql schema file.">
-      <created>1566560656678</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1566560656678</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Fixed add.js function. Updated sql schema file.">
-      <created>1566560693693</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1566560693693</updated>
     </task>
     <task id="LOCAL-00011" summary="Fixed the expiry date error.">
       <created>1566600580586</created>
@@ -461,7 +447,21 @@
       <option name="project" value="LOCAL" />
       <updated>1570762181895</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Updated Reagent search.">
+      <created>1571098858896</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1571098858897</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Size -&gt; Label Size. Reagent expiry date fixed.">
+      <created>1571098914238</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1571098914238</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -478,8 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated lot number for component in kit. Fixed collapse element." />
-    <MESSAGE value="Fixed redirect error. Changed format to fit table in kit. Added UID section." />
     <MESSAGE value="Added UID for components and reagents" />
     <MESSAGE value="Fixed main.py &quot;debug=True&quot;. Added colon to print modals. Fixed UID numbering. Fixed quantity default value." />
     <MESSAGE value="Fixed distance of buttons" />
@@ -503,6 +501,8 @@
     <MESSAGE value="Added the missing counter variable." />
     <MESSAGE value="Fixed shape of &quot;Add Component&quot; button." />
     <MESSAGE value="Updated Kit print layout." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Kit print layout." />
+    <MESSAGE value="Updated Reagent search." />
+    <MESSAGE value="Size -&gt; Label Size. Reagent expiry date fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Size -&gt; Label Size. Reagent expiry date fixed." />
   </component>
 </project>
