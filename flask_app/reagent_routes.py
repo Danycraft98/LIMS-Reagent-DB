@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, request
 from flask_app import app, db, current_user
 from flask_app.models import Reagent, Manufacturer
 from flask_app.printer import print_label
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 @app.route("/reagents", methods=['GET', 'POST'])
@@ -11,9 +11,25 @@ def reagents():
         return redirect(url_for('login'))
     all_reagents = Reagent.query.all()
     if request.method == 'POST':
-        return render_template("reagent/reagents.html",
-                               reagents=Reagent.query.filter_by(name=request.form.get('searchbox')),
-                               all_reagents=all_reagents)
+        search = request.form.get('searchbox')
+        query_reagents = Reagent.query.filter_by(name=search)
+        if query_reagents.count() == 0:
+            if len(search.split()) >= 3:
+                date_searched = datetime.strptime(search.split()[0], "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                batch = search.split()[2].split("/")
+                query_reagents = Reagent.query.filter(Reagent.date_entered >= date_searched,
+                                                      Reagent.date_entered <= date_searched + timedelta(days=1),
+                                                      Reagent.quantity >= batch[0], Reagent.quantity == batch[1])
+            else:
+                if "-" in search:
+                    date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                    query_reagents = Reagent.query.filter(Reagent.date_entered >= date_searched,
+                                                         Reagent.date_entered <= date_searched + timedelta(
+                                                             days=1))
+                else:
+                    query_reagents = Reagent.query.filter_by(barcode=search)  # 123456782023-04
+
+        return render_template("reagent/reagents.html", reagents=query_reagents, all_reagents=all_reagents)
     return render_template("reagent/reagents.html", reagents=all_reagents, all_reagents=all_reagents)
 
 
@@ -54,7 +70,7 @@ def add_reagent():
 
         exp_date = request.form.get("exp_date")
         if exp_date == '':
-            exp_date = None
+            exp_date = datetime.today().replace(year=datetime.today().year + 10)
         elif exp_date:
             exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
         quantity = int(request.form.get("quantity"))
@@ -86,17 +102,13 @@ def print_reagent(reagent_id):
     reagent = Reagent.query.filter_by(id=reagent_id)[0]
 
     reagent_label_size = request.form.get('reagent_label_size')
-    reagent_label = int(request.form.get('reagent_label'))
     acquired_stat = request.form.get('acquired_stat')
 
-    batchpartnum = 1
     batchnum = 1
-    while batchnum <= reagent_label:
-        printcont = (request.form.get("name"), reagent.exp_date, datetime.now())
+
+    while batchnum <= reagent.quantity:
+        printcont = (reagent.name, reagent.exp_date, datetime.now())
         print_label(printcont, "reagent", reagent_label_size, acquired_stat,
-                    str(batchpartnum) + '/' + str(reagent.quantity))
-        batchpartnum += 1
-        if batchpartnum > reagent.quantity:
-            batchpartnum = 1
+                    str(batchnum) + '/' + str(reagent.quantity))
         batchnum += 1
     return redirect(url_for("reagent", reagent_id=reagent_id))

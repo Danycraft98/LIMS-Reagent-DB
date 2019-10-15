@@ -107,12 +107,13 @@
                 <th>Lot Number</th>
                 <th style="width:150px">Expiry Date</th>
                 <th>Condition</th>
-                <th>Size</th>
+                <th>Label Size</th>
                 <th width="100px"></th>
             </tr>
             </thead>
             <tbody>
-            {% for component in kit.components[i * kit.components.count() // kit.quantity:(i+1) * kit.components.count() // kit.quantity] %}
+            {% for component in kit.components[i * kit.components.count() // kit.quantity:(i+1) * kit.components.count()
+            // kit.quantity] %}
             <tr>
                 <td>{{ component.name }}</td>
                 <td>{{ component.uid }}</td>
@@ -146,43 +147,94 @@
 
 {% block modal %}
 <div class="modal fade" id="kit_modal" tabindex="-1" aria-labelledby="kit_modal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Print Label</h5>
             </div>
-            <form action="/print_kit/{{ kit.id }}" method="post" onkeypress="return event.keyCode != 13;">
+            <form id="print"action="/print_kit/{{ kit.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
-                        <div class="col-4 form-group">
-                            <label for="kit_label">Kit Label Copies:</label>
+                        <div class="col-3 form-group">
+                            <label for="kit_label">Print Amount:</label>
                         </div>
-                        <div class="col-8 form-group">
-                            <label for="comp_label_s">Component Label Copies:</label>
-                            <br/>
+                        <div class="col-6 form-group">
+                            <label for="kit_label">Kit Label Copies:</label>
                         </div>
                     </div>
                     <div class="row my-row">
-                        <div class="col-4 form-group">
+                        <div class="col-3 form-group">
+                            <select class="form-control" name="print_amount" id="print_amount" onchange="option(this)">
+                                <option>All</option>
+                                <option data-toggle="collapse" data-target="#test">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-3 form-group">
                             <select class="form-control" id="kit_label_size" name="kit_label_size">
                                 <option value="s">Small</option>
                                 <option value="m">Medium</option>
                             </select>
-                            <br/>
+                        </div>
+                        <div class="col-3 form-group">
                             <input readonly data-prefix="Copies" type="number" value="{{ kit.quantity }}"
                                    class="form-control" name="kit_label" id="kit_label"/>
                         </div>
-                        <div class="col-4 form-group">
-                            <label>Small</label>
-                            <br/>
-                            <input data-prefix="Copies" type="number" value="0" min="0" max="{{ kit.components.filter_by(size='s').count() // kit.quantity }}" step="1"
-                                   class="form-control" name="comp_label_s" id="comp_label_s"/>
+                    </div>
+                    <div id="hidden" style="display:none">
+                        <div id="containers_div">
+                            <hr/>
+                            <div class="row my-row">
+                                <div class="col-12 form-group">
+                                    <label>Custom Label Print:</label>
+                                </div>
+                            </div>
+                            <div class="row my-row">
+                                <div class="col-5 form-group">
+                                    <label>Kit UID:</label>
+                                </div>
+                                <div class="col-5 form-group">
+                                    <label>Component UID:</label>
+                                </div>
+                            </div>
+                            <div id="container_div0" style="padding-bottom:20px">
+                                <div class="row my-row">
+                                    <div class="col-5 form-group">
+                                        <select class="form-control" id="kit_uid0" name="kit_uid"
+                                                onchange="get_comp(this)">
+                                            <option value="" selected>Select Kit UID</option>
+                                            {% for i in range %}
+                                            <option value="{{ i+1 }}">{{ kit.date_entered.strftime("%Y-%m-%d
+                                                %H:%M:%S")}} {{
+                                                i+1
+                                                }}/{{ kit.quantity }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-5 form-group">
+                                        <select class="form-control" id="comp_uid0" name="comp_uid">
+                                            <option value="" selected>Select Component UID</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-2 form-group">
+                                        <button type="button" class="btn btn-default" name="clone" id="clone0"
+                                                onclick="clone_element_p(this)">
+                                            <i class="fa fa-clone" style="font-size:24px"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default" name="trash" id="trash0"
+                                                onclick="remove_element(this)">
+                                            <i class="fa fa-trash-o" style="font-size:24px"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-4 form-group">
-                            <label>Medium</label>
-                            <br/>
-                            <input data-prefix="Copies" type="number" value="0" min="0" max="{{ kit.components.filter_by(size='m').count() }}" step="1"
-                                   class="form-control" name="comp_label_m" id="comp_label_m"/>
+                        <div class="row my-row">
+                            <div class="col-2">
+                                <button type="button" class="btn" name="append" onclick="add_element_p()">Add
+                                    Kit/Component
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -250,6 +302,8 @@
     // Reset modal
     $('.modal').on('hidden.bs.modal', function(){
         $(this).find('form')[0].reset();
+        console.log(document.getElementById("print").innerHTML);
+        document.getElementById("print").innerHTML = '<div class="modal-body"> <div class="row my-row"> <div class="col-3 form-group"> <label for="kit_label">Print Amount:</label> </div> <div class="col-6 form-group"> <label for="kit_label">Kit Label Copies:</label> </div> </div> <div class="row my-row"> <div class="col-3 form-group"> <select class="form-control" name="print_amount" id="print_amount" onchange="option(this)"> <option>All</option> <option data-toggle="collapse" data-target="#test">Custom</option> </select> </div> <div class="col-3 form-group"> <select class="form-control" id="kit_label_size" name="kit_label_size"> <option value="s">Small</option> <option value="m">Medium</option> </select> </div> <div class="col-3 form-group"> <input readonly data-prefix="Copies" type="number" value="{{ kit.quantity }}" class="form-control" name="kit_label" id="kit_label"/> </div> </div> <div id="hidden" style="display:none"> <div id="containers_div"> <hr/> <div class="row my-row"> <div class="col-12 form-group"> <label>Custom Label Print:</label> </div> </div> <div class="row my-row"> <div class="col-5 form-group"> <label>Kit UID:</label> </div> <div class="col-5 form-group"> <label>Component UID:</label> </div> </div> <div id="container_div0" style="padding-bottom:20px"> <div class="row my-row"> <div class="col-5 form-group"> <select class="form-control" id="kit_uid0" name="kit_uid" onchange="get_comp(this)"> <option value="" selected>Select Kit UID</option> {% for i in range %} <option value="{{ i+1 }}">{{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }} </option> {% endfor %} </select> </div> <div class="col-5 form-group"> <select class="form-control" id="comp_uid0" name="comp_uid"> <option value="" selected>Select Component UID</option> </select> </div> <div class="col-2 form-group"> <button type="button" class="btn btn-default" name="clone" id="clone0" onclick="clone_element_p(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash0" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div> </div> </div> <div class="row my-row"> <div class="col-2"> <button type="button" class="btn" name="append" onclick="add_element_p()">Add Kit/Component </button> </div> </div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button> <button type="submit" class="btn btn-info">Print</button> </div>'
     });
 
     function edit_comp(element) {
@@ -262,5 +316,52 @@
         document.getElementById("exp_date").setAttribute("value",info[5].split(" ")[0]);
         document.getElementById("comp_condition").setAttribute("value",info[6]);
     }
+
+    function option(element) {
+        opt = element.value;
+        if (opt=="Custom") {
+            document.getElementById("hidden").setAttribute("style", "display:inline");
+        } else {
+            document.getElementById("hidden").setAttribute("style", "display:none");
+        }
+    };
+
+    function get_comp(element) {
+        if (element[element.selectedIndex].value != "") {
+            var comp_quantity = {{ kit.components.count() // kit.quantity }};
+            for (i = 1; i <= comp_quantity; i++) {
+                tag = document.createElement("option");
+                tag.setAttribute("value", i);
+                tag.innerHTML = "{{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} " + element[element.selectedIndex].value + "/{{ kit.quantity }} " + i + "/" +comp_quantity;
+                document.getElementById("comp_uid" + element.id.substr(-1)).appendChild(tag);
+            }
+        }
+    }
+
+    var counter = 1;
+
+    function clone_element_p(element) {
+        var tag = document.createElement("div");
+        tag.setAttribute("id", "container_div"+counter)
+        tag.setAttribute("style", "padding-bottom:20px")
+        tag.innerHTML = '<div class="row my-row"> <div class="col-5 form-group"> <select class="form-control" id="kit_uid' + counter + '" name="kit_uid" onchange="get_comp(this)"> <option value="" selected>Select Kit</option> {% for i in range %} <option value="{{ i+1 }}">{{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }} </option> {% endfor %} </select> </div> <div class="col-5 form-group"> <select class="form-control" id="comp_uid' + counter + '" name="comp_uid"> <option selected></option> </select> </div> <div class="col-2 form-group"> <button type="button" class="btn btn-default" name="clone" id="clone' + counter + '" onclick="clone_element_p(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash' + counter + '" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div>'
+        document.getElementById("containers_div").appendChild(tag);
+        document.getElementById("kit_uid" + counter).value = document.getElementById("kit_uid" + element.id.substr(-1)).value
+        get_comp(document.getElementById("kit_uid" + counter));
+        document.getElementById("comp_uid" + counter).value = document.getElementById("comp_uid" + element.id.substr(-1)).value
+        counter++;
+	}
+
+	function add_element_p(element) {
+        var tag = document.createElement("div");
+        tag.setAttribute("id", "container_div"+counter)
+        tag.setAttribute("style", "padding-bottom:20px")
+        tag.innerHTML = '<div class="row my-row"> <div class="col-5 form-group"> <select class="form-control" id="kit_uid' + counter + '" name="kit_uid" onchange="get_comp(this)"> <option value="" selected>Select Kit</option> {% for i in range %} <option value="{{ i+1 }}">{{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }} </option> {% endfor %} </select> </div> <div class="col-5 form-group"> <select class="form-control" id="comp_uid' + counter + '" name="comp_uid"> <option selected></option> </select> </div> <div class="col-2 form-group"> <button type="button" class="btn btn-default" name="clone" id="clone' + counter + '" onclick="clone_element_p(this)"> <i class="fa fa-clone" style="font-size:24px"></i> </button> <button type="button" class="btn btn-default" name="trash" id="trash' + counter + '" onclick="remove_element(this)"> <i class="fa fa-trash-o" style="font-size:24px"></i> </button> </div> </div>'
+        document.getElementById("containers_div").appendChild(tag);
+        counter++;
+	}
+
+
+
 </script>
 {% endblock script %}

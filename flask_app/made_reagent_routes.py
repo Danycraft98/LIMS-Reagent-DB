@@ -4,7 +4,7 @@ from flask_app.models import Manufacturer, Reagent, MadeReagent, Component
 from flask_app.printer import print_label
 
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 @app.route("/made_reagents", methods=['GET', 'POST'])
@@ -13,7 +13,25 @@ def made_reagents():
 		return redirect(url_for('login'))
 	all_made_reagents = MadeReagent.query.all()
 	if request.method == 'POST':
-		return render_template("made_reagent/made_reagents.html", made_reagents=MadeReagent.query.filter_by(name=request.form.get('searchbox')), all_made_reagents=all_made_reagents)
+		search = request.form.get('searchbox')
+		query_m_reagents = MadeReagent.query.filter_by(name=search)
+		if query_m_reagents.count() == 0:
+			if len(search.split()) >= 3:
+				date_searched = datetime.strptime(search.split()[0], "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+				batch = search.split()[2].split("/")
+				query_m_reagents = MadeReagent.query.filter(MadeReagent.date_entered >= date_searched,
+												  MadeReagent.date_entered <= date_searched + timedelta(days=1),
+												  MadeReagent.quantity >= batch[0], MadeReagent.quantity == batch[1])
+			else:
+				query_m_reagents = Reagent.query.filter_by(barcode=search)  # 123456782023-04
+				if query_m_reagents.count() == 0:
+					if "-" in search:
+						date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+						query_m_reagents = MadeReagent.query.filter(MadeReagent.date_entered >= date_searched,
+																 MadeReagent.date_entered <= date_searched + timedelta(
+																	 days=1))
+
+		return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents)
 	return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents)
 
 
@@ -97,10 +115,9 @@ def print_made_reagent(made_reagent_id):
 
 	batchnum = 1
 	batchpartnum = 1
-	while batchnum <= made_reagent_label:
-		printcont = (request.form.get("name"), made_reagent.exp_date, datetime.now())
-		print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat,
-					str(batchpartnum) + '/' + str(made_reagent_label))
+	while batchnum <= made_reagent.quantity:
+		printcont = (made_reagent.name, made_reagent.exp_date, datetime.now())
+		print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, str(batchnum) + '/' + str(made_reagent.quantity))
 		batchpartnum += 1
 		if batchpartnum > made_reagent.quantity:
 			batchpartnum = 1

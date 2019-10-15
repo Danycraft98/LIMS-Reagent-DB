@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Updated Kit max component print.">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -114,62 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added SQL file">
-      <created>1565204026052</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1565204026052</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Updated dockerfile">
-      <created>1565205824474</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1565205824474</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Fixed bugs in made_reagent and reagent">
-      <created>1565292224321</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1565292224322</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added delete button function for each categories.">
-      <created>1565564818496</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1565564818496</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Updated syntax and models">
-      <created>1565565583143</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1565565583143</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Renamed print.py to printer.py and deleted unnecessary files">
-      <created>1565565705814</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1565565705814</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Fixed add.js function. Updated sql schema file.">
-      <created>1566560656678</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1566560656678</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Fixed add.js function. Updated sql schema file.">
-      <created>1566560693693</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1566560693693</updated>
     </task>
     <task id="LOCAL-00011" summary="Fixed the expiry date error.">
       <created>1566600580586</created>
@@ -458,7 +405,63 @@
       <option name="project" value="LOCAL" />
       <updated>1570670321883</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Reagent print updated.">
+      <created>1570675368508</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1570675368510</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Undone mistakes.">
+      <created>1570675399636</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1570675399636</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Fixed Reagent print and part of Made-Reagent print.">
+      <created>1570719994130</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1570719994130</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Added the missing counter variable.">
+      <created>1570762108785</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1570762108785</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fixed shape of &quot;Add Component&quot; button.">
+      <created>1570762149649</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1570762149650</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Updated Kit print layout.">
+      <created>1570762181895</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1570762181895</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Updated Reagent search.">
+      <created>1571098858896</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1571098858897</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Size -&gt; Label Size. Reagent expiry date fixed.">
+      <created>1571098914238</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1571098914238</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,14 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed &quot;Print Option&quot; button as it is unnecessary." />
-    <MESSAGE value="Added expiry date to component." />
-    <MESSAGE value="Moved js functions. Fixed formats." />
-    <MESSAGE value="Updated templates. Added Favicon.ico. Moved css and js files." />
-    <MESSAGE value="Updated layout." />
-    <MESSAGE value="Moved css file." />
-    <MESSAGE value="Updated lot number for component in kit. Fixed collapse element." />
-    <MESSAGE value="Fixed redirect error. Changed format to fit table in kit. Added UID section." />
     <MESSAGE value="Added UID for components and reagents" />
     <MESSAGE value="Fixed main.py &quot;debug=True&quot;. Added colon to print modals. Fixed UID numbering. Fixed quantity default value." />
     <MESSAGE value="Fixed distance of buttons" />
@@ -500,6 +495,14 @@
     <MESSAGE value="Updated necessary parts" />
     <MESSAGE value="Fixed Reagent layout" />
     <MESSAGE value="Updated Kit max component print." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Kit max component print." />
+    <MESSAGE value="Reagent print updated." />
+    <MESSAGE value="Undone mistakes." />
+    <MESSAGE value="Fixed Reagent print and part of Made-Reagent print." />
+    <MESSAGE value="Added the missing counter variable." />
+    <MESSAGE value="Fixed shape of &quot;Add Component&quot; button." />
+    <MESSAGE value="Updated Kit print layout." />
+    <MESSAGE value="Updated Reagent search." />
+    <MESSAGE value="Size -&gt; Label Size. Reagent expiry date fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Size -&gt; Label Size. Reagent expiry date fixed." />
   </component>
 </project>
