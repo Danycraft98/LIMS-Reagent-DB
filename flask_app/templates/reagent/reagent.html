@@ -38,7 +38,7 @@
                         <td>{{ Manufacturer.query.get(reagent.manufacturer_fk).name }}</td>
                     </tr>
                     <tr>
-                        <th>Box Lot Barcode</th>
+                        <th>Component Barcode</th>
                         <td>{{ reagent.barcode }}</td>
                     </tr>
                     <tr>
@@ -73,7 +73,7 @@
                         <th style="vertical-align:middle">UID</th>
                         <td>
                             {% for i in range %}
-                            {{ reagent.date_entered }} {{ i + 1 }} / {{ reagent.quantity }} <br/>
+                            {{ reagent.date_entered }} {{ i + 1 }}/{{ reagent.quantity }} <br/>
                             {% endfor %}
                         </td>
                         <tr>

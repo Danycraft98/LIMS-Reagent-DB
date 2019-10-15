@@ -24,14 +24,14 @@
                             <option value=""></option>
                             {% for item in manu_name%}
                             <option
-                                    value="{{item.part_num}},{{item.lot_num}},{{item.exp_date}},{{item.part_start}},{{item.part_end}},{{item.lot_start}},{{item.lot_end}},{{item.exp_date_start}},{{item.exp_date_end}},{{item.comp_barcode}},{{item.comp_part_num}},{{item.comp_lot_num}},{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{ item.id }}">
+                                    value="{{item.comp_part_num}},{{item.comp_lot_num}}, ,{{item.comp_part_start}},{{item.comp_part_end}},{{item.comp_lot_start}},{{item.comp_lot_end}},{{item.exp_date_start}},{{item.exp_date_end}},{{item.comp_barcode}},{{ item.id }}">
                                 {{ item.name }}
                             </option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="col-4 form-group">
-                        <label for="barcode">Box Lot Barcode:</label>
+                        <label for="barcode">Component Barcode:</label>
                         <input type="text" class="form-control" id="barcode" name="barcode" oninput="update()">
                     </div>
                 </div>
@@ -46,8 +46,7 @@
                     </div>
                     <div class="col-3 form-group">
                         <label for="exp_date">Expiry Date:</label>
-                        <input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}"
-                               required>
+                        <input type="date" class="form-control" id="exp_date" name="exp_date" min="{{ today }}">
                     </div>
                     <div class="col-2 form-group">
                         <label for="quantity">Quantity:</label>

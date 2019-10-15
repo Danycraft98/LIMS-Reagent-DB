@@ -4,10 +4,10 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,27 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added delete button function for each categories.">
-      <created>1565564818496</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1565564818496</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Updated syntax and models">
-      <created>1565565583143</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1565565583143</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Renamed print.py to printer.py and deleted unnecessary files">
-      <created>1565565705814</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1565565705814</updated>
     </task>
     <task id="LOCAL-00009" summary="Fixed add.js function. Updated sql schema file.">
       <created>1566560656678</created>
@@ -461,7 +440,28 @@
       <option name="project" value="LOCAL" />
       <updated>1570719994130</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Added the missing counter variable.">
+      <created>1570762108785</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1570762108785</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fixed shape of &quot;Add Component&quot; button.">
+      <created>1570762149649</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1570762149650</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Updated Kit print layout.">
+      <created>1570762181895</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1570762181895</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -478,9 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated templates. Added Favicon.ico. Moved css and js files." />
-    <MESSAGE value="Updated layout." />
-    <MESSAGE value="Moved css file." />
     <MESSAGE value="Updated lot number for component in kit. Fixed collapse element." />
     <MESSAGE value="Fixed redirect error. Changed format to fit table in kit. Added UID section." />
     <MESSAGE value="Added UID for components and reagents" />
@@ -503,6 +500,9 @@
     <MESSAGE value="Reagent print updated." />
     <MESSAGE value="Undone mistakes." />
     <MESSAGE value="Fixed Reagent print and part of Made-Reagent print." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Reagent print and part of Made-Reagent print." />
+    <MESSAGE value="Added the missing counter variable." />
+    <MESSAGE value="Fixed shape of &quot;Add Component&quot; button." />
+    <MESSAGE value="Updated Kit print layout." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Kit print layout." />
   </component>
 </project>
