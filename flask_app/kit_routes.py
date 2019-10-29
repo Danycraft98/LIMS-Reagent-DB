@@ -18,16 +18,13 @@ def kits():
             if len(search.split()) >= 3:
                 date_searched = datetime.strptime(search.split()[0], "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
                 batch = search.split()[2].split("/")
-                query_kits = Kit.query.filter(Kit.date_entered >= date_searched,
-                                              Kit.date_entered <= date_searched + timedelta(days=1),
-                                              Kit.quantity >= batch[0], Kit.quantity == batch[1])
+                query_kits = Kit.query.filter(Kit.date_entered >= date_searched, Kit.date_entered <= date_searched + timedelta(days=1), Kit.quantity >= batch[0], Kit.quantity == batch[1])
             else:
                 if "-" in search:
                     date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
-                    query_kits = Kit.query.filter(Kit.date_entered >= date_searched,
-                                              Kit.date_entered <= date_searched + timedelta(days=1))
+                    query_kits = Kit.query.filter(Kit.date_entered >= date_searched, Kit.date_entered <= date_searched + timedelta(days=1))
                 else:
-                    query_kits = Kit.query.filter_by(barcode=search) #123456782023-04
+                    query_kits = Kit.query.filter_by(barcode=search)  # 123456782023-04
                     if query_kits.count() == 0:
                         query_kits = Kit.query.filter(Kit.components.any(barcode=search))
 
@@ -112,9 +109,7 @@ def add_kit():
         conditions = request.form.getlist("condition")
         for value in range(kit.quantity):
             index = 1
-            for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums,
-                                                                              comp_lot_nums, comp_exp_dates, sizes,
-                                                                              conditions):
+            for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
                 if exp_date == "":
                     exp_date = kit.date_entered.replace(year=kit.date_entered.year + 10)
                 elif exp_date:
