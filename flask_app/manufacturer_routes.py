@@ -21,8 +21,7 @@ def manufacturers():
             date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
             query_manus = Manufacturer.query.filter(Manufacturer.date_entered >= date_searched, Manufacturer.date_entered <= date_searched + timedelta(days=1))
         return render_template("manufacturer/manufacturers.html", manufacturers=query_manus, all_manufacturers=all_manufacturers)
-    return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers,
-                           all_manufacturers=all_manufacturers)
+    return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers, all_manufacturers=all_manufacturers)
 
 
 @app.route("/manufacturer/<int:manufacturer_id>")
