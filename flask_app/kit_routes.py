@@ -120,8 +120,7 @@ def add_kit():
 
                 component = Component(
                     name=name,
-                    uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(index) + "/" + str(
-                        len(names)) + " " + str(value + 1) + "/" + str(kit.quantity),
+                    uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(kit.quantity) + " " + str(index) + "/" + str(len(names)),
                     barcode=comp_num,
                     part_num=part_num,
                     lot_num=lot_num,
@@ -144,11 +143,10 @@ def add_kit():
 @app.route("/print_kit/<int:kit_id>", methods=["GET", "POST"])
 def print_kit(kit_id):
     kit = Kit.query.filter_by(id=kit_id)[0]
-    print_amount = request.form.get('print_amount')
-
+    comp_print = request.form.get('comp_print')
     kit_label_size = request.form.get('kit_label_size')
 
-    if print_amount == "All":
+    if not comp_print:
         batchnum = 1
         while batchnum <= kit.quantity:
             printcont = (kit.name, kit.exp_date, kit.date_entered)
@@ -159,15 +157,8 @@ def print_kit(kit_id):
             printcont = (component.name, component.exp_date, kit.date_entered)
             print_label(printcont, "kit", component.size, None, component.uid)
     else:
-        kit_uids = request.form.getlist('kit_uid')
-        comp_uids = request.form.getlist('comp_uid')
-        for kit_uid, comp_uid in zip(kit_uids, comp_uids):
-            if comp_uid == "":
-                printcont = (kit.name, kit.exp_date, kit.date_entered)
-                print_label(printcont, "kit", kit_label_size, None, kit_uid)
-            else:
-                component = Component.query.filter_by(uid=comp_uid)
-                printcont = (component.name, component.exp_date, kit.date_entered)
-                print_label(printcont, "kit", component.size, None, component.uid)
+        component = Component.query.filter_by(id=comp_print)[0]
+        printcont = (component.name, component.exp_date, kit.date_entered)
+        print_label(printcont, "kit", component.size, None, component.uid)
 
     return redirect(url_for("kit", kit_id=kit_id))

@@ -56,8 +56,7 @@
                     <tr>
                         <th>Sample Expire Date</th>
                         {% if manufacturer.exp_date_start != -1 %}
-                        <td colspan="2">{{
-                            manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}
+                        <td colspan="2">{{ manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}
                         </td>
                         {% else %}
                         <td>N/A</td>
@@ -74,12 +73,8 @@
                     <tr>
                         <th>Sample Component Part Number / Lot Number</th>
                         {% if manufacturer.compo_barcode %}
-                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end]
-                            }}
-                        </td>
-                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end]
-                            }}
-                        </td>
+                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end] }}</td>
+                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end] }}</td>
                         {% else %}
                         <td>N/A</td>
                         <td>N/A</td>

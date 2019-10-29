@@ -34,11 +34,14 @@ function remove_element(element) {
 function enable(element) {
 	properties = element.value.split(",");
 	update()
-	comps = document.getElementById("containers_div").childNodes;
-	for (i = 0; i < comps.length; i++) {
-		if (comps[i].tagName == 'DIV') {
-			update_comp(comps[i].childNodes[1].childNodes[3].childNodes[3])
-		}
+	raw_comps = document.getElementById("containers_div")
+	if (raw_comps != null) {
+	    comps = raw_comps.childNodes;
+	    for (i = 0; i < comps.length; i++) {
+		    if (comps[i].tagName == 'DIV') {
+			    update_comp(comps[i].childNodes[1].childNodes[3].childNodes[3])
+	    	}
+	    }
 	}
 }
 
@@ -54,6 +57,7 @@ function update() {
 		document.getElementById("lot_num").setAttribute("value", "");
 	}
 
+
 	if (properties[2] == 1) {
 		var date = document.getElementById("barcode").value.slice(properties[7], properties[8]).replace(/\//g, "-");
 		var month = parseInt(date.slice(5,7), 10);
@@ -65,7 +69,6 @@ function update() {
 		}  else {
 		    document.getElementById("exp_date").setAttribute("value",date+"-30");
 		}
-
 	}
 }
 

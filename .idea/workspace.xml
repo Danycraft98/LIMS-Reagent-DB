@@ -5,13 +5,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/static/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reagent_db_08232019.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +24,104 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="lims-reagent-db" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_app/kit_routes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_app/templates/kit/kit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="221" column="94" lean-forward="true" selection-start-line="221" selection-start-column="94" selection-end-line="221" selection-end-column="94" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_reagent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reagent_routes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-756">
+              <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flask_app/static/add.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="51" column="48" lean-forward="true" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_kit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_app/templates/kit/add_kit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="115" column="26" lean-forward="true" selection-start-line="109" selection-start-column="20" selection-end-line="115" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>6</find>
+      <find>print</find>
+      <find>LABEL_TEMPLATE_TGH_CIRCLE</find>
+      <find>edit&lt;</find>
+      <find>get_comp</find>
+      <find>modal-body</find>
+      <find>// 3</find>
+      <find>add_kit</find>
+      <find>size</find>
+      <find>selected</find>
+      <find>edit</find>
+      <find>selected&gt;</find>
+      <find>enable</find>
+      <find>exp_date</find>
+      <find>properties</find>
+      <find>update</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>// kit.quantity</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -30,7 +133,94 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/flask_app/manufacturer_routes.py" />
+        <option value="$PROJECT_DIR$/flask_app/__init__.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/flask_app/templates/kit/d" />
+        <option value="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" />
+        <option value="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" />
+        <option value="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" />
+        <option value="$PROJECT_DIR$/flask_app/kit_routes.py" />
+        <option value="$PROJECT_DIR$/flask_app/templates/kit/kit.html" />
+        <option value="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" />
+        <option value="$PROJECT_DIR$/flask_app/static/add.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="755" />
+    <option name="y" value="37" />
+    <option name="width" value="1356" />
+    <option name="height" value="1318" />
+  </component>
   <component name="ProjectId" id="1Q1zjmxrqMTCvdypPc8NJKZ41mm" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="kit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="made_reagent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="manufacturer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="reagent" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
@@ -46,6 +236,124 @@
       <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
       <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/kit_routes.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/made_reagent_routes.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/manufacturer_routes.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/reagent_routes.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/routes.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/templates/home.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/templates/login.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flask_app/templates/register.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -77,9 +385,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="reagent-db" />
@@ -98,9 +403,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -118,6 +420,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixed the expiry date error.">
+      <created>1566600580586</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1566600580586</updated>
     </task>
     <task id="LOCAL-00012" summary="Updated expiry date properties. Also undone __init__.py file error.">
       <created>1566600929240</created>
@@ -455,15 +764,32 @@
       <option name="project" value="LOCAL" />
       <updated>1571098914238</updated>
     </task>
-    <task id="LOCAL-00060" summary="Updated search criterias.">
-      <created>1571100907819</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1571100907820</updated>
-    </task>
-    <option name="localTasksCounter" value="61" />
+    <option name="localTasksCounter" value="60" />
     <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="755" y="37" width="1356" height="1318" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22050147" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50078124" side_tool="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49921876" visible="true" weight="0.14905815" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32848588" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49921876" weight="0.32885906" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -471,6 +797,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -479,6 +811,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added UID for components and reagents" />
     <MESSAGE value="Fixed main.py &quot;debug=True&quot;. Added colon to print modals. Fixed UID numbering. Fixed quantity default value." />
     <MESSAGE value="Fixed distance of buttons" />
     <MESSAGE value="UID layout fix for Reagent." />
@@ -503,7 +836,360 @@
     <MESSAGE value="Updated Kit print layout." />
     <MESSAGE value="Updated Reagent search." />
     <MESSAGE value="Size -&gt; Label Size. Reagent expiry date fixed." />
-    <MESSAGE value="Updated search criterias." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated search criterias." />
+    <option name="LAST_COMMIT_MESSAGE" value="Size -&gt; Label Size. Reagent expiry date fixed." />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/manufacturer_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="73" lean-forward="true" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/printer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="57" column="81" lean-forward="true" selection-start-line="57" selection-start-column="81" selection-end-line="57" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/manufacturer_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="73" lean-forward="true" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/manufacturer_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/manufacturer_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/manufacturer_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="82" column="62" lean-forward="true" selection-start-line="82" selection-start-column="62" selection-end-line="82" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="40" lean-forward="true" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/static/javascript/add.js" />
+    <entry file="file://$PROJECT_DIR$/flask_app/static/login.css" />
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="64" lean-forward="true" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/kit/kits.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/printers.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="2299" column="16" lean-forward="true" selection-start-line="2299" selection-start-column="16" selection-end-line="2299" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/made_reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="98" column="58" selection-start-line="98" selection-start-column="58" selection-end-line="98" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/site.db">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/manufacturer_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/kit/d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="245" selection-end-line="361" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/printer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="940">
+          <caret line="60" column="77" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-387">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-659">
+          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/reagent/reagent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="139" column="7" selection-start-line="139" selection-start-column="7" selection-end-line="139" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="51" column="48" lean-forward="true" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/kit/add_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="115" column="26" lean-forward="true" selection-start-line="109" selection-start-column="20" selection-end-line="115" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/kit_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/kit/kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="221" column="94" lean-forward="true" selection-start-line="221" selection-start-column="94" selection-end-line="221" selection-end-column="94" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/reagent_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-756">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/static/add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

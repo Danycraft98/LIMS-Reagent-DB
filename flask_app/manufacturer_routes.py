@@ -9,9 +9,11 @@ def manufacturers():
     if not current_user.logged_in():
         return redirect(url_for('login'))
     all_manufacturers = Manufacturer.query.all()
+
     # Search for specific manufacturer
     if request.method == 'POST':
         search = request.form.get('searchbox')
+
         # Search by name
         query_manus = Manufacturer.query.filter_by(name=search)
         if query_manus.count() == 0 and "-" in search:
