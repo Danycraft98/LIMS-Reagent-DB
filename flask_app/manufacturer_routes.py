@@ -3,21 +3,22 @@ from flask_app import app, db, current_user
 from flask_app.models import Manufacturer
 from datetime import datetime, timedelta
 
-
+# Manufacturer List Route
 @app.route("/manufacturers", methods=['GET', 'POST'])
 def manufacturers():
     if not current_user.logged_in():
         return redirect(url_for('login'))
     all_manufacturers = Manufacturer.query.all()
+    # Search for specific manufacturer
     if request.method == 'POST':
         search = request.form.get('searchbox')
+        # Search by name
         query_manus = Manufacturer.query.filter_by(name=search)
         if query_manus.count() == 0 and "-" in search:
+            # Search by UID
             date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
-            query_manus = Manufacturer.query.filter(Manufacturer.date_entered >= date_searched,
-                                                    Manufacturer.date_entered <= date_searched + timedelta(days=1))
-        return render_template("manufacturer/manufacturers.html", manufacturers=query_manus,
-                               all_manufacturers=all_manufacturers)
+            query_manus = Manufacturer.query.filter(Manufacturer.date_entered >= date_searched, Manufacturer.date_entered <= date_searched + timedelta(days=1))
+        return render_template("manufacturer/manufacturers.html", manufacturers=query_manus, all_manufacturers=all_manufacturers)
     return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers,
                            all_manufacturers=all_manufacturers)
 
