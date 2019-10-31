@@ -56,11 +56,9 @@
                     <tr>
                         <th>Sample Expire Date</th>
                         {% if manufacturer.exp_date_start != -1 %}
-                        <td colspan="2">{{
-                            manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}
-                        </td>
+                        <td colspan="2">{{ manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}</td>
                         {% else %}
-                        <td>N/A</td>
+                        <td colspan="2">N/A</td>
                         {% endif %}
                     </tr>
                     <tr>
@@ -68,18 +66,14 @@
                         {% if manufacturer.compo_barcode %}
                         <td colspan="2">{{ manufacturer.compo_barcode }}</td>
                         {% else %}
-                        <td>N/A</td>
+                        <td colspan="2">N/A</td>
                         {% endif %}
                     </tr>
                     <tr>
                         <th>Sample Component Part Number / Lot Number</th>
                         {% if manufacturer.compo_barcode %}
-                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end]
-                            }}
-                        </td>
-                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end]
-                            }}
-                        </td>
+                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_part_start:manufacturer.comp_part_end] }}</td>
+                        <td>{{ manufacturer.compo_barcode[manufacturer.comp_lot_start:manufacturer.comp_lot_end] }}</td>
                         {% else %}
                         <td>N/A</td>
                         <td>N/A</td>
@@ -91,12 +85,8 @@
         <br/>
         <div class="row">
             <div class="col-6">
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#kit_div">
-                    Kit Table
-                </button>
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#reagent_div">
-                    Reagent Table
-                </button>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#kit_div">Kit Table</button>
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#reagent_div">Reagent Table</button>
             </div>
         </div>
         <div id="kit_div" class="row collapse">

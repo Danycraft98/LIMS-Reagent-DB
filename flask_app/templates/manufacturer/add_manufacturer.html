@@ -2,158 +2,139 @@
 
 {% block content %}
 <main role="main" class="container">
-    <div>
-        <form action="/add_manufacturer" method="post" onsubmit="return confirmMsg()"
-              onkeypress="return event.keyCode != 13;">
-            <div class="container my-container">
-                <div class="row my-row">
-                    <div class="col">
-                        <h2>Add Manufacturer</h2>
-                        <hr/>
-                        <h4>Master Information</h4>
-                    </div>
+    <form action="/add_manufacturer" method="post" onsubmit="return confirmMsg()"
+          onkeypress="return event.keyCode != 13;">
+        <div class="container my-container">
+            <div class="row my-row">
+                <div class="col">
+                    <h2>Add Manufacturer</h2>
+                    <hr/>
+                    <h4>Master Information</h4>
                 </div>
-                <div class="row my-row">
-                    <div class="col-3 form-group ">
-                        <label for="manu_name">Manufacturer Name:</label>
-                        <input type="text" class="form-control" id="manu_name" name="manu_name" required>
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="barcode">Box Lot Barcode:</label>
-                        <input type="text" class="form-control" id="barcode" name="barcode">
-                    </div>
+            </div>
+            <div class="row my-row">
+                <div class="col-3 form-group ">
+                    <label for="manu_name">Manufacturer Name:</label>
+                    <input type="text" class="form-control" id="manu_name" name="manu_name" required>
                 </div>
-                <label>Master Fields:</label>
-                <div class="row my-row">
-                    <div class="col-3 form-group">
-                        <input type="checkbox" class="form-group big_cb" id="part_num_cb" name="cb" value="part_num"
-                               checked="checked" onchange="checkbox_pressed(this)">Part Number
-                    </div>
-                    <div class="col-3 form-group">
-                        <input type="checkbox" class="form-group big_cb" id="lot_num_cb" name="cb" value="lot_num"
-                               checked="checked" onchange="checkbox_pressed(this)">Lot Number
-                    </div>
-                    <div class="col-3 form-group">
-                        <input type="checkbox" class="form-group big_cb" id="exp_date_cb" name="cb" value="exp_date"
-                               checked="checked" onchange="checkbox_pressed(this)">Expiry Date
-                    </div>
+                <div class="col-4 form-group">
+                    <label for="barcode">Box Lot Barcode:</label>
+                    <input type="text" class="form-control" id="barcode" name="barcode">
                 </div>
-                <div class="row my-row">
-                    <div class="col-3 form-group">
-                        <label for="part_num">Part Number:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="part_num" name="part_num" readonly>
-                            <input type="text" class="form-control" id="part_start" name="part_start" hidden>
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default" id="part_num_btn"
-                                        onclick="update_m(this)">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 form-group">
-                        <label for="lot_num">Lot Number:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="lot_num" name="lot_num" readonly>
-                            <input type="text" class="form-control" id="lot_start" name="lot_start" hidden>
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default" id="lot_num_btn" onclick="update_m(this)">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 form-group">
-                        <label for="exp_date">Expired Date:</label>
-                        <div class="input-group">
-                            <input type="date" class="form-control" id="exp_date" name="exp_date" readonly>
-                            <input type="text" class="form-control" id="exp_date_start" name="exp_date_start" hidden>
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default" id="exp_date_btn"
-                                        onclick="update_date(this)">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
+            </div>
+            <label>Master Fields:</label>
+            <div class="row my-row">
+                <div class="col-3 form-group">
+                    <input type="checkbox" class="form-group big_cb" id="part_num_cb" name="cb" value="part_num" checked="checked" onchange="checkbox_pressed(this)">Part Number
+                </div>
+                <div class="col-3 form-group">
+                    <input type="checkbox" class="form-group big_cb" id="lot_num_cb" name="cb" value="lot_num" checked="checked" onchange="checkbox_pressed(this)">Lot Number
+                </div>
+                <div class="col-3 form-group">
+                    <input type="checkbox" class="form-group big_cb" id="exp_date_cb" name="cb" value="exp_date" checked="checked" onchange="checkbox_pressed(this)">Expiry Date
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col-3 form-group">
+                    <label for="part_num">Part Number:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="part_num" name="part_num" readonly>
+                        <input type="text" class="form-control" id="part_start" name="part_start" hidden>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" id="part_num_btn" onclick="update_m(this)">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <hr/>
-                <div class="row my-row">
-                    <div class="col">
-                        <h4>Component Information</h4>
-                    </div>
-                </div>
-                <label>Component Fields:</label>
-                <div class="row my-row">
-                    <div class="col-3 form-group">
-                        <input type="checkbox" class="form-group big_cb" name="comp_cb" value="barcode"
-                               checked="checked"
-                               onchange="document.getElementById('comp_barcode').disabled = !this.checked;">Component
-                        Barcode
-                    </div>
-                    <div class="col-3 form-group">
-                        <input type="checkbox" class="form-group big_cb" id="comp_part_num_cb" name="comp_cb"
-                               value="part_num"
-                               checked="checked" onchange="checkbox_pressed(this)">Part Number
-                    </div>
-                    <div class="col-3 form-group">
-                        <input type="checkbox" class="form-group big_cb" id="comp_lot_num_cb" name="comp_cb"
-                               value="lot_num"
-                               checked="checked" onchange="checkbox_pressed(this)">Lot Number
-                    </div>
-                </div>
-                <div class="row my-row">
-                    <div class="col-4 form-group">
-                        <label for="comp_barcode">Component Barcode:</label>
-                        <input type="text" class="form-control" id="comp_barcode" name="compo_barcode">
-                    </div>
-                    <div class="col-3 form-group">
-                        <label for="comp_part_num">Part Number:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="comp_part_num" name="comp_part_num" readonly>
-                            <input type="text" class="form-control" id="comp_part_start" name="comp_part_start" hidden>
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default" id="comp_part_num_btn"
-                                        onclick="update_comp_m(this)">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 form-group">
-                        <label for="comp_lot_num">Lot Number:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="comp_lot_num" name="comp_lot_num" readonly>
-                            <input type="text" class="form-control" id="comp_lot_start" name="comp_lot_start" hidden>
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default" id="comp_lot_num_btn"
-                                        onclick="update_comp_m(this)">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
+                <div class="col-3 form-group">
+                    <label for="lot_num">Lot Number:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="lot_num" name="lot_num" readonly>
+                        <input type="text" class="form-control" id="lot_start" name="lot_start" hidden>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" id="lot_num_btn" onclick="update_m(this)">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <br/>
-                <div class="row my-row">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-info button" id="submit">Save</button>
-                        <button type="button" class="btn btn-outline-info button" name="cancel" id="cancel"
-                                onclick="window.history.back();">
-                            Cancel
-                        </button>
+                <div class="col-3 form-group">
+                    <label for="exp_date">Expired Date:</label>
+                    <div class="input-group">
+                        <input type="date" class="form-control" id="exp_date" name="exp_date" readonly>
+                        <input type="text" class="form-control" id="exp_date_start" name="exp_date_start" hidden>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" id="exp_date_btn" onclick="update_date(this)">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row my-row">
+                <div class="col">
+                    <h4>Component Information</h4>
+                </div>
+            </div>
+            <label>Component Fields:</label>
+            <div class="row my-row">
+                <div class="col-3 form-group">
+                    <input type="checkbox" class="form-group big_cb" name="comp_cb" value="barcode" checked="checked" onchange="document.getElementById('comp_barcode').disabled = !this.checked;">Component Barcode
+                </div>
+                <div class="col-3 form-group">
+                    <input type="checkbox" class="form-group big_cb" id="comp_part_num_cb" name="comp_cb" value="part_num" checked="checked" onchange="checkbox_pressed(this)">Part Number
+                </div>
+                <div class="col-3 form-group">
+                    <input type="checkbox" class="form-group big_cb" id="comp_lot_num_cb" name="comp_cb" value="lot_num" checked="checked" onchange="checkbox_pressed(this)">Lot Number
+                </div>
+            </div>
+            <div class="row my-row">
+                <div class="col-4 form-group">
+                    <label for="comp_barcode">Component Barcode:</label>
+                    <input type="text" class="form-control" id="comp_barcode" name="compo_barcode">
+                </div>
+                <div class="col-3 form-group">
+                    <label for="comp_part_num">Part Number:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="comp_part_num" name="comp_part_num" readonly>
+                        <input type="text" class="form-control" id="comp_part_start" name="comp_part_start" hidden>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" id="comp_part_num_btn" onclick="update_comp_m(this)">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 form-group">
+                    <label for="comp_lot_num">Lot Number:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="comp_lot_num" name="comp_lot_num" readonly>
+                        <input type="text" class="form-control" id="comp_lot_start" name="comp_lot_start" hidden>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" id="comp_lot_num_btn" onclick="update_comp_m(this)">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
             <br/>
-        </form>
-    </div>
+            <div class="row my-row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-info button" id="submit">Save</button>
+                    <button type="button" class="btn btn-outline-info button" name="cancel" id="cancel" onclick="window.history.back();">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </form>
 </main>
 
 <script>
 	function update_m(element) {
-	      var barcode = document.getElementById("barcode")
+	    var barcode = document.getElementById("barcode")
 		var myRegexp = /\.([^.]+)\./g;
 		var match = myRegexp.exec(barcode.value);
 		if (match != null) {
@@ -165,7 +146,7 @@
 
 	function update_comp_m(element) {
 		var id = $(element).attr("id")
-	      var barcode = document.getElementById("comp_barcode");
+	    var barcode = document.getElementById("comp_barcode");
 		var myRegexp = /\.([^.]+)\./g;
 		var match = myRegexp.exec(barcode.value);
 		if (match != null) {

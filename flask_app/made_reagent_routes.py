@@ -21,10 +21,10 @@ def made_reagents():
                 batch = search.split()[2].split("/")
                 query_m_reagents = MadeReagent.query.filter(MadeReagent.date_entered >= date_searched, MadeReagent.date_entered <= date_searched + timedelta(days=1), MadeReagent.quantity >= batch[0], MadeReagent.quantity == batch[1])
             else:
-                query_m_reagents = Reagent.query.filter_by(barcode=search)  # 123456782023-04
+                query_m_reagents = MadeReagent.query.filter_by(barcode=search)  # 123456782023-04
                 if query_m_reagents.count() == 0:
                     if "-" in search:
-                        date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                        date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08
                         query_m_reagents = MadeReagent.query.filter(MadeReagent.date_entered >= date_searched, MadeReagent.date_entered <= date_searched + timedelta(days=1))
 
         return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents)

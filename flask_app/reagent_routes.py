@@ -20,7 +20,7 @@ def reagents():
                 query_reagents = Reagent.query.filter(Reagent.date_entered >= date_searched, Reagent.date_entered <= date_searched + timedelta(days=1), Reagent.quantity >= batch[0], Reagent.quantity == batch[1])
             else:
                 if "-" in search:
-                    date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
+                    date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08
                     query_reagents = Reagent.query.filter(Reagent.date_entered >= date_searched, Reagent.date_entered <= date_searched + timedelta(days=1))
                 else:
                     query_reagents = Reagent.query.filter_by(barcode=search)  # 123456782023-04

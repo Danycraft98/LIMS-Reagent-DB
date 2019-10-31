@@ -91,10 +91,7 @@
     <hr/>
     {% for i in range %}
     <h4>
-        <button type="button" class="btn btn-default" data-toggle="collapse"
-                data-target="#comp_div{{i}}">Kit
-            UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }}
-        </button>
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#comp_div{{i}}">Kit UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S")}} {{ i+1 }}/{{ kit.quantity }}</button>
     </h4>
     <div id="comp_div{{i}}" class="row collapse">
         <table class="table table-hover">
@@ -112,8 +109,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for component in kit.components[i * kit.components.count() // kit.quantity:(i+1) * kit.components.count()
-            // kit.quantity] %}
+            {% for component in kit.components[i * kit.components.count() // kit.quantity:(i+1) * kit.components.count() // kit.quantity] %}
             <tr>
                 <td>{{ component.name }}</td>
                 <td>{{ component.uid }}</td>
@@ -128,11 +124,7 @@
                 <td>{{ component.condition }}</td>
                 <td>{{ component.size.upper() }}</td>
                 <td>
-                    <button class="btn btn-info"
-                            id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}"
-                            data-toggle="modal" data-target="#comp_modal" onclick="edit_comp(this);">
-                        Edit
-                    </button>
+                    <button class="btn btn-info" id="{{component.id}},{{component.name}},{{component.barcode}},{{component.part_num}},{{component.lot_num}},{{component.exp_date}},{{component.condition}}" data-toggle="modal" data-target="#comp_modal" onclick="edit_comp(this);">Edit</button>
                 </td>
             </tr>
             {% endfor %}
@@ -152,7 +144,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Print Label</h5>
             </div>
-            <form id="print"action="/print_kit/{{ kit.id }}" method="post" onkeypress="return event.keyCode != 13;">
+            <form id="print" action="/print_kit/{{ kit.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
                         <div class="col-3 form-group">
@@ -231,9 +223,7 @@
                         </div>
                         <div class="row my-row">
                             <div class="col-2">
-                                <button type="button" class="btn" name="append" onclick="add_element_p()">Add
-                                    Kit/Component
-                                </button>
+                                <button type="button" class="btn" name="append" onclick="add_element_p()">Add Kit/Component</button>
                             </div>
                         </div>
                     </div>

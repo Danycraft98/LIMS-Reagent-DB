@@ -8,13 +8,10 @@
                 <h2>Reagent</h2>
             </div>
             <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
-                <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#reagent_modal">
-                    Print Label
-                </button>
+                <button type="button" class="btn btn-info button2" data-toggle="modal" data-target="#reagent_modal">Print Label</button>
             </div>
             <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
-                <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print
-                </button>
+                <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print</button>
             </div>
             <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
                 <form action="/reagent_delete/{{ reagent.id }}">
@@ -76,10 +73,10 @@
                             {{ reagent.date_entered }} {{ i + 1 }}/{{ reagent.quantity }} <br/>
                             {% endfor %}
                         </td>
-                        <tr>
-                            <th>Comments</th>
-                            <td>{{ reagent.comment }}</td>
                     </tr>
+                    <tr>
+                        <th>Comments</th>
+                        <td>{{ reagent.comment }}</td>
                     </tr>
                 </table>
             </div>
@@ -89,7 +86,7 @@
 {% endblock content %}
 
 {% block modal %}
-<div class="modal fade" id="reagent_modal" tabindex="-1" role="" aria-labelledby="reagent_modal"
+<div class="modal fade" id="reagent_modal" tabindex="-1" aria-labelledby="reagent_modal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -113,8 +110,7 @@
                                 <option value="m">Medium</option>
                             </select>
                             <br/>
-                            <input readonly data-prefix="Copies" type="number" value="{{reagent.quantity}}" step="1"
-                                   class="form-control" name="reagent_label" id="reagent_label"/>
+                            <input readonly data-prefix="Copies" type="number" value="{{reagent.quantity}}" step="1" class="form-control" name="reagent_label" id="reagent_label"/>
                         </div>
                         <div class="col-1 form-group"></div>
                         <div class="col-4 form-group">
@@ -142,6 +138,5 @@
     $('.modal').on('hidden.bs.modal', function(){
         $(this).find('form')[0].reset();
     });
-
 </script>
 {% endblock script %}
