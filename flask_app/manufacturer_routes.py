@@ -22,8 +22,8 @@ def manufacturers():
             # Search by UID
             date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08 14:39:42 1/2
             query_manus = Manufacturer.query.filter(Manufacturer.date_entered >= date_searched, Manufacturer.date_entered <= date_searched + timedelta(days=1))
-        return render_template("manufacturer/manufacturers.html", manufacturers=query_manus, all_manufacturers=all_manufacturers)
-    return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers, all_manufacturers=all_manufacturers)
+        return render_template("manufacturer/manufacturers.html", manufacturers=query_manus, all_manufacturers=all_manufacturers, username=current_user.get_name())
+    return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers, all_manufacturers=all_manufacturers, username=current_user.get_name())
 
 
 @app.route("/manufacturer/<int:manufacturer_id>", methods=["GET", "POST"])
@@ -44,8 +44,8 @@ def manufacturer(manufacturer_id):
 
         db.session.delete(manufacturer)
         db.session.commit()
-        return redirect(url_for('manufacturers'))
-    return render_template("manufacturer/manufacturer.html", manufacturer=manufacturer, deletable=deletable)
+        return redirect(url_for('manufacturers', username=current_user.get_name()))
+    return render_template("manufacturer/manufacturer.html", manufacturer=manufacturer, deletable=deletable, username=current_user.get_name())
 
 
 @app.route("/add_manufacturer", methods=["GET", "POST"])
@@ -129,6 +129,6 @@ def add_manufacturer():
         db.session.add(manufacturer)
         db.session.commit()
 
-        return redirect(url_for("manufacturers"))
+        return redirect(url_for("manufacturers", username=current_user.get_name()))
 
-    return render_template("manufacturer/add_manufacturer.html")
+    return render_template("manufacturer/add_manufacturer.html", username=current_user.get_name())

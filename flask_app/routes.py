@@ -10,7 +10,7 @@ def login():
 		user = User.query.filter_by(username=request.form.get('username'), password=request.form.get('password')).first()
 		if user:
 			current_user.set_user(user)
-			return redirect('home')
+			return redirect(url_for('home', username=current_user.get_name()))
 		else:
 			flash("Wrong username or password")
 	return render_template('login.html', before_home=True)
@@ -53,4 +53,4 @@ def home():
 	# Make sure user is logged in
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
-	return render_template('home.html')
+	return render_template('home.html', username=current_user.get_name())

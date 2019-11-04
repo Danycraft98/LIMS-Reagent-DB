@@ -28,8 +28,8 @@ def kits():
                     if query_kits.count() == 0:
                         query_kits = Kit.query.filter(Kit.components.any(barcode=search))
 
-        return render_template("kit/kits.html", kits=query_kits, all_kits=all_kits)
-    return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits)
+        return render_template("kit/kits.html", kits=query_kits, all_kits=all_kits, username=current_user.get_name())
+    return render_template("kit/kits.html", kits=all_kits, all_kits=all_kits, username=current_user.get_name())
 
 
 @app.route("/kit/<int:kit_id>", methods=['GET', 'POST'])
@@ -41,9 +41,9 @@ def kit(kit_id):
     # Make sure Reagent is deleted within 24 hours
     deletable = (datetime.today() - kit.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
-        id = request.form.get("comp_id")
+        comp_id = request.form.get("comp_id")
         if id:
-            component = Component.query.filter_by(id=id)[0]
+            component = Component.query.filter_by(id=comp_id)[0]
             component.name = request.form.get("comp_name")
             component.barcode = request.form.get("comp_barcode")
             component.part_num = request.form.get("part_num")
@@ -51,12 +51,12 @@ def kit(kit_id):
             component.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
             component.condition = request.form.get("comp_condition")
             db.session.commit()
-            return redirect(url_for("kit", kit_id=kit_id))
+            return redirect(url_for("kit", kit_id=kit_id, username=current_user.get_name()))
         elif deletable:
             db.session.delete(kit)
             db.session.commit()
-            return redirect(url_for('kits'))
-    return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity), deletable=deletable)
+            return redirect(url_for('kits', username=current_user.get_name()))
+    return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity), deletable=deletable, username=current_user.get_name())
 
 
 @app.route("/add_kit", methods=["GET", "POST"])
@@ -128,11 +128,11 @@ def add_kit():
                 db.session.commit()
                 index += 1
 
-        return redirect(url_for("kit", kit_id=kit.id))
+        return redirect(url_for("kit", kit_id=kit.id, username=current_user.get_name()))
 
     manu_name = Manufacturer.query.all()
     today = datetime.today().date()
-    return render_template("kit/add_kit.html", title="Add", manu_name=manu_name, today=today)
+    return render_template("kit/add_kit.html", title="Add", manu_name=manu_name, today=today, username=current_user.get_name())
 
 
 @app.route("/print_kit/<int:kit_id>", methods=["GET", "POST"])
@@ -156,4 +156,4 @@ def print_kit(kit_id):
         printcont = (component.name, component.exp_date, kit.date_entered)
         print_label(printcont, "kit", component.size, None, component.uid)
 
-    return redirect(url_for("kit", kit_id=kit_id))
+    return redirect(url_for("kit", kit_id=kit_id, username=current_user.get_name()))

@@ -24,8 +24,8 @@ def made_reagents():
                 date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08
                 query_m_reagents = MadeReagent.query.filter(MadeReagent.date_entered >= date_searched, MadeReagent.date_entered <= date_searched + timedelta(days=1))
 
-        return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents)
-    return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents)
+        return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
+    return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
 
 
 @app.route("/made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
@@ -39,8 +39,8 @@ def made_reagent(made_reagent_id):
     if request.method == 'POST' and deletable:
         db.session.delete(made_reagent)
         db.session.commit()
-        return redirect(url_for('made_reagents'))
-    return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, eval=eval, Manufacturer=Manufacturer, Reagent=Reagent, Component=Component, deletable=deletable)
+        return redirect(url_for('made_reagents', username=current_user.get_name()))
+    return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, eval=eval, Manufacturer=Manufacturer, Reagent=Reagent, Component=Component, deletable=deletable, username=current_user.get_name())
 
 
 @app.route("/add_made_reagent", methods=["GET", "POST"])
@@ -78,7 +78,7 @@ def add_made_reagent():
         made_reagent.component_list = str(component_list)
         db.session.commit()
 
-        return redirect(url_for("made_reagent", made_reagent_id=made_reagent.id))
+        return redirect(url_for("made_reagent", made_reagent_id=made_reagent.id, username=current_user.get_name()))
 
     comp_infos = {}
     for comp in Component.query.all():
@@ -87,7 +87,7 @@ def add_made_reagent():
     for reagent in Reagent.query.all():
         comp_infos[reagent.barcode] = reagent.name
     today = datetime.today().date()
-    return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos=comp_infos)
+    return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos=comp_infos, username=current_user.get_name())
 
 
 @app.route("/print_made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
@@ -104,4 +104,4 @@ def print_made_reagent(made_reagent_id):
         print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(made_reagent.quantity))
         batchnum += 1
 
-    return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id))
+    return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id, username=current_user.get_name()))

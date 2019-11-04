@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Added user info.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,13 +119,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added expiry date to component.">
-      <created>1570071444048</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1570071444048</updated>
     </task>
     <task id="LOCAL-00025" summary="Moved js functions. Fixed formats.">
       <created>1570143864315</created>
@@ -463,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572904115526</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Updated layouts.">
+      <created>1572905221077</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1572905221077</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -480,7 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated comment attribute in Kit model." />
     <MESSAGE value="Updated commenting. Updated exp_date editing. Fixed other html files." />
     <MESSAGE value="Added size to Component." />
     <MESSAGE value="Updated print in Kit route" />
@@ -505,6 +504,7 @@
     <MESSAGE value="Undone mistakes." />
     <MESSAGE value="Added deleteMsg tokit, reagent, and made reagent." />
     <MESSAGE value="Added deleteMsg to Manufacturer." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added deleteMsg to Manufacturer." />
+    <MESSAGE value="Updated layouts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated layouts." />
   </component>
 </project>

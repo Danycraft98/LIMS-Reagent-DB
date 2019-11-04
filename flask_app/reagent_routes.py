@@ -33,8 +33,8 @@ def reagents():
                 else:
                     # Search by barcode
                     query_reagents = Reagent.query.filter_by(barcode=search)  # 123456782023-04
-        return render_template("reagent/reagents.html", reagents=query_reagents, all_reagents=all_reagents)
-    return render_template("reagent/reagents.html", reagents=all_reagents, all_reagents=all_reagents)
+        return render_template("reagent/reagents.html", reagents=query_reagents, all_reagents=all_reagents, username=current_user.get_name())
+    return render_template("reagent/reagents.html", reagents=all_reagents, all_reagents=all_reagents, username=current_user.get_name())
 
 
 # Reagent Route
@@ -51,7 +51,7 @@ def reagent(reagent_id):
         db.session.delete(reagent)
         db.session.commit()
         return redirect(url_for('reagents'))
-    return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer, range=range(reagent.quantity), deletable=deletable)
+    return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer, range=range(reagent.quantity), deletable=deletable, username=current_user.get_name())
 
 
 # Add Reagent Route
@@ -95,7 +95,7 @@ def add_reagent():
 
     manu_name = Manufacturer.query.all()
     today = datetime.today().date()
-    return render_template("reagent/add_reagent.html", manu_name=manu_name, today=today)
+    return render_template("reagent/add_reagent.html", manu_name=manu_name, today=today, username=current_user.get_name())
 
 
 # Print Reagent Redirect
@@ -112,4 +112,4 @@ def print_reagent(reagent_id):
         print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchnum) + '/' + str(reagent.quantity))
         batchnum += 1
 
-    return redirect(url_for("reagent", reagent_id=reagent_id))
+    return redirect(url_for("reagent", reagent_id=reagent_id, username=current_user.get_name()))
