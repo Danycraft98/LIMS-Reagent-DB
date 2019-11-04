@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/static/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,20 +119,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Fixed minor detail">
-      <created>1570071346298</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1570071346298</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Removed &quot;Print Option&quot; button as it is unnecessary.">
-      <created>1570071411780</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1570071411780</updated>
     </task>
     <task id="LOCAL-00024" summary="Added expiry date to component.">
       <created>1570071444048</created>
@@ -465,7 +449,21 @@
       <option name="project" value="LOCAL" />
       <updated>1572900856007</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Added deleteMsg tokit, reagent, and made reagent.">
+      <created>1572903909273</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1572903909273</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Added deleteMsg to Manufacturer.">
+      <created>1572904115526</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1572904115526</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -482,8 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed unnecessary div tag" />
-    <MESSAGE value="Fixed minor django error and added comment attribute to database type Kit." />
     <MESSAGE value="Updated comment attribute in Kit model." />
     <MESSAGE value="Updated commenting. Updated exp_date editing. Fixed other html files." />
     <MESSAGE value="Added size to Component." />
@@ -507,6 +503,8 @@
     <MESSAGE value="Added comments" />
     <MESSAGE value="Fixed Made Reagent print error." />
     <MESSAGE value="Undone mistakes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Undone mistakes." />
+    <MESSAGE value="Added deleteMsg tokit, reagent, and made reagent." />
+    <MESSAGE value="Added deleteMsg to Manufacturer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added deleteMsg to Manufacturer." />
   </component>
 </project>

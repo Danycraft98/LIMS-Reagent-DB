@@ -10,9 +10,7 @@
             <div class="col-3">
                 <form class="navbar-form navbar-left" action="{{ url_for('kits') }}" method="post">
                     <div class="input-group">
-                        <input id="searchbox" type="text" class="form-control"
-                               placeholder="Search" name="searchbox" list="listid"
-                               onautocomplete="search(this)">
+                        <input id="searchbox" type="text" class="form-control" placeholder="Search" name="searchbox" list="listid" onautocomplete="search(this)">
                         <datalist id='listid'>
                             {% for kit in all_kits %}
                             <option>{{ kit.name }}</option>
