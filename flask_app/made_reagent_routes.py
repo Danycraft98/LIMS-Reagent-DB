@@ -95,7 +95,6 @@ def print_made_reagent(made_reagent_id):
     made_reagent = MadeReagent.query.filter_by(id=made_reagent_id)[0]
 
     made_reagent_label_size = request.form.get('made_reagent_label_size')
-    made_reagent_label = int(request.form.get('made_reagent_label'))
     acquired_stat = request.form.get('acquired_stat')
 
     batchnum = 1

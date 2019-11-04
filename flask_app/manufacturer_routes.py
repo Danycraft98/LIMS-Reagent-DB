@@ -93,7 +93,7 @@ def add_manufacturer():
         try:
             comp_part_start = int(comp_part_start)
             comp_part_end = len(comp_part_num) + comp_part_start
-        except:
+        except Exception:
             comp_part_start = comp_part_end = -1
 
         try:
