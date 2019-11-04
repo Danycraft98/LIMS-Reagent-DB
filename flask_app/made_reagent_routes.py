@@ -56,14 +56,14 @@ def add_made_reagent():
             exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
         quantity = int(request.form.get("quantity"))
 
-        made_reagent = MadeReagent(
+        made_reagent_ = MadeReagent(
             name=request.form.get("name"),
             exp_date=exp_date,
             date_entered=datetime.today(),
             quantity=quantity
         )
 
-        db.session.add(made_reagent)
+        db.session.add(made_reagent_)
         db.session.commit()
 
         names = Counter(request.form.getlist("comp_name"))
@@ -74,11 +74,11 @@ def add_made_reagent():
                 reagent_list[name] = names[name]
             elif len(list(Component.query.filter_by(name=name))) > 0:
                 component_list[name] = names[name]
-        made_reagent.reagent_list = str(reagent_list)
-        made_reagent.component_list = str(component_list)
+        made_reagent_.reagent_list = str(reagent_list)
+        made_reagent_.component_list = str(component_list)
         db.session.commit()
 
-        return redirect(url_for("made_reagent", made_reagent_id=made_reagent.id, username=current_user.get_name()))
+        return redirect(url_for("made_reagent", made_reagent_id=made_reagent_.id, username=current_user.get_name()))
 
     comp_infos = {}
     for comp in Component.query.all():
@@ -92,15 +92,15 @@ def add_made_reagent():
 
 @app.route("/print_made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
 def print_made_reagent(made_reagent_id):
-    made_reagent = MadeReagent.query.filter_by(id=made_reagent_id)[0]
+    made_reagent_ = MadeReagent.query.filter_by(id=made_reagent_id)[0]
 
     made_reagent_label_size = request.form.get('made_reagent_label_size')
     acquired_stat = request.form.get('acquired_stat')
 
     batchnum = 1
-    while batchnum <= made_reagent.quantity:
-        printcont = (made_reagent.name, made_reagent.exp_date, made_reagent.date_entered)
-        print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(made_reagent.quantity))
+    while batchnum <= made_reagent_.quantity:
+        printcont = (made_reagent_.name, made_reagent_.exp_date, made_reagent_.date_entered)
+        print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent_.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(made_reagent_.quantity))
         batchnum += 1
 
     return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id, username=current_user.get_name()))

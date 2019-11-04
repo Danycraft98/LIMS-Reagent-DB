@@ -102,7 +102,7 @@ def add_manufacturer():
         except Exception:
             comp_lot_start = comp_lot_end = -1
 
-        manufacturer = Manufacturer(
+        manufacturer_ = Manufacturer(
             name=request.form.get("manu_name"),
             date_entered=datetime.today(),
             exp_date=cb["exp_date"],
@@ -126,7 +126,7 @@ def add_manufacturer():
             comp_lot_end=comp_lot_end
         )
 
-        db.session.add(manufacturer)
+        db.session.add(manufacturer_)
         db.session.commit()
 
         return redirect(url_for("manufacturers", username=current_user.get_name()))

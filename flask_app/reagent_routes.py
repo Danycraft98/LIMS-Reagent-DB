@@ -43,15 +43,15 @@ def reagent(reagent_id):
     # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
-    reagent = Reagent.query.get(reagent_id)
+    reagent_ = Reagent.query.get(reagent_id)
 
     # Make sure Reagent is deleted within 24 hours
-    deletable = (datetime.today() - reagent.date_entered).total_seconds() < 24 * 3600
+    deletable = (datetime.today() - reagent_.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST' and deletable:
-        db.session.delete(reagent)
+        db.session.delete(reagent_)
         db.session.commit()
         return redirect(url_for('reagents'))
-    return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer, range=range(reagent.quantity), deletable=deletable, username=current_user.get_name())
+    return render_template("reagent/reagent.html", reagent=reagent_, Manufacturer=Manufacturer, range=range(reagent_.quantity), deletable=deletable, username=current_user.get_name())
 
 
 # Add Reagent Route
@@ -76,7 +76,7 @@ def add_reagent():
             exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
         quantity = int(request.form.get("quantity"))
 
-        reagent = Reagent(
+        reagent_ = Reagent(
             name=request.form.get("name"),
             barcode=request.form.get("barcode"),
             part_num=part_num,
@@ -88,7 +88,7 @@ def add_reagent():
             manufacturer_fk=request.values.get("manu_name").split(',')[-1],
         )
 
-        db.session.add(reagent)
+        db.session.add(reagent_)
         db.session.commit()
 
         return redirect(url_for("reagents"))
@@ -101,15 +101,15 @@ def add_reagent():
 # Print Reagent Redirect
 @app.route("/print_reagent/<int:reagent_id>", methods=["GET", "POST"])
 def print_reagent(reagent_id):
-    reagent = Reagent.query.filter_by(id=reagent_id)[0]
+    reagent_ = Reagent.query.filter_by(id=reagent_id)[0]
 
     reagent_label_size = request.form.get('reagent_label_size')
     acquired_stat = request.form.get('acquired_stat')
 
     batchnum = 1
-    while batchnum <= reagent.quantity:
-        printcont = (reagent.name, reagent.exp_date, datetime.now())
-        print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchnum) + '/' + str(reagent.quantity))
+    while batchnum <= reagent_.quantity:
+        printcont = (reagent_.name, reagent_.exp_date, datetime.now())
+        print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchnum) + '/' + str(reagent_.quantity))
         batchnum += 1
 
     return redirect(url_for("reagent", reagent_id=reagent_id, username=current_user.get_name()))

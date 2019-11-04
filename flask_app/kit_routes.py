@@ -36,10 +36,10 @@ def kits():
 def kit(kit_id):
     if not current_user.logged_in():
         return redirect(url_for('login'))
-    kit = Kit.query.get(kit_id)
+    kit_ = Kit.query.get(kit_id)
 
     # Make sure Reagent is deleted within 24 hours
-    deletable = (datetime.today() - kit.date_entered).total_seconds() < 24 * 3600
+    deletable = (datetime.today() - kit_.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
         comp_id = request.form.get("comp_id")
         if id:
@@ -53,10 +53,10 @@ def kit(kit_id):
             db.session.commit()
             return redirect(url_for("kit", kit_id=kit_id, username=current_user.get_name()))
         elif deletable:
-            db.session.delete(kit)
+            db.session.delete(kit_)
             db.session.commit()
             return redirect(url_for('kits', username=current_user.get_name()))
-    return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity), deletable=deletable, username=current_user.get_name())
+    return render_template("kit/kit.html", kit=kit_, Manufacturer=Manufacturer, range=range(kit_.quantity), deletable=deletable, username=current_user.get_name())
 
 
 @app.route("/add_kit", methods=["GET", "POST"])
@@ -80,7 +80,7 @@ def add_kit():
             exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
         quantity = int(request.form.get("quantity"))
 
-        kit = Kit(
+        kit_ = Kit(
             name=request.form.get("name"),
             barcode=request.form.get("barcode"),
             part_num=part_num,
@@ -92,7 +92,7 @@ def add_kit():
             manufacturer_fk=request.values.get("manu_name").split(",")[-1]
         )
 
-        db.session.add(kit)
+        db.session.add(kit_)
         db.session.commit()
 
         names = request.form.getlist("comp_name")
@@ -102,33 +102,33 @@ def add_kit():
         comp_exp_dates = request.form.getlist("comp_exp_date")
         sizes = request.form.getlist("size")
         conditions = request.form.getlist("condition")
-        for value in range(kit.quantity):
+        for value in range(kit_.quantity):
             index = 1
             for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
                 if exp_date == "":
-                    exp_date = kit.date_entered.replace(year=kit.date_entered.year + 10)
+                    exp_date = kit_.date_entered.replace(year=kit_.date_entered.year + 10)
                 elif exp_date:
                     exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
 
                 if lot_num == "":
-                    lot_num = kit.date_entered.strftime("%Y-%m-%d")
+                    lot_num = kit_.date_entered.strftime("%Y-%m-%d")
 
                 component = Component(
                     name=name,
-                    uid=kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(kit.quantity) + " " + str(index) + "/" + str(len(names)),
+                    uid=kit_.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(kit_.quantity) + " " + str(index) + "/" + str(len(names)),
                     barcode=comp_num,
                     part_num=part_num,
                     lot_num=lot_num,
                     exp_date=exp_date,
                     size=size,
                     condition=condition,
-                    kit_fk=kit.id
+                    kit_fk=kit_.id
                 )
                 db.session.add(component)
                 db.session.commit()
                 index += 1
 
-        return redirect(url_for("kit", kit_id=kit.id, username=current_user.get_name()))
+        return redirect(url_for("kit", kit_id=kit_.id, username=current_user.get_name()))
 
     manu_name = Manufacturer.query.all()
     today = datetime.today().date()

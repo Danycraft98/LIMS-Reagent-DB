@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Added user info.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/kit_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/printer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,13 +116,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Updated templates. Added Favicon.ico. Moved css and js files.">
-      <created>1570146091046</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1570146091046</updated>
     </task>
     <task id="LOCAL-00027" summary="Updated layout.">
       <created>1570146593446</created>
@@ -463,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572906305004</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Fixed warnings.">
+      <created>1572907114744</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1572907114744</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -480,7 +477,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added size to Component." />
     <MESSAGE value="Updated print in Kit route" />
     <MESSAGE value="Updated necessary parts" />
     <MESSAGE value="Fixed Reagent layout" />
@@ -505,6 +501,7 @@
     <MESSAGE value="Added deleteMsg to Manufacturer." />
     <MESSAGE value="Updated layouts." />
     <MESSAGE value="Added user info." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added user info." />
+    <MESSAGE value="Fixed warnings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed warnings." />
   </component>
 </project>
