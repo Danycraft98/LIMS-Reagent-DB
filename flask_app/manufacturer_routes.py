@@ -26,35 +26,26 @@ def manufacturers():
     return render_template("manufacturer/manufacturers.html", manufacturers=all_manufacturers, all_manufacturers=all_manufacturers)
 
 
-@app.route("/manufacturer/<int:manufacturer_id>")
+@app.route("/manufacturer/<int:manufacturer_id>", methods=["GET", "POST"])
 def manufacturer(manufacturer_id):
     # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
     manufacturer = Manufacturer.query.get(manufacturer_id)
-    return render_template("manufacturer/manufacturer.html", manufacturer=manufacturer)
 
+    # Make sure Reagent is deleted within 24 hours
+    deletable = (datetime.today() - manufacturer.date_entered).total_seconds() < 24 * 3600
+    if request.method == 'POST' and deletable:
+        for kit in manufacturer.kits:
+            db.session.delete(kit)
 
-@app.route("/manufacturer_delete/<int:manufacturer_id>")
-def manufacturer_delete(manufacturer_id):
-    # Make sure user is logged in
-    if not current_user.logged_in():
-        return redirect(url_for('login'))
+        for reagent in manufacturer.reagents:
+            db.session.delete(reagent)
 
-    manufacturer = Manufacturer.query.get(manufacturer_id)
-    current_time = datetime.today()
-    if (current_time - manufacturer.date_entered).total_seconds() > 3 * 3600:
-        return redirect(url_for('manufacturer', manufacturer_id=manufacturer_id))
-
-    for kit in manufacturer.kits:
-        db.session.delete(kit)
-
-    for reagent in manufacturer.reagents:
-        db.session.delete(reagent)
-
-    db.session.delete(manufacturer)
-    db.session.commit()
-    return redirect(url_for('manufacturers'))
+        db.session.delete(manufacturer)
+        db.session.commit()
+        return redirect(url_for('manufacturers'))
+    return render_template("manufacturer/manufacturer.html", manufacturer=manufacturer, deletable=deletable)
 
 
 @app.route("/add_manufacturer", methods=["GET", "POST"])

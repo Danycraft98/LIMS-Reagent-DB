@@ -12,7 +12,7 @@
                 <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print</button>
             </div>
             <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
-                <form action="/manufacturer_delete/{{ manufacturer.id }}">
+                <form action="/manufacturer/{{ manufacturer.id }}" onsubmit="return deleteMsg('{{ deletable }}'); " method="post">
                     <button type="submit" class="btn btn-info button2">Delete</button>
                 </form>
             </div>
