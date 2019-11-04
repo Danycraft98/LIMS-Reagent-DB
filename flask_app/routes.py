@@ -50,6 +50,7 @@ def register():
 # Home Route
 @app.route("/home")
 def home():
+	# Make sure user is logged in
 	if not current_user.logged_in():
 		return redirect(url_for('login'))
 	return render_template('home.html')

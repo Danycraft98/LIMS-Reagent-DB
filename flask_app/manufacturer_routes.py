@@ -3,9 +3,11 @@ from flask_app import app, db, current_user
 from flask_app.models import Manufacturer
 from datetime import datetime, timedelta
 
+
 # Manufacturer List Route
 @app.route("/manufacturers", methods=['GET', 'POST'])
 def manufacturers():
+    # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
     all_manufacturers = Manufacturer.query.all()
@@ -26,6 +28,7 @@ def manufacturers():
 
 @app.route("/manufacturer/<int:manufacturer_id>")
 def manufacturer(manufacturer_id):
+    # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
     manufacturer = Manufacturer.query.get(manufacturer_id)
@@ -34,6 +37,7 @@ def manufacturer(manufacturer_id):
 
 @app.route("/manufacturer_delete/<int:manufacturer_id>")
 def manufacturer_delete(manufacturer_id):
+    # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
 
@@ -55,6 +59,7 @@ def manufacturer_delete(manufacturer_id):
 
 @app.route("/add_manufacturer", methods=["GET", "POST"])
 def add_manufacturer():
+    # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
 
