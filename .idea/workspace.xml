@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,13 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Moved print options.">
-      <created>1569866911941</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1569866911941</updated>
     </task>
     <task id="LOCAL-00018" summary="Moved and updated print label.">
       <created>1569869970394</created>
@@ -462,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572878903827</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Fixed minor problems">
+      <created>1572882589368</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1572882589368</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -479,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Rearranged the add_kit" />
     <MESSAGE value="Rearragned add formats." />
     <MESSAGE value="Undone the wrong commit/push." />
     <MESSAGE value="Rearranged the add_manufacturer." />
@@ -504,6 +502,7 @@
     <MESSAGE value="Fixed Layouts" />
     <MESSAGE value="Component Label Numbers displayed on Kit print." />
     <MESSAGE value="Updated html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated html" />
+    <MESSAGE value="Fixed minor problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor problems" />
   </component>
 </project>
