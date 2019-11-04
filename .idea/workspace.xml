@@ -4,6 +4,7 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/routes.py" afterDir="false" />
@@ -117,13 +118,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Updated expiry date capture. Fixed add made reagent layout.">
-      <created>1567042494723</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1567042494723</updated>
     </task>
     <task id="LOCAL-00017" summary="Moved print options.">
       <created>1569866911941</created>
@@ -461,7 +455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572873187787</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Updated html">
+      <created>1572878903827</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1572878903827</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
