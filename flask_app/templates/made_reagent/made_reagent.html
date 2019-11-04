@@ -14,7 +14,7 @@
                 <button type="button" class="btn btn-info button2" onclick="window.print();return false;">Print</button>
             </div>
             <div style="-ms-flex: 0 0 14.5%; flex: 0 0 14.5%; max-width: 14.5%;">
-                <form action="/made_reagent_delete/{{ made_reagent.id }}">
+                <form action="/made_reagent/{{ made_reagent.id }}" onsubmit="return deleteMsg('{{ deletable }}'); " method="post">
                     <button type="submit" class="btn btn-info button2">Delete</button>
                 </form>
             </div>
@@ -59,7 +59,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for component in component_list %}
+                    {% for component in eval(made_reagent.component_list) %}
                     {% for comp in [Component.query.filter_by(name=component)[0]]*component_list[component] %}
                     <tr>
                         <td>{{ comp.name }}</td>
@@ -87,7 +87,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for reagent in reagent_list %}
+                    {% for reagent in eval(made_reagent.reagent_list) %}
                     {% for reag in [Reagent.query.filter_by(name=reagent)[0]]*reagent_list[reagent] %}
                     <tr>
                         <td>{{ reag.name }}</td>

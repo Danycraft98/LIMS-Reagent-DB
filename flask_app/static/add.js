@@ -103,3 +103,15 @@ function confirmMsg() {
 		return false;
 	}
 }
+
+function deleteMsg(deletable) {
+	if (deletable == "True") {
+	    if (confirm("Are you sure?")) {
+            return true;
+        } else {
+            return false;
+        }
+	} else {
+        alert("This cannot be deleted.");
+	}
+}

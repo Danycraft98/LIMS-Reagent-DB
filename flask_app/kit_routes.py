@@ -37,31 +37,26 @@ def kit(kit_id):
     if not current_user.logged_in():
         return redirect(url_for('login'))
     kit = Kit.query.get(kit_id)
+
+    # Make sure Reagent is deleted within 24 hours
+    deletable = (datetime.today() - kit.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
         id = request.form.get("comp_id")
-        component = Component.query.filter_by(id=id)[0]
-        component.name = request.form.get("comp_name")
-        component.barcode = request.form.get("comp_barcode")
-        component.part_num = request.form.get("part_num")
-        component.lot_num = request.form.get("lot_num")
-        component.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
-        component.condition = request.form.get("comp_condition")
-        db.session.commit()
-        return redirect(url_for("kit", kit_id=kit_id))
-    return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity))
-
-
-@app.route("/kit_delete/<int:kit_id>")
-def kit_delete(kit_id):
-    if not current_user.logged_in():
-        return redirect(url_for('login'))
-    kit = Kit.query.get(kit_id)
-    current_time = datetime.today()
-    if (current_time - kit.date_entered).total_seconds() > 24 * 3600:
-        return redirect(url_for('kit', kit_id=kit_id))
-    db.session.delete(kit)
-    db.session.commit()
-    return redirect(url_for('kits'))
+        if id:
+            component = Component.query.filter_by(id=id)[0]
+            component.name = request.form.get("comp_name")
+            component.barcode = request.form.get("comp_barcode")
+            component.part_num = request.form.get("part_num")
+            component.lot_num = request.form.get("lot_num")
+            component.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
+            component.condition = request.form.get("comp_condition")
+            db.session.commit()
+            return redirect(url_for("kit", kit_id=kit_id))
+        elif deletable:
+            db.session.delete(kit)
+            db.session.commit()
+            return redirect(url_for('kits'))
+    return render_template("kit/kit.html", kit=kit, Manufacturer=Manufacturer, range=range(kit.quantity), deletable=deletable)
 
 
 @app.route("/add_kit", methods=["GET", "POST"])

@@ -38,30 +38,20 @@ def reagents():
 
 
 # Reagent Route
-@app.route("/reagent/<int:reagent_id>")
+@app.route("/reagent/<int:reagent_id>", methods=["GET", "POST"])
 def reagent(reagent_id):
-    # Make sure user is logged in
-    if not current_user.logged_in():
-        return redirect(url_for('login'))
-    reagent = Reagent.query.get(reagent_id)
-    return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer, range=range(reagent.quantity))
-
-
-# Delete Reagent Redirect
-@app.route("/reagent_delete/<int:reagent_id>")
-def reagent_delete(reagent_id):
     # Make sure user is logged in
     if not current_user.logged_in():
         return redirect(url_for('login'))
     reagent = Reagent.query.get(reagent_id)
 
     # Make sure Reagent is deleted within 24 hours
-    current_time = datetime.today()
-    if (current_time - reagent.date_entered).total_seconds() > 24 * 3600:
-        return redirect(url_for('reagent', reagent_id=reagent_id))
-    db.session.delete(reagent)
-    db.session.commit()
-    return redirect(url_for('reagents'))
+    deletable = (datetime.today() - reagent.date_entered).total_seconds() < 24 * 3600
+    if request.method == 'POST' and deletable:
+        db.session.delete(reagent)
+        db.session.commit()
+        return redirect(url_for('reagents'))
+    return render_template("reagent/reagent.html", reagent=reagent, Manufacturer=Manufacturer, range=range(reagent.quantity), deletable=deletable)
 
 
 # Add Reagent Route
@@ -117,10 +107,9 @@ def print_reagent(reagent_id):
     acquired_stat = request.form.get('acquired_stat')
 
     batchnum = 1
-
     while batchnum <= reagent.quantity:
         printcont = (reagent.name, reagent.exp_date, datetime.now())
-        print_label(printcont, "reagent", reagent_label_size, acquired_stat,
-                    str(batchnum) + '/' + str(reagent.quantity))
+        print_label(printcont, "reagent", reagent_label_size, acquired_stat, str(batchnum) + '/' + str(reagent.quantity))
         batchnum += 1
+
     return redirect(url_for("reagent", reagent_id=reagent_id))

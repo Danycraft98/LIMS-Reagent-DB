@@ -28,25 +28,19 @@ def made_reagents():
     return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents)
 
 
-@app.route("/made_reagent/<int:made_reagent_id>")
+@app.route("/made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
 def made_reagent(made_reagent_id):
     if not current_user.logged_in():
         return redirect(url_for('login'))
     made_reagent = MadeReagent.query.get(made_reagent_id)
-    return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, reagent_list=eval(made_reagent.reagent_list), component_list=eval(made_reagent.component_list), Manufacturer=Manufacturer, Reagent=Reagent, Component=Component)
 
-
-@app.route("/made_reagent_delete/<int:made_reagent_id>")
-def made_reagent_delete(made_reagent_id):
-    if not current_user.logged_in():
-        return redirect(url_for('login'))
-    made_reagent = MadeReagent.query.get(made_reagent_id)
-    current_time = datetime.today()
-    if (current_time - made_reagent.date_entered).total_seconds() > 24 * 3600:
-        return redirect(url_for('made_reagent', made_reagent_id=made_reagent_id))
-    db.session.delete(made_reagent)
-    db.session.commit()
-    return redirect(url_for('made_reagents'))
+    # Make sure Reagent is deleted within 24 hours
+    deletable = (datetime.today() - made_reagent.date_entered).total_seconds() < 24 * 3600
+    if request.method == 'POST' and deletable:
+        db.session.delete(made_reagent)
+        db.session.commit()
+        return redirect(url_for('made_reagents'))
+    return render_template("made_reagent/made_reagent.html", made_reagent=made_reagent, eval=eval, Manufacturer=Manufacturer, Reagent=Reagent, Component=Component, deletable=deletable)
 
 
 @app.route("/add_made_reagent", methods=["GET", "POST"])
