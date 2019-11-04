@@ -106,9 +106,9 @@
 {% endblock content %}
 
 {% block modal %}
-<div class="modal fade" id="made_reagent_modal" tabindex="-1" role="" aria-labelledby="made_reagent_modal"
+<div class="modal fade" id="made_reagent_modal" tabindex="-1" aria-labelledby="made_reagent_modal"
      aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Print Label</h5>
@@ -116,40 +116,24 @@
             <form action="/print_made_reagent/{{ made_reagent.id }}" method="post" onkeypress="return event.keyCode != 13;">
                 <div class="modal-body">
                     <div class="row my-row">
-                        <div class="col-4 form-group">
+                        <div class="col-6 form-group">
                             <label for="made_reagent_label">Made-Reagent Label Copies:</label>
                         </div>
-                        <div class="col-6 form-group">
-                            <label for="comp_label_s">Component Label Copies:</label>
-                        </div>
-                        <div class="col-2 form-group">
+                        <div class="col-4 form-group">
                             <label for="acquired_stat">Acquired Stat:</label>
                         </div>
                     </div>
                     <div class="row my-row">
-                        <div class="col-4 form-group">
+                        <div class="col-6 form-group">
                             <select class="form-control" id="made_reagent_label_size" name="made_reagent_label_size">
                                 <option value="s">Small</option>
                                 <option value="m">Medium</option>
                             </select>
                             <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-                                   class="form-control" name="made_reagent_label" id="made_reagent_label"/>
+                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1" class="form-control" name="made_reagent_label" id="made_reagent_label"/>
                         </div>
-                        <div class="col-3 form-group">
-                            <label>Small</label>
-                            <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-                                   class="form-control" name="comp_label_s" id="comp_label_s"/>
-                        </div>
-                        <div class="col-3 form-group">
-                            <label>Medium</label>
-                            <br/>
-                            <input data-prefix="Copies" type="number" value="1" min="1" max="100" step="1"
-                                   class="form-control" name="comp_label_m" id="comp_label_m"/>
-                        </div>
-                        <div class="col-2 form-group">
-                            <label for="comp_label_m" style="visibility: hidden">Co</label>
+                        <div class="col-4 form-group">
+                            <label for="acquired_stat" style="visibility: hidden">Co</label>
                             <select class="form-control" id="acquired_stat" name="acquired_stat">
                                 <option value="m">Made</option>
                                 <option value="p">Purchased</option>

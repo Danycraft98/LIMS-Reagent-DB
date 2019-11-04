@@ -102,40 +102,12 @@ def print_made_reagent(made_reagent_id):
 
     made_reagent_label_size = request.form.get('made_reagent_label_size')
     made_reagent_label = int(request.form.get('made_reagent_label'))
-    comp_label_s = int(request.form.get('comp_label_s'))
-    comp_label_m = int(request.form.get('comp_label_m'))
     acquired_stat = request.form.get('acquired_stat')
 
     batchnum = 1
-    batchpartnum = 1
     while batchnum <= made_reagent.quantity:
-        printcont = (made_reagent.name, made_reagent.exp_date, datetime.now())
-        print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, str(batchnum) + '/' + str(made_reagent.quantity))
-        batchpartnum += 1
-        if batchpartnum > made_reagent.quantity:
-            batchpartnum = 1
+        printcont = (made_reagent.name, made_reagent.exp_date, made_reagent.date_entered)
+        print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(made_reagent.quantity))
         batchnum += 1
-
-    for component in made_reagent.component_list:
-        batchnum = 1
-        batchpartnum = 1
-        while batchnum <= comp_label_s:
-            printcont = (component.name, component.exp_date, datetime.now())
-            print_label(printcont, "made reagent", "s", acquired_stat, str(batchpartnum) + '/' + str(made_reagent.quantity))
-            batchpartnum += 1
-            if batchpartnum > made_reagent.quantity:
-                batchpartnum = 1
-            batchnum += 1
-
-    for reagent in made_reagent.reagent_list:
-        batchnum = 1
-        batchpartnum = 1
-        while batchnum <= comp_label_m:
-            printcont = (reagent.name, reagent.exp_date, datetime.now())
-            print_label(printcont, "made reagent", "m", acquired_stat, str(batchpartnum) + '/' + str(made_reagent.quantity))
-            batchpartnum += 1
-            if batchpartnum > made_reagent.quantity:
-                batchpartnum = 1
-            batchnum += 1
 
     return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id))
