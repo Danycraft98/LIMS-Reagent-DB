@@ -23,6 +23,10 @@ def made_reagents():
             elif "-" in search:
                 date_searched = datetime.strptime(search, "%Y-%m-%d")  # 2019-10-08
                 query_m_reagents = MadeReagent.query.filter(MadeReagent.date_entered >= date_searched, MadeReagent.date_entered <= date_searched + timedelta(days=1))
+                if query_m_reagents.count() == 0:
+                    query_m_reagents = MadeReagent.query.filter(MadeReagent.component_list.contains(search))
+                    if query_m_reagents.count() == 0:
+                        query_m_reagents = MadeReagent.query.filter(MadeReagent.reagent_list.contains(search))
 
         return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
     return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
