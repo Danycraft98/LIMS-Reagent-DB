@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Added user info.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,13 +111,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Moved css file.">
-      <created>1570147109379</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1570147109379</updated>
     </task>
     <task id="LOCAL-00031" summary="Updated lot number for component in kit. Fixed collapse element.">
       <created>1570147980198</created>
@@ -458,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572971572362</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Added user info.">
+      <created>1572983945159</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1572983945161</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -496,10 +493,10 @@
     <MESSAGE value="Undone mistakes." />
     <MESSAGE value="Added deleteMsg to Manufacturer." />
     <MESSAGE value="Updated layouts." />
-    <MESSAGE value="Added user info." />
     <MESSAGE value="Fixed warnings." />
     <MESSAGE value="Added deleteMsg tokit, reagent, and made reagent." />
     <MESSAGE value="Fixed minor errors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor errors." />
+    <MESSAGE value="Added user info." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added user info." />
   </component>
 </project>
