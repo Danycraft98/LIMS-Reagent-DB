@@ -42,7 +42,7 @@ def kit(kit_id):
     deletable = (datetime.today() - kit_.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
         comp_id = request.form.get("comp_id")
-        if id:
+        if comp_id:
             component = Component.query.filter_by(id=comp_id)[0]
             component.name = request.form.get("comp_name")
             component.barcode = request.form.get("comp_barcode")
