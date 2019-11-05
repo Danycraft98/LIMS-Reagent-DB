@@ -60,7 +60,7 @@
                     </thead>
                     <tbody>
                     {% for component in eval(made_reagent.component_list) %}
-                    {% for comp in [Component.query.filter_by(name=component)[0]]*component_list[component] %}
+                    {% for comp in [Component.query.filter_by(name=component)[0]]*eval(made_reagent.component_list)[component] %}
                     <tr>
                         <td>{{ comp.name }}</td>
                         <td>{{ comp.barcode }}</td>
@@ -88,7 +88,7 @@
                     </thead>
                     <tbody>
                     {% for reagent in eval(made_reagent.reagent_list) %}
-                    {% for reag in [Reagent.query.filter_by(name=reagent)[0]]*reagent_list[reagent] %}
+                    {% for reag in [Reagent.query.filter_by(name=reagent)[0]]*eval(made_reagent.reagent_list)[reagent] %}
                     <tr>
                         <td>{{ reag.name }}</td>
                         <td>{{ reag.barcode }}</td>
