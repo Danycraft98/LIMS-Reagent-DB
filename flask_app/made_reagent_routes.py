@@ -27,6 +27,16 @@ def made_reagents():
                     query_m_reagents = MadeReagent.query.filter(MadeReagent.component_list.contains(search))
                     if query_m_reagents.count() == 0:
                         query_m_reagents = MadeReagent.query.filter(MadeReagent.reagent_list.contains(search))
+            else:
+                query_component = Component.query.filter_by(barcode=search)
+                query_reagent = Reagent.query.filter_by(barcode=search)
+                query_m_reagents = []
+                if query_component.count() > 0:
+                    for comp in query_component:
+                        query_m_reagents.extend(MadeReagent.query.filter(MadeReagent.component_list.contains(comp.name)))
+                elif query_reagent.count() > 0:
+                    for reagent in query_reagent:
+                        query_m_reagents.extend(MadeReagent.query.filter(MadeReagent.reagent_list.contains(reagent.name)))
 
         return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
     return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
