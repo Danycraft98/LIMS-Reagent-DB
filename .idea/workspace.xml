@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -115,13 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Fixed redirect error. Changed format to fit table in kit. Added UID section.">
-      <created>1570330520984</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1570330520985</updated>
     </task>
     <task id="LOCAL-00033" summary="Added UID for components and reagents">
       <created>1570401152975</created>
@@ -459,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572983995953</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Search updated">
+      <created>1573095735018</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1573095735022</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -476,7 +475,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated necessary parts" />
     <MESSAGE value="Fixed Reagent layout" />
     <MESSAGE value="Updated Kit max component print." />
     <MESSAGE value="Reagent print updated." />
@@ -501,6 +499,7 @@
     <MESSAGE value="Fixed minor errors." />
     <MESSAGE value="Added user info." />
     <MESSAGE value="Undone mistakes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Undone mistakes." />
+    <MESSAGE value="Search updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search updated" />
   </component>
 </project>

@@ -38,7 +38,7 @@ def made_reagents():
                     for reagent in query_reagent:
                         query_m_reagents.extend(MadeReagent.query.filter(MadeReagent.reagent_list.contains(reagent.name)))
 
-        return render_template("made_reagent/made_reagents.html", made_reagents=query_m_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
+        return render_template("made_reagent/made_reagents.html", made_reagents= list(set(query_m_reagents)), all_made_reagents=all_made_reagents, username=current_user.get_name())
     return render_template("made_reagent/made_reagents.html", made_reagents=all_made_reagents, all_made_reagents=all_made_reagents, username=current_user.get_name())
 
 
