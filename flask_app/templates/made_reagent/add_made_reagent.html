@@ -26,6 +26,12 @@
                     <input type="number" value="1" min="1" max="100" step="1" name="quantity" class="form-control" id="quantity"/>
                 </div>
             </div>
+            <div class="row my-row">
+                <div class="col-6 form-group">
+                    <label for="comment">Comments:</label>
+                    <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                </div>
+            </div>
             <hr/>
             <div class="row my-row">
                 <div class="col">
@@ -101,5 +107,6 @@
 		document.getElementById("containers_div").appendChild(tag);
 		counter++;
 	}
+
 </script>
 {% endblock script %}

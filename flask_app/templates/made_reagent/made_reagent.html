@@ -42,6 +42,23 @@
                         <td>N/A</td>
                         {% endif %}
                     </tr>
+                    <tr>
+                        <th>Comments</th>
+                        <td>
+                            <form action="/made_reagent/{{ made_reagent.id }}" method="post">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <textarea class="form-control" rows="2" name="comment" id="comment" style="resize: none;" disabled>{{ made_reagent.comment }}</textarea>
+                                    </div>
+                                    <div class="col-2">
+                                        <h6 style="visibility:hidden;">Comments</h6>
+                                        <button class="form-control" onclick="return edit_comment()" type="button" id="btn">Edit</button>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
                 </table>
                 <br/>
                 <h4>Components</h4>

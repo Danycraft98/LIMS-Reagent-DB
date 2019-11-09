@@ -68,6 +68,7 @@ class MadeReagent(db.Model):
 	exp_date = db.Column(db.DateTime)
 	date_entered = db.Column(db.DateTime)
 	quantity = db.Column(db.Integer)
+	comment = db.Column(db.String(255))
 	reagent_list = db.Column(db.String(255))
 	component_list = db.Column(db.String(255))
 
