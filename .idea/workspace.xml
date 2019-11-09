@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Added comment to Made Reagent.">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -112,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00036" summary="UID layout fix for Reagent.">
-      <created>1570480135547</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1570480135548</updated>
     </task>
     <task id="LOCAL-00037" summary="Rearranged the add_kit">
       <created>1570492219193</created>
@@ -456,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573259238954</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Undone mistakes.">
+      <created>1573259301641</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1573259301641</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,9 +498,9 @@
     <MESSAGE value="Fixed minor errors." />
     <MESSAGE value="Added user info." />
     <MESSAGE value="Search updated" />
-    <MESSAGE value="Undone mistakes." />
     <MESSAGE value="Edit Comments added." />
     <MESSAGE value="Added comment to Made Reagent." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comment to Made Reagent." />
+    <MESSAGE value="Undone mistakes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Undone mistakes." />
   </component>
 </project>

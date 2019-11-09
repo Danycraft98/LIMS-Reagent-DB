@@ -82,8 +82,19 @@
                         <td>{{ comp.name }}</td>
                         <td>{{ comp.barcode }}</td>
                         <td>{{ comp.uid }}</td>
+
+                        {% if comp.part_num != '-1' %}
                         <td>{{ comp.part_num }}</td>
+                        {% elif comp.part_num == '-1' %}
+                        <td>N/A</td>
+                        {% endif %}
+
+                        {% if comp.lot_num != '-1' %}
                         <td>{{ comp.lot_num }}</td>
+                        {% elif comp.lot_num == '-1' %}
+                        <td>N/A</td>
+                        {% endif %}
+
                         <td>{{ comp.exp_date }}</td>
                         <td>{{ comp.condition }}</td>
                     </tr>
@@ -109,8 +120,18 @@
                     <tr>
                         <td>{{ reag.name }}</td>
                         <td>{{ reag.barcode }}</td>
+
+                        {% if reag.part_num != '-1' %}
                         <td>{{ reag.part_num }}</td>
+                        {% elif reag.part_num == '-1' %}
+                        <td>N/A</td>
+                        {% endif %}
+
+                        {% if reag.lot_num != '-1' %}
                         <td>{{ reag.lot_num }}</td>
+                        {% elif reag.lot_num == '-1' %}
+                        <td>N/A</td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                     {% endfor %}
