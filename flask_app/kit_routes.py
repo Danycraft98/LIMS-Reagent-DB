@@ -42,6 +42,7 @@ def kit(kit_id):
     deletable = (datetime.today() - kit_.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
         comp_id = request.form.get("comp_id")
+        comment = request.form.get("comment")
         if comp_id:
             component = Component.query.filter_by(id=comp_id)[0]
             component.name = request.form.get("comp_name")
@@ -50,6 +51,10 @@ def kit(kit_id):
             component.lot_num = request.form.get("lot_num")
             component.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
             component.condition = request.form.get("comp_condition")
+            db.session.commit()
+            return redirect(url_for("kit", kit_id=kit_id, username=current_user.get_name()))
+        elif comment:
+            kit_.comment = comment
             db.session.commit()
             return redirect(url_for("kit", kit_id=kit_id, username=current_user.get_name()))
         elif deletable:

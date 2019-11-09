@@ -47,10 +47,16 @@ def reagent(reagent_id):
 
     # Make sure Reagent is deleted within 24 hours
     deletable = (datetime.today() - reagent_.date_entered).total_seconds() < 24 * 3600
-    if request.method == 'POST' and deletable:
-        db.session.delete(reagent_)
-        db.session.commit()
-        return redirect(url_for('reagents'))
+    if request.method == 'POST':
+        comment = request.form.get("comment")
+        if comment:
+            reagent_.comment = comment
+            db.session.commit()
+            return redirect(url_for("reagent", reagent_id=reagent_id, username=current_user.get_name()))
+        elif deletable:
+            db.session.delete(reagent_)
+            db.session.commit()
+            return redirect(url_for('reagents'))
     return render_template("reagent/reagent.html", reagent=reagent_, Manufacturer=Manufacturer, range=range(reagent_.quantity), deletable=deletable, username=current_user.get_name())
 
 

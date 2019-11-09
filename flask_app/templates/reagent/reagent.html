@@ -76,7 +76,20 @@
                     </tr>
                     <tr>
                         <th>Comments</th>
-                        <td>{{ reagent.comment }}</td>
+                        <td>
+                            <form action="/reagent/{{ reagent.id }}" method="post">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <textarea class="form-control" rows="2" name="comment" id="comment" style="resize: none;" disabled>{{ reagent.comment }}</textarea>
+                                    </div>
+                                    <div class="col-2">
+                                        <h6 style="visibility:hidden;">Comments</h6>
+                                        <button class="form-control" onclick="return edit_comment()" type="button" id="btn">Edit</button>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -138,5 +151,6 @@
     $('.modal').on('hidden.bs.modal', function(){
         $(this).find('form')[0].reset();
     });
+
 </script>
 {% endblock script %}

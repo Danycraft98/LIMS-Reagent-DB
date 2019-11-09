@@ -45,6 +45,15 @@ function enable(element) {
 	}
 }
 
+function edit_comment() {
+    document.getElementById("comment").disabled = false;
+    var btn = document.getElementById("btn");
+    btn.textContent = "Save";
+    btn.setAttribute("type", "submit")
+    btn.setAttribute("onclick", "")
+    return false;
+}
+
 function update() {
 	if (properties[0] == 1) {
 		document.getElementById("part_num").setAttribute("value", document.getElementById("barcode").value.slice(properties[3], properties[4]));
