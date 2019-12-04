@@ -34,7 +34,7 @@ def manufacturer(manufacturer_id):
     manufacturer = Manufacturer.query.get(manufacturer_id)
 
     # Make sure Reagent is deleted within 24 hours
-    deletable = (datetime.today() - manufacturer.date_entered).total_seconds() < 24 * 3600
+    deletable = (datetime.now() - manufacturer.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST' and deletable:
         for kit in manufacturer.kits:
             db.session.delete(kit)
@@ -104,7 +104,7 @@ def add_manufacturer():
 
         manufacturer_ = Manufacturer(
             name=request.form.get("manu_name"),
-            date_entered=datetime.today(),
+            date_entered=datetime.now(),
             exp_date=cb["exp_date"],
             part_num=cb["part_num"],
             lot_num=cb["lot_num"],
