@@ -49,7 +49,7 @@ def made_reagent(made_reagent_id):
     made_reagent = MadeReagent.query.get(made_reagent_id)
 
     # Make sure Reagent is deleted within 24 hours
-    deletable = (datetime.today() - made_reagent.date_entered).total_seconds() < 24 * 3600
+    deletable = (datetime.now() - made_reagent.date_entered).total_seconds() < 24 * 3600
     comment = request.form.get("comment")
     if request.method == 'POST':
         if comment:
@@ -79,7 +79,7 @@ def add_made_reagent():
         made_reagent_ = MadeReagent(
             name=request.form.get("name"),
             exp_date=exp_date,
-            date_entered=datetime.today(),
+            date_entered=datetime.now(),
             quantity=quantity,
             comment=request.values.get("comment")
         )
@@ -107,7 +107,7 @@ def add_made_reagent():
 
     for reagent in Reagent.query.all():
         comp_infos[reagent.barcode] = reagent.name
-    today = datetime.today().date()
+    today = datetime.now().date()
     return render_template("made_reagent/add_made_reagent.html", today=today, comp_infos=comp_infos, username=current_user.get_name())
 
 
