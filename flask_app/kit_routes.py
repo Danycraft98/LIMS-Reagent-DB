@@ -39,7 +39,7 @@ def kit(kit_id):
     kit_ = Kit.query.get(kit_id)
 
     # Make sure Reagent is deleted within 24 hours
-    deletable = (datetime.today() - kit_.date_entered).total_seconds() < 24 * 3600
+    deletable = (datetime.now() - kit_.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
         comp_id = request.form.get("comp_id")
         comment = request.form.get("comment")
@@ -90,7 +90,7 @@ def add_kit():
             barcode=request.form.get("barcode"),
             part_num=part_num,
             lot_num=lot_num,
-            date_entered=datetime.today(),
+            date_entered=datetime.now(),
             exp_date=exp_date,
             quantity=quantity,
             comment=request.values.get("comment"),
@@ -136,7 +136,7 @@ def add_kit():
         return redirect(url_for("kit", kit_id=kit_.id, username=current_user.get_name()))
 
     manu_name = Manufacturer.query.all()
-    today = datetime.today().date()
+    today = datetime.now().date()
     return render_template("kit/add_kit.html", title="Add", manu_name=manu_name, today=today, username=current_user.get_name())
 
 
