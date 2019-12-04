@@ -46,7 +46,7 @@ def reagent(reagent_id):
     reagent_ = Reagent.query.get(reagent_id)
 
     # Make sure Reagent is deleted within 24 hours
-    deletable = (datetime.today() - reagent_.date_entered).total_seconds() < 24 * 3600
+    deletable = (datetime.now() - reagent_.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
         comment = request.form.get("comment")
         if comment:
@@ -77,7 +77,7 @@ def add_reagent():
 
         exp_date = request.form.get("exp_date")
         if exp_date == '':
-            exp_date = datetime.today().replace(year=datetime.today().year + 10)
+            exp_date = datetime.now().replace(year=datetime.now().year + 10)
         elif exp_date:
             exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
         quantity = int(request.form.get("quantity"))
@@ -87,7 +87,7 @@ def add_reagent():
             barcode=request.form.get("barcode"),
             part_num=part_num,
             lot_num=lot_num,
-            date_entered=datetime.today(),
+            date_entered=datetime.now(),
             exp_date=exp_date,
             quantity=quantity,
             comment=request.values.get("comment"),
@@ -100,7 +100,7 @@ def add_reagent():
         return redirect(url_for("reagents"))
 
     manu_name = Manufacturer.query.all()
-    today = datetime.today().date()
+    today = datetime.now().date()
     return render_template("reagent/add_reagent.html", manu_name=manu_name, today=today, username=current_user.get_name())
 
 
