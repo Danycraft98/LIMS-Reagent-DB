@@ -1,17 +1,16 @@
-# This file lists requirements needed to run the executables shipped
-# by RK_LIMS/RK_LIMS-server.
-#
-# These requirements are read directly into setup.py, so specify them
-# in the order that they should be in in setup.py
-
-Flask==1.1.1
-Flask-Bootstrap4==4.0.2
-Flask-MySQLdb==0.2.0
-Flask-SQLAlchemy==2.3.2
-Flask-WTF==0.14.2
-Flask-OIDC==1.4.0
-Werkzeug==0.15.4
-Jinja2==2.10.1
-WTForms==2.2.1
-SQLAlchemy==1.2.12
-MySQLClient==1.3.13
+sqlalchemy
+pandas
+click
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
+flask-login
+flask_wtf
+wtforms
+flask_oidc
+okta
+flask_bootstrap
+flask_sqlalchemy
+xlrd

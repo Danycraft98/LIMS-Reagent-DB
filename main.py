@@ -1,4 +1,5 @@
-from flask_app import app
+from app import app
+import os
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port='5005')
+	app.run(host='127.0.0.1', debug=True, port=os.environ.get('PORT', 5000))
