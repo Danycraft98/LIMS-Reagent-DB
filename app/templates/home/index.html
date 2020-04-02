@@ -1,0 +1,26 @@
+{% extends "header.html" %}
+
+{% block body %}
+    <div class="card shadow mb-4 card-center" style="width:34%">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 flex-row align-items-center justify-content-between text-center">
+            <h4 class="m-0 font-weight-bold text-primary">Menu</h4>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body text-center m-4">
+            <a href="{{ url_for('add_manufacturer') }}" class="btn btn-block btn-info mb-3">Add Manufacturer</a>
+            <a href="{{ url_for('add_kit') }}" class="btn btn-block btn-info mb-3">Add Kit</a>
+            <a href="{{ url_for('add_reagent') }}" class="btn btn-block btn-info mb-3">Add Reagent</a>
+            <a href="{{ url_for('add_made_reagent') }}" class="btn btn-block btn-info mb-3">Add Made-Reagent</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <!-- Page level plugins -->
+    <script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+{% endblock %}

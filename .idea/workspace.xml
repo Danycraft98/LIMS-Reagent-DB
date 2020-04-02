@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone mistakes.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/kit_routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/made_reagent_routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/manufacturer_routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/printer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/reagent_routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/add.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/images/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/static/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/add_kit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/kit/kits.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/add_made_reagent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/made_reagent/made_reagents.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/add_manufacturer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/manufacturer/manufacturers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/add_reagent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/reagent/reagents.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_app/templates/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,6 +30,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Irene Chae &lt;irene.chae@uhn.ca&gt;" />
         <option value="ichae" />
       </list>
     </option>
@@ -183,13 +150,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Rearranged the add_kit">
-      <created>1570492219193</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1570492219194</updated>
     </task>
     <task id="LOCAL-00038" summary="Rearragned add formats.">
       <created>1570492581054</created>
@@ -527,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573259301641</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Updated files">
+      <created>1585849410792</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1585849410792</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -575,7 +542,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reagent print updated." />
     <MESSAGE value="Fixed Reagent print and part of Made-Reagent print." />
     <MESSAGE value="Added the missing counter variable." />
     <MESSAGE value="Fixed shape of &quot;Add Component&quot; button." />
@@ -600,7 +566,8 @@
     <MESSAGE value="Edit Comments added." />
     <MESSAGE value="Added comment to Made Reagent." />
     <MESSAGE value="Undone mistakes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Undone mistakes." />
+    <MESSAGE value="Updated files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated files" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">

@@ -1,0 +1,225 @@
+{% extends "header.html" %}
+
+{% block body %}
+    <div class="card shadow">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h4 class="ml-5 m-0 font-weight-bold text-primary">Reagent</h4>
+
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle btn btn-default" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Options:</div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#printModal">Print Label</a>
+                    <a class="dropdown-item" href="#" onclick="window.print();return false;">Print</a>
+                    <a class="dropdown-item" href="{{ url_for('delete', element_type='reagent', element_id=reagent.id) }}" onclick="return deleteMsg('{{ deletable }}'); ">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body ml-5 mr-5 mt-3">
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Reagent Name</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">{{ reagent.name }}</div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Manufacturer</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.get_manufacturer() %}
+                        <a href="{{ url_for('manufacturer', manufacturer_id=reagent.get_manufacturer().id) }}">{{ reagent.get_manufacturer().name }}</a>
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Box Lot Barcode</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.barcode and reagent.barcode|length > 0 %}
+                        {{ reagent.barcode }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Part Number</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.part_num and reagent.part_num|length > 0 %}
+                        {{ reagent.part_num }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Lot Number</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.lot_num and reagent.lot_num|length > 0 %}
+                        {{ reagent.lot_num }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Expiry Date</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.exp_date %}
+                        {{ reagent.exp_date.strftime("%B %e, %Y") }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Date Tested</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.date_tested %}
+                        {{ reagent.date_tested.strftime("%B %e, %Y") }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>P#</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% if reagent.p_num %}
+                        {{ reagent.p_num }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>UID</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% for i in range %}
+                        <p>{{ reagent.date_entered }} {{ loop.index }}/{{ reagent.quantity }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Date Entered</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">{{ reagent.date_entered.strftime("%B %e, %Y") }}</div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Entered By</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">{{ reagent.get_user() }}</div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>Comments</strong></div>
+                <div class="col-small">
+                    <a class="form-control btn-circle" data-toggle="modal" data-target="#commentModal "><i class="fa fa-pen"></i></a>
+                </div>
+                <div class="col-5">
+                    {{ reagent.comment }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modal %}
+    <!--Edit Comment Modal-->
+    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="card shadow modal-content">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h5 class="modal-title">Edit Comment</h5>
+                </div>
+
+                <!-- Card Body -->
+                <form action="{{ url_for('reagent', reagent_id=reagent.id) }}" method="post">
+                    <div class="modal-body">
+                        <textarea id="comment" name="comment" class="form-control"></textarea>
+                    </div>
+                    <div class="modal-footer row m-0">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button type="submit" class="form-control btn-primary">Update</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="form-control btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Print Reagent Modal-->
+    <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="printModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="card shadow modal-content">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h5 class="modal-title">Print Label</h5>
+                </div>
+
+                <!-- Card Body -->
+                <form action="/print_reagent/{{ reagent.id }}" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5 form-group">
+                                <label for="reagent_label">Reagent Label Copies:</label>
+                                <select class="form-control" id="reagent_label" name="reagent_label_size">
+                                    <option value="s">Small</option>
+                                    <option value="m">Medium</option>
+                                </select>
+                            </div>
+                            <div class="col-5 form-group">
+                                <label for="acquired_stat">Acquired Stat:</label>
+                                <select class="form-control" id="acquired_stat" name="acquired_stat">
+                                    <option value="m">Made</option>
+                                    <option value="p">Purchased</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5 form-group">
+                                <input readonly data-prefix="Copies" type="number" value="{{ reagent.quantity }}" step="1" class="form-control" name="reagent_label" id="reagent_label"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer row m-0">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button type="submit" class="form-control btn-primary">Print</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="form-control btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
