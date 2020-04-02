@@ -15,16 +15,29 @@ parser.add_argument("-dbh", "--dbhost", type=str, metavar='', help="Add custom d
 parser.add_argument("-p", "--port", type=str, metavar='', help="Add custom database port")
 args = parser.parse_args()
 
+
+if args.dbhost:
+    host = args.dbhost
+    sqluser = os.environ['SQL_USER']
+    sqlpass = os.environ['SQL_PASSWORD']
+    if args.port:
+        port = args.port
+        mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + ':' + port + '/reagent_db'
+    else:
+        mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + '/reagent_db'
+
+
 # App Setup
 app = Flask(__name__)
 app.config.update({
     'SECRET_KEY': os.urandom(24),
-    'SQLALCHEMY_DATABASE_URI': 'sqlite:////Users/Daniel/PycharmProjects/Reagent-DB/app/database.db',
-    'SQLALCHEMY_TRACK_MODIFICATIONS': True,
+    'SQLALCHEMY_DATABASE_URI':'mysql://irene:irene123@10.0.2.2/reagent_db'
+    # 'SQLALCHEMY_DATABASE_URI':'mysql://root:@localhost/reagent_db'
+    'SQLALCHEMY_BINDS': {'reagent_db': mySQL_con},
+    'SQLALCHEMY_TRACK_MODIFICATIONS': False,
     'UPLOAD_FOLDER': 'data'
 })
 
-# TODO: Database info here
 
 db = SQLAlchemy(app)
 bootstrap = Bootstrap(app)
