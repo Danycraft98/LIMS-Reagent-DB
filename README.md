@@ -199,17 +199,17 @@ $ /usr/sbin/cupsd -f
 From local to Mordor:
 
 ```
-scp -P 5059 reagent_lims_090419.sql irene@192.75.165.28:/mnt/work1/users/home/irene
+scp -P 5059 reagent_lims_<latest_schema_date>.sql <username>@192.75.165.28:/mnt/work1/users/home/<username>
 ```
 
 From Mordor to database server:
 
 ```
-scp -P 10022 /mnt/work1/users/home/irene/reagent_db_090419.sql irene@node12:/home/irene
+scp -P 10022 /mnt/work1/users/home/<username>/reagent_db_<latest_schema_date>.sql <username>@node12:/home/<username>
 ```
 
 Updating the database:
 
 ```
-mysql -u root -p reagent_db < reagent_db_<latestschemadate>.sql
+mysql -u <username> -p reagent_db < reagent_db_<latest_schema_date>.sql
 ```
