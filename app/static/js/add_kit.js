@@ -3,6 +3,8 @@ function edit_button(element) {
         element.innerText = 'Delete Super Kit'
     } else {
         element.innerText = 'Add Super Kit'
+        console.log(document.getElementById('sk_name'))
+        $('input[name=sk_name').val('');
     }
 
     const div = document.getElementById('edit_button_div');

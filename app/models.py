@@ -111,6 +111,12 @@ class Kit(Element):
             return User.query.get(self.user_id)
         return None
 
+    def get_component_count(self):
+        count = 0
+        for _ in self.components:
+            count += 1
+        return count
+
 
 class Reagent(Element):
     manufacturer_id = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=True)

@@ -146,7 +146,7 @@ def add_kit():
     manufacturers = Manufacturer.query.all()
     kits = Kit.query.all()
     today = datetime.now().date()
-    return render_template("kit/add_kit.html", add_comp=True, manufacturers=manufacturers, today=today, kits=kits, super_kits=super_kits)
+    return render_template("kit/add_kit.html", add_comp=True, manufacturers=manufacturers, today=today, kits=kits, super_kits=super_kits, list=list)
 
 
 # Print Kit Route
