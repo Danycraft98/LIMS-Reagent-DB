@@ -192,7 +192,8 @@
                             document.getElementById('barcode').value = '{{ kit.barcode }}';
                             document.getElementById('quantity').value = '{{ kit.quantity }}';
 
-                            const length = document.getElementById('comps').childNodes.length - 1;
+                            const length = document.getElementById('comps').childNodes.length / 2 - 1;
+                            blank_len = 0;
                             {% for component in kit.components %}
                             if ({{ loop.index }} <= {{ list(kit.components) | length / kit.quantity }}) {
                                 if ({{ loop.index }} > length) {
@@ -217,6 +218,7 @@
 
         function search_kit(element) {
             let form_elements;
+            let blank_len;
             {% for kit in kits %}
             if (element.value.localeCompare('{{ kit.name }}') === 0) {
                 document.getElementById('name').value = '{{ kit.name }}';
@@ -225,6 +227,7 @@
                 document.getElementById('quantity').value = '{{ kit.quantity }}';
 
                 const length = document.getElementById('comps').childNodes.length / 2 - 1;
+                blank_len = 0;
                 {% for component in kit.components %}
                 if ({{ loop.index }} <= {{ kit.get_component_count() / kit.quantity }}) {
                     if ({{ loop.index }} > length) {
@@ -234,7 +237,14 @@
                     form_elements[0].value = '{{ component.name }}';
                     form_elements[1].value = '{{ component.barcode }}';
                 }
+                blank_len = {{ loop.index }};
                 {% endfor %}
+                while (blank_len <= length) {
+                    form_elements = document.getElementById('comp' + blank_len).getElementsByClassName('form-control');
+                    form_elements[0].value = '';
+                    form_elements[1].value = '';
+                    blank_len++;
+                }
             }
             {% endfor %}
             update_all(document.getElementById('manu_name'));
