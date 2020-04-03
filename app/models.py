@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(15))
     username = db.Column(db.String(15), unique=True)
-    email = db.Column(db.String(50), unique=True)
+    email = db.Column(db.String(50))
     password = db.Column(db.String(80))
 
     def __str__(self):
@@ -97,13 +97,19 @@ class Kit(Element):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def get_super_kit(self):
-        return SuperKit.query.get(self.super_kit_id)
+        if self.super_kit_id:
+            return SuperKit.query.get(self.super_kit_id)
+        return None
 
     def get_manufacturer(self):
-        return Manufacturer.query.get(self.manufacturer_id)
+        if self.manufacturer_id:
+            return Manufacturer.query.get(self.manufacturer_id)
+        return None
 
     def get_user(self):
-        return User.query.get(self.user_id)
+        if self.user_id:
+            return User.query.get(self.user_id)
+        return None
 
 
 class Reagent(Element):
@@ -111,17 +117,19 @@ class Reagent(Element):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def get_manufacturer(self):
-        return Manufacturer.query.get(self.manufacturer_id)
+        if self.manufacturer_id:
+            return Manufacturer.query.get(self.manufacturer_id)
+        return None
 
     def get_user(self):
-        return User.query.get(self.user_id)
+        if self.user_id:
+            return User.query.get(self.user_id)
+        return None
 
 
 class MadeReagent(Element):
     components = db.relationship('MadeReagentToComp', lazy=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    # components = db.relationship('Component', lazy=True)
-    # reagents = db.relationship('Reagent', lazy=True)
 
     def get_components(self):
         components = []
@@ -137,9 +145,10 @@ class MadeReagent(Element):
                 reagents.append(Reagent.query.get(component.reagent_id))
         return reagents
 
-
     def get_user(self):
-        return User.query.get(self.user_id)
+        if self.user_id:
+            return User.query.get(self.user_id)
+        return None
 
 
 class MadeReagentToComp(db.Model):
