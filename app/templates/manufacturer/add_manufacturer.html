@@ -16,17 +16,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3 form-group ">
+                    <div class="col-5 form-group ">
                         <label for="manu_name">Manufacturer Name</label>
                         <input type="text" class="form-control" id="manu_name" name="manu_name" required>
                     </div>
-                    <div class="col-4 form-group">
+                    <div class="col-5 form-group">
                         <label for="barcode">Box Lot Barcode</label>
                         <input type="text" class="form-control" id="barcode" name="barcode">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3 form-group">
+                    <div class="col-4 form-group">
                         <label for="part_num">
                             <input type="checkbox" class="form-check-input" id="part_num_cb" name="cb" value="part_num" checked="checked" onchange="checkbox_pressed(this)">Part Number
                         </label>
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 form-group">
+                    <div class="col-4 form-group">
                         <label for="lot_num">
                             <input type="checkbox" class="form-check-input" id="lot_num_cb" name="cb" value="lot_num" checked="checked" onchange="checkbox_pressed(this)">Lot Number
                         </label>
@@ -52,7 +52,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-3 form-group">
+                    <div class="col-4 form-group">
                         <label for="exp_date">
                             <input type="checkbox" class="form-check-input" id="exp_date_cb" name="cb" value="exp_date" checked="checked" onchange="checkbox_pressed(this)">Expiry Date
                         </label>
@@ -74,12 +74,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3 form-group">
+                    <div class="col-4 form-group">
                         <input type="checkbox" class="form-check-input" name="comp_cb" checked="checked" onchange="document.getElementById('comp_barcode').disabled = !this.checked;">
                         <label for="comp_barcode">Component Barcode</label>
                         <input type="text" class="form-control" id="comp_barcode" name="comp_barcode">
                     </div>
-                    <div class="col-3 form-group">
+                    <div class="col-4 form-group">
                         <input type="checkbox" class="form-check-input" id="comp_part_num_cb" name="comp_cb" value="part_num" checked="checked" onchange="checkbox_pressed(this)">
                         <label for="comp_part_num">Part Number</label>
                         <div class="input-group">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 form-group">
+                    <div class="col-4 form-group">
                         <input type="checkbox" class="form-check-input" id="comp_lot_num_cb" name="comp_cb" value="lot_num" checked="checked" onchange="checkbox_pressed(this)">
                         <label for="comp_lot_num">Lot Number</label>
                         <div class="input-group">
