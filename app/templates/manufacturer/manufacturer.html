@@ -45,7 +45,7 @@
                 <div class="col-4 text-right"><strong>Part Number</strong></div>
                 <div class="col-small"></div>
                 <div class="col-5">
-                    {% if manufacturer.barcode_fk %}
+                    {% if manufacturer.get_part_num(manufacturer.barcode) %}
                         {{ manufacturer.get_part_num(manufacturer.barcode) }}
                     {% else %}
                         N/A
@@ -57,7 +57,7 @@
                 <div class="col-4 text-right"><strong>Lot Number</strong></div>
                 <div class="col-small"></div>
                 <div class="col-5">
-                    {% if manufacturer.barcode_fk %}
+                    {% if manufacturer.get_lot_num(manufacturer.barcode) %}
                         {{ manufacturer.get_lot_num(manufacturer.barcode) }}
                     {% else %}
                         N/A
@@ -69,7 +69,7 @@
                 <div class="col-4 text-right"><strong>Expiry Date</strong></div>
                 <div class="col-small"></div>
                 <div class="col-5">
-                    {% if manufacturer.exp_date_start %}
+                    {% if manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] != '' %}
                         {{ manufacturer.barcode[manufacturer.exp_date_start:manufacturer.exp_date_end] }}
                     {% else %}
                         N/A
@@ -95,7 +95,7 @@
                 <div class="col-4 text-right"><strong>Component Part Number</strong></div>
                 <div class="col-small"></div>
                 <div class="col-5">
-                    {% if manufacturer.comp_barcode_fk %}
+                    {% if manufacturer.get_comp_part_num(manufacturer.comp_barcode) %}
                         {{ manufacturer.get_comp_part_num(manufacturer.comp_barcode) }}
                     {% else %}
                         N/A
@@ -107,7 +107,7 @@
                 <div class="col-4 text-right"><strong>Component Lot Number</strong></div>
                 <div class="col-small"></div>
                 <div class="col-5">
-                    {% if manufacturer.comp_barcode_fk %}
+                    {% if manufacturer.get_comp_lot_num(manufacturer.comp_barcode) %}
                         {{ manufacturer.get_comp_lot_num(manufacturer.comp_barcode) }}
                     {% else %}
                         N/A

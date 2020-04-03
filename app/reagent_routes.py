@@ -41,9 +41,16 @@ def add_reagent():
         except ValueError:
             date_tested = None
 
+        try:
+            manufacturer_id = int(request.values.get("manu_name").split(",")[0])
+            if manufacturer_id == 0:
+                manufacturer_id = None
+        except ValueError:
+            manufacturer_id = None
+
         new_reagent = Reagent(
             name=request.form.get("name"),
-            manufacturer_id=request.values.get("manu_name").split(',')[0],
+            manufacturer_id=manufacturer_id,
             barcode=request.form.get("barcode"),
             part_num=form.get("part_num"),
             lot_num=form.get("lot_num"),
