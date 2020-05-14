@@ -90,7 +90,7 @@ def add_kit():
             date_entered=datetime.now(),
             date_tested=date_tested,
             p_num=form.get("p_num"),
-            quantity=int(form.get("quantity")),
+            quantity=int(form.get("quantity", "1")),
             comment=request.values.get("comment"),
             user_id=current_user.id
         )
