@@ -1,4 +1,3 @@
-
 function get_date(year_month) {
     const month30 = [4,6,9,11];
     const month31 = [1,3,5,7,8,10,12];
@@ -73,5 +72,6 @@ function deleteMsg(deletable) {
         return confirmMsg();
     } else {
         alert("This cannot be deleted.");
+        return false;
     }
 }
