@@ -110,13 +110,9 @@ def add_kit():
         conditions = form.getlist("condition")
 
         for value in range(new_kit.quantity):
-            is_first = True
-            index = 1
             for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
-                if is_first:
-                    is_first = False
+                if name == "":
                     continue
-
                 try:
                     exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
                 except ValueError:
@@ -138,7 +134,6 @@ def add_kit():
                 )
                 db.session.add(component)
                 db.session.commit()
-                index += 1
 
         return redirect(url_for("kit", kit_id=new_kit.id))
 
