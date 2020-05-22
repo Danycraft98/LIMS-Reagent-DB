@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-4 form-group">
                         <label for="sk_name">Super Kit Name</label>
-                        <input type="text" class="form-control" id="sk_name" name="sk_name" oninput="search_sk(this);">
+                        <input type="text" class="form-control" id="sk_name" name="sk_name">
                     </div>
                     <div class="col-3 form-group">
                         <label for="sk_part_num">Part Number</label>
@@ -178,91 +178,94 @@
 {% block script %}
 <script src="{{ url_for('static', filename='js/add_kit.js') }}"></script>
 <script>
-        function search_sk(element) {
-            let form_elements;
-            {% for super_kit in super_kits %}
-                if (element.value.localeCompare('{{ super_kit.name }}') === 0) {
-                    document.getElementById('sk_part_num').value = '{{ super_kit.part_num }}';
-                    {% with kit=super_kit.kit %}
-                        {% if kit != None %}
-                            document.getElementById('name').value = '{{ kit.name }}';
-                            document.getElementById('manu_name').selectedIndex = '{{ kit.get_manufacturer().id }}';
-                            document.getElementById('barcode').value = '{{ kit.barcode }}';
-                            document.getElementById('quantity').value = '{{ kit.quantity }}';
+    document.querySelector('#name').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            search_kit(document.getElementById('name'));
+        }
+    });
 
-                            const length = document.getElementById('comps').childNodes.length / 2 - 1;
-                            blank_len = 0;
-                            {% for component in kit.components %}
-                            if ({{ loop.index }} <= {{ list(kit.components) | length / kit.quantity }}) {
-                                if ({{ loop.index }} > length) {
-                                    clone_element(document.getElementById('comp0'));
-                                }
-                                form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
-                                form_elements[0].value = '{{ component.name }}';
-                                form_elements[1].value = '{{ component.barcode }}';
-                                if ('{{ component.size }}' == 's') {
-                                    form_elements[6].selectedIndex = 0;
-                                } else {
-                                    form_elements[6].selectedIndex = 1;
-                                }
-                            }
-                            {% endfor %}
+    document.querySelector('#sk_name').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            search_sk(document.getElementById('sk_name'));
+        }
+    });
+
+    function search_sk(element) {
+        let form_elements;
+        {% for super_kit in super_kits %}
+            if (element.value.localeCompare('{{ super_kit.name }}') === 0) {
+                document.getElementById('sk_part_num').value = '{{ super_kit.part_num }}';
+                {% with kit=super_kit.kit %}
+                    {% if kit != None %}
+                        document.getElementById('name').value = '{{ kit.name }}';
+                        {% with manufacturer=kit.get_manufacturer() %}
+                        {% if manufacturer %}
+                        document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_barcode_pat().part_start }},{{ manufacturer.get_barcode_pat().part_end }},{{ manufacturer.get_barcode_pat().lot_start }},{{ manufacturer.get_barcode_pat().lot_end }},{{ manufacturer.exp_date_start }},{{ manufacturer.exp_date_end }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
                         {% endif %}
-                    {% endwith %}
-                }
-            {% endfor %}
-            update_all(document.getElementById('manu_name'));
-        }
+                        {% endwith %}
+                        document.getElementById('barcode').value = '{{ kit.barcode }}';
+                        document.getElementById('quantity').value = '{{ kit.quantity }}';
 
-        document.querySelector('#name').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                search_kit(document.getElementById('name'));
-            }
-        });
-
-        function search_kit(element) {
-            let form_elements;
-            let blank_len;
-            {% for kit in kits %}
-            if (element.value.localeCompare('{{ kit.name }}') === 0) {
-                document.getElementById('name').value = '{{ kit.name }}';
-                {% with manufacturer=kit.get_manufacturer() %}
-                {% if manufacturer %}
-                document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_barcode_pat().part_start }},{{ manufacturer.get_barcode_pat().part_end }},{{ manufacturer.get_barcode_pat().lot_start }},{{ manufacturer.get_barcode_pat().lot_end }},{{ manufacturer.exp_date_start }},{{ manufacturer.exp_date_end }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
-                {% endif %}
+                        const length = document.getElementById('comps').childNodes.length / 2 - 1;
+                        blank_len = 0;
+                        {% for component in kit.components %}
+                        if ({{ loop.index }} <= {{ list(kit.components) | length / kit.quantity }}) {
+                            if ({{ loop.index }} > length) {
+                                clone_element(document.getElementById('comp0'));
+                            }
+                            form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
+                            form_elements[0].value = '{{ component.name }}';
+                            form_elements[1].value = '{{ component.barcode }}';
+                        }
+                        {% endfor %}
+                    {% endif %}
                 {% endwith %}
+            }
+        {% endfor %}
+        update_all(document.getElementById('manu_name'));
+    }
 
-                document.getElementById('barcode').value = '{{ kit.barcode }}';
-                document.getElementById('quantity').value = '{{ kit.quantity }}';
+    function search_kit(element) {
+        let form_elements;
+        let blank_len;
+        {% for kit in kits %}
+        if (element.value.localeCompare('{{ kit.name }}') === 0) {
+            document.getElementById('name').value = '{{ kit.name }}';
+            {% with manufacturer=kit.get_manufacturer() %}
+            {% if manufacturer %}
+            document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_barcode_pat().part_start }},{{ manufacturer.get_barcode_pat().part_end }},{{ manufacturer.get_barcode_pat().lot_start }},{{ manufacturer.get_barcode_pat().lot_end }},{{ manufacturer.exp_date_start }},{{ manufacturer.exp_date_end }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
+            {% endif %}
+            {% endwith %}
 
-                const length = document.getElementById('comps').childElementCount - 1;
-                blank_len = 1;
-                {% for component in kit.components %}
-                if ({{ loop.index }} <= {{ kit.get_component_count() / kit.quantity }}) {
-                    if ({{ loop.index }} > length) {
-                        clone_element(document.getElementById('comp0'));
-                    }
-                    form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
-                    form_elements[0].value = '{{ component.name }}';
-                    form_elements[1].value = '{{ component.barcode }}';
+            document.getElementById('barcode').value = '{{ kit.barcode }}';
+            document.getElementById('quantity').value = '{{ kit.quantity }}';
+
+            const length = document.getElementById('comps').childElementCount - 1;
+            blank_len = 1;
+            {% for component in kit.components %}
+            if ({{ loop.index }} <= {{ kit.get_component_count() / kit.quantity }}) {
+                if ({{ loop.index }} > length) {
+                    clone_element(document.getElementById('comp0'));
                 }
-                blank_len = {{ loop.index }};
-                {% endfor %}
+                form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
+                form_elements[0].value = '{{ component.name }}';
+                form_elements[1].value = '{{ component.barcode }}';
+            }
+            blank_len = {{ loop.index }};
+            {% endfor %}
 
-                while (blank_len <= length) {
-                    blank_len++;
-                    if ($('#comp' + blank_len).length) {
-                        form_elements = document.getElementById('comp' + blank_len).getElementsByClassName('form-control');
-                        form_elements[0].value = '';
-                        form_elements[1].value = '';
-                    }
+            while (blank_len <= length) {
+                blank_len++;
+                if ($('#comp' + blank_len).length) {
+                    form_elements = document.getElementById('comp' + blank_len).getElementsByClassName('form-control');
+                    form_elements[0].value = '';
+                    form_elements[1].value = '';
                 }
             }
-            {% endfor %}
-            console.log(document.getElementById('manu_name').value);
-            update_all(document.getElementById('manu_name'));
         }
-
-
+        {% endfor %}
+        console.log(document.getElementById('manu_name').value);
+        update_all(document.getElementById('manu_name'));
+    }
 </script>
 {% endblock script %}
