@@ -172,7 +172,7 @@
             </div>
             <div class="row mb-5 ml-1 mr-1">
                 {% for i in range %}
-                    <div class="mr-3">
+                    <div class="mb-2 col-2">
                         <button type="button" class="form-control btn-outline-secondary" title="Kit UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") }} {{ loop.index }}/{{ kit.quantity }}" data-toggle="collapse" data-target="#comp_div{{ i }}">Kit {{ loop.index }}/{{ kit.quantity }}</button>
                     </div>
                 {% endfor %}

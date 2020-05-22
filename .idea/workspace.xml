@@ -4,8 +4,8 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Fixed minor bugs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +19,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-46">
@@ -31,11 +31,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_kit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
+      <file leaf-file-name="manufacturer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="204" column="34" selection-start-line="201" selection-start-column="30" selection-end-line="204" selection-end-column="34" />
+            <state relative-caret-position="486">
+              <caret line="131" column="60" selection-start-line="131" selection-start-column="60" selection-end-line="131" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="174" column="32" selection-start-line="174" selection-start-column="32" selection-end-line="174" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -80,7 +89,6 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/app/templates/header.html" />
         <option value="$PROJECT_DIR$/app/templates/home/login.html" />
-        <option value="$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html" />
         <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
@@ -88,6 +96,8 @@
         <option value="$PROJECT_DIR$/app/static/js/add_kit.js" />
         <option value="$PROJECT_DIR$/app/kit_routes.py" />
         <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
+        <option value="$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html" />
+        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
       </list>
     </option>
   </component>
@@ -134,13 +144,6 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="manufacturer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="reagent" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -390,20 +393,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Updated commenting. Updated exp_date editing. Fixed other html files.">
-      <created>1570565872498</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1570565872499</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added size to Component.">
-      <created>1570592637824</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1570592637825</updated>
     </task>
     <task id="LOCAL-00046" summary="Updated print in Kit route">
       <created>1570593195879</created>
@@ -734,19 +723,33 @@
       <option name="project" value="LOCAL" />
       <updated>1590184139795</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Fixed minor bugs.">
+      <created>1590185976365</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1590185976365</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Auto-fill function. Changed event handler for super kit(enter key).">
+      <created>1590186129936</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1590186129936</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="693" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16282764" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16282764" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Messages" order="8" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32809773" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32809773" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32984293" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -794,7 +797,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Size -&gt; Label Size. Reagent expiry date fixed." />
     <MESSAGE value="Updated search criterias." />
     <MESSAGE value="Fixed Layouts" />
     <MESSAGE value="Component Label Numbers displayed on Kit print." />
@@ -817,9 +819,10 @@
     <MESSAGE value="Updated files including models.py" />
     <MESSAGE value="Updated N/A for templates as well as the database insertion bugs." />
     <MESSAGE value="Added missing element" />
-    <MESSAGE value="Fixed minor bugs." />
     <MESSAGE value="Auto-fill function. Changed event handler (enter key). Component with empty name field does not get inputted into the database." />
-    <option name="LAST_COMMIT_MESSAGE" value="Auto-fill function. Changed event handler (enter key). Component with empty name field does not get inputted into the database." />
+    <MESSAGE value="Fixed minor bugs." />
+    <MESSAGE value="Auto-fill function. Changed event handler for super kit(enter key)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Auto-fill function. Changed event handler for super kit(enter key)." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
@@ -1052,13 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1079,9 +1075,6 @@
           <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/add.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1166,6 +1159,20 @@
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="131" column="60" selection-start-line="131" selection-start-column="60" selection-end-line="131" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="174" column="32" selection-start-line="174" selection-start-column="32" selection-end-line="174" selection-end-column="32" />
         </state>
       </provider>
     </entry>

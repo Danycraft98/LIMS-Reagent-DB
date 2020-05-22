@@ -20,8 +20,8 @@ args = parser.parse_args()
 app = Flask(__name__)
 app.config.update({
     'SECRET_KEY': os.urandom(24),
-    'SQLALCHEMY_DATABASE_URI':'mysql://irene:irene123@10.0.2.2/reagent_db',
-    # 'SQLALCHEMY_DATABASE_URI':'mysql://root:@localhost/reagent_db',
+    #'SQLALCHEMY_DATABASE_URI':'mysql://irene:irene123@10.0.2.2/reagent_db',
+     'SQLALCHEMY_DATABASE_URI':'mysql://root:@localhost/reagent_db',
     # 'SQLALCHEMY_BINDS': {'reagent_db': mySQL_con},
     'SQLALCHEMY_TRACK_MODIFICATIONS': False
 })
