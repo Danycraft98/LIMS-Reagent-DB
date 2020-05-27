@@ -79,6 +79,8 @@ def delete(element_type, element_id):
         element = SuperKit.query.get(element_id)
     elif element_type == 'kit':
         element = Kit.query.get(element_id)
+        if element.get_super_kit():
+            db.session.delete(element.get_super_kit())
     elif element_type == 'reagent':
         element = Reagent.query.get(element_id)
     elif element_type == 'made_reagent':
