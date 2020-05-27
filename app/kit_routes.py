@@ -1,7 +1,8 @@
+import re
+from datetime import datetime
 from flask import render_template, url_for, redirect, request
 from flask import current_app as app
 from flask_login import login_required
-from datetime import datetime
 
 from app import db
 from app.models import SuperKit, Kit, Manufacturer, Component
@@ -30,7 +31,7 @@ def kit(kit_id):
             db.session.commit()
         elif "comp_id" in request.form:
             comp = Component.query.get(request.form.get('comp_id'))
-            comp.name = request.form.get("name")
+            comp.name = re.sub(' +', ' ', request.form.get("name"))
             comp.barcode = request.form.get("barcode")
             comp.part_num = request.form.get("part_num")
             comp.lot_num = request.form.get("lot_num")
@@ -50,7 +51,7 @@ def kit(kit_id):
 def add_kit():
     if request.method == "POST":
         form = request.form
-        sk_name = form.get('sk_name')
+        sk_name = re.sub(' +', ' ', form.get("sk_name"))
 
         # Add Super Kit
         super_kit = None
@@ -82,7 +83,7 @@ def add_kit():
             manufacturer_id = None
 
         new_kit = Kit(
-            name=form.get("name"),
+            name=re.sub(' +', ' ', form.get("name")),
             manufacturer_id=manufacturer_id,
             barcode=form.get("barcode"),
             part_num=form.get("part_num"),
@@ -124,7 +125,7 @@ def add_kit():
                     lot_num = new_kit.date_entered.date()
 
                 component = Component(
-                    name=name,
+                    name=re.sub(' +', ' ', name),
                     uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names)-1),
                     barcode=comp_num,
                     part_num=part_num,

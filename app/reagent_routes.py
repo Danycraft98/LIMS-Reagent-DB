@@ -1,7 +1,8 @@
+import re
+from datetime import datetime
 from flask import render_template, url_for, redirect, request
 from flask import current_app as app
 from flask_login import login_required
-from datetime import datetime
 
 from app import db
 from app.models import Reagent, Manufacturer
@@ -50,7 +51,7 @@ def add_reagent():
             manufacturer_id = None
 
         new_reagent = Reagent(
-            name=request.form.get("name"),
+            name=re.sub(' +', ' ', request.form.get("name")),
             manufacturer_id=manufacturer_id,
             barcode=request.form.get("barcode"),
             part_num=form.get("part_num"),

@@ -1,3 +1,4 @@
+import re
 from flask import render_template, url_for, redirect, request
 from flask import current_app as app
 from flask_login import login_required, current_user
@@ -83,7 +84,7 @@ def add_manufacturer():
         db.session.commit()
 
         new_manufacturer = Manufacturer(
-            name=request.form.get("manu_name"),
+            name=re.sub(' +', ' ', request.form.get("manu_name")),
             date_entered=datetime.now(),
             barcode=barcode,
             comp_barcode=comp_barcode,

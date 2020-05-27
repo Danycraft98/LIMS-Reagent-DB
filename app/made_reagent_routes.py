@@ -1,7 +1,8 @@
+import re
+from datetime import datetime
 from flask import render_template, url_for, redirect, request
 from flask import current_app as app
 from flask_login import login_required
-from datetime import datetime
 
 from app import db
 from app.models import Manufacturer, Reagent, MadeReagent, MadeReagentToComp, Component
@@ -45,7 +46,7 @@ def add_made_reagent():
             date_tested = datetime.strptime(date_tested, "%Y-%m-%d")
 
         made_reagent_ = MadeReagent(
-            name=request.form.get("name"),
+            name=re.sub(' +', ' ', request.form.get("name")),
             exp_date=exp_date,
             date_entered=datetime.now(),
             quantity=quantity,
