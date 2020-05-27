@@ -50,11 +50,6 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/add.js') }}"></script>
-<script>
-    function get_filename(fileName) {
-        document.getElementById('fileName').value = fileName;
-    }
-</script>
 {% block script %}{% endblock %}
 </body>
 
