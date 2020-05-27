@@ -162,6 +162,13 @@ class MadeReagentToComp(db.Model):
     madereagent_id = db.Column(db.Integer, db.ForeignKey('made_reagent.id'), nullable=False)
     reagent_id = db.Column(db.Integer, db.ForeignKey('reagent.id'))
     comp_id = db.Column(db.Integer, db.ForeignKey('component.id'))
+    #comment = db.Column(db.String(255))
+
+    def get_comp(self):
+        if self.reagent_id:
+            return Reagent.query.get(self.reagent_id)
+        else:
+            return Component.query.get(self.comp_id)
 
 
 # -----------------------------------------------------------------------------------------------

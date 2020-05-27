@@ -85,7 +85,8 @@ def add_made_reagent():
     for reagent in Reagent.query.all():
         comp_infos[reagent.barcode] = reagent.name
     today = datetime.now().date()
-    return render_template("made_reagent/add_made_reagent.html", add_comp=True, today=today, comp_infos=comp_infos)
+    made_reagents = MadeReagent.query.all()
+    return render_template("made_reagent/add_made_reagent.html", add_comp=True, today=today, comp_infos=comp_infos, made_reagents=made_reagents, MadeReagentToComp=MadeReagentToComp)
 
 
 @app.route("/print_made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])

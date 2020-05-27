@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-4 form-group">
                         <label for="name">Reagent Name</label>
-                        <input type="text" class="form-control" id="name" name="name" oninput="search_reagent(this)" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="col-4 form-group">
                         <label for="manu_name">Manufacturer</label>
@@ -85,17 +85,29 @@
 {% block script %}
     <script src="{{ url_for('static', filename='js/add_reagent.js') }}"></script>
     <script>
+        document.querySelector('#name').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                search_reagent(document.getElementById('name'));
+            }
+        });
+
+
         function search_reagent(element) {
+            let form_elements;
             {% for reagent in reagents %}
-                let form_elements;
                 if (element.value.localeCompare('{{ reagent.name }}') === 0) {
                     document.getElementById('name').value = '{{ reagent.name }}';
-                    document.getElementById('manu_name').selectedIndex = '{{ reagent.get_manufacturer().id }}';
+                    {% with manufacturer=reagent.get_manufacturer() %}
+                    {% if manufacturer %}
+                    document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
+                    {% endif %}
+                    {% endwith %}
                     document.getElementById('barcode').value = '{{ reagent.barcode }}';
                     document.getElementById('quantity').value = '{{ reagent.quantity }}';
+                    document.getElementById('part_num').value = '{{ reagent.part_num }}';
+                    document.getElementById('lot_num').value = '{{ reagent.lot_num }}';
                 }
             {% endfor %}
-            update_all(document.getElementById('manu_name'));
         }
     </script>
 {% endblock script %}
