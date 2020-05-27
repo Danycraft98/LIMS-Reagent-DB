@@ -99,15 +99,17 @@
                         <th>Barcode</th>
                         <th>Part Number</th>
                         <th>Lot Number</th>
+                        <th>Comment</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for component in made_reagent.get_components() %}
+                    {% for component, comment in made_reagent.get_components() %}
                         <tr>
                             <td>{{ component.name }}</td>
                             <td>{{ component.barcode }}</td>
                             <td>{{ component.part_num }}</td>
                             <td>{{ component.lot_num }}</td>
+                            <td>{{ comment }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -128,15 +130,17 @@
                         <th>Barcode</th>
                         <th>Part Number</th>
                         <th>Lot Number</th>
+                        <th>Comment</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for reagent in made_reagent.get_reagents() %}
+                    {% for reagent, comment in made_reagent.get_reagents() %}
                         <tr>
                             <td>{{ reagent.name }}</td>
                             <td>{{ reagent.barcode }}</td>
                             <td>{{ reagent.part_num }}</td>
                             <td>{{ reagent.lot_num }}</td>
+                            <td>{{ comment }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

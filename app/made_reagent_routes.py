@@ -1,8 +1,9 @@
 from flask import render_template, url_for, redirect, request
+from flask import current_app as app
 from flask_login import login_required
 from datetime import datetime
 
-from app import app, db
+from app import db
 from app.models import Manufacturer, Reagent, MadeReagent, MadeReagentToComp, Component
 from app.printer import print_label
 from app.route import current_user
@@ -58,8 +59,9 @@ def add_made_reagent():
         db.session.commit()
 
         names = request.form.getlist("comp_name")
+        comments = request.form.getlist("condition")
         is_first = True
-        for name in names:
+        for name, comment in zip(names, comments):
             if is_first:
                 is_first = False
                 continue
@@ -67,9 +69,9 @@ def add_made_reagent():
             components = Component.query.filter_by(name=name)
             made_reagent_to_comp = None
             if reagents.count() > 0:
-                made_reagent_to_comp = MadeReagentToComp(madereagent_id=made_reagent_.id, reagent_id=reagents.first().id)
+                made_reagent_to_comp = MadeReagentToComp(madereagent_id=made_reagent_.id, reagent_id=reagents.first().id, comment=comment)
             elif components.count() > 0:
-                made_reagent_to_comp = MadeReagentToComp(madereagent_id=made_reagent_.id, comp_id=components.first().id)
+                made_reagent_to_comp = MadeReagentToComp(madereagent_id=made_reagent_.id, comp_id=components.first().id,  comment=comment)
 
             if made_reagent_to_comp:
                 db.session.add(made_reagent_to_comp)

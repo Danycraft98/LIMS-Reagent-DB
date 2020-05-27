@@ -1,8 +1,5 @@
-from app import app
-from flask_login import LoginManager, UserMixin
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy(app)
+from flask_login import UserMixin
+from . import db, login_manager
 
 
 class User(UserMixin, db.Model):
@@ -141,14 +138,14 @@ class MadeReagent(Element):
         components = []
         for component in self.components:
             if component.comp_id:
-                components.append(Component.query.get(component.comp_id))
+                components.append((Component.query.get(component.comp_id), component.comment))
         return components
 
     def get_reagents(self):
         reagents = []
         for component in self.components:
             if component.reagent_id:
-                reagents.append(Reagent.query.get(component.reagent_id))
+                reagents.append((Reagent.query.get(component.reagent_id), component.comment))
         return reagents
 
     def get_user(self):
@@ -162,7 +159,7 @@ class MadeReagentToComp(db.Model):
     madereagent_id = db.Column(db.Integer, db.ForeignKey('made_reagent.id'), nullable=False)
     reagent_id = db.Column(db.Integer, db.ForeignKey('reagent.id'))
     comp_id = db.Column(db.Integer, db.ForeignKey('component.id'))
-    #comment = db.Column(db.String(255))
+    comment = db.Column(db.String(255))
 
     def get_comp(self):
         if self.reagent_id:
@@ -186,15 +183,6 @@ class Component(db.Model):
 
 
 # -----------------------------------------------------------------------------------------------
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
-
-if __name__ == '__main__':
-    db.create_all()

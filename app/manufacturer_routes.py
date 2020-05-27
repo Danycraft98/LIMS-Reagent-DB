@@ -1,7 +1,8 @@
 from flask import render_template, url_for, redirect, request
+from flask import current_app as app
 from flask_login import login_required, current_user
 
-from app import app, db
+from app import db
 from app.models import BarcodePattern, Manufacturer, MadeReagent
 from datetime import datetime
 

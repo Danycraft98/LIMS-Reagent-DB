@@ -1,8 +1,9 @@
 from flask import render_template, url_for, redirect, request
+from flask import current_app as app
 from flask_login import login_required
 from datetime import datetime
 
-from app import app, db
+from app import db
 from app.models import Reagent, Manufacturer
 from app.printer import print_label
 from app.route import current_user

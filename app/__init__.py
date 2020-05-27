@@ -1,8 +1,12 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_bootstrap import Bootstrap
 from argparse import ArgumentParser
-import os
+from flask import Flask
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+
+
+db = SQLAlchemy()
+login_manager = LoginManager()
 
 # "Global" search bar variable
 mySQL_con = 'mysql://root:@127.0.0.1/reagent_db'
@@ -16,30 +20,40 @@ parser.add_argument("-p", "--port", type=str, metavar='', help="Add custom datab
 args = parser.parse_args()
 
 
-# App Setup
-app = Flask(__name__)
-app.config.update({
-    'SECRET_KEY': os.urandom(24),
-    'SQLALCHEMY_DATABASE_URI':'mysql://irene:irene123@10.0.2.2/reagent_db',
-    #'SQLALCHEMY_DATABASE_URI':'mysql://root:@localhost/reagent_db',
-    # 'SQLALCHEMY_BINDS': {'reagent_db': mySQL_con},
-    'SQLALCHEMY_TRACK_MODIFICATIONS': False
-})
+def create_app():
+    """Construct the core application."""
+    app = Flask(__name__, instance_relative_config=False)
+    bootstrap = Bootstrap(app)
 
-if args.dbhost:
-    host = args.dbhost
-    sqluser = os.environ['SQL_USER']
-    sqlpass = os.environ['SQL_PASSWORD']
-    if args.port:
-        port = args.port
-        mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + ':' + port + '/reagent_db'
-    else:
-        mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + '/reagent_db'
+    #app.config.from_object('config.Config')
+    app.config.update(dict(
+        SECRET_KEY="{{ LONG_RANDOM_STRING }}",
+        SQLALCHEMY_DATABASE_URI='mysql://irene:irene123@10.0.2.2/reagent_db',
+        # SQLALCHEMY_DATABASE_URI='mysql://root:@localhost/reagent_db',
+        # 'SQLALCHEMY_BINDS': {'reagent_db': mySQL_con},
+        SQLALCHEMY_TRACK_MODIFICATIONS=False,
+        UPLOAD_FOLDER='data'
+    ))
 
-app.config['SQLALCHEMY_BINDS'] = {'reagent_db': mySQL_con}
+    if args.dbhost:
+        host = args.dbhost
+        sqluser = os.environ['SQL_USER']
+        sqlpass = os.environ['SQL_PASSWORD']
+        if args.port:
+            port = args.port
+            mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + ':' + port + '/reagent_db'
+        else:
+            mySQL_con = 'mysql://' + sqluser + ':' + sqlpass + '@' + host + '/reagent_db'
+
+        app.config['SQLALCHEMY_BINDS'] = {'reagent_db': mySQL_con}
+
+    db.init_app(app)
+    login_manager.init_app(app)
+    login_manager.login_view = 'login'
 
 
-db = SQLAlchemy(app)
-bootstrap = Bootstrap(app)
+    with app.app_context():
+        from . import route, manufacturer_routes, kit_routes, reagent_routes, made_reagent_routes  # Import routes
+        db.create_all()  # Create database tables for our data models
 
-from app import route, manufacturer_routes, kit_routes, reagent_routes, made_reagent_routes
+        return app

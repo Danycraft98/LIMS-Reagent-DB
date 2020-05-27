@@ -1,4 +1,5 @@
 from flask import redirect, render_template, request, url_for
+from flask import current_app as app
 from flask_wtf import FlaskForm
 from flask_login import login_user, login_required, logout_user, current_user
 
