@@ -77,6 +77,10 @@ class Element(db.Model):
     p_num = db.Column(db.String(255))
     quantity = db.Column(db.Integer)
     comment = db.Column(db.String(255))
+    uids = db.Column(db.String(255))
+
+    def get_uids(self):
+        return self.uids.split(",")
 
 
 class SuperKit(db.Model):
@@ -113,6 +117,9 @@ class Kit(Element):
         for _ in self.components:
             count += 1
         return count
+
+    def get_uids(self):
+        return self.uids.split(",")
 
 
 class Reagent(Element):

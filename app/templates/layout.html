@@ -30,11 +30,7 @@
     {% block style %}{% endblock %}
 </head>
 {% if current_user.username %}
-    {% if add_comp %}
-        <body onload="clone_element(document.getElementById('comp0'));">
-    {% else %}
-        <body>
-    {% endif %}
+    <body>
 {% else %}
     <body class="bg-gradient-primary">
 {% endif %}

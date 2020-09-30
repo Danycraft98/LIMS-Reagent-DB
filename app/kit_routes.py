@@ -14,161 +14,296 @@ from app.route import current_user
 @app.route("/kit/<int:kit_id>", methods=['GET', 'POST'])
 @login_required
 def kit(kit_id):
-    kit1 = Kit.query.get(kit_id)
-    if not kit1:
-        return render_template('404.html'), 404
+	kit1 = Kit.query.get(kit_id)
+	if not kit1:
+		return render_template('404.html'), 404
 
-    super_kit = kit1.get_super_kit()
-    # Make sure Kit is deleted within 24 hours
-    deletable = (datetime.now() - kit1.date_entered).total_seconds() < 24 * 3600
-    if request.method == 'POST':
-        if "kit_comment" in request.form or "super_comment" in request.form:
-            kit1.comment = request.form.get("kit_comment")
-            db.session.merge(kit1)
-            if super_kit and "super_comment" in request.form:
-                super_kit.comment = request.form.get("super_comment")
-                db.session.merge(super_kit)
-            db.session.commit()
-        elif "comp_id" in request.form:
-            comp = Component.query.get(request.form.get('comp_id'))
-            comp.name = re.sub(' +', ' ', request.form.get("name"))
-            comp.barcode = request.form.get("barcode")
-            comp.part_num = request.form.get("part_num")
-            comp.lot_num = request.form.get("lot_num")
-            comp.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
-            comp.condition = request.form.get("condition")
-            db.session.merge(comp)
-            db.session.commit()
+	super_kit = kit1.get_super_kit()
+	# Make sure Kit is deleted within 24 hours
+	deletable = (datetime.now() - kit1.date_entered).total_seconds() < 24 * 3600
+	if request.method == 'POST':
+		if "kit_comment" in request.form or "super_comment" in request.form:
+			kit1.comment = request.form.get("kit_comment")
+			db.session.merge(kit1)
+			if super_kit and "super_comment" in request.form:
+				super_kit.comment = request.form.get("super_comment")
+				db.session.merge(super_kit)
+			db.session.commit()
+		elif "comp_id" in request.form:
+			comp = Component.query.get(request.form.get('comp_id'))
+			comp.name = re.sub(' +', ' ', request.form.get("name"))
+			comp.barcode = request.form.get("barcode")
+			comp.part_num = request.form.get("part_num")
+			comp.lot_num = request.form.get("lot_num")
+			comp.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
+			comp.condition = request.form.get("condition")
+			db.session.merge(comp)
+			db.session.commit()
+		elif "kit_id" in request.form:
+			kit1.name = re.sub(' +', ' ', request.form.get("name"))
+			kit1.name = re.sub(' +', ' ', request.form.get("name"))
+			kit1.barcode = request.form.get("barcode")
+			kit1.part_num = request.form.get("part_num")
+			kit1.lot_num = request.form.get("lot_num")
+			kit1.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
+			if request.form.get("date_tested"):
+				kit1.date_tested = datetime.strptime(request.form.get("date_tested"), "%Y-%m-%d")
+			kit1.p_num = request.form.get("p_num")
 
-    kit1 = Kit.query.get(kit_id)
-    super_kit = kit1.get_super_kit()
-    return render_template("kit/kit.html", kit=kit1, manufacturer=kit1.get_manufacturer(), super_kit=super_kit, range=range(kit1.quantity), deletable=deletable)
+			new_quantity = int(request.form.get("quantity"))
+			count = kit1.components.count() // kit1.quantity
+			if kit1.quantity > new_quantity:
+				count2 = (kit1.quantity - new_quantity) * count
+				for i in range(count2):
+					db.session.delete(kit1.components[-1])
+				for c in kit1.components:
+					c.uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count),
+			elif kit1.quantity < new_quantity:
+				for i in range(new_quantity):
+					j = 1
+					if i < kit1.quantity:
+						for c in kit1.components[i * count:(i + 1) * count]:
+							c.uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count),
+							j += 1
+					else:
+						for c in kit1.components[:count]:
+							component = Component(
+								name=c.name,
+								uid=kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count),
+								barcode=c.barcode,
+								part_num=c.part_num,
+								lot_num=c.lot_num,
+								exp_date=c.exp_date,
+								size=c.size,
+								condition=c.condition,
+								kit_id=kit1.id
+							)
+							db.session.add(component)
+							j += 1
+			kit1.quantity = new_quantity
+
+			db.session.merge(kit1)
+			db.session.commit()
+
+	kit1 = Kit.query.get(kit_id)
+	super_kit = kit1.get_super_kit()
+	return render_template("kit/kit.html", kit=kit1, super_kit=super_kit, deletable=deletable)
 
 
+"""
 # Add Kit Route
 @app.route("/add_kit", methods=["GET", "POST"])
 @login_required
 def add_kit():
-    if request.method == "POST":
-        form = request.form
-        sk_name = re.sub(' +', ' ', form.get("sk_name"))
+	if request.method == "POST":
+		form = request.form
+		try:
+			exp_date = datetime.strptime(form.get("exp_date"), "%Y-%m-%d")
+		except ValueError:
+			exp_date = None
 
-        # Add Super Kit
-        super_kit = None
-        if sk_name != '':
-            super_kit = SuperKit(
-                name=sk_name,
-                part_num=form.get("sk_part_num"),
-                comment=request.values.get("sk_comment")
-            )
+		try:
+			date_tested = datetime.strptime(form.get("date_tested"), "%Y-%m-%d")
+		except ValueError:
+			date_tested = None
 
-            db.session.add(super_kit)
-            db.session.commit()
+		try:
+			manufacturer_id = int(request.values.get("manu_name").split(",")[0])
+			if manufacturer_id == 0:
+				manufacturer_id = None
+		except ValueError:
+			manufacturer_id = None
 
-        try:
-            exp_date = datetime.strptime(form.get("exp_date"), "%Y-%m-%d")
-        except ValueError:
-            exp_date = None
+		new_kit = Kit(
+			name=re.sub(' +', ' ', form.get("name")),
+			manufacturer_id=manufacturer_id,
+			barcode=form.get("barcode"),
+			part_num=form.get("part_num"),
+			lot_num=form.get("lot_num"),
+			exp_date=exp_date,
+			date_entered=datetime.now(),
+			date_tested=date_tested,
+			p_num=form.get("p_num"),
+			quantity=int(form.get("quantity", "1")),
+			comment=request.values.get("comment"),
+			user_id=current_user.id
+		)
 
-        try:
-            date_tested = datetime.strptime(form.get("date_tested"), "%Y-%m-%d")
-        except ValueError:
-            date_tested = None
+		db.session.add(new_kit)
+		db.session.commit()
 
-        try:
-            manufacturer_id = int(request.values.get("manu_name").split(",")[0])
-            if manufacturer_id == 0:
-                manufacturer_id = None
-        except ValueError:
-            manufacturer_id = None
+		names = form.getlist("comp_name")
+		comp_nums = form.getlist("comp_barcode")
+		comp_part_nums = form.getlist("comp_part_num")
+		comp_lot_nums = form.getlist("comp_lot_num")
+		comp_exp_dates = form.getlist("comp_exp_date")
+		sizes = form.getlist("size")
+		conditions = form.getlist("condition")
 
-        new_kit = Kit(
-            name=re.sub(' +', ' ', form.get("name")),
-            manufacturer_id=manufacturer_id,
-            barcode=form.get("barcode"),
-            part_num=form.get("part_num"),
-            lot_num=form.get("lot_num"),
-            exp_date=exp_date,
-            date_entered=datetime.now(),
-            date_tested=date_tested,
-            p_num=form.get("p_num"),
-            quantity=int(form.get("quantity", "1")),
-            comment=request.values.get("comment"),
-            user_id=current_user.id
-        )
+		for value in range(new_kit.quantity):
+			index = 0
+			for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
+				if name == "":
+					continue
+				try:
+					exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
+				except ValueError:
+					exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
 
-        if super_kit:
-            new_kit.super_kit_id = super_kit.id
+				if lot_num == "":
+					lot_num = new_kit.date_entered.date()
 
-        db.session.add(new_kit)
-        db.session.commit()
+				component = Component(
+					name=re.sub(' +', ' ', name),
+					uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
+					barcode=comp_num,
+					part_num=part_num,
+					lot_num=lot_num,
+					exp_date=exp_date,
+					size=size,
+					condition=condition,
+					kit_id=new_kit.id
+				)
+				db.session.add(component)
+				db.session.commit()
+				index += 1
 
-        names = form.getlist("comp_name")
-        comp_nums = form.getlist("comp_barcode")
-        comp_part_nums = form.getlist("comp_part_num")
-        comp_lot_nums = form.getlist("comp_lot_num")
-        comp_exp_dates = form.getlist("comp_exp_date")
-        sizes = form.getlist("size")
-        conditions = form.getlist("condition")
+		return redirect(url_for("kit", kit_id=new_kit.id))
+	manufacturers = Manufacturer.query.all()
+	kits = Kit.query.all()
+	today = datetime.now().date()
+	return render_template("kit/add_kit.html", add_comp=True, manufacturers=manufacturers, today=today, kits=kits, list=list)
+"""
 
-        for value in range(new_kit.quantity):
-            index = 0
-            for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
-                if name == "":
-                    continue
-                try:
-                    exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-                except ValueError:
-                    exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
 
-                if lot_num == "":
-                    lot_num = new_kit.date_entered.date()
+# Add Super Kit Route
+@app.route("/add_kit", methods=["GET", "POST"])
+@login_required
+def add_kit():
+	if request.method == "POST":
+		form = request.form
+		sk_name = re.sub(' +', ' ', form.get("sk_name"))
 
-                component = Component(
-                    name=re.sub(' +', ' ', name),
-                    uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names)-1),
-                    barcode=comp_num,
-                    part_num=part_num,
-                    lot_num=lot_num,
-                    exp_date=exp_date,
-                    size=size,
-                    condition=condition,
-                    kit_id=new_kit.id
-                )
-                db.session.add(component)
-                db.session.commit()
-                index += 1
+		# Add Super Kit
+		super_kit = SuperKit(
+			name=sk_name,
+			part_num=form.get("sk_part_num"),
+			comment=request.values.get("sk_comment")
+		)
 
-        return redirect(url_for("kit", kit_id=new_kit.id))
+		db.session.add(super_kit)
+		db.session.commit()
 
-    super_kits = SuperKit.query.all()
-    manufacturers = Manufacturer.query.all()
-    kits = Kit.query.all()
-    today = datetime.now().date()
-    return render_template("kit/add_kit.html", add_comp=True, manufacturers=manufacturers, today=today, kits=kits, super_kits=super_kits, list=list)
+		i = 1
+		while form.get("k" + str(i) + "_name"):
+			#for name, manu, barcode, part_num, lot_num, exp_date, date_tested, p_num, quantity, comment in zip(form.getlist("name"), form.getlist("manu_name"), form.getlist("barcode"), form.getlist("part_num"), form.getlist("lot_num"), form.getlist("exp_date"), form.getlist("date_tested"), form.getlist("p_num"),
+			#																							   form.getlist("quantity"), form.getlist("comment")):
+			try:
+				exp_date = datetime.strptime(form.get("k" + str(i) + "_exp_date"), "%Y-%m-%d")
+			except ValueError:
+				exp_date = None
+
+			try:
+				date_tested = datetime.strptime(form.get("k" + str(i) + "_date_tested"), "%Y-%m-%d")
+			except ValueError:
+				date_tested = None
+
+			try:
+				manufacturer_id = int(form.get("k" + str(i) + "_manu_name").split(",")[0])
+				if manufacturer_id == 0:
+					manufacturer_id = None
+			except ValueError:
+				manufacturer_id = None
+
+			new_kit = Kit(
+				name=re.sub(' +', ' ', form.get("k" + str(i) + "_name")),
+				manufacturer_id=manufacturer_id,
+				barcode=form.get("k" + str(i) + "_barcode"),
+				part_num=form.get("k" + str(i) + "_part_num"),
+				lot_num=form.get("k" + str(i) + "_lot_num"),
+				exp_date=exp_date,
+				date_entered=datetime.now(),
+				date_tested=date_tested,
+				p_num=form.get("k" + str(i) + "_p_num"),
+				quantity=int(form.get("k" + str(i) + "_quantity")),
+				comment=form.get("k" + str(i) + "_value"),
+				user_id=current_user.id,
+				super_kit_id=super_kit.id
+			)
+
+			db.session.add(new_kit)
+			db.session.commit()
+
+			names = form.getlist("k" + str(i) + "_comp_name")
+			comp_nums = form.getlist("k" + str(i) + "_comp_barcode")
+			comp_part_nums = form.getlist("k" + str(i) + "_comp_part_num")
+			comp_lot_nums = form.getlist("k" + str(i) + "_comp_lot_num")
+			comp_exp_dates = form.getlist("k" + str(i) + "_comp_exp_date")
+			sizes = form.getlist("k" + str(i) + "_size")
+			conditions = form.getlist("k" + str(i) + "_condition")
+
+			uids = []
+			for value in range(new_kit.quantity):
+				index = 1
+				uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity))
+				for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
+					if name == "":
+						continue
+					try:
+						exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
+					except ValueError:
+						exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
+
+					if lot_num == "":
+						lot_num = new_kit.date_entered.date()
+
+					component = Component(
+						name=re.sub(' +', ' ', name),
+						uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
+						barcode=comp_num,
+						part_num=part_num,
+						lot_num=lot_num,
+						exp_date=exp_date,
+						size=size,
+						condition=condition,
+						kit_id=new_kit.id
+					)
+					db.session.add(component)
+					db.session.commit()
+					index += 1
+			new_kit.uids = ",".join(uids)
+			db.session.commit()
+			i += 1
+		return redirect(url_for("elements", element_types="kits"))
+
+	super_kits = SuperKit.query.all()
+	manufacturers = Manufacturer.query.all()
+	kits = Kit.query.all()
+	today = datetime.now().date()
+	return render_template("kit/add_superkit.html", add_comp=True, manufacturers=manufacturers, today=today, kits=kits, super_kits=super_kits, list=list)
 
 
 # Print Kit Route
 @app.route("/print_kit/<int:kit_id>", methods=["GET", "POST"])
 @login_required
 def print_kit(kit_id):
-    kit1 = Kit.query.filter_by(id=kit_id)[0]
-    comp_print = request.form.get('comp_print')
-    kit_label_size = request.form.get('kit_label_size')
+	kit1 = Kit.query.filter_by(id=kit_id)[0]
+	comp_print = request.form.get('comp_print')
+	kit_label_size = request.form.get('kit_label_size')
 
-    if not comp_print:
-        batch_num = 1
-        while batch_num <= kit1.quantity:
-            print_cont = (kit1.name, kit1.exp_date, kit1.date_entered)
-            print_label(print_cont, "kit", kit_label_size, None, kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batch_num) + '/' + str(kit1.quantity))
-            batch_num += 1
+	if not comp_print:
+		batch_num = 1
+		while batch_num <= kit1.quantity:
+			print_cont = (kit1.name, kit1.exp_date, kit1.date_entered)
+			print_label(print_cont, "kit", kit_label_size, None, kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batch_num) + '/' + str(kit1.quantity))
+			batch_num += 1
 
-        for component in kit1.components:
-            print_cont = (component.name, component.exp_date, kit1.date_entered)
-            print_label(print_cont, "kit", component.size, None, component.uid)
-    else:
-        component = Component.query.filter_by(id=comp_print)[0]
-        print_cont = (component.name, component.exp_date, kit1.date_entered)
-        print_label(print_cont, "kit", component.size, None, component.uid)
+		for component in kit1.components:
+			print_cont = (component.name, component.exp_date, kit1.date_entered)
+			print_label(print_cont, "kit", component.size, None, component.uid)
+	else:
+		component = Component.query.filter_by(id=comp_print)[0]
+		print_cont = (component.name, component.exp_date, kit1.date_entered)
+		print_label(print_cont, "kit", component.size, None, component.uid)
 
-    return redirect(url_for("kit", kit_id=kit_id))
+	return redirect(url_for("kit", kit_id=kit_id))

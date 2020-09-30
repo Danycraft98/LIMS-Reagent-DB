@@ -14,6 +14,7 @@
                     <div class="dropdown-header">Options:</div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#printModal">Print Label</a>
                     <a class="dropdown-item" href="#" onclick="window.print();return false;">Print</a>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#kitModal">Edit</a>
                     <a class="dropdown-item" href="{{ url_for('delete', element_type='kit', element_id=kit.id) }}" onclick="return deleteMsg('{{ deletable }}'); ">Delete</a>
                 </div>
             </div>
@@ -171,14 +172,14 @@
                 </div>
             </div>
             <div class="row mb-5 ml-1 mr-1">
-                {% for i in range %}
+                {% for uid in kit.get_uids() %}
                     <div class="mb-2 col-2">
-                        <button type="button" class="form-control btn-outline-secondary" title="Kit UID: {{ kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") }} {{ loop.index }}/{{ kit.quantity }}" data-toggle="collapse" data-target="#comp_div{{ i }}">Kit {{ loop.index }}/{{ kit.quantity }}</button>
+                        <button type="button" class="form-control btn-outline-secondary" title="Kit UID: {{ uid }}" data-toggle="collapse" data-target="#comp_div{{ loop.index }}">Kit {{ loop.index }}/{{ kit.quantity }}</button>
                     </div>
                 {% endfor %}
             </div>
-            {% for i in range %}
-                <div class="row collapse mb-5" id="comp_div{{ i }}">
+            {% for i in kit.get_uids() %}
+                <div class="row collapse mb-5" id="comp_div{{ loop.index }}">
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -195,7 +196,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for component in kit.components[i * kit.components.count() // kit.quantity:loop.index * kit.components.count() // kit.quantity] %}
+                        {% for component in kit.components[(loop.index - 1) * kit.components.count() // kit.quantity:loop.index * kit.components.count() // kit.quantity] %}
                             <tr>
                                 <td>{{ component.name }}</td>
                                 <td>{{ component.uid }}</td>
@@ -275,6 +276,72 @@
         </div>
     </div>
 
+
+    <!--Edit Kit Modal-->
+    <div class="modal fade" id="kitModal" tabindex="-1" aria-labelledby="kitModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="card shadow modal-content">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h5 class="modal-title">Edit Kit</h5>
+                </div>
+
+                <!-- Card Body -->
+                <form method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            <input class="form-control" type="number" name="kit_id" hidden>
+                            <div class="col-4 form-group">
+                                <label for="comp_name">Name</label>
+                                <input class="form-control" name="name" value="{{ kit.name }}">
+                            </div>
+                            <div class="col-5 form-group">
+                                <label for="comp_barcode">Barcode</label>
+                                <input class="form-control" name="barcode" value="{{ kit.barcode }}">
+                            </div>
+                            <div class="col-3 form-group">
+                                <label for="comp_barcode">Quantity</label>
+                                <input class="form-control" name="quantity" type="number" value="{{ kit.quantity }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 form-group">
+                                <label for="comp_part_num">Part Number</label>
+                                <input class="form-control" name="part_num" value="{{ kit.part_num }}">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label for="comp_lot_num">Lot Number</label>
+                                <input class="form-control" name="lot_num" value="{{ kit.lot_num }}">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label for="comp_exp_date">Expiry Date</label>
+                                <input class="form-control" name="exp_date" type="date" value="{% if kit.exp_date %}{{ kit.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 form-group">
+                                <label for="comp_exp_date">Date Tested</label>
+                                <input class="form-control" name="date_tested" type="date" value="{% if kit.date_tested %}{{ kit.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label for="comp_lot_num">P#</label>
+                                <input class="form-control" name="p_num">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer row m-0">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button type="submit" class="form-control btn-primary">Update</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="form-control btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!--Edit Component Modal-->
     <div class="modal fade" id="compModal" tabindex="-1" aria-labelledby="compModal" aria-hidden="true">

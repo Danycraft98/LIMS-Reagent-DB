@@ -5,41 +5,11 @@
     <!-- Card Header -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h4 class="ml-5 m-0 font-weight-bold text-primary">Add Kit</h4>
-        <button type="button" data-toggle="collapse" data-target="#super_kit_div" class="btn btn-outline-secondary mr-5" onclick="edit_button(this)">Add Super Kit</button>
     </div>
 
     <!-- Card Body -->
     <form action="{{ url_for('add_kit') }}" method="post" onsubmit="return confirmMsg();" onkeypress="if(event.keyCode === 13) {event.preventDefault();return false;}">
         <div class="card-body mr-5 ml-5">
-            <fieldset id="super_kit_div" class="collapse">
-                <div class="row mt-3 mb-3">
-                    <div class="col">
-                        <h4>Super Kit Information</h4>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4 form-group">
-                        <label for="sk_name">Super Kit Name</label>
-                        <input type="text" class="form-control" id="sk_name" name="sk_name">
-                    </div>
-                    <div class="col-3 form-group">
-                        <label for="sk_part_num">Part Number</label>
-                        <input type="text" class="form-control" id="sk_part_num" name="sk_part_num">
-                    </div>
-                    <div class="col-2 form-group">
-                        <label for="sk_quantity">Quantity</label>
-                        <input type="number" value="1" min="1" max="100" step="1" name="sk_quantity" class="form-control" id="sk_quantity"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 form-group">
-                        <label for="comment">Comments</label>
-                        <textarea class="form-control" name="sk_comment" id="comment" rows="3"></textarea>
-                    </div>
-                </div>
-            </fieldset>
-
             <div id="edit_button_div" class="row mt-3 mb-3">
                 <div class="col">
                     <h4>Master Information</h4>
@@ -183,51 +153,6 @@
             search_kit(document.getElementById('name'));
         }
     });
-
-    document.querySelector('#sk_name').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            search_sk(document.getElementById('sk_name'));
-        }
-    });
-
-    function search_sk(element) {
-        let form_elements;
-        {% for super_kit in super_kits %}
-            if (element.value.localeCompare('{{ super_kit.name }}') === 0) {
-                document.getElementById('sk_part_num').value = '{{ super_kit.part_num }}';
-                {% with kit=super_kit.kit %}
-                    {% if kit != None %}
-                        document.getElementById('name').value = '{{ kit.name }}';
-                        {% with manufacturer=kit.get_manufacturer() %}
-                        {% if manufacturer %}
-                        document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_barcode_pat().part_start }},{{ manufacturer.get_barcode_pat().part_end }},{{ manufacturer.get_barcode_pat().lot_start }},{{ manufacturer.get_barcode_pat().lot_end }},{{ manufacturer.exp_date_start }},{{ manufacturer.exp_date_end }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
-                        {% endif %}
-                        {% endwith %}
-                        document.getElementById('barcode').value = '{{ kit.barcode }}';
-                        document.getElementById('quantity').value = '{{ kit.quantity }}';
-                        document.getElementById('part_num').value = '{{ kit.part_num }}';
-                        document.getElementById('lot_num').value = '{{ kit.lot_num }}';
-
-                        const length = document.getElementById('comps').childNodes.length / 2 - 1;
-                        blank_len = 0;
-                        {% for component in kit.components %}
-                        if ({{ loop.index }} <= {{ list(kit.components) | length / kit.quantity }}) {
-                            if ({{ loop.index }} > length) {
-                                clone_element(document.getElementById('comp0'));
-                            }
-                            form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
-                            form_elements[0].value = '{{ component.name }}';
-                            form_elements[1].value = '{{ component.barcode }}';
-                            form_elements[3].value = '{{ component.part_num }}';
-                            form_elements[4].value = '{{ component.lot_num }}';
-                        }
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            }
-        {% endfor %}
-        update_all(document.getElementById('manu_name'));
-    }
 
     function search_kit(element) {
         let form_elements;

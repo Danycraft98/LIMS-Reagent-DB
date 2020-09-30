@@ -21,10 +21,26 @@ def reagent(reagent_id):
     # Make sure Reagent is deleted within 24 hours
     deletable = (datetime.now() - reagent1.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
-        reagent1.comment = request.form.get("comment")
+        if "comment" in request.form:
+            reagent1.comment = request.form.get("comment")
+        elif "reagent_id" in request.form:
+            reagent1.name = re.sub(' +', ' ', request.form.get("name"))
+            reagent1.barcode = request.form.get("barcode")
+            reagent1.part_num = request.form.get("part_num")
+            reagent1.lot_num = request.form.get("lot_num")
+            reagent1.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
+            if request.form.get("date_tested"):
+                reagent1.date_tested = datetime.strptime(request.form.get("date_tested"), "%Y-%m-%d")
+            reagent1.p_num = request.form.get("p_num")
+            reagent1.quantity = int(request.form.get("quantity"))
+            uids = []
+            for value in range(reagent1.quantity):
+                uids.append(reagent1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(reagent1.quantity))
+            reagent1.uids = ",".join(uids)
+
         db.session.merge(reagent1)
         db.session.commit()
-    return render_template("reagent/reagent.html", reagent=reagent1, Manufacturer=Manufacturer, range=range(reagent1.quantity), deletable=deletable)
+    return render_template("reagent/reagent.html", reagent=reagent1, Manufacturer=Manufacturer, deletable=deletable)
 
 
 # Add Reagent Route
@@ -64,6 +80,11 @@ def add_reagent():
             comment=request.values.get("comment"),
             user_id=current_user.id
         )
+
+        uids = []
+        for value in range(new_reagent.quantity):
+            uids.append(new_reagent.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_reagent.quantity))
+        new_reagent.uids = ",".join(uids)
 
         db.session.add(new_reagent)
         db.session.commit()

@@ -10,7 +10,6 @@ from app.printer import print_label
 from app.route import current_user
 
 
-
 @app.route("/made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
 @login_required
 def made_reagent(made_reagent_id):
@@ -21,7 +20,19 @@ def made_reagent(made_reagent_id):
     # Make sure Reagent is deleted within 24 hours
     deletable = (datetime.now() - made_reagent1.date_entered).total_seconds() < 24 * 3600
     if request.method == 'POST':
-        made_reagent1.comment = request.form.get("comment")
+        if "comment" in request.form:
+            made_reagent1.comment = request.form.get("comment")
+        elif "mr_id" in request.form:
+            made_reagent1.name = re.sub(' +', ' ', request.form.get("name"))
+            made_reagent1.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
+            if request.form.get("date_tested"):
+                made_reagent1.date_tested = datetime.strptime(request.form.get("date_tested"), "%Y-%m-%d")
+            made_reagent1.p_num = request.form.get("p_num")
+            made_reagent1.quantity = int(request.form.get("quantity"))
+            uids = []
+            for value in range(made_reagent1.quantity):
+                uids.append(made_reagent1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(made_reagent1.quantity))
+            made_reagent1.uids = ",".join(uids)
         db.session.merge(made_reagent1)
         db.session.commit()
         return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id))
@@ -45,7 +56,7 @@ def add_made_reagent():
         elif date_tested:
             date_tested = datetime.strptime(date_tested, "%Y-%m-%d")
 
-        made_reagent_ = MadeReagent(
+        new_made_reagent = MadeReagent(
             name=re.sub(' +', ' ', request.form.get("name")),
             exp_date=exp_date,
             date_entered=datetime.now(),
@@ -56,7 +67,11 @@ def add_made_reagent():
             user_id=current_user.id
         )
 
-        db.session.add(made_reagent_)
+        uids = []
+        for value in range(new_made_reagent.quantity):
+            uids.append(new_made_reagent.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_made_reagent.quantity))
+            new_made_reagent.uids = ",".join(uids)
+        db.session.add(new_made_reagent)
         db.session.commit()
 
         names = request.form.getlist("comp_name")
@@ -70,16 +85,16 @@ def add_made_reagent():
             components = Component.query.filter_by(name=name)
             made_reagent_to_comp = None
             if reagents.count() > 0:
-                made_reagent_to_comp = MadeReagentToComp(madereagent_id=made_reagent_.id, reagent_id=reagents.first().id, comment=comment)
+                made_reagent_to_comp = MadeReagentToComp(madereagent_id=new_made_reagent.id, reagent_id=reagents.first().id, comment=comment)
             elif components.count() > 0:
-                made_reagent_to_comp = MadeReagentToComp(madereagent_id=made_reagent_.id, comp_id=components.first().id,  comment=comment)
+                made_reagent_to_comp = MadeReagentToComp(madereagent_id=new_made_reagent.id, comp_id=components.first().id,  comment=comment)
 
             if made_reagent_to_comp:
                 db.session.add(made_reagent_to_comp)
                 db.session.commit()
         db.session.commit()
 
-        return redirect(url_for("made_reagent", made_reagent_id=made_reagent_.id))
+        return redirect(url_for("made_reagent", made_reagent_id=new_made_reagent.id))
 
     comp_infos = {}
     for comp in Component.query.all():

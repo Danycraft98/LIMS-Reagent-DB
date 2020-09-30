@@ -9,7 +9,8 @@
                 <a class="mr-5 btn btn-primary" href="{{ url_for('add_manufacturer') }}" style="width: 200px">Add Manufacturer</a>
             {% elif element_type == 'kit' %}
                 <h4 class="ml-5 m-0 font-weight-bold text-primary">Kits</h4>
-                <a class="mr-5 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 200px">Add Kit</a>
+                <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a>
+                <!--a class="mr-5 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
             {% elif element_type == 'reagent' %}
                 <h4 class="ml-5 m-0 font-weight-bold text-primary">Reagents</h4>
                 <a class="mr-5 btn btn-primary" href="{{ url_for('add_reagent') }}" style="width: 200px">Add Reagent</a>
@@ -43,6 +44,7 @@
                         {% endif %}
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
+                        <th hidden>UID</th>
                         <th>Entered By</th>
                     </tr>
                     </thead>
@@ -63,6 +65,7 @@
                         {% endif %}
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
+                        <th hidden>UID</th>
                         <th>Entered By</th>
                     </tr>
                     </tfoot>
@@ -89,6 +92,7 @@
                             {% endif %}
                             <td>{{ element.date_entered.strftime("%B %e, %Y") }}</td>
                             <td hidden>{{ element.date_entered.strftime("%m-%d-%Y") }}</td>
+                            <td hidden>{% for uid in element.get_uids() %}{{ uid }} {% endfor %}</td>
                             <td>{{ element.get_user() }}</td>
                         </tr>
                     {% endfor %}

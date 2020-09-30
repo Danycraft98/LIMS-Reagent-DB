@@ -14,6 +14,7 @@
                     <div class="dropdown-header">Options:</div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#printModal">Print Label</a>
                     <a class="dropdown-item" href="#" onclick="window.print();return false;">Print</a>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#mrModal">Edit</a>
                     <a class="dropdown-item" href="{{ url_for('delete', element_type='made_reagent', element_id=made_reagent.id) }}" onclick="return deleteMsg('{{ deletable }}'); ">Delete</a>
                 </div>
             </div>
@@ -179,7 +180,59 @@
         </div>
     </div>
 
-    <!--Print Made-Reagent Modal-->
+    <!--Edit Reagent Modal-->
+    <div class="modal fade" id="mrModal" tabindex="-1" aria-labelledby="mrModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="card shadow modal-content">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h5 class="modal-title">Edit Reagent</h5>
+                </div>
+
+                <!-- Card Body -->
+                <form method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            <input class="form-control" type="number" name="mr_id" hidden>
+                            <div class="col-4 form-group">
+                                <label>Name</label>
+                                <input class="form-control" name="name" value="{{ made_reagent.name }}">
+                            </div>
+                            <div class="col-3 form-group">
+                                <label>Quantity</label>
+                                <input class="form-control" name="quantity" type="number" value="{{ made_reagent.quantity }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 form-group">
+                                <label>Expiry Date</label>
+                                <input class="form-control" name="exp_date" type="date" value="{% if made_reagent.exp_date %}{{ made_reagent.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label>Date Tested</label>
+                                <input class="form-control" name="date_tested" type="date" value="{% if made_reagent.date_tested %}{{ made_reagent.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label>P#</label>
+                                <input class="form-control" name="p_num">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer row m-0">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button type="submit" class="form-control btn-primary">Update</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="form-control btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Print Made-made_reagent Modal-->
     <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="printModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="card shadow modal-content">
