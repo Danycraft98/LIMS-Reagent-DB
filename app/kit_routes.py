@@ -182,17 +182,19 @@ def add_kit():
 def add_kit():
 	if request.method == "POST":
 		form = request.form
-		sk_name = re.sub(' +', ' ', form.get("sk_name"))
+		super_kit = None
+		if form.get("sk_name"):
+			sk_name = re.sub(' +', ' ', form.get("sk_name"))
 
-		# Add Super Kit
-		super_kit = SuperKit(
-			name=sk_name,
-			part_num=form.get("sk_part_num"),
-			comment=request.values.get("sk_comment")
-		)
+			# Add Super Kit
+			super_kit = SuperKit(
+				name=sk_name,
+				part_num=form.get("sk_part_num"),
+				comment=request.values.get("sk_comment")
+			)
 
-		db.session.add(super_kit)
-		db.session.commit()
+			db.session.add(super_kit)
+			db.session.commit()
 
 		i = 1
 		while form.get("k" + str(i) + "_name"):
@@ -228,8 +230,10 @@ def add_kit():
 				quantity=int(form.get("k" + str(i) + "_quantity")),
 				comment=form.get("k" + str(i) + "_value"),
 				user_id=current_user.id,
-				super_kit_id=super_kit.id
 			)
+
+			if super_kit:
+				new_kit.super_kit_id = super_kit.id
 
 			db.session.add(new_kit)
 			db.session.commit()

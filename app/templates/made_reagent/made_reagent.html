@@ -65,6 +65,16 @@
             </div>
 
             <div class="row form-group">
+                <div class="col-4 text-right"><strong>UID</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% for uid in made_reagent.get_uids() %}
+                        <p>{{ uid }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="row form-group">
                 <div class="col-4 text-right"><strong>Date Entered</strong></div>
                 <div class="col-small"></div>
                 <div class="col-5">{{ made_reagent.date_entered.strftime("%B %e, %Y") }}</div>

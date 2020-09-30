@@ -1,3 +1,31 @@
+function edit_button(element) {
+    if (element.innerText.includes('Add')) {
+        element.innerText = 'Delete Super Kit'
+    } else {
+        element.innerText = 'Add Super Kit'
+        console.log(document.getElementById('sk_name'))
+        $('input[name=sk_name').val('');
+    }
+
+    const div = document.getElementById('edit_button_div');
+    if (div.className.includes('mt-5')) {
+        div.setAttribute('class', 'row mt-3 mb-3');
+    } else {
+        div.setAttribute('class', 'row mt-5 mb-3');
+    }
+}
+
+function collapse(element) {
+    var arrow = element.firstChild;
+    if (element.className.includes("collapsed")) {
+        arrow.className = arrow.className.replace("down", "up");
+        element.innerHTML = element.innerHTML.replace('Expand', 'Collapse');
+    } else {
+        arrow.className = arrow.className.replace("up", "down");
+        element.innerHTML = element.innerHTML.replace('Collapse', 'Expand');
+    }
+}
+
 let counter = 1;
 let properties = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 

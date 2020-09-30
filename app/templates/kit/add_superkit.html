@@ -5,12 +5,13 @@
     <!-- Card Header -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h4 class="ml-5 m-0 font-weight-bold text-primary">Add Kit</h4>
+        <button class="btn btn-primary mr-5" type="button" onclick="edit_button(this)" data-toggle="collapse" data-target="#super_kit_div">Add Super Kit</button>
     </div>
 
     <!-- Card Body -->
     <form action="{{ url_for('add_kit') }}" method="post" onsubmit="return confirmMsg();" onkeypress="if(event.keyCode === 13) {event.preventDefault();return false;}">
         <div class="card-body mr-5 ml-5">
-            <fieldset id="super_kit_div">
+            <fieldset id="super_kit_div" class="collapse">
                 <div class="row mt-3 mb-3">
                     <div class="col">
                         <h4>Super Kit Information</h4>
@@ -42,7 +43,7 @@
             <fieldset id="kits">
                 <div id="add_kit" class="row">
                     <div class="col">
-                        <a href="" data-toggle="collapse" data-target="#kit1" hidden>Collapse</a>
+                        <a href="" data-toggle="collapse" data-target="#kit1" onclick="collapse(this)" hidden><i class="fa fa-chevron-up ml-auto" aria-hidden="true"></i> Collapse Kit & Components</a>
                     </div>
                     <div class="offset-md-10 col-2">
                         <button type="button" id="kit" class="btn btn-outline-secondary" onclick="add_kit()">Add Kit</button>

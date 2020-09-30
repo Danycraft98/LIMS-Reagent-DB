@@ -50,6 +50,7 @@
                         {{ super_kit.comment }}
                     </div>
                 </div>
+            <hr/>
             {% endif %}
 
             <div class="row form-group">
@@ -139,6 +140,16 @@
                     {% else %}
                         N/A
                     {% endif %}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4 text-right"><strong>UID</strong></div>
+                <div class="col-small"></div>
+                <div class="col-5">
+                    {% for uid in kit.get_uids() %}
+                        <p>{{ uid }}</p>
+                    {% endfor %}
                 </div>
             </div>
 
