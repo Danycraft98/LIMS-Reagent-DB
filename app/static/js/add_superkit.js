@@ -17,7 +17,7 @@ function edit_button(element) {
 
 function collapse(element) {
     var arrow = element.firstChild;
-    if (element.className.includes("collapsed")) {
+    if (element.innerText.includes("Expand")) {
         arrow.className = arrow.className.replace("down", "up");
         element.innerHTML = element.innerHTML.replace('Expand', 'Collapse');
     } else {
@@ -26,12 +26,31 @@ function collapse(element) {
     }
 }
 
+function get_kit_ids() {
+    kit_ids = document.getElementById("kit_ids")
+    kit_ids.value = ""
+    document.getElementById("kits").childNodes.forEach(function(element) {
+        if (element.id && !isNaN(element.id.slice(3)) && !element.id.includes("0")) {
+            if (kit_ids.value != "")
+                kit_ids.value += ","
+            kit_ids.value += element.id.slice(3)
+        }
+    })
+}
+
+function delete_kit(element) {
+    var kit_element = document.getElementById("kit" + element.id.slice(1));
+    kit_element.previousSibling.remove();
+    kit_element.remove();
+    get_kit_ids();
+}
+
 let counter = 1;
 let properties = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function add_kit() {
     var container = document.getElementById("kits")
-    var index = container.children.length / 2
+    var index = parseInt(container.lastElementChild.id.slice(3), 10) + 1
 
     var cln = document.getElementById("add_kit").cloneNode(true);
     cln.children[0].children[0].setAttribute("data-target", "#kit" + index);
@@ -42,15 +61,16 @@ function add_kit() {
     // Copy the element and its child nodes
     cln = document.getElementById("kit0").cloneNode(true);
     cln.querySelectorAll("[id^='k0']").forEach(function(element, test) {
-        /*if (element.id.includes("name")) {
+        if (element.id.includes("exp_date") && !element.name.includes("comp")) {
             element.setAttribute("required","");
-        }*/
+        }
         element.name = element.name.replace(/^k\d/gi, 'k' + index)
         element.id = element.id.replace(/^k\d/gi, 'k' + index)
     })
     cln.id = "kit" + index
     cln.removeAttribute("hidden")
     container.appendChild(cln);
+    get_kit_ids();
 }
 
 function clone_element(element) {

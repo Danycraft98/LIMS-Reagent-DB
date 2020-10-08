@@ -87,6 +87,7 @@ class SuperKit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     part_num = db.Column(db.String(255))
+    quantity = db.Column(db.Integer)
     comment = db.Column(db.String(255))
     kit = db.relationship('Kit', uselist=False, backref='kit')
 

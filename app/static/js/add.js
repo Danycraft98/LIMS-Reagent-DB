@@ -67,11 +67,20 @@ function confirmMsg() {
 }
 
 function deleteMsg(deletable) {
-    console.log(deletable)
     if (deletable == "True") {
         return confirmMsg();
     } else {
         alert("This cannot be deleted.");
+        return false;
+    }
+}
+
+function editMsg(deletable) {
+    if (deletable == "True") {
+        return true;
+    } else {
+        alert("This cannot be edited.");
+        document.getElementById("edit_btn").setAttribute("data-target","#None")
         return false;
     }
 }

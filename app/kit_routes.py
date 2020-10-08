@@ -10,6 +10,39 @@ from app.printer import print_label
 from app.route import current_user
 
 
+# Create component method
+def add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, superk=None):
+	index = 1
+	for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
+		if name == "":
+			continue
+		try:
+			exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
+		except ValueError:
+			exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
+
+		if lot_num == "":
+			lot_num = new_kit.date_entered.date()
+
+		component = Component(
+			name=re.sub(' +', ' ', name),
+			uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
+			barcode=comp_num,
+			part_num=part_num,
+			lot_num=lot_num,
+			exp_date=exp_date,
+			size=size,
+			condition=condition,
+			kit_id=new_kit.id
+		)
+
+		if superk:
+			component.uid = new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(superk[0] + 1) + "/" + str(superk[1]) + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
+		db.session.add(component)
+		db.session.commit()
+		index += 1
+
+
 # Kit Route
 @app.route("/kit/<int:kit_id>", methods=['GET', 'POST'])
 @login_required
@@ -50,22 +83,24 @@ def kit(kit_id):
 				kit1.date_tested = datetime.strptime(request.form.get("date_tested"), "%Y-%m-%d")
 			kit1.p_num = request.form.get("p_num")
 
-			new_quantity = int(request.form.get("quantity"))
-			count = kit1.components.count() // kit1.quantity
+			"""new_quantity = int(request.form.get("quantity"))
+			sk_num = 1
+			if kit1.get_super_kit():
+				sk_num = kit1.get_super_kit().quantity
+			count = kit1.components.count() // kit1.quantity // sk_num
 			if kit1.quantity > new_quantity:
-				count2 = (kit1.quantity - new_quantity) * count
+				count2 = (kit1.quantity - new_quantity) * count * sk_num
 				for i in range(count2):
 					db.session.delete(kit1.components[-1])
 				for c in kit1.components:
-					c.uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count),
+					#print(re.search(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(?: \d+/\d+)? \d+/)\d+( \d+/\d+)", c.uid))
+					c.uid = re.sub(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(?: \d+/\d+)? \d+/)\d+( \d+/\d+)", "\\1" + str(new_quantity) + " \\2", c.uid)
 			elif kit1.quantity < new_quantity:
-				for i in range(new_quantity):
-					j = 1
-					if i < kit1.quantity:
-						for c in kit1.components[i * count:(i + 1) * count]:
-							c.uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count),
-							j += 1
-					else:
+				for c in kit1.components:
+					c.uid = re.sub(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(?: \d+/\d+)? \d+/)\d+( \d+/\d+)", "\\1" + str(new_quantity) + " \\2", c.uid)
+				for sk_id in range(sk_num):
+					for i in range(kit1.quantity, new_quantity):
+						j = 1
 						for c in kit1.components[:count]:
 							component = Component(
 								name=c.name,
@@ -78,9 +113,11 @@ def kit(kit_id):
 								condition=c.condition,
 								kit_id=kit1.id
 							)
+							if sk_num > 1:
+								component.uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(sk_id + 1) + "/" + str(sk_num) + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count),
 							db.session.add(component)
 							j += 1
-			kit1.quantity = new_quantity
+			kit1.quantity = new_quantity"""
 
 			db.session.merge(kit1)
 			db.session.commit()
@@ -190,16 +227,16 @@ def add_kit():
 			super_kit = SuperKit(
 				name=sk_name,
 				part_num=form.get("sk_part_num"),
-				comment=request.values.get("sk_comment")
+				comment=request.values.get("sk_comment"),
+				quantity=int(form.get("sk_quantity"))
 			)
 
 			db.session.add(super_kit)
 			db.session.commit()
 
-		i = 1
-		while form.get("k" + str(i) + "_name"):
-			#for name, manu, barcode, part_num, lot_num, exp_date, date_tested, p_num, quantity, comment in zip(form.getlist("name"), form.getlist("manu_name"), form.getlist("barcode"), form.getlist("part_num"), form.getlist("lot_num"), form.getlist("exp_date"), form.getlist("date_tested"), form.getlist("p_num"),
-			#																							   form.getlist("quantity"), form.getlist("comment")):
+		ids = form.get("kit_ids").split(",")
+		for kit_id in ids:
+			i = int(kit_id)
 			try:
 				exp_date = datetime.strptime(form.get("k" + str(i) + "_exp_date"), "%Y-%m-%d")
 			except ValueError:
@@ -227,7 +264,7 @@ def add_kit():
 				date_entered=datetime.now(),
 				date_tested=date_tested,
 				p_num=form.get("k" + str(i) + "_p_num"),
-				quantity=int(form.get("k" + str(i) + "_quantity")),
+				quantity=int(form.get("k" + str(i) + "_quantity", 1)),
 				comment=form.get("k" + str(i) + "_value"),
 				user_id=current_user.id,
 			)
@@ -248,33 +285,13 @@ def add_kit():
 
 			uids = []
 			for value in range(new_kit.quantity):
-				index = 1
-				uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity))
-				for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
-					if name == "":
-						continue
-					try:
-						exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-					except ValueError:
-						exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
-
-					if lot_num == "":
-						lot_num = new_kit.date_entered.date()
-
-					component = Component(
-						name=re.sub(' +', ' ', name),
-						uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
-						barcode=comp_num,
-						part_num=part_num,
-						lot_num=lot_num,
-						exp_date=exp_date,
-						size=size,
-						condition=condition,
-						kit_id=new_kit.id
-					)
-					db.session.add(component)
-					db.session.commit()
-					index += 1
+				if super_kit:
+					for num in range(super_kit.quantity):
+						uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(num + 1) + "/" + str(super_kit.quantity) + " " + str(value + 1) + "/" + str(new_kit.quantity))
+						add_component(value, new_kit,names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, (num, super_kit.quantity))
+				else:
+					uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity))
+					add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions)
 			new_kit.uids = ",".join(uids)
 			db.session.commit()
 			i += 1

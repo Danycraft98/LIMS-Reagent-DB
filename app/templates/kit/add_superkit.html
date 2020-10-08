@@ -10,6 +10,7 @@
 
     <!-- Card Body -->
     <form action="{{ url_for('add_kit') }}" method="post" onsubmit="return confirmMsg();" onkeypress="if(event.keyCode === 13) {event.preventDefault();return false;}">
+        <input id="kit_ids" name="kit_ids" hidden>
         <div class="card-body mr-5 ml-5">
             <fieldset id="super_kit_div" class="collapse">
                 <div class="row mt-3 mb-3">
@@ -41,18 +42,23 @@
             </fieldset>
 
             <fieldset id="kits">
-                <div id="add_kit" class="row">
+                <div id="add_kit" class="row mb-3">
                     <div class="col">
                         <a href="" data-toggle="collapse" data-target="#kit1" onclick="collapse(this)" hidden><i class="fa fa-chevron-up ml-auto" aria-hidden="true"></i> Collapse Kit & Components</a>
                     </div>
                     <div class="offset-md-10 col-2">
-                        <button type="button" id="kit" class="btn btn-outline-secondary" onclick="add_kit()">Add Kit</button>
+                        <button type="button" id="kit" class="btn btn-outline-secondary btn-block" onclick="add_kit()">Add Kit</button>
                     </div>
                 </div>
                 <fieldset id="kit0" class="collapse show" hidden>
                     <div id="edit_button_div" class="row mt-3 mb-3">
-                        <div class="col">
+                        <div class="col-3">
                             <h4>Master Information</h4>
+                        </div>
+                        <div class="offset-md-8 col-1">
+                            <button type="button" id="k0" class="btn btn-outline-secondary" onclick="delete_kit(this)">
+                                <i class="fa fa-trash" style="font-size: 24px"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -288,5 +294,6 @@
         }
         {% endfor %}
     }
+
 </script>
 {% endblock script %}

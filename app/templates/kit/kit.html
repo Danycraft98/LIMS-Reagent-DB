@@ -14,7 +14,7 @@
                     <div class="dropdown-header">Options:</div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#printModal">Print Label</a>
                     <a class="dropdown-item" href="#" onclick="window.print();return false;">Print</a>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#kitModal">Edit</a>
+                    <a class="dropdown-item" id="edit_btn" href="#" data-toggle="modal" data-target="#kitModal" onclick="return editMsg('{{ deletable }}');">Edit</a>
                     <a class="dropdown-item" href="{{ url_for('delete', element_type='kit', element_id=kit.id) }}" onclick="return deleteMsg('{{ deletable }}'); ">Delete</a>
                 </div>
             </div>
@@ -185,7 +185,11 @@
             <div class="row mb-5 ml-1 mr-1">
                 {% for uid in kit.get_uids() %}
                     <div class="mb-2 col-2">
+                        {% if super_kit %}
+                        <button type="button" class="form-control btn-outline-secondary" title="Kit UID: {{ uid }}" data-toggle="collapse" data-target="#comp_div{{ loop.index }}">Kit {{ loop.index }}/{{ kit.quantity * super_kit.quantity }}</button>
+                        {% else %}
                         <button type="button" class="form-control btn-outline-secondary" title="Kit UID: {{ uid }}" data-toggle="collapse" data-target="#comp_div{{ loop.index }}">Kit {{ loop.index }}/{{ kit.quantity }}</button>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -207,6 +211,49 @@
                         </tr>
                         </thead>
                         <tbody>
+                        {% if super_kit %}
+                        {% for component in kit.components[(loop.index - 1) * kit.components.count() // (kit.quantity * super_kit.quantity):loop.index * kit.components.count() // (kit.quantity * super_kit.quantity)] %}
+                        <tr>
+                                <td>{{ component.name }}</td>
+                                <td>{{ component.uid }}</td>
+                                <td>{{ component.barcode }}</td>
+                                <td>{{ component.part_num }}</td>
+                                <td>{{ component.lot_num }}</td>
+                                {% if component.exp_date %}
+                                    <td>{{ component.exp_date.strftime("%B %e, %Y") }}</td>
+                                {% elif not component.exp_date %}
+                                    <td>N/A</td>
+                                {% endif %}
+                                <td>{{ component.condition }}</td>
+                                <td>{{ component.size.upper() }}</td>
+                                <td>
+                                    <button class="form-control" data-target="#compModal" data-toggle="modal" id="test" onclick="edit_comp{{ component.id }}();">
+                                        <i class="fa fa-pen"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <form action="/print_kit/{{ kit.id }}" method="post">
+                                        <input type="hidden" name="comp_print" value="{{ component.id }}">
+                                        <button class="form-control">
+                                            <i class="fa fa-print" style="font-size:24px"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <script>
+                                function edit_comp{{ component.id }}() {
+                                    document.getElementById("edit_form").setAttribute("action", "{{ url_for('kit', kit_id=kit.id) }}");
+                                    document.getElementById("comp_id").setAttribute("value", "{{ component.id }}");
+                                    document.getElementById("comp_name").setAttribute("value", "{{ component.name }}");
+                                    document.getElementById("comp_barcode").setAttribute("value", "{{ component.barcode }}");
+                                    document.getElementById("comp_part_num").setAttribute("value", "{{ component.part_num }}");
+                                    document.getElementById("comp_lot_num").setAttribute("value", "{{ component.lot_num }}");
+                                    document.getElementById("comp_exp_date").setAttribute("value", "{{ component.exp_date.date() }}".split(" ")[0]);
+                                    document.getElementById("comp_condition").setAttribute("value", "{{ component.condition }}");
+                                }
+                            </script>
+                        {% endfor %}
+                        {% else %}
                         {% for component in kit.components[(loop.index - 1) * kit.components.count() // kit.quantity:loop.index * kit.components.count() // kit.quantity] %}
                             <tr>
                                 <td>{{ component.name }}</td>
@@ -248,6 +295,7 @@
                                 }
                             </script>
                         {% endfor %}
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>
@@ -310,10 +358,10 @@
                                 <label for="comp_barcode">Barcode</label>
                                 <input class="form-control" name="barcode" value="{{ kit.barcode }}">
                             </div>
-                            <div class="col-3 form-group">
+                            <!--div class="col-3 form-group">
                                 <label for="comp_barcode">Quantity</label>
                                 <input class="form-control" name="quantity" type="number" value="{{ kit.quantity }}">
-                            </div>
+                            </div-->
                         </div>
                         <div class="row">
                             <div class="col-4 form-group">
