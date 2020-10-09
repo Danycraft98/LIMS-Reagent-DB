@@ -114,10 +114,11 @@ def print_made_reagent(made_reagent_id):
 
     made_reagent_label_size = request.form.get('made_reagent_label_size')
     acquired_stat = request.form.get('acquired_stat')
+    printer_id = request.form.get('printer_id')
 
     batchnum = 1
     while batchnum <= made_reagent_.quantity:
-        printcont = (made_reagent_.name, made_reagent_.exp_date, made_reagent_.date_entered)
+        printcont = (made_reagent_.name, made_reagent_.exp_date, made_reagent_.date_entered, printer_id)
         print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent_.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(made_reagent_.quantity))
         batchnum += 1
 
