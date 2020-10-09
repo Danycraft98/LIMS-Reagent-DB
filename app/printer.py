@@ -19,6 +19,8 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
     templates = {}
     if label_size == "s":
         destination = "tgh_bbp12_sm_" + printer_id
+        if printer_id == "1":
+            destination = "tgh_bbp12_circle"
         if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
             templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """"^XA
                         ^PW600^LL0300^LS00
@@ -31,6 +33,8 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
                         ^XZ"""
     elif label_size == "m":
         destination = "tgh_bbp12_med_" + printer_id
+        if printer_id == "1":
+            destination = "tgh_bbp12"
         if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
             templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """^XA
                             ^PW600^LL0300^LS00

@@ -255,14 +255,14 @@
                 <form action="/print_reagent/{{ reagent.id }}" method="post">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-5 form-group">
+                            <div class="col-6 form-group">
                                 <label for="reagent_label">Reagent Label Copies:</label>
                                 <select class="form-control" id="reagent_label" name="reagent_label_size">
                                     <option value="s">Small</option>
                                     <option value="m">Medium</option>
                                 </select>
                             </div>
-                            <div class="col-5 form-group">
+                            <div class="col-6 form-group">
                                 <label for="acquired_stat">Acquired Stat:</label>
                                 <select class="form-control" id="acquired_stat" name="acquired_stat">
                                     <option value="m">Made</option>
@@ -271,7 +271,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-5 form-group">
+                            <div class="col-6 form-group">
                                 <input readonly data-prefix="Copies" type="number" value="{{ reagent.quantity }}" step="1" class="form-control" name="reagent_label" id="reagent_label"/>
                             </div>
                         </div>
@@ -282,11 +282,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 form-group">
+                            <div class="col-9 form-group">
                                 <select name="printer_id" class="form-control">
+                                    <option value="1">Bbp12_circle & Bbp12_1</option>
                                     <option value="2">Bbp12_2 & Bbp12_3</option>
                                     <option value="3">Bbp12_4 & Bbp12_5</option>
-                                    <option value="4">Bbp12_6 & Bbp12_7</option>
+                                    <option value="4" selected>Bbp12_6 & Bbp12_7</option>
                                 </select>
                             </div>
                         </div>
