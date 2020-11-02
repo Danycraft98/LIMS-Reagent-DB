@@ -32,11 +32,8 @@ def reagent(reagent_id):
             if request.form.get("date_tested"):
                 reagent1.date_tested = datetime.strptime(request.form.get("date_tested"), "%Y-%m-%d")
             reagent1.p_num = request.form.get("p_num")
-            """reagent1.quantity = int(request.form.get("quantity"))
-            uids = []
-            for value in range(reagent1.quantity):
-                uids.append(reagent1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(reagent1.quantity))
-            reagent1.uids = ",".join(uids)"""
+            reagent1.quantity = int(request.form.get("quantity"))
+            reagent1.set_uids(reagent1.quantity)
 
         db.session.merge(reagent1)
         db.session.commit()

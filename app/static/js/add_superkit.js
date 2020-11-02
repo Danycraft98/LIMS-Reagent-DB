@@ -76,6 +76,7 @@ function add_kit() {
 function clone_element(element) {
     var kit_num = element.id.split("_")[0];
     let counter = parseInt(document.getElementById(kit_num + '_comps').lastElementChild.id.slice("p")[1]) + 1;
+    console.log(document.getElementById(kit_num + '_comps').lastElementChild.id)
 
     const div_num = element.id.substr(-1);
     const div = document.getElementById(kit_num + '_comp' + div_num);

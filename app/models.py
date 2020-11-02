@@ -54,6 +54,9 @@ class Manufacturer(db.Model):
     def get_user(self):
         return User.query.get(self.user_id)
 
+    def get_uids(self):
+        return []
+
 
 class BarcodePattern(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -81,6 +84,19 @@ class Element(db.Model):
 
     def get_uids(self):
         return self.uids.split(",")
+
+    def get_super_kit(self):
+        return None
+
+    def set_uids(self, quantity):
+        uids = []
+        for i in range(1, quantity + 1):
+            if self.get_super_kit():
+                for j in range(1, self.get_super_kit().quantity + 1):
+                    uids.append(self.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(j) + "/" + str(self.get_super_kit().quantity) + " " + str(i) + "/" + str(quantity))
+            else:
+                uids.append(self.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(i) + "/" + str(quantity))
+        self.uids = ",".join(uids)
 
 
 class SuperKit(db.Model):
