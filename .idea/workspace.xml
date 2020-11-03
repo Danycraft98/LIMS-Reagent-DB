@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Update function to delete kit with super kit">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/made_reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/made_reagent_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/reagent_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add_kit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add_superkit.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add_superkit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/add_superkit.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add_kit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/add_kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/kit/add_superkit.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/reagent/reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/reagent/reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,20 +21,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="elements.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/home/elements.html">
+      <file leaf-file-name="kit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            <state relative-caret-position="161">
+              <caret line="359" column="143" selection-start-line="359" selection-start-column="143" selection-end-line="359" selection-end-column="143" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#button#0;n#form#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#button#0;n#form#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add_kit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/static/js/add_kit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="121" selection-start-line="121" selection-end-line="141" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_kit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="221" column="393" selection-start-line="221" selection-start-column="347" selection-end-line="221" selection-end-column="393" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+            <state relative-caret-position="243">
+              <caret line="43" column="28" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="29">
+              <caret line="85" column="92" selection-start-line="85" selection-start-column="92" selection-end-line="85" selection-end-column="92" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,36 +80,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exp_</find>
-      <find>collapse</find>
-      <find>comp_exp</find>
-      <find>deleteM</find>
-      <find>super_kit.quan</find>
-      <find>delete</find>
-      <find>remove_element</find>
-      <find>remove_elementdocument.getElementById(containerDiv).remove();</find>
-      <find>count</find>
-      <find>add_kit_ids</find>
-      <find>trash</find>
+      <find>id=&quot;test&quot;</find>
+      <find>&quot;test&quot;</find>
+      <find>query</find>
+      <find>forEach</find>
+      <find>&quot;compModal</find>
       <find />
-      <find>quantity</find>
-      <find>print</find>
-      <find>printMo</find>
-      <find>print(</find>
-      <find>modal</find>
-      <find>add_superkit.html</find>
-      <find>search_kit(</find>
-      <find>clone_</find>
-      <find>clone_element</find>
-      <find>kit.html</find>
-      <find>add_kit.html</find>
-      <find>add_kit.js</find>
-      <find>add.js</find>
-      <find>clone_element(document.getElementById('com</find>
-      <find>editMsg</find>
-      <find>edit</find>
-      <find>edit_btn</find>
-      <find>get_uids</find>
+      <find>request.form</find>
+      <find>comp_exp_dates</find>
+      <find>Component(</find>
+      <find>.count</find>
+      <find>or component in kit.components</find>
+      <find>order_</find>
+      <find>order</find>
+      <find>.</find>
+      <find>.count()</find>
+      <find>comploents</find>
+      <find>ordering</find>
+      <find>p.uid</find>
+      <find>comp_barcode</find>
+      <find>comp_barcode&quot;</find>
+      <find>compModal</find>
+      <find>p_barcode</find>
+      <find>kit_exp_date</find>
+      <find>update_comp(</find>
+      <find>properties</find>
+      <find>Manufacturer(</find>
+      <find>get_comp_barcode_pat</find>
+      <find>manufacturer</find>
+      <find>properties =</find>
+      <find>kit_num +</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -94,6 +122,9 @@
       <replace>reagent1</replace>
       <replace>made_reagent1</replace>
       <replace>get_kit_ids</replace>
+      <replace>form_value</replace>
+      <replace>|length</replace>
+      <replace>kit.get_manufacturer()</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/static/js</dir>
@@ -128,13 +159,9 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/app/templates/layout.html" />
-        <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
-        <option value="$PROJECT_DIR$/app/static/js/add_kit.js" />
         <option value="$PROJECT_DIR$/app/printer.py" />
-        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
         <option value="$PROJECT_DIR$/app/templates/kit/add_superkit.html" />
         <option value="$PROJECT_DIR$/app/static/js/add_superkit.js" />
-        <option value="$PROJECT_DIR$/app/kit_routes.py" />
         <option value="$PROJECT_DIR$/app/static/js/add.js" />
         <option value="$PROJECT_DIR$/app/templates/reagent/reagent.html" />
         <option value="$PROJECT_DIR$/app/reagent_routes.py" />
@@ -143,6 +170,10 @@
         <option value="$PROJECT_DIR$/app/route.py" />
         <option value="$PROJECT_DIR$/app/templates/home/elements.html" />
         <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/app/kit_routes.py" />
+        <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
+        <option value="$PROJECT_DIR$/app/static/js/add_kit.js" />
+        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
       </list>
     </option>
   </component>
@@ -157,6 +188,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,11 +201,43 @@
               <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="kit" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,7 +245,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/ichae/Desktop/projects/lims-reagent-db/app/templates/manufacturer/manufacturer.html" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_app/static" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -305,13 +369,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Updated Kit print layout.">
-      <created>1570762181895</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1570762181895</updated>
     </task>
     <task id="LOCAL-00058" summary="Updated Reagent search.">
       <created>1571098858896</created>
@@ -649,7 +706,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602248857255</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Removed unused html file. Updated the update modals and functions.">
+      <created>1604358998501</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1604358998502</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TodoView">
@@ -663,17 +727,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="697" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8238095" visible="true" weight="0.2494043" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.81975734" visible="true" weight="0.2494043" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50039715" side_tool="true" weight="0.27209705" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.27209705" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.27209705" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32984293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" sideWeight="0.17619048" side_tool="true" visible="true" weight="0.2494043" />
+      <window_info id="Favorites" order="2" sideWeight="0.18024263" side_tool="true" visible="true" weight="0.2494043" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -681,7 +747,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -707,7 +772,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added deleteMsg tokit, reagent, and made reagent." />
     <MESSAGE value="Fixed minor errors." />
     <MESSAGE value="Added user info." />
     <MESSAGE value="Search updated" />
@@ -732,7 +796,8 @@
     <MESSAGE value="Updated print id. Removed quantity edit." />
     <MESSAGE value="Print updated." />
     <MESSAGE value="Updated printer id." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated printer id." />
+    <MESSAGE value="Removed unused html file. Updated the update modals and functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused html file. Updated the update modals and functions." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/reagent_db.sql">
@@ -991,13 +1056,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/add_kit.js" />
-    <entry file="file://$PROJECT_DIR$/app/static/js/add_superkit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="86" column="6" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/printer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -1005,31 +1063,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="217" column="36" lean-forward="true" selection-start-line="217" selection-start-column="36" selection-end-line="217" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="234" column="45" selection-start-line="234" selection-start-column="32" selection-end-line="234" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/add.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="82" column="41" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="16" column="59" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -1075,10 +1112,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="85" column="92" selection-start-line="85" selection-start-column="92" selection-end-line="85" selection-end-column="92" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+        <state relative-caret-position="243">
+          <caret line="43" column="28" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="221" column="393" selection-start-line="221" selection-start-column="347" selection-end-line="221" selection-end-column="393" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/add_kit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="121" selection-start-line="121" selection-end-line="141" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="359" column="143" selection-start-line="359" selection-start-column="143" selection-end-line="359" selection-end-column="143" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#button#0;n#form#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#form#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

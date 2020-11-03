@@ -142,18 +142,18 @@ function update_barcode(element) {
 }
 
 function update_comp(element) {
-    var kit_num = element.id.split("_")[0];
-    const barcode = document.getElementById(kit_num + "_comp_barcode" + element.id.slice(-1)).value;
+    var kit_num = element.id.split("_")[0] + "_";
+    const barcode = document.getElementById(kit_num + "comp_barcode" + element.id.slice(-1)).value;
 
     if (properties[7] >= 0) {
-        document.getElementById(kit_num + "_part_num" + element.id.slice(-1)).setAttribute("value", barcode.slice(properties[7], properties[8]));
+        document.getElementById(kit_num + "part_num" + element.id.slice(-1)).setAttribute("value", barcode.slice(properties[7], properties[8]));
     } else {
-        document.getElementById(kit_num + "_part_num" + element.id.slice(-1)).setAttribute("value", "");
+        document.getElementById(kit_num + "part_num" + element.id.slice(-1)).setAttribute("value", "");
     }
 
     if (properties[9] >= 0) {
-        document.getElementById(kit_num + "_lot_num" + element.id.slice(-1)).setAttribute("value", barcode.slice(properties[9], properties[10]));
+        document.getElementById(kit_num + "lot_num" + element.id.slice(-1)).setAttribute("value", barcode.slice(properties[9], properties[10]));
     } else {
-        document.getElementById(kit_num + "_lot_num" + element.id.slice(-1)).setAttribute("value", "");
+        document.getElementById(kit_num + "lot_num" + element.id.slice(-1)).setAttribute("value", "");
     }
 }

@@ -1,4 +1,5 @@
 from flask_login import UserMixin
+from sqlalchemy.ext.orderinglist import ordering_list
 from . import db, login_manager
 
 
@@ -109,7 +110,7 @@ class SuperKit(db.Model):
 
 
 class Kit(Element):
-    components = db.relationship('Component', lazy='dynamic')
+    components = db.relationship('Component', lazy='dynamic', order_by="Component.uid")
     manufacturer_id = db.Column(db.Integer, db.ForeignKey('manufacturer.id'), nullable=True)
     super_kit_id = db.Column(db.Integer, db.ForeignKey('super_kit.id'), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -204,6 +205,9 @@ class Component(db.Model):
     condition = db.Column(db.String(255))
     size = db.Column(db.String(255), nullable=False)
     kit_id = db.Column(db.Integer, db.ForeignKey('kit.id'))
+
+    def __str__(self):
+        return self.uid
 
 
 # -----------------------------------------------------------------------------------------------

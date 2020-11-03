@@ -15,6 +15,7 @@
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#printModal">Print Label</a>
                     <a class="dropdown-item" href="#" onclick="window.print();return false;">Print</a>
                     <a class="dropdown-item" id="edit_btn" href="#" data-toggle="modal" data-target="#kitModal" onclick="return editMsg('{{ deletable }}');">Edit</a>
+                    <a class="dropdown-item" id="add_btn" href="#" data-toggle="modal" data-target="#compModal" onclick="setTitle('Add Component'); //return addMsg('{{ deletable }}');">Add Component</a>
                     <a class="dropdown-item" href="{{ url_for('delete', element_type='kit', element_id=kit.id) }}" onclick="return deleteMsg('{{ deletable }}'); ">Delete</a>
                 </div>
             </div>
@@ -227,7 +228,7 @@
                                 <td>{{ component.condition }}</td>
                                 <td>{{ component.size.upper() }}</td>
                                 <td>
-                                    <button class="form-control" data-target="#compModal" data-toggle="modal" id="test" onclick="edit_comp{{ component.id }}();">
+                                    <button class="form-control" data-target="#compModal" data-toggle="modal" onclick="setTitle('Edit Component'); edit_comp{{ component.id }}();">
                                         <i class="fa fa-pen"></i>
                                     </button>
                                 </td>
@@ -269,7 +270,7 @@
                                 <td>{{ component.condition }}</td>
                                 <td>{{ component.size.upper() }}</td>
                                 <td>
-                                    <button class="form-control" data-target="#compModal" data-toggle="modal" id="test" onclick="edit_comp{{ component.id }}();">
+                                    <button class="form-control" data-target="#compModal" data-toggle="modal" onclick="edit_comp{{ component.id }}();">
                                         <i class="fa fa-pen"></i>
                                     </button>
                                 </td>
@@ -355,36 +356,36 @@
                                 <input class="form-control" name="name" value="{{ kit.name }}">
                             </div>
                             <div class="col-5 form-group">
-                                <label for="comp_barcode">Barcode</label>
-                                <input class="form-control" name="barcode" value="{{ kit.barcode }}">
+                                <label for="kit_barcode">Barcode</label>
+                                <input class="form-control" name="barcode" id="kit_barcode" value="{{ kit.barcode }}" oninput="update_barcode()">
                             </div>
                             <div class="col-3 form-group">
-                                <label for="comp_barcode">Quantity</label>
-                                <input class="form-control" name="quantity" type="number" value="{{ kit.quantity }}">
+                                <label for="kit_quantity">Quantity</label>
+                                <input class="form-control" name="quantity" id="kit_quantity" type="number" value="{{ kit.quantity }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4 form-group">
-                                <label for="comp_part_num">Part Number</label>
-                                <input class="form-control" name="part_num" value="{{ kit.part_num }}">
+                                <label for="kit_part_num">Part Number</label>
+                                <input class="form-control" name="part_num" id="kit_part_num" value="{{ kit.part_num }}">
                             </div>
                             <div class="col-4 form-group">
-                                <label for="comp_lot_num">Lot Number</label>
-                                <input class="form-control" name="lot_num" value="{{ kit.lot_num }}">
+                                <label for="kit_lot_num">Lot Number</label>
+                                <input class="form-control" name="lot_num" id="kit_lot_num" value="{{ kit.lot_num }}">
                             </div>
                             <div class="col-4 form-group">
-                                <label for="comp_exp_date">Expiry Date</label>
-                                <input class="form-control" name="exp_date" type="date" value="{% if kit.exp_date %}{{ kit.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
+                                <label for="kit_exp_date">Expiry Date</label>
+                                <input class="form-control" name="exp_date" id="kit_exp_date" type="date" value="{% if kit.exp_date %}{{ kit.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4 form-group">
-                                <label for="comp_exp_date">Date Tested</label>
-                                <input class="form-control" name="date_tested" type="date" value="{% if kit.date_tested %}{{ kit.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
+                                <label for="kit_date_tested">Date Tested</label>
+                                <input class="form-control" name="date_tested" id="kit_date_tested" type="date" value="{% if kit.date_tested %}{{ kit.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
                             </div>
                             <div class="col-4 form-group">
-                                <label for="comp_lot_num">P#</label>
-                                <input class="form-control" name="p_num">
+                                <label for="kit_p_num">P#</label>
+                                <input class="form-control" id="kit_p_num" name="p_num">
                             </div>
                         </div>
                     </div>
@@ -408,7 +409,7 @@
             <div class="card shadow modal-content">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h5 class="modal-title">Edit Component</h5>
+                    <h5 id="compModalTitle" class="modal-title">Edit Component</h5>
                 </div>
 
                 <!-- Card Body -->
@@ -422,7 +423,7 @@
                             </div>
                             <div class="col-5 form-group">
                                 <label for="comp_barcode">Barcode</label>
-                                <input class="form-control" name="barcode" id="comp_barcode">
+                                <input class="form-control" name="barcode" id="comp_barcode" oninput="update_comp(this)">
                             </div>
                         </div>
                         <div class="row">
@@ -540,4 +541,59 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var properties = "{{ kit.get_manufacturer().get_barcode_pat().part_start }},{{ kit.get_manufacturer().get_barcode_pat().part_end }},{ kit.get_manufacturer().get_barcode_pat().lot_start }},{{ kit.get_manufacturer().get_barcode_pat().lot_end }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_start }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_start }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().lot_start }}, {{ kit.get_manufacturer().get_comp_barcode_pat().lot_end }}".split(",");
+
+    function update_barcode(element) {
+        const barcode = document.getElementById("_barcode").value;
+        if (properties[1] >= 0) {
+            document.getElementById("kit_part_num").setAttribute("value", barcode.slice(properties[1], properties[2]));
+        } else {
+            document.getElementById("kit_part_num").setAttribute("value", "");
+        }
+
+        if (properties[3] >= 0) {
+            document.getElementById("kit_lot_num").setAttribute("value", barcode.slice(properties[3], properties[4]));
+        } else {
+            document.getElementById("kit_lot_num").setAttribute("value", "");
+        }
+
+        if (properties[5] >= 0) {
+            document.getElementById("kit_exp_date").setAttribute("value", get_date(barcode.slice(properties[5], properties[6])));
+        } else {
+            document.getElementById("kit_exp_date").setAttribute("value", "");
+        }
+    }
+
+    function update_comp(element) {
+        const barcode = document.getElementById("comp_barcode").value;
+
+        if (properties[7] >= 0) {
+            document.getElementById("comp_part_num").setAttribute("value", barcode.slice(properties[6], properties[7]));
+        } else {
+            document.getElementById("comp_part_num").setAttribute("value", "");
+        }
+
+        if (properties[9] >= 0) {
+            document.getElementById("comp_lot_num").setAttribute("value", barcode.slice(properties[8], properties[9]));
+        } else {
+            document.getElementById("comp_lot_num").setAttribute("value", "");
+        }
+    }
+
+    function setTitle(title) {
+        if (title.includes("Add")) {
+            document.getElementById("edit_form").querySelectorAll('input').forEach(function (element) {
+                element.removeAttribute("value");
+                if (element.id == "comp_id") {
+                    element.setAttribute("value", "0");
+                }
+            })
+        }
+        document.getElementById('compModalTitle').innerText = title;
+    }
+</script>
 {% endblock %}
