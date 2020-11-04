@@ -20,8 +20,9 @@ WORKDIR /srv/reagent_db/server
 
 COPY printers.conf /etc/cups/
 
-RUN pip3 install -r requirements.txt
-RUN pip3 install --upgrade -r requirements.txt
+RUN pip3 install --upgrade pip \
+ && pip3 install -r requirements.txt \
+ && pip3 install --upgrade -r requirements.txt
 EXPOSE 5000
 # CMD ["python3", "main.py", "--dbhost", "10.0.2.2"]
 CMD service cups start && python3 main.py --dbhost 10.0.2.2
