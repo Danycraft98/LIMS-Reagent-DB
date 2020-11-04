@@ -1,3 +1,4 @@
+setuptools
 mysqlclient
 sqlalchemy
 pandas
