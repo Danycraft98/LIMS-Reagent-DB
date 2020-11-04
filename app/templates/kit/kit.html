@@ -196,7 +196,7 @@
             </div>
             {% for i in kit.get_uids() %}
                 <div class="row collapse mb-5" id="comp_div{{ loop.index }}">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-responsive">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -267,7 +267,7 @@
                                 <td>{{ component.condition }}</td>
                                 <td>{{ component.size.upper() }}</td>
                                 <td>
-                                    <button class="form-control" data-target="#compModal" data-toggle="modal" onclick="edit_comp{{ component.id }}();">
+                                    <button class="form-control" data-target="#compModal" data-toggle="modal" onclick="setTitle('Edit Component'); edit_comp{{ component.id }}();">
                                         <i class="fa fa-pen"></i>
                                     </button>
                                 </td>
@@ -453,7 +453,7 @@
                     <div class="modal-footer row m-0">
                         <div class="col-3"></div>
                         <div class="col-3">
-                            <button type="submit" class="form-control btn-primary">Update</button>
+                            <button type="submit" class="form-control btn-primary" id="update_btn">Update</button>
                         </div>
                         <div class="col-3">
                             <button type="button" class="form-control btn-outline-primary" data-dismiss="modal">Cancel</button>
@@ -638,12 +638,15 @@
 
     function setTitle(title) {
         if (title.includes("Add")) {
+            document.getElementById('update_btn').innerText = "Add";
             document.getElementById("edit_form").querySelectorAll('input').forEach(function (element) {
                 element.removeAttribute("value");
                 if (element.id == "comp_id") {
                     element.setAttribute("value", "0");
                 }
             })
+        } else {
+            document.getElementById('update_btn').innerText = "Update";
         }
         document.getElementById('compModalTitle').innerText = title;
     }

@@ -3284,10 +3284,10 @@ input[type="button"].btn-block {
 }
 
 .dropdown-header {
+    font-size: 0.8rem;
     display: block;
     padding: 0.5rem 1.5rem;
     margin-bottom: 0;
-    font-size: 0.875rem;
     color: #858796;
     white-space: nowrap;
 }
@@ -10682,7 +10682,6 @@ a:focus {
 
 .dropdown .dropdown-menu .dropdown-header {
     font-weight: 800;
-    font-size: 0.65rem;
     color: #b7b9cc;
 }
 

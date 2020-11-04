@@ -4,7 +4,6 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/printer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/kit/kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/kit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="kit.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="564" column="44" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
+            <state relative-caret-position="105">
+              <caret line="198" column="68" selection-start-line="198" selection-start-column="68" selection-end-line="198" selection-end-column="68" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#button#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#button#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -44,7 +43,7 @@
       <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-48">
+            <state relative-caret-position="585">
               <caret line="244" lean-forward="true" selection-start-line="244" selection-end-line="244" />
             </state>
           </provider>
@@ -63,9 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>compModal</find>
-      <find>p_barcode</find>
-      <find>kit_exp_date</find>
       <find>update_comp(</find>
       <find>properties</find>
       <find>manufacturer</find>
@@ -93,6 +89,9 @@
       <find>comp_print</find>
       <find>acquiry_met</find>
       <find>comp_id</find>
+      <find>document.getElementById(&quot;comp_id&quot;).set</find>
+      <find>ed</find>
+      <find>Edit Co</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -359,13 +358,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Updated search criterias.">
-      <created>1571100907819</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1571100907820</updated>
     </task>
     <task id="LOCAL-00061" summary="Fixed Layouts">
       <created>1572483010913</created>
@@ -703,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604453815441</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Print comp update.">
+      <created>1604459741445</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1604459741445</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TodoView">
@@ -762,7 +761,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Search updated" />
     <MESSAGE value="Edit Comments added." />
     <MESSAGE value="Added comment to Made Reagent." />
     <MESSAGE value="Undone mistakes." />
@@ -787,7 +785,8 @@
     <MESSAGE value="Removed unused html file. Updated the update modals and functions." />
     <MESSAGE value="Add component functionality added." />
     <MESSAGE value="Fixed all modals." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed all modals." />
+    <MESSAGE value="Print comp update." />
+    <option name="LAST_COMMIT_MESSAGE" value="Print comp update." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/templates/home/register.html">
@@ -1109,13 +1108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48">
-          <caret line="244" lean-forward="true" selection-start-line="244" selection-end-line="244" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/printer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -1123,10 +1115,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="244" lean-forward="true" selection-start-line="244" selection-end-line="244" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="564" column="44" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
+        <state relative-caret-position="105">
+          <caret line="198" column="68" selection-start-line="198" selection-start-column="68" selection-end-line="198" selection-end-column="68" />
           <folding>
             <element signature="n#style#0;n#i#0;n#button#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#button#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#17;n#div#1;n#div#0;n#!!top" expanded="true" />
