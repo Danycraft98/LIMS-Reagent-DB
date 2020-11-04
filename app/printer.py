@@ -8,6 +8,7 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
     expdate = expdate.strftime("%Y-%m-%d %H:%M:%S")
     credate = credate.strftime("%Y-%m-%d %H:%M:%S")
     destination = ""
+    print(data, element_type, label_size, acquiry_met, batch_ratio)
 
     """Format for how everything is displayed on the label, different cases available for different situations
     - 's' for small label format

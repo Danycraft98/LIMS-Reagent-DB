@@ -233,12 +233,9 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="/print_kit/{{ kit.id }}" method="post">
-                                        <input type="hidden" name="comp_print" value="{{ component.id }}">
-                                        <button class="form-control">
-                                            <i class="fa fa-print" style="font-size:24px"></i>
-                                        </button>
-                                    </form>
+                                    <button class="form-control" data-target="#compPrintModal" data-toggle="modal" onclick="document.getElementById('comp_print').setAttribute('value', '{{ component.id }}')">
+                                        <i class="fa fa-print" style="font-size:24px"></i>
+                                    </button>
                                 </td>
                             </tr>
                             <script>
@@ -275,12 +272,9 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="/print_kit/{{ kit.id }}" method="post">
-                                        <input type="hidden" name="comp_print" value="{{ component.id }}">
-                                        <button class="form-control">
-                                            <i class="fa fa-print" style="font-size:24px"></i>
-                                        </button>
-                                    </form>
+                                    <button class="form-control" data-target="#compPrintModal" data-toggle="modal" onclick="document.getElementById('comp_print').setAttribute('value', '{{ component.id }}')">
+                                        <i class="fa fa-print" style="font-size:24px"></i>
+                                    </button>
                                 </td>
                             </tr>
                             <script>
@@ -483,7 +477,7 @@
                 </div>
 
                 <!-- Card Body -->
-                <form id="print" action="{{ url_for('print_kit', kit_id=kit.id) }}" method="post">
+                <form action="{{ url_for('print_kit', kit_id=kit.id) }}" method="post">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col form-group">
@@ -553,6 +547,52 @@
             </div>
         </div>
     </div>
+
+    <!--Print Comp Modal-->
+    <div class="modal fade" id="compPrintModal" tabindex="-1" aria-labelledby="compPrintModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="card shadow modal-content">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h5 class="modal-title">Print Component Label</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <!-- Card Body -->
+                <form id="print" action="{{ url_for('print_kit', kit_id=kit.id) }}" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" id="comp_print" name="comp_print">
+                        <div class="row">
+                            <div class="col form-group">
+                                <h5>Printer</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9 form-group">
+                                <select name="printer_id" class="form-control">
+                                    <option value="1">Bbp12_circle & Bbp12_1</option>
+                                    <option value="2">Bbp12_2 & Bbp12_3</option>
+                                    <option value="3">Bbp12_4 & Bbp12_5</option>
+                                    <option value="4" selected>Bbp12_6 & Bbp12_7</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer row m-0">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button type="submit" class="form-control btn-primary">Print</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="form-control btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -560,7 +600,7 @@
     var properties = "{{ kit.get_manufacturer().get_barcode_pat().part_start }},{{ kit.get_manufacturer().get_barcode_pat().part_end }},{ kit.get_manufacturer().get_barcode_pat().lot_start }},{{ kit.get_manufacturer().get_barcode_pat().lot_end }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_start }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_start }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().lot_start }}, {{ kit.get_manufacturer().get_comp_barcode_pat().lot_end }}".split(",");
 
     function update_barcode(element) {
-        const barcode = document.getElementById("_barcode").value;
+        const barcode = document.getElementById("barcode").value;
         if (properties[1] >= 0) {
             document.getElementById("kit_part_num").setAttribute("value", barcode.slice(properties[1], properties[2]));
         } else {
