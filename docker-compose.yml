@@ -1,19 +1,22 @@
 version: '3'
 
 services:
-      mysql:
-            image: mysql
-            environment:
-                  MYSQL_DATABASE: reagent_db
-                  MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-            ports:
-                  - "3307:3306"
-            volumes:
-                  - ./data:/docker-entrypoint-initdb.d
+    mysql:
+        image: mysql
+        environment:
+            MYSQL_ROOT_HOST: localhost
+            MYSQL_DATABASE: reagent_db
+            MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+            MYSQL_USER: root
+            MYSQL_PASSWORD: password
+        ports:
+            - "3307:3306"
+        volumes:
+            - ./data:/docker-entrypoint-initdb.d
 
-      web:
-            build: .
-            ports:
-                  - "5000:5000"
-      redis:
-            image: "redis:alpine"
+    web:
+        build: .
+        ports:
+            - "5000:5000"
+    redis:
+        image: "redis:alpine"
