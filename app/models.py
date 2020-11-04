@@ -81,7 +81,7 @@ class Element(db.Model):
     p_num = db.Column(db.String(255))
     quantity = db.Column(db.Integer)
     comment = db.Column(db.String(255))
-    uids = db.Column(db.String(255))
+    uids = db.Column(db.String(1000))
 
     def get_uids(self):
         return self.uids.split(",")
