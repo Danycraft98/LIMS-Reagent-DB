@@ -242,21 +242,22 @@ def print_kit(kit_id):
     kit1 = Kit.query.filter_by(id=kit_id)[0]
     comp_print = request.form.get('comp_print')
     kit_label_size = request.form.get('kit_label_size')
-    printer_id = request.form.get('printer_id')
+    sm_printer_id = request.form.get('sm_printer_id')
+    med_printer_id = request.form.get('med_printer_id')
 
     if not comp_print:
         batch_num = 1
         while batch_num <= kit1.quantity:
-            print_cont = (kit1.name, kit1.exp_date, kit1.date_entered, printer_id)
+            print_cont = (kit1.name, kit1.exp_date, kit1.date_entered, (sm_printer_id, med_printer_id))
             print_label(print_cont, "kit", kit_label_size, None, kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batch_num) + '/' + str(kit1.quantity))
             batch_num += 1
 
         for component in kit1.components:
-            print_cont = (component.name, component.exp_date, kit1.date_entered, printer_id)
+            print_cont = (component.name, component.exp_date, kit1.date_entered, (sm_printer_id, med_printer_id))
             print_label(print_cont, "kit", component.size, None, component.uid)
     else:
         component = Component.query.filter_by(id=comp_print)[0]
-        print_cont = (component.name, component.exp_date, kit1.date_entered, printer_id)
+        print_cont = (component.name, component.exp_date, kit1.date_entered, (sm_printer_id, med_printer_id))
         print_label(print_cont, "kit", component.size, None, component.uid)
 
     return redirect(url_for("kit", kit_id=kit_id))

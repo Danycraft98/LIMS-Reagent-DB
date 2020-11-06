@@ -7,8 +7,8 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
     (name, expdate, credate, printer_id) = data
     expdate = expdate.strftime("%Y-%m-%d %H:%M:%S")
     credate = credate.strftime("%Y-%m-%d %H:%M:%S")
+    sm_printer_id, med_printer_id = printer_id
     destination = ""
-    print(data, element_type, label_size, acquiry_met, batch_ratio)
 
     """Format for how everything is displayed on the label, different cases available for different situations
     - 's' for small label format
@@ -19,8 +19,8 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
 
     templates = {}
     if label_size == "s":
-        destination = "tgh_bbp12_sm_" + printer_id
-        if printer_id == "1":
+        destination = "tgh_bbp12_" + sm_printer_id
+        if sm_printer_id == "1":
             destination = "tgh_bbp12_circle"
         if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
             templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """"^XA
@@ -33,8 +33,8 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
                         ^FT175,15^BXI,4,200,,,,,^FD${credate}^FS
                         ^XZ"""
     elif label_size == "m":
-        destination = "tgh_bbp12_med_" + printer_id
-        if printer_id == "1":
+        destination = "tgh_bbp12_" + med_printer_id
+        if med_printer_id == "1":
             destination = "tgh_bbp12"
         if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
             templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """^XA
