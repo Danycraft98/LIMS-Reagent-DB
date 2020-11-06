@@ -617,7 +617,7 @@
 
 {% block script %}
 <script>
-    var properties = "{{ kit.get_manufacturer().get_barcode_pat().part_start }},{{ kit.get_manufacturer().get_barcode_pat().part_end }},{ kit.get_manufacturer().get_barcode_pat().lot_start }},{{ kit.get_manufacturer().get_barcode_pat().lot_end }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_start }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_start }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().lot_start }}, {{ kit.get_manufacturer().get_comp_barcode_pat().lot_end }}".split(",");
+    var properties = "{% if kit.get_manufacturer() %}{{ kit.get_manufacturer().get_barcode_pat().part_start }},{{ kit.get_manufacturer().get_barcode_pat().part_end }},{ kit.get_manufacturer().get_barcode_pat().lot_start }},{{ kit.get_manufacturer().get_barcode_pat().lot_end }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_start }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_start }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().lot_start }}, {{ kit.get_manufacturer().get_comp_barcode_pat().lot_end }}{% else %}0,0,0,0,0,0,0,0,0,0{% endif %}".split(",");
 
     function update_barcode(element) {
         const barcode = document.getElementById("barcode").value;

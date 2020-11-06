@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="updated model uids length.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reagent_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/reagent_routes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +16,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reagent_routes.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="printer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/printer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-337">
+              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="244" column="48" selection-start-line="244" selection-start-column="48" selection-end-line="244" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reagent_routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/reagent_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="109" column="137" selection-start-line="109" selection-start-column="137" selection-end-line="109" selection-end-column="137" />
+            <state relative-caret-position="155">
+              <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -30,17 +46,35 @@
       <file leaf-file-name="made_reagent_routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/made_reagent_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1322">
-              <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+            <state relative-caret-position="88">
+              <caret line="114" column="55" selection-start-line="114" selection-start-column="55" selection-end-line="114" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <file leaf-file-name="kit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+            <state relative-caret-position="318">
+              <caret line="594" column="51" selection-start-line="594" selection-start-column="51" selection-end-line="594" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="made_reagent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12">
+              <caret line="258" column="57" lean-forward="true" selection-start-line="258" selection-start-column="57" selection-end-line="258" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reagent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/reagent/reagent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="305" column="51" lean-forward="true" selection-start-line="305" selection-start-column="51" selection-end-line="305" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -49,13 +83,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>f</find>
-      <find>printCom</find>
-      <find>printModal</find>
       <find>comp</find>
       <find>element_type</find>
       <find>Component(</find>
-      <find>comp_print</find>
       <find>acquiry_met</find>
       <find>comp_id</find>
       <find>document.getElementById(&quot;comp_id&quot;).set</find>
@@ -79,6 +109,10 @@
       <find>add_kit(</find>
       <find>set</find>
       <find>uids =</find>
+      <find>printer_id</find>
+      <find>tgh_bbp11</find>
+      <find>&lt;label</find>
+      <find>comp_print</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -95,7 +129,6 @@
       <replace>kit.get_manufacturer()</replace>
       <replace>|length</replace>
       <replace>&gt;=</replace>
-      <replace />
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/static/js</dir>
@@ -132,24 +165,24 @@
         <option value="$PROJECT_DIR$/app/templates/kit/add_superkit.html" />
         <option value="$PROJECT_DIR$/app/static/js/add_superkit.js" />
         <option value="$PROJECT_DIR$/app/static/js/add.js" />
-        <option value="$PROJECT_DIR$/app/made_reagent_routes.py" />
         <option value="$PROJECT_DIR$/app/route.py" />
         <option value="$PROJECT_DIR$/app/templates/home/elements.html" />
         <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
         <option value="$PROJECT_DIR$/app/static/js/add_kit.js" />
-        <option value="$PROJECT_DIR$/app/templates/reagent/reagent.html" />
-        <option value="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" />
-        <option value="$PROJECT_DIR$/app/printer.py" />
-        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
         <option value="$PROJECT_DIR$/app/static/css/sb-admin-2.css" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/app/kit_routes.py" />
         <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/reagent_db.sql" />
+        <option value="$PROJECT_DIR$/app/kit_routes.py" />
         <option value="$PROJECT_DIR$/app/reagent_routes.py" />
+        <option value="$PROJECT_DIR$/app/made_reagent_routes.py" />
+        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
+        <option value="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" />
+        <option value="$PROJECT_DIR$/app/templates/reagent/reagent.html" />
+        <option value="$PROJECT_DIR$/app/printer.py" />
       </list>
     </option>
   </component>
@@ -176,6 +209,12 @@
               <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
               <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -312,20 +351,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Undone mistakes.">
-      <created>1572900856007</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1572900856007</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Added deleteMsg tokit, reagent, and made reagent.">
-      <created>1572903909273</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1572903909273</updated>
     </task>
     <task id="LOCAL-00072" summary="Added deleteMsg to Manufacturer.">
       <created>1572904115526</created>
@@ -656,7 +681,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604533371963</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="Fixed reagent label print.">
+      <created>1604673351566</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1604673351567</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Fixed field for printer">
+      <created>1604674533782</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1604674533782</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TodoView">
@@ -672,16 +711,17 @@
     <frame x="0" y="23" width="1280" height="697" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8010336" visible="true" weight="0.2494043" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8" visible="true" weight="0.2494043" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5019857" side_tool="true" visible="true" weight="0.32928944" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4980143" weight="0.27209705" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50277996" side_tool="true" visible="true" weight="0.27209705" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49722" visible="true" weight="0.27209705" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49960285" weight="0.32928944" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4980143" weight="0.32928944" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" sideWeight="0.19896641" side_tool="true" visible="true" weight="0.2494043" />
+      <window_info id="Favorites" order="2" sideWeight="0.2" side_tool="true" visible="true" weight="0.2494043" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -689,7 +729,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -715,8 +754,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed minor bugs." />
-    <MESSAGE value="Auto-fill function. Changed event handler for super kit(enter key)." />
     <MESSAGE value="Enhanced the button size and layout." />
     <MESSAGE value="Added autofill features to reagent and made reagent. Fixed the autofill feature to kit." />
     <MESSAGE value="Removed unused javascript function." />
@@ -740,7 +777,9 @@
     <MESSAGE value="updated dockerfile." />
     <MESSAGE value="updated models" />
     <MESSAGE value="updated model uids length." />
-    <option name="LAST_COMMIT_MESSAGE" value="updated model uids length." />
+    <MESSAGE value="Fixed reagent label print." />
+    <MESSAGE value="Fixed field for printer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed field for printer" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
@@ -971,20 +1010,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/reagent/reagent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="259" column="29" selection-start-line="259" selection-start-column="29" selection-end-line="259" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="256" column="23" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/css/sb-admin-2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55862">
@@ -996,13 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
           <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="318" column="32" selection-start-line="318" selection-start-column="32" selection-end-line="318" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1055,20 +1073,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/printer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="250" column="163" lean-forward="true" selection-start-line="250" selection-start-column="65" selection-end-line="250" selection-end-column="163" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/manufacturer_routes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1076,17 +1080,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/made_reagent_routes.py">
+    <entry file="file://$PROJECT_DIR$/app/reagent_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1322">
-          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+        <state relative-caret-position="155">
+          <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/reagent_routes.py">
+    <entry file="file://$PROJECT_DIR$/app/made_reagent_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="109" column="137" selection-start-line="109" selection-start-column="137" selection-end-line="109" selection-end-column="137" />
+        <state relative-caret-position="88">
+          <caret line="114" column="55" selection-start-line="114" selection-start-column="55" selection-end-line="114" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="594" column="51" selection-start-line="594" selection-start-column="51" selection-end-line="594" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="258" column="57" lean-forward="true" selection-start-line="258" selection-start-column="57" selection-end-line="258" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/reagent/reagent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="305" column="51" lean-forward="true" selection-start-line="305" selection-start-column="51" selection-end-line="305" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="244" column="48" selection-start-line="244" selection-start-column="48" selection-end-line="244" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/printer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
         </state>
       </provider>
     </entry>
