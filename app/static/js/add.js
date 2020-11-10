@@ -14,11 +14,15 @@ function get_date(year_month) {
 }
 
 function clone_element(element) {
-    let counter = parseInt(document.getElementById('comps').lastElementChild.id.slice(4)) + 1;
+    kit_num = '';
+    if (element.split('_')[0].includes('k')) {
+        kit_num = element.split('_')[0]+ '_';
+    }
+    let counter = parseInt(document.getElementById(kit_num + 'comps').lastElementChild.id.slice(4)) + 1;
 
     const div_num = element.id.substr(-1);
-    const div = document.getElementById('comp' + div_num);
-    for (let k = 0; k < document.getElementById('copy_num' + div_num).value; k++) {
+    const div = document.getElementById(kit_num + 'comp' + div_num);
+    for (let k = 0; k < document.getElementById(kit_num + 'copy_num' + div_num).value; k++) {
         const clone = div.cloneNode(true);
         clone.id = clone.id.slice(0, -1) + counter.toString();
         clone.childNodes.forEach(function (element) {
@@ -38,7 +42,7 @@ function clone_element(element) {
         });
 
         clone.removeAttribute('hidden');
-        document.getElementById("comps").appendChild(clone);
+        document.getElementById('comps').appendChild(clone);
         counter++;
     }
 }
@@ -49,10 +53,10 @@ function remove_element(element) {
 }
 
 function enable(element) {
-    properties = element.value.split(",");
+    properties = element.value.split(',');
 
     update();
-    const raw_comps = document.getElementById("containers_div");
+    const raw_comps = document.getElementById('containers_div');
     if (raw_comps != null) {
         raw_comps.childNodes.forEach(function (element) {
             if (element.tagName == 'DIV') {
@@ -63,24 +67,24 @@ function enable(element) {
 }
 
 function confirmMsg() {
-    return confirm("Are you sure?");
+    return confirm('Are you sure?');
 }
 
 function deleteMsg(deletable) {
-    if (deletable == "True") {
+    if (deletable == 'True') {
         return confirmMsg();
     } else {
-        alert("This cannot be deleted.");
+        alert('This cannot be deleted.');
         return false;
     }
 }
 
 function editMsg(deletable) {
-    if (deletable == "True") {
+    if (deletable == 'True') {
         return true;
     } else {
-        alert("This cannot be edited.");
-        document.getElementById("edit_btn").setAttribute("data-target","#None")
+        alert('This cannot be edited.');
+        document.getElementById('edit_btn').setAttribute('data-target','#None')
         return false;
     }
 }

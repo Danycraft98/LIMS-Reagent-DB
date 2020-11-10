@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="updated model uids length.">
+      <change afterPath="$PROJECT_DIR$/app/static/js/add_super_kit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/super_kit_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/super_kit/super_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/add_kit.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add_kit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/add_reagent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add_reagent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/home/elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/elements.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/add_kit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,65 +31,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="printer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/printer.py">
+      <file leaf-file-name="add_super_kit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="299">
+              <caret line="260" column="11" selection-start-line="260" selection-start-column="11" selection-end-line="260" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kit_routes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+      <file leaf-file-name="add_super_kit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/static/js/add_super_kit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="244" column="48" selection-start-line="244" selection-start-column="48" selection-end-line="244" selection-end-column="48" />
+            <state relative-caret-position="109">
+              <caret line="106" column="19" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reagent_routes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/reagent_routes.py">
+      <file leaf-file-name="add_manufacturer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="made_reagent_routes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/made_reagent_routes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="114" column="55" selection-start-line="114" selection-start-column="55" selection-end-line="114" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="594" column="51" selection-start-line="594" selection-start-column="51" selection-end-line="594" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="made_reagent.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
-              <caret line="258" column="57" lean-forward="true" selection-start-line="258" selection-start-column="57" selection-end-line="258" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reagent.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/reagent/reagent.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="305" column="51" lean-forward="true" selection-start-line="305" selection-start-column="51" selection-end-line="305" selection-end-column="51" />
+            <state relative-caret-position="106">
+              <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -83,36 +62,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>comp</find>
-      <find>element_type</find>
-      <find>Component(</find>
-      <find>acquiry_met</find>
-      <find>comp_id</find>
-      <find>document.getElementById(&quot;comp_id&quot;).set</find>
-      <find>ed</find>
-      <find>Edit Co</find>
-      <find>dataTable</find>
-      <find>.dropdown .dropdown-menu .dropdown-heade</find>
-      <find>.dropdown-header</find>
-      <find>tMsg</find>
-      <find>are you sure</find>
-      <find>==</find>
-      <find>NameError: name 'file' is not defined</find>
-      <find>file(</find>
-      <find>`</find>
-      <find>open(</find>
-      <find>open</find>
-      <find>file</find>
-      <find>fi</find>
-      <find>SQL_USER</find>
-      <find />
-      <find>add_kit(</find>
-      <find>set</find>
-      <find>uids =</find>
-      <find>printer_id</find>
-      <find>tgh_bbp11</find>
-      <find>&lt;label</find>
-      <find>comp_print</find>
+      <find>date_entered</find>
+      <find>SuperKit</find>
+      <find>super_kit1.</find>
+      <find>{% endif %}</find>
+      <find>.first</find>
+      <find>super_kit</find>
+      <find>.kits[0]</find>
+      <find>sk_name</find>
+      <find>if</find>
+      <find>uid =</find>
+      <find>k0_</find>
+      <find>kit_num + '_</find>
+      <find>kit)</find>
+      <find>kit_num + &quot;_</find>
+      <find>add_kit</find>
+      <find>k&quot; + str(i) + &quot;_</find>
+      <find>document.getElementById('name').value = '{{ kit.name }}'</find>
+      <find>get_kit_ids</find>
+      <find>&quot;</find>
+      <find>[id^='</find>
+      <find>[</find>
+      <find>console.l</find>
+      <find>'[</find>
+      <find>console</find>
+      <find>loop.indexkit_index</find>
+      <find>loop.index</find>
+      <find>clone_element</find>
+      <find>console.log</find>
+      <find>update_all</find>
+      <find>manu</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -129,6 +108,10 @@
       <replace>kit.get_manufacturer()</replace>
       <replace>|length</replace>
       <replace>&gt;=</replace>
+      <replace>[0]</replace>
+      <replace>&quot;</replace>
+      <replace>'</replace>
+      <replace>kit_index</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/static/js</dir>
@@ -153,9 +136,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/templates/header.html" />
         <option value="$PROJECT_DIR$/app/templates/home/login.html" />
-        <option value="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" />
         <option value="$PROJECT_DIR$/app/templates/manufacturer/manufacturer.html" />
         <option value="$PROJECT_DIR$/app/templates/reagent/add_reagent.html" />
         <option value="$PROJECT_DIR$/app/templates/made_reagent/add_made_reagent.html" />
@@ -164,25 +145,32 @@
         <option value="$PROJECT_DIR$/app/templates/layout.html" />
         <option value="$PROJECT_DIR$/app/templates/kit/add_superkit.html" />
         <option value="$PROJECT_DIR$/app/static/js/add_superkit.js" />
-        <option value="$PROJECT_DIR$/app/static/js/add.js" />
-        <option value="$PROJECT_DIR$/app/route.py" />
-        <option value="$PROJECT_DIR$/app/templates/home/elements.html" />
-        <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
-        <option value="$PROJECT_DIR$/app/static/js/add_kit.js" />
         <option value="$PROJECT_DIR$/app/static/css/sb-admin-2.css" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/app/models.py" />
-        <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/reagent_db.sql" />
-        <option value="$PROJECT_DIR$/app/kit_routes.py" />
         <option value="$PROJECT_DIR$/app/reagent_routes.py" />
         <option value="$PROJECT_DIR$/app/made_reagent_routes.py" />
-        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
         <option value="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" />
         <option value="$PROJECT_DIR$/app/templates/reagent/reagent.html" />
         <option value="$PROJECT_DIR$/app/printer.py" />
+        <option value="$PROJECT_DIR$/app/templates/kit/kit.html" />
+        <option value="$PROJECT_DIR$/app/templates/header.html" />
+        <option value="$PROJECT_DIR$/app/route.py" />
+        <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/templates/super_kit/super_kit.html" />
+        <option value="$PROJECT_DIR$/app/templates/home/elements.html" />
+        <option value="$PROJECT_DIR$/app/super_kit_routes.py" />
+        <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
+        <option value="$PROJECT_DIR$/app/kit_routes.py" />
+        <option value="$PROJECT_DIR$/app/static/js/add_reagent.js" />
+        <option value="$PROJECT_DIR$/app/static/js/add.js" />
+        <option value="$PROJECT_DIR$/app/static/js/add_kit.js" />
+        <option value="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" />
+        <option value="$PROJECT_DIR$/app/static/js/add_super_kit.js" />
+        <option value="$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html" />
       </list>
     </option>
   </component>
@@ -214,7 +202,27 @@
               <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
               <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lims-reagent-db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="super_kit" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -230,16 +238,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/static/js" />
-      <recent name="$PROJECT_DIR$/app/templates/kit" />
-      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
-      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/static/image" />
       <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
       <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static/js" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/templates" />
+      <recent name="$PROJECT_DIR$/app/templates/kit" />
+      <recent name="C:\Users\Daniel\PycharmProjects\lims-reagent-db\flask_app\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -351,13 +360,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Added deleteMsg to Manufacturer.">
-      <created>1572904115526</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1572904115526</updated>
     </task>
     <task id="LOCAL-00073" summary="Updated layouts.">
       <created>1572905221077</created>
@@ -695,7 +697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604674533782</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Fixed kit error.">
+      <created>1604674927035</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1604674927035</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TodoView">
@@ -711,17 +720,17 @@
     <frame x="0" y="23" width="1280" height="697" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8" visible="true" weight="0.2494043" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79761904" visible="true" weight="0.2494043" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50277996" side_tool="true" visible="true" weight="0.27209705" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50436854" side_tool="true" visible="true" weight="0.27209705" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49722" visible="true" weight="0.27209705" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49563146" visible="true" weight="0.27209705" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49960285" weight="0.32928944" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4980143" weight="0.32928944" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" sideWeight="0.2" side_tool="true" visible="true" weight="0.2494043" />
+      <window_info id="Favorites" order="2" sideWeight="0.20238096" side_tool="true" visible="true" weight="0.2494043" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -754,7 +763,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Enhanced the button size and layout." />
     <MESSAGE value="Added autofill features to reagent and made reagent. Fixed the autofill feature to kit." />
     <MESSAGE value="Removed unused javascript function." />
     <MESSAGE value="Upgraded the code to simplify database creation for development. Fixed minor bug regarding component condition on made reagent." />
@@ -779,72 +787,10 @@
     <MESSAGE value="updated model uids length." />
     <MESSAGE value="Fixed reagent label print." />
     <MESSAGE value="Fixed field for printer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed field for printer" />
+    <MESSAGE value="Fixed kit error." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed kit error." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3026">
-          <caret line="178" column="47" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/home/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="75" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="12" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/home/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2958">
-          <caret line="174" column="44" selection-start-line="174" selection-start-column="44" selection-end-line="174" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3026">
-          <caret line="178" column="47" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/home/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -969,11 +915,6 @@
         <state relative-caret-position="-341" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pip.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3144" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
@@ -982,34 +923,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/add_kit.js" />
-    <entry file="file://$PROJECT_DIR$/app/route.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="68" column="97" lean-forward="true" selection-start-line="68" selection-start-column="97" selection-end-line="68" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="221" column="393" selection-start-line="221" selection-start-column="347" selection-end-line="221" selection-end-column="393" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/home/elements.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1256">
-          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="105" column="29" lean-forward="true" selection-start-line="103" selection-start-column="20" selection-end-line="105" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/css/sb-admin-2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55862">
@@ -1017,24 +930,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/add.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1052,24 +951,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reagent_db.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/add_kit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="25" column="5" selection-start-line="18" selection-start-column="4" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1082,50 +967,172 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/reagent_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
+        <state relative-caret-position="1632">
           <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/made_reagent_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="1785">
           <caret line="114" column="55" selection-start-line="114" selection-start-column="55" selection-end-line="114" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="594" column="51" selection-start-line="594" selection-start-column="51" selection-end-line="594" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="258" column="57" lean-forward="true" selection-start-line="258" selection-start-column="57" selection-end-line="258" selection-end-column="57" />
+        <state relative-caret-position="4386">
+          <caret line="258" column="57" selection-start-line="258" selection-start-column="57" selection-end-line="258" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/reagent/reagent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="5185">
           <caret line="305" column="51" lean-forward="true" selection-start-line="305" selection-start-column="51" selection-end-line="305" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="244" column="48" selection-start-line="244" selection-start-column="48" selection-end-line="244" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/printer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="663">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="619" column="4" selection-start-line="619" selection-start-column="4" selection-end-line="619" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/route.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="69" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="29" column="120" selection-start-line="29" selection-start-column="120" selection-end-line="29" selection-end-column="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="57" column="68" selection-start-line="57" selection-start-column="68" selection-end-line="57" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/home/elements.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="11" column="124" selection-start-line="11" selection-start-column="124" selection-end-line="11" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/super_kit_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="131" column="29" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="156" column="7" selection-start-line="156" selection-start-column="7" selection-end-line="156" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#button#0;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#1;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="818">
+          <caret line="191" column="32" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/super_kit/super_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="78" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/sb-admin-2.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pip.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/add_reagent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/vendor/datatables/jquery.dataTables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="6484" column="36" selection-start-line="6484" selection-start-column="36" selection-end-line="6484" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/vendor/datatables/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="73" column="476" selection-start-line="73" selection-start-column="476" selection-end-line="73" selection-end-column="476" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/add_kit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="32" column="99" selection-start-line="32" selection-start-column="99" selection-end-line="32" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/add_super_kit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="106" column="19" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="260" column="11" selection-start-line="260" selection-start-column="11" selection-end-line="260" selection-end-column="11" />
         </state>
       </provider>
     </entry>

@@ -37,7 +37,7 @@ def add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_num
         )
 
         if superk:
-            component.uid = new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(superk[0] + 1) + "/" + str(superk[1]) + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
+            component.uid = new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(superk[0] + 1) + "/" + str(superk[1]) + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1)
         db.session.add(component)
         db.session.commit()
         index += 1
@@ -149,83 +149,56 @@ def kit(kit_id):
 def add_kit():
     if request.method == "POST":
         form = request.form
-        super_kit = None
-        if form.get("sk_name"):
-            sk_name = re.sub(' +', ' ', form.get("sk_name"))
+        try:
+            exp_date = datetime.strptime(form.get("exp_date"), "%Y-%m-%d")
+        except ValueError:
+            exp_date = None
 
-            # Add Super Kit
-            super_kit = SuperKit(
-                name=sk_name,
-                part_num=form.get("sk_part_num"),
-                comment=request.values.get("sk_comment"),
-                quantity=int(form.get("sk_quantity"))
-            )
+        try:
+            date_tested = datetime.strptime(form.get("date_tested"), "%Y-%m-%d")
+        except ValueError:
+            date_tested = None
 
-            db.session.add(super_kit)
-            db.session.commit()
-
-        ids = form.get("kit_ids").split(",")
-        for kit_id in ids:
-            i = int(kit_id)
-            try:
-                exp_date = datetime.strptime(form.get("k" + str(i) + "_exp_date"), "%Y-%m-%d")
-            except ValueError:
-                exp_date = None
-
-            try:
-                date_tested = datetime.strptime(form.get("k" + str(i) + "_date_tested"), "%Y-%m-%d")
-            except ValueError:
-                date_tested = None
-
-            try:
-                manufacturer_id = int(form.get("k" + str(i) + "_manu_name").split(",")[0])
-                if manufacturer_id == 0:
-                    manufacturer_id = None
-            except ValueError:
+        try:
+            manufacturer_id = int(form.get("manu_name").split(",")[0])
+            if manufacturer_id == 0:
                 manufacturer_id = None
+        except ValueError:
+            manufacturer_id = None
 
-            new_kit = Kit(
-                name=re.sub(' +', ' ', form.get("k" + str(i) + "_name")),
-                manufacturer_id=manufacturer_id,
-                barcode=form.get("k" + str(i) + "_barcode"),
-                part_num=form.get("k" + str(i) + "_part_num"),
-                lot_num=form.get("k" + str(i) + "_lot_num"),
-                exp_date=exp_date,
-                date_entered=datetime.now(),
-                date_tested=date_tested,
-                p_num=form.get("k" + str(i) + "_p_num"),
-                quantity=int(form.get("k" + str(i) + "_quantity", 1)),
-                comment=form.get("k" + str(i) + "_value"),
-                user_id=current_user.id,
-            )
+        new_kit = Kit(
+            name=re.sub(' +', ' ', form.get("name")),
+            manufacturer_id=manufacturer_id,
+            barcode=form.get("barcode"),
+            part_num=form.get("part_num"),
+            lot_num=form.get("lot_num"),
+            exp_date=exp_date,
+            date_entered=datetime.now(),
+            date_tested=date_tested,
+            p_num=form.get("p_num"),
+            quantity=int(form.get("quantity", 1)),
+            comment=form.get("value"),
+            user_id=current_user.id,
+        )
 
-            if super_kit:
-                new_kit.super_kit_id = super_kit.id
+        db.session.add(new_kit)
+        db.session.commit()
 
-            db.session.add(new_kit)
-            db.session.commit()
+        names = form.getlist("comp_name")
+        comp_nums = form.getlist("comp_barcode")
+        comp_part_nums = form.getlist("comp_part_num")
+        comp_lot_nums = form.getlist("comp_lot_num")
+        comp_exp_dates = form.getlist("comp_exp_date")
+        sizes = form.getlist("size")
+        conditions = form.getlist("condition")
 
-            names = form.getlist("k" + str(i) + "_comp_name")
-            comp_nums = form.getlist("k" + str(i) + "_comp_barcode")
-            comp_part_nums = form.getlist("k" + str(i) + "_comp_part_num")
-            comp_lot_nums = form.getlist("k" + str(i) + "_comp_lot_num")
-            comp_exp_dates = form.getlist("k" + str(i) + "_comp_exp_date")
-            sizes = form.getlist("k" + str(i) + "_size")
-            conditions = form.getlist("k" + str(i) + "_condition")
-
-            uids = []
-            for value in range(new_kit.quantity):
-                if super_kit:
-                    for num in range(super_kit.quantity):
-                        uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(num + 1) + "/" + str(super_kit.quantity) + " " + str(value + 1) + "/" + str(new_kit.quantity))
-                        add_component(value, new_kit,names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, (num, super_kit.quantity))
-                else:
-                    uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ")+ str(value + 1) + "/" + str(new_kit.quantity))
-                    add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions)
-            new_kit.uids = ",".join(uids)
-            print(uids)
-            db.session.commit()
-            i += 1
+        uids = []
+        for value in range(new_kit.quantity):
+            uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ")+ str(value + 1) + "/" + str(new_kit.quantity))
+            add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions)
+        new_kit.uids = ",".join(uids)
+        print(uids)
+        db.session.commit()
         return redirect(url_for("elements", element_types="kits"))
 
     super_kits = SuperKit.query.all()

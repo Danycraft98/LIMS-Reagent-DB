@@ -106,7 +106,7 @@ class SuperKit(db.Model):
     part_num = db.Column(db.String(255))
     quantity = db.Column(db.Integer)
     comment = db.Column(db.String(255))
-    kit = db.relationship('Kit', uselist=False, backref='kit')
+    kits = db.relationship('Kit', backref='kit')
 
 
 class Kit(Element):

@@ -1,0 +1,61 @@
+{% extends "header.html" %}
+
+{% block body %}
+    <div class="card shadow">
+        <!-- Card Header - Add Button -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h4 class="ml-5 m-0 font-weight-bold text-primary">Kits: {{ super_kit.name }}</h4>
+            <!--a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body ml-5 mr-5">
+            <div class="table-responsive m-0">
+                <table class="table table-bordered table-hover" id="dataTable" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+                        <th>ID</th>
+                        <th>Kit Name</th>
+                        <th hidden>Barcode</th>
+                        <th>Date Entered</th>
+                        <th hidden>Date Entered</th>
+                        <th hidden>UID</th>
+                        <th>Entered By</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Kit Name</th>
+                        <th>Date Entered</th>
+                        <th hidden>Date Entered</th>
+                        <th hidden>UID</th>
+                        <th>Entered By</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for element in super_kit.kits %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td><a href="{{ url_for('kit', kit_id=element.id) }}">{{ element.name }}</a></td>
+                            <td hidden>{{ element.barcode }}</td>
+                            <td>{{ element.date_entered.strftime("%B %e, %Y") }}</td>
+                            <td hidden>{{ element.date_entered.strftime("%m-%d-%Y") }}</td>
+                            <td>{{ element.get_user() }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <!-- Page level plugins -->
+    <script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+{% endblock %}

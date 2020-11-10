@@ -140,7 +140,6 @@
             const myRegexp = /\.([^.]+)\./g;
             const match = myRegexp.exec(barcode.value);
             if (match != null) {
-                console.log(match[1]);
                 document.getElementById(id.slice(0, -4)).setAttribute("value", match[1]);
                 document.getElementById(id.slice(0, -7) + "start").setAttribute("value", barcode.value.indexOf("."));
                 barcode.value = barcode.value.split('.').join("");

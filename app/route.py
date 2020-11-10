@@ -57,11 +57,12 @@ def elements(element_types):
     element_type = element_types[:-1]
     if element_type == 'manufacturer':
         element_list = Manufacturer.query.all()
+    elif element_type == 'super_kit':
+        element_list = SuperKit.query.all()
     elif element_type == 'kit':
         element_list = Kit.query.all()
     elif element_type == 'reagent':
         element_list = Reagent.query.all()
-        return render_template("home/elements.html", element_type=element_type, elements=element_list)
     elif element_type == 'made_reagent':
         element_list = MadeReagent.query.all()
     else:

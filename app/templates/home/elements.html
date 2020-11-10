@@ -7,10 +7,13 @@
             {% if element_type == 'manufacturer' %}
                 <h4 class="ml-5 m-0 font-weight-bold text-primary">Manufacturers</h4>
                 <a class="mr-5 btn btn-primary" href="{{ url_for('add_manufacturer') }}" style="width: 200px">Add Manufacturer</a>
+            {% elif element_type == 'super_kit' %}
+                <h4 class="ml-5 m-0 font-weight-bold text-primary">Super Kits</h4>
+                <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_super_kit') }}" style="width: 150px">Add Super Kit</a>
+                <!--a class="mr-5 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
             {% elif element_type == 'kit' %}
                 <h4 class="ml-5 m-0 font-weight-bold text-primary">Kits</h4>
                 <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a>
-                <!--a class="mr-5 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
             {% elif element_type == 'reagent' %}
                 <h4 class="ml-5 m-0 font-weight-bold text-primary">Reagents</h4>
                 <a class="mr-5 btn btn-primary" href="{{ url_for('add_reagent') }}" style="width: 200px">Add Reagent</a>
@@ -30,6 +33,8 @@
                         <th>
                             {% if element_type == 'manufacturer' %}
                                 Manufacturer Name
+                            {% elif element_type == 'super_kit' %}
+                                Super Kit Name
                             {% elif element_type == 'kit' %}
                                 Kit Name
                             {% elif element_type == 'reagent' %}
@@ -39,9 +44,6 @@
                             {% endif %}
                         </th>
                         <th hidden>Barcode</th>
-                        {% if element_type == 'kit' %}
-                            <th>Super Kit</th>
-                        {% endif %}
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
                         <th hidden>UID</th>
@@ -53,15 +55,14 @@
                         <th>ID</th>
                         {% if element_type == 'manufacturer' %}
                             <th>Manufacturer Name</th>
+                        {% elif element_type == 'super_kit' %}
+                            <th>Super Kit Name</th>
                         {% elif element_type == 'kit' %}
                             <th>Kit Name</th>
                         {% elif element_type == 'reagent' %}
                             <th>Reagent Name</th>
                         {% elif element_type == 'made_reagent' %}
                             <th>made_reagent Name</th>
-                        {% endif %}
-                        {% if element_type == 'kit' %}
-                            <th>Super Kit</th>
                         {% endif %}
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
@@ -75,6 +76,8 @@
                             <td>{{ loop.index }}</td>
                             {% if element_type == 'manufacturer' %}
                                 <td><a href="{{ url_for('manufacturer', manufacturer_id=element.id) }}">{{ element.name }}</a></td>
+                            {% elif element_type == 'super_kit' %}
+                                <td><a href="{{ url_for('super_kit', super_kit_id=element.id) }}">{{ element.name }}</a></td>
                             {% elif element_type == 'kit' %}
                                 <td><a href="{{ url_for('kit', kit_id=element.id) }}">{{ element.name }}</a></td>
                             {% elif element_type == 'reagent' %}
@@ -83,17 +86,10 @@
                                 <td><a href="{{ url_for('made_reagent', made_reagent_id=element.id) }}">{{ element.name }}</a></td>
                             {% endif %}
                             <td hidden>{{ element.barcode }}</td>
-                            {% if element_type == 'kit' %}
-                                {% if element.super_kit_id %}
-                                    <td>{{ element.get_super_kit().name }}</td>
-                                {% else %}
-                                    <td>N/A</td>
-                                {% endif %}
-                            {% endif %}
-                            <td>{{ element.date_entered.strftime("%B %e, %Y") }}</td>
-                            <td hidden>{{ element.date_entered.strftime("%m-%d-%Y") }}</td>
-                            <td hidden>{% for uid in element.get_uids() %}{{ uid }} {% endfor %}</td>
-                            <td>{{ element.get_user() }}</td>
+                            <td>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
+                            <td hidden>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
+                            <td hidden>{% if element_type != 'super_kit' %}{% for uid in element.get_uids() %}{{ uid }} {% endfor %}{% endif %}</td>
+                            <td>{% if element_type != 'super_kit' %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
