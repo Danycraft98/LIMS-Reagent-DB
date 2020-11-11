@@ -52,7 +52,6 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
         name = name[:18] + "..."
 
     label = label.substitute(name=name, expdate=expdate, credate=credate, batchbar=credate, batch_ratio=batch_ratio)
-    print(label)
 
     # Here you need to know the name of the printer queue, and the text for the label, and this does the actual printing: "lp" is a command line program (line
     # printer), on my system it is /usr/bin/lp and on the PATH
