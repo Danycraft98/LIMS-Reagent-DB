@@ -30,9 +30,13 @@ let counter = 1;
 let properties = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function clone_element(element) {
-    let counter = parseInt(document.getElementById('comps').lastElementChild.id.slice('p')[1]) + 1;
-
-    const div_num = element.id.substr(-1);
+    let counter = parseInt(document.getElementById('comps').lastElementChild.id.split('p')[1]) + 1;
+    let div_num;
+    if (element.id.includes('comp')) {
+        div_num = element.id.split('p')[1];
+    } else {
+        div_num = element.id.split('e')[1];
+    }
     const div = document.getElementById('comp' + div_num);
     for (let k = 0; k < document.getElementById('copy_num' + div_num).value; k++) {
         const clone = div.cloneNode(true);
@@ -74,7 +78,6 @@ function update_all(element) {
 }
 
 function update_barcode(element) {
-    var kit_num = element.id.split('_')[0];
     const barcode = document.getElementById('barcode').value;
     if (properties[1] >= 0) {
         document.getElementById('part_num').setAttribute('value', barcode.slice(properties[1], properties[2]));
@@ -96,18 +99,17 @@ function update_barcode(element) {
 }
 
 function update_comp(element) {
-    var kit_num = element.id.split('_')[0] + '_';
-    const barcode = document.getElementById(kit_num + 'comp_barcode' + element.id.slice(-1)).value;
+    const barcode = document.getElementById('comp_barcode' + element.id.slice(-1)).value;
 
     if (properties[7] >= 0) {
-        document.getElementById(kit_num + 'part_num' + element.id.slice(-1)).setAttribute('value', barcode.slice(properties[7], properties[8]));
+        document.getElementById('part_num' + element.id.slice(-1)).setAttribute('value', barcode.slice(properties[7], properties[8]));
     } else {
-        document.getElementById(kit_num + 'part_num' + element.id.slice(-1)).setAttribute('value', '');
+        document.getElementById('part_num' + element.id.slice(-1)).setAttribute('value', '');
     }
 
     if (properties[9] >= 0) {
-        document.getElementById(kit_num + 'lot_num' + element.id.slice(-1)).setAttribute('value', barcode.slice(properties[9], properties[10]));
+        document.getElementById('lot_num' + element.id.slice(-1)).setAttribute('value', barcode.slice(properties[9], properties[10]));
     } else {
-        document.getElementById(kit_num + 'lot_num' + element.id.slice(-1)).setAttribute('value', '');
+        document.getElementById('lot_num' + element.id.slice(-1)).setAttribute('value', '');
     }
 }

@@ -60,7 +60,7 @@ def elements(element_types):
     elif element_type == 'super_kit':
         element_list = SuperKit.query.all()
     elif element_type == 'kit':
-        element_list = Kit.query.all()
+        element_list = Kit.query.filter_by(super_kit_id=None).all()
     elif element_type == 'reagent':
         element_list = Reagent.query.all()
     elif element_type == 'made_reagent':

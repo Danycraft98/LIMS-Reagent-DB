@@ -76,7 +76,12 @@ function clone_element(element) {
     var kit_num = element.id.split('_')[0];
     let counter = parseInt(document.getElementById(kit_num + '_comps').lastElementChild.id.split('p')[1]) + 1;
 
-    const div_num = element.id.split('p')[1];
+    var div_num;
+    if (element.id.includes('p')) {
+        div_num = element.id.split('p')[1];
+    } else {
+        div_num = element.id.split('e')[1];
+    }
     const div = document.getElementById(kit_num + '_comp' + div_num);
     for (let k = 0; k < document.getElementById(kit_num + '_copy_num' + div_num).value; k++) {
         const clone = div.cloneNode(true);
