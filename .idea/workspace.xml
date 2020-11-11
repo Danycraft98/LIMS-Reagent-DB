@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="updated model uids length.">
-      <change afterPath="$PROJECT_DIR$/app/static/js/add_super_kit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/super_kit_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/super_kit/super_kit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add_kit.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add_kit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add_reagent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add_reagent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/elements.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/add_kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,29 +18,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="add_super_kit.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html">
+      <file leaf-file-name="add_kit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="260" column="11" selection-start-line="260" selection-start-column="11" selection-end-line="260" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_super_kit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/static/js/add_super_kit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="106" column="19" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_manufacturer.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+            <state relative-caret-position="139">
+              <caret line="79" column="187" selection-start-line="79" selection-start-column="187" selection-end-line="79" selection-end-column="187" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#button#0;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#button#1;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,8 +35,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>date_entered</find>
-      <find>SuperKit</find>
       <find>super_kit1.</find>
       <find>{% endif %}</find>
       <find>.first</find>
@@ -92,6 +63,8 @@
       <find>console.log</find>
       <find>update_all</find>
       <find>manu</find>
+      <find>k +</find>
+      <find>k + '_</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -163,7 +136,6 @@
         <option value="$PROJECT_DIR$/app/templates/super_kit/super_kit.html" />
         <option value="$PROJECT_DIR$/app/templates/home/elements.html" />
         <option value="$PROJECT_DIR$/app/super_kit_routes.py" />
-        <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
         <option value="$PROJECT_DIR$/app/kit_routes.py" />
         <option value="$PROJECT_DIR$/app/static/js/add_reagent.js" />
         <option value="$PROJECT_DIR$/app/static/js/add.js" />
@@ -171,6 +143,7 @@
         <option value="$PROJECT_DIR$/app/templates/manufacturer/add_manufacturer.html" />
         <option value="$PROJECT_DIR$/app/static/js/add_super_kit.js" />
         <option value="$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html" />
+        <option value="$PROJECT_DIR$/app/templates/kit/add_kit.html" />
       </list>
     </option>
   </component>
@@ -222,7 +195,7 @@
               <item name="lims-reagent-db" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="super_kit" type="462c0819:PsiDirectoryNode" />
+              <item name="kit" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -360,13 +333,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563803240970</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Updated layouts.">
-      <created>1572905221077</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1572905221077</updated>
     </task>
     <task id="LOCAL-00074" summary="Added user info.">
       <created>1572906305004</created>
@@ -704,7 +670,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604674927035</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Added Super Kit navigation button. Updated UI.">
+      <created>1604977722227</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1604977722228</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TodoView">
@@ -718,19 +691,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="697" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.79761904" visible="true" weight="0.2494043" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7952381" visible="true" weight="0.2494043" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50436854" side_tool="true" visible="true" weight="0.27209705" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49563146" visible="true" weight="0.27209705" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50516284" side_tool="true" visible="true" weight="0.27209705" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49483716" visible="true" weight="0.27209705" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49960285" weight="0.32928944" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4980143" weight="0.32928944" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" sideWeight="0.20238096" side_tool="true" visible="true" weight="0.2494043" />
+      <window_info id="Favorites" order="2" sideWeight="0.20476191" side_tool="true" visible="true" weight="0.2494043" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -738,6 +709,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928944" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -763,7 +735,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added autofill features to reagent and made reagent. Fixed the autofill feature to kit." />
     <MESSAGE value="Removed unused javascript function." />
     <MESSAGE value="Upgraded the code to simplify database creation for development. Fixed minor bug regarding component condition on made reagent." />
     <MESSAGE value="Update function to delete kit with super kit" />
@@ -788,9 +759,21 @@
     <MESSAGE value="Fixed reagent label print." />
     <MESSAGE value="Fixed field for printer" />
     <MESSAGE value="Fixed kit error." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed kit error." />
+    <MESSAGE value="Added Super Kit navigation button. Updated UI." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Super Kit navigation button. Updated UI." />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" column="187" selection-start-line="79" selection-start-column="187" selection-end-line="79" selection-end-column="187" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#button#0;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#1;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/home/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1049,17 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-594">
-          <caret line="156" column="7" selection-start-line="156" selection-start-column="7" selection-end-line="156" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#button#0;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#button#1;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/kit_routes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="818">
@@ -1073,12 +1045,6 @@
           <caret line="5" column="78" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/sb-admin-2.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pip.txt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/add_reagent.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1131,8 +1097,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="260" column="11" selection-start-line="260" selection-start-column="11" selection-end-line="260" selection-end-column="11" />
+        <state relative-caret-position="197">
+          <caret line="254" column="27" selection-start-line="254" selection-start-column="27" selection-end-line="254" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/kit/add_kit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="79" column="187" selection-start-line="79" selection-start-column="187" selection-end-line="79" selection-end-column="187" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#button#0;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#1;n#div#4;n#div#0;n#fieldset#0;n#fieldset#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
