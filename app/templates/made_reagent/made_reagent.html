@@ -193,7 +193,7 @@
         </div>
     </div>
 
-    <!--Edit Reagent Modal-->
+    <!--Edit Made Reagent Modal-->
     <div class="modal fade" id="mrModal" tabindex="-1" aria-labelledby="mrModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="card shadow modal-content">
@@ -216,7 +216,7 @@
                             </div>
                             <div class="col-3 form-group">
                                 <label>Quantity</label>
-                                <input class="form-control" name="quantity" type="number" value="{{ made_reagent.quantity }}">
+                                <input class="form-control" name="quantity" type="number" min="1" value="{{ made_reagent.quantity }}">
                             </div>
                         </div>
                         <div class="row">

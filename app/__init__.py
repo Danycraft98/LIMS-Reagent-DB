@@ -30,8 +30,8 @@ def create_app():
     #app.config.from_object('config.Config')
     app.config.update(dict(
         SECRET_KEY="{{ LONG_RANDOM_STRING }}",
-        SQLALCHEMY_DATABASE_URI='mysql://irene:irene123@10.0.2.2/reagent_db',
-        # SQLALCHEMY_DATABASE_URI='mysql://root:password@localhost/reagent_db',
+        # SQLALCHEMY_DATABASE_URI='mysql://irene:irene123@10.0.2.2/reagent_db',
+         SQLALCHEMY_DATABASE_URI='mysql://root:password@localhost/reagent_db',
         # 'SQLALCHEMY_BINDS': {'reagent_db': mySQL_con},
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
         UPLOAD_FOLDER='data'
@@ -55,7 +55,7 @@ def create_app():
 
 
     with app.app_context():
-        from . import route, manufacturer_routes, kit_routes, reagent_routes, made_reagent_routes  # Import routes
+        from . import route, manufacturer_routes, super_kit_routes, kit_routes, reagent_routes, made_reagent_routes  # Import routes
         db.create_all()  # Create database tables for our data models
 
         return app
