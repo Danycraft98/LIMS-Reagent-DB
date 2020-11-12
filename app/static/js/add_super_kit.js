@@ -60,6 +60,9 @@ function add_kit() {
     // Copy the element and its child nodes
     cln = document.getElementById('kit0').cloneNode(true);
     cln.querySelectorAll("[id^='k0']").forEach(function(element, test) {
+        if (element.id.includes('name') && element.id.includes('k')) {
+            element.setAttribute('required','');
+        }
         if (element.id.includes('exp_date') && !element.name.includes('comp')) {
             element.setAttribute('required','');
         }
