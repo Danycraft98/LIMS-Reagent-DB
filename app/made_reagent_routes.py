@@ -107,17 +107,17 @@ def add_made_reagent():
 @app.route("/print_made_reagent/<int:made_reagent_id>", methods=["GET", "POST"])
 @login_required
 def print_made_reagent(made_reagent_id):
-    made_reagent_ = MadeReagent.query.filter_by(id=made_reagent_id)[0]
+    made_reagent1 = MadeReagent.query.filter_by(id=made_reagent_id)[0]
 
     made_reagent_label_size = request.form.get('made_reagent_label_size')
     acquired_stat = request.form.get('acquired_stat')
     sm_printer_id = request.form.get('sm_printer_id')
     med_printer_id = request.form.get('med_printer_id')
 
-    batchnum = 1
-    while batchnum <= made_reagent_.quantity:
-        printcont = (made_reagent_.name, made_reagent_.exp_date, made_reagent_.date_entered, (sm_printer_id, med_printer_id))
-        print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent_.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batchnum) + '/' + str(made_reagent_.quantity))
-        batchnum += 1
+    batch_num = 0
+    while batch_num < made_reagent1.quantity:
+        printcont = (made_reagent1.name, made_reagent1.exp_date, made_reagent1.date_entered, (sm_printer_id, med_printer_id))
+        print_label(printcont, "made reagent", made_reagent_label_size, acquired_stat, made_reagent1.get_uids()[batch_num])
+        batch_num += 1
 
-    return redirect(url_for("made_reagent", made_reagent_id=made_reagent_id))
+    return redirect(url_for("made_reagent", made_reagent_id=made_reagent1id))

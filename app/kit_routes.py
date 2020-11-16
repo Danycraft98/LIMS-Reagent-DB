@@ -48,8 +48,6 @@ def add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_num
 @login_required
 def kit(kit_id):
     kit1 = Kit.query.get(kit_id)
-    for c in kit1.components.all():
-        print(c.uid)
     if not kit1:
         return render_template('404.html'), 404
 
@@ -219,10 +217,10 @@ def print_kit(kit_id):
     med_printer_id = request.form.get('med_printer_id')
 
     if not comp_print:
-        batch_num = 1
-        while batch_num <= kit1.quantity:
+        batch_num = 0
+        while batch_num < kit1.quantity:
             print_cont = (kit1.name, kit1.exp_date, kit1.date_entered, (sm_printer_id, med_printer_id))
-            print_label(print_cont, "kit", kit_label_size, None, kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(batch_num) + '/' + str(kit1.quantity))
+            print_label(print_cont, "kit", kit_label_size, None, kit1.get_uids()[batch_num])
             batch_num += 1
 
         for component in kit1.components:

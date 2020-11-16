@@ -5,6 +5,7 @@ from string import Template
 # Handles printing requests and label format
 def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
     (name, expdate, credate, printer_id) = data
+    print(batch_ratio)
     expdate = expdate.strftime("%Y-%m-%d %H:%M:%S")
     credate = credate.strftime("%Y-%m-%d %H:%M:%S")
     sm_printer_id, med_printer_id = printer_id
@@ -29,8 +30,8 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
                         ^FT360,60,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${expdate}^FS
                         ^FT360,85,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${credate}^FS
                         ^FT360,110,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${batch_ratio}^FS
-                        ^FT350,25^BXI,5,200,,,,,^FD${credate}^FS
-                        ^FT175,15^BXI,4,200,,,,,^FD${credate}^FS
+                        ^FT350,25^BXI,5,200,,,,,^FD${batch_ratio}^FS
+                        ^FT175,15^BXI,4,200,,,,,^FD${batch_ratio}^FS
                         ^XZ"""
     elif label_size == "m":
         destination = "tgh_bbp12_" + med_printer_id
@@ -43,7 +44,7 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
                             ^FT160,130,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${expdate}^FS
                             ^FT160,175,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${credate}^FS
                             ^FT160,225,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${batch_ratio}^FS
-                            ^FT140,80^BXI,7,200,,,,,^FD${credate}^FS
+                            ^FT140,80^BXI,7,200,,,,,^FD${batch_ratio}^FS
                             ^XZ"""
 
     label = Template(templates["LABEL_TEMPLATE_TGH_CIRCLE"])
