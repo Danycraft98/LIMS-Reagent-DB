@@ -82,7 +82,7 @@ class Element(db.Model):
     quantity = db.Column(db.Integer)
     comment = db.Column(db.String(255))
     uids = db.Column(db.String(1000))
-    used = db.Column(db.Boolean, default=False)
+    #used = db.Column(db.Boolean, default=False)
 
     def get_uids(self):
         return self.uids.split(",")

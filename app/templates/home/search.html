@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card shadow mx-auto my-5 " style="width: 50%">
+    <div class="card-header">
+        <h5 class="m-0 text-primary"><i class="fa fa-search mx-2" style="font-size: smaller"></i>Search</h5>
+    </div>
+    <div class="card-body mx-5 px-1">
+        <form method="post" action="">
+            <div class="form-group form-row">
+                <div class=" col-3 custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="super_kit" name="item" value="super_kit" checked>
+                    <label class="custom-control-label" for="super_kit">Super Kit</label>
+                </div>
+                <div class=" col-2 custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="kit" name="item" value="kit">
+                    <label class="custom-control-label" for="kit">Kit</label>
+                </div>
+                <div class=" col-3 custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="reagent" name="item" value="reagent">
+                    <label class="custom-control-label" for="reagent">Reagent</label>
+                </div>
+                <div class=" col-4 custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="made_reagent" name="item" value="made-reagent">
+                    <label class="custom-control-label" for="made_reagent">Made-Reagent</label>
+                </div>
+            </div>
+            <div class="form-group form-row">
+                <div class="col-12 input-group">
+                    <div class="input-group-append">
+                        <span class="input-group-text text-sm" style="width:135px">Name</span>
+                    </div>
+                    <input type="text" name="name" class="form-control text-sm">
+                </div>
+            </div>
+            <div class="form-group form-row mt-4">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block py-2">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

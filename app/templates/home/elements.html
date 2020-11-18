@@ -1,109 +1,129 @@
-{% extends "header.html" %}
+{% extends "layout.html" %}
 
-{% block body %}
-    <div class="card shadow">
-        <!-- Card Header - Add Button -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            {% if element_type == 'manufacturer' %}
-                <h4 class="ml-5 m-0 font-weight-bold text-primary">Manufacturers</h4>
-                <a class="mr-5 btn btn-primary" href="{{ url_for('add_manufacturer') }}" style="width: 200px">Add Manufacturer</a>
-            {% elif element_type == 'super_kit' %}
-                <h4 class="ml-5 m-0 font-weight-bold text-primary">Super Kits</h4>
-                <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_super_kit') }}" style="width: 150px">Add Super Kit</a>
-                <!--a class="mr-5 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
-            {% elif element_type == 'kit' %}
-                <h4 class="ml-5 m-0 font-weight-bold text-primary">Kits</h4>
-                <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a>
-            {% elif element_type == 'reagent' %}
-                <h4 class="ml-5 m-0 font-weight-bold text-primary">Reagents</h4>
-                <a class="mr-5 btn btn-primary" href="{{ url_for('add_reagent') }}" style="width: 200px">Add Reagent</a>
-            {% elif element_type == 'made_reagent' %}
-                <h4 class="ml-5 m-0 font-weight-bold text-primary">Made-Reagents</h4>
-                <a class="mr-5 btn btn-primary" href="{{ url_for('add_made_reagent') }}" style="width: 200px">Add Made-Reagent</a>
-            {% endif %}
-        </div>
+{% block content %}
+<div class="card shadow">
+    <!-- Card Header - Add Button -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        {% if element_type == 'manufacturer' %}
+        <h4 class="ml-5 m-0 font-weight-bold text-primary">Manufacturers</h4>
+        <a class="mr-5 btn btn-primary" href="{{ url_for('add_manufacturer') }}" style="width: 200px">Add Manufacturer</a>
+        {% elif element_type == 'super_kit' %}
+        <h4 class="ml-5 m-0 font-weight-bold text-primary">Super Kits</h4>
+        <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_super_kit') }}" style="width: 150px">Add Super Kit</a>
+        <!--a class="mr-5 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
+        {% elif element_type == 'kit' %}
+        <h4 class="ml-5 m-0 font-weight-bold text-primary">Kits</h4>
+        <a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a>
+        {% elif element_type == 'reagent' %}
+        <h4 class="ml-5 m-0 font-weight-bold text-primary">Reagents</h4>
+        <a class="mr-5 btn btn-primary" href="{{ url_for('add_reagent') }}" style="width: 200px">Add Reagent</a>
+        {% elif element_type == 'made_reagent' %}
+        <h4 class="ml-5 m-0 font-weight-bold text-primary">Made-Reagents</h4>
+        <a class="mr-5 btn btn-primary" href="{{ url_for('add_made_reagent') }}" style="width: 200px">Add Made-Reagent</a>
+        {% endif %}
+    </div>
 
-        <!-- Card Body -->
-        <div class="card-body ml-5 mr-5">
-            <div class="table-responsive m-0">
-                <table class="table table-bordered table-hover" id="dataTable" style="width: 100%">
-                    <thead>
-                    <tr role="row">
-                        <th>ID</th>
-                        <th>
-                            {% if element_type == 'manufacturer' %}
-                                Manufacturer Name
-                            {% elif element_type == 'super_kit' %}
-                                Super Kit Name
-                            {% elif element_type == 'kit' %}
-                                Kit Name
-                            {% elif element_type == 'reagent' %}
-                                Reagent Name
-                            {% elif element_type == 'made_reagent' %}
-                                Made-Reagent Name
-                            {% endif %}
-                        </th>
-                        <th hidden>Barcode</th>
-                        <th>Date Entered</th>
-                        <th hidden>Date Entered</th>
-                        <th hidden>UID</th>
-                        <th>Entered By</th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <th>ID</th>
+    <!-- Card Body -->
+    <div class="card-body ml-5 mr-5">
+        <div class="table-responsive m-0">
+            <table class="table table-bordered table-hover" id="dataTable" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th>ID</th>
+                    <th>
                         {% if element_type == 'manufacturer' %}
-                            <th>Manufacturer Name</th>
+                        Manufacturer Name
                         {% elif element_type == 'super_kit' %}
-                            <th>Super Kit Name</th>
+                        Super Kit Name
                         {% elif element_type == 'kit' %}
-                            <th>Kit Name</th>
+                        Kit Name
                         {% elif element_type == 'reagent' %}
-                            <th>Reagent Name</th>
+                        Reagent Name
                         {% elif element_type == 'made_reagent' %}
-                            <th>made_reagent Name</th>
+                        Made-Reagent Name
                         {% endif %}
-                        <th>Date Entered</th>
-                        <th hidden>Date Entered</th>
-                        <th hidden>UID</th>
-                        <th>Entered By</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    {% for element in elements %}
-                        <tr>
-                            <td>{{ loop.index }}</td>
-                            {% if element_type == 'manufacturer' %}
-                                <td><a href="{{ url_for('manufacturer', manufacturer_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'super_kit' %}
-                                <td><a href="{{ url_for('super_kit', super_kit_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'kit' %}
-                                <td><a href="{{ url_for('kit', kit_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'reagent' %}
-                                <td><a href="{{ url_for('reagent', reagent_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'made_reagent' %}
-                                <td><a href="{{ url_for('made_reagent', made_reagent_id=element.id) }}">{{ element.name }}</a></td>
-                            {% endif %}
-                            <td hidden>{{ element.barcode }}</td>
-                            <td>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
-                            <td hidden>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
-                            <td hidden>{% if element_type != 'super_kit' %}{% for uid in element.get_uids() %}{{ uid }} {% endfor %}{% endif %}</td>
-                            <td>{% if element_type != 'super_kit' %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
-                        </tr>
+                    </th>
+                    <th hidden>Barcode</th>
+                    <th>Date Entered</th>
+                    <th hidden>Date Entered</th>
+                    <th hidden>UID</th>
+                    <th>Entered By</th>
+                    {% if element_type == 'super_kit' or element_type == 'kit'%}
+                    <th hidden>Comp UID</th>
+                    {% endif %}
+                    {% if element_type == 'super_kit' %}
+                    <th hidden>Kit UID</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>ID</th>
+                    {% if element_type == 'manufacturer' %}
+                    <th>Manufacturer Name</th>
+                    {% elif element_type == 'super_kit' %}
+                    <th>Super Kit Name</th>
+                    {% elif element_type == 'kit' %}
+                    <th>Kit Name</th>
+                    {% elif element_type == 'reagent' %}
+                    <th>Reagent Name</th>
+                    {% elif element_type == 'made_reagent' %}
+                    <th>made_reagent Name</th>
+                    {% endif %}
+                    <th>Date Entered</th>
+                    <th hidden>Date Entered</th>
+                    <th hidden>UID</th>
+                    <th>Entered By</th>
+                    {% if element_type == 'super_kit' or element_type == 'kit'%}
+                    <th hidden>Comp UID</th>
+                    {% endif %}
+                    {% if element_type == 'super_kit' %}
+                    <th hidden>Kit UID</th>
+                    {% endif %}
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for element in elements %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    {% if element_type == 'manufacturer' %}
+                    <td><a href="{{ url_for('manufacturer', manufacturer_id=element.id) }}">{{ element.name }}</a></td>
+                    {% elif element_type == 'super_kit' %}
+                    <td><a href="{{ url_for('super_kit', super_kit_id=element.id) }}">{{ element.name }}</a></td>
+                    {% elif element_type == 'kit' %}
+                    <td><a href="{{ url_for('kit', kit_id=element.id) }}">{{ element.name }}</a></td>
+                    {% elif element_type == 'reagent' %}
+                    <td><a href="{{ url_for('reagent', reagent_id=element.id) }}">{{ element.name }}</a></td>
+                    {% elif element_type == 'made_reagent' %}
+                    <td><a href="{{ url_for('made_reagent', made_reagent_id=element.id) }}">{{ element.name }}</a></td>
+                    {% endif %}
+                    <td hidden>{{ element.barcode }}</td>
+                    <td>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
+                    <td hidden>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
+                    <td hidden>{% if element_type != 'super_kit' %}{% for uid in element.get_uids() %}{{ uid }} {% endfor %}{% endif %}</td>
+                    <td>{% if element_type != 'super_kit' %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
+                    {% if element_type == 'kit'%}
+                    <td hidden>{% for comp in element.components %}{{ comp.uid }}{% endfor %}</td>
+                    {% elif element_type == 'super_kit' %}
+                    {% for kit in element.kits %}
+                    <td hidden>{% for comp in kit.components %}{{ comp.uid }}{% endfor %}</td>
+                    <td hidden>kit.uid</td>
                     {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block script %}
-    <!-- Page level plugins -->
-    <script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+<!-- Page level custom scripts -->
+<script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
 {% endblock %}

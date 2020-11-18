@@ -51,20 +51,44 @@ def index():
     return render_template('home/index.html', user=current_user.username)
 
 
+@app.route('/search', methods=['GET', 'POST'])
+@login_required
+def search():
+    if request.method == "POST":
+        return redirect('/' + request.form["item"] + 's?name=' + request.form["name"])
+    return render_template('home/search.html', user=current_user.username)
+
+
 @app.route("/<element_types>", methods=['GET', 'POST'])
 @login_required
 def elements(element_types):
+    name = None
+    if request.method == "GET":
+        name = request.args.get("name", "")
+
     element_type = element_types[:-1]
     if element_type == 'manufacturer':
         element_list = Manufacturer.query.all()
     elif element_type == 'super_kit':
-        element_list = SuperKit.query.all()
+        if name:
+            element_list = SuperKit.query.filter_by(name=name).all()
+        else:
+            element_list = SuperKit.query.all()
     elif element_type == 'kit':
-        element_list = Kit.query.filter_by(super_kit_id=None).all()
+        if name:
+            element_list = Kit.query.filter_by(name=name).all()
+        else:
+            element_list = Kit.query.filter_by(super_kit_id=None).all()
     elif element_type == 'reagent':
-        element_list = Reagent.query.all()
+        if name:
+            element_list = Reagent.query.filter_by(name=name).all()
+        else:
+            element_list = Reagent.query.all()
     elif element_type == 'made_reagent':
-        element_list = MadeReagent.query.all()
+        if name:
+            element_list = MadeReagent.query.filter_by(name=name).all()
+        else:
+            element_list = MadeReagent.query.all()
     else:
         return page_not_found(None)
     return render_template("home/elements.html", element_type=element_type, elements=element_list)
