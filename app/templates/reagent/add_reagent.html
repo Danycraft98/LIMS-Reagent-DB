@@ -8,7 +8,7 @@
         </div>
 
         <!-- Card Body -->
-        <form action="{{ url_for('add_reagent') }}" method="post" onsubmit="return confirmMsg();" onkeypress="if(event.keyCode === 13) {event.preventDefault();return false;}">
+        <form id="reagent_form" action="{{ url_for('add_reagent') }}" method="post" onsubmit="return confirmMsg();">
             <div class="card-body mr-5 ml-5">
                 <div class="row mt-3 mb-3">
                     <div class="col">
@@ -85,6 +85,12 @@
 {% block script %}
     <script src="{{ url_for('static', filename='js/add_reagent.js') }}"></script>
     <script>
+        document.querySelector('#reagent_form').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();return false;
+            }
+        });
+
         document.querySelector('#name').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 search_reagent(document.getElementById('name'));
@@ -93,14 +99,13 @@
 
 
         function search_reagent(element) {
-            let form_elements;
             {% for reagent in reagents %}
                 if (element.value.localeCompare('{{ reagent.name }}') === 0) {
                     document.getElementById('name').value = '{{ reagent.name }}';
                     {% with manufacturer=reagent.get_manufacturer() %}
-                    {% if manufacturer %}
-                    document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
-                    {% endif %}
+                        {% if manufacturer %}
+                            document.getElementById('manu_name').value = '{{ manufacturer.id }},{{ manufacturer.get_comp_barcode_pat().part_start }},{{ manufacturer.get_comp_barcode_pat().part_end }},{{ manufacturer.get_comp_barcode_pat().lot_start }},{{ manufacturer.get_comp_barcode_pat().lot_end }}';
+                        {% endif %}
                     {% endwith %}
                     document.getElementById('barcode').value = '{{ reagent.barcode }}';
                     document.getElementById('quantity').value = '{{ reagent.quantity }}';

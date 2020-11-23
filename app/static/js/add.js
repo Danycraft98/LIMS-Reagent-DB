@@ -1,3 +1,14 @@
+function collapse(element) {
+    const arrow = element.firstChild;
+    if (element.innerText.includes('Expand')) {
+        arrow.className = arrow.className.replace('down', 'up');
+        element.innerHTML = element.innerHTML.replace('Expand', 'Collapse');
+    } else {
+        arrow.className = arrow.className.replace('up', 'down');
+        element.innerHTML = element.innerHTML.replace('Collapse', 'Expand');
+    }
+}
+
 function get_date(year_month) {
     const month30 = [4,6,9,11];
     const month31 = [1,3,5,7,8,10,12];
@@ -14,26 +25,31 @@ function get_date(year_month) {
 }
 
 function clone_element(element) {
-    kit_num = '';
+    let kit_num = '';
     if (element.id.split('_')[0].includes('k')) {
-        kit_num = element.split('_')[0]+ '_';
+        kit_num = element.split('_')[0] + '_';
     }
-    let counter = parseInt(document.getElementById(kit_num + 'comps').lastElementChild.id.slice(4)) + 1;
+    let counter = parseInt(document.getElementById(kit_num + 'comps').lastElementChild.id.split('p')[1]) + 1;
 
-    const div_num = element.id.substr(-1);
+    let div_num;
+    if (element.id.includes('p')) {
+        div_num = element.id.split('p')[1];
+    } else {
+        div_num = element.id.split('e')[1];
+    }
     const div = document.getElementById(kit_num + 'comp' + div_num);
     for (let k = 0; k < document.getElementById(kit_num + 'copy_num' + div_num).value; k++) {
         const clone = div.cloneNode(true);
         clone.id = clone.id.slice(0, -1) + counter.toString();
         clone.childNodes.forEach(function (element) {
-            if (element.tagName == 'DIV') {
-                element.childNodes.forEach(function (sub_element, index, parent) {
+            if (element.tagName === 'DIV') {
+                element.childNodes.forEach(function (sub_element) {
                     if (sub_element.childNodes.length > 3) {
                         let input = sub_element.childNodes;
-                        if (input[1].tagName != 'LABEL') {
+                        if (input[1].tagName !== 'LABEL') {
                             input[1].id = input[1].id.slice(0, -1) + counter.toString();
                         }
-                        if (input[3] != undefined) {
+                        if (input[3] !== undefined) {
                             input[3].id = input[3].id.slice(0, -1) + counter.toString();
                         }
                     }
@@ -42,7 +58,7 @@ function clone_element(element) {
         });
 
         clone.removeAttribute('hidden');
-        document.getElementById('comps').appendChild(clone);
+        document.getElementById(kit_num + 'comps').appendChild(clone);
         counter++;
     }
 }
@@ -59,7 +75,7 @@ function enable(element) {
     const raw_comps = document.getElementById('containers_div');
     if (raw_comps != null) {
         raw_comps.childNodes.forEach(function (element) {
-            if (element.tagName == 'DIV') {
+            if (element.tagName === 'DIV') {
                 update_comp(element.id.slice(-1));
             }
         });
@@ -71,7 +87,7 @@ function confirmMsg() {
 }
 
 function deleteMsg(deletable) {
-    if (deletable == 'True') {
+    if (deletable === 'True') {
         return confirmMsg();
     } else {
         alert('This cannot be deleted.');
@@ -80,7 +96,7 @@ function deleteMsg(deletable) {
 }
 
 function editMsg(deletable) {
-    if (deletable == 'True') {
+    if (deletable === 'True') {
         return true;
     } else {
         alert('This cannot be edited.');

@@ -5,42 +5,10 @@ from flask import current_app as app
 from flask_login import login_required
 
 from app import db
+from app.helper_functions import add_component
 from app.models import SuperKit, Kit, Manufacturer, Component
 from app.printer import print_label
 from app.route import current_user
-
-
-# Create component method
-def add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, superk=None):
-    index = 1
-    for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
-        if name == "":
-            continue
-        try:
-            exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-        except ValueError:
-            exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
-
-        if lot_num == "":
-            lot_num = new_kit.date_entered.date()
-
-        component = Component(
-            name=re.sub(' +', ' ', name),
-            uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
-            barcode=comp_num,
-            part_num=part_num,
-            lot_num=lot_num,
-            exp_date=exp_date,
-            size=size,
-            condition=condition,
-            kit_id=new_kit.id
-        )
-
-        if superk:
-            component.uid = new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(superk[0] + 1) + "/" + str(superk[1]) + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1)
-        db.session.add(component)
-        db.session.commit()
-        index += 1
 
 
 # Kit Route

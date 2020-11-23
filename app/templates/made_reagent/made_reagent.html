@@ -8,7 +8,7 @@
 
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle btn btn-default" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    <i class="fa fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Options:</div>
@@ -177,7 +177,7 @@
                 <!-- Card Body -->
                 <form action="{{ url_for('made_reagent', made_reagent_id=made_reagent.id) }}" method="post">
                     <div class="modal-body">
-                        <textarea class="form-control" id="comment" name="comment"></textarea>
+                        <label for="comment"></label><textarea class="form-control" id="comment" name="comment"></textarea>
                     </div>
                     <div class="modal-footer row m-0">
                         <div class="col-3"></div>
@@ -209,28 +209,28 @@
                 <form method="post">
                     <div class="modal-body">
                         <div class="row">
-                            <input class="form-control" type="number" name="mr_id" hidden>
+                            <label for="mr_id"></label><input class="form-control" type="number" id="mr_id" name="mr_id" hidden>
                             <div class="col-4 form-group">
-                                <label>Name</label>
-                                <input class="form-control" name="name" value="{{ made_reagent.name }}">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" name="name" value="{{ made_reagent.name }}">
                             </div>
                             <div class="col-3 form-group">
-                                <label>Quantity</label>
-                                <input class="form-control" name="quantity" type="number" min="1" value="{{ made_reagent.quantity }}">
+                                <label for="quantity">Quantity</label>
+                                <input class="form-control" id="quantity" name="quantity" type="number" min="1" value="{{ made_reagent.quantity }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4 form-group">
-                                <label>Expiry Date</label>
-                                <input class="form-control" name="exp_date" type="date" value="{% if made_reagent.exp_date %}{{ made_reagent.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
+                                <label for="exp_date">Expiry Date</label>
+                                <input class="form-control" id="exp_date" name="exp_date" type="date" value="{% if made_reagent.exp_date %}{{ made_reagent.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
                             </div>
                             <div class="col-4 form-group">
-                                <label>Date Tested</label>
-                                <input class="form-control" name="date_tested" type="date" value="{% if made_reagent.date_tested %}{{ made_reagent.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
+                                <label for="date_tested">Date Tested</label>
+                                <input class="form-control" id="date_tested" name="date_tested" type="date" value="{% if made_reagent.date_tested %}{{ made_reagent.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
                             </div>
                             <div class="col-4 form-group">
-                                <label>P#</label>
-                                <input class="form-control" name="p_num">
+                                <label for="p_num">P#</label>
+                                <input class="form-control" id="p_num" name="p_num">
                             </div>
                         </div>
                     </div>
@@ -328,9 +328,13 @@
 
 {% block script %}
     <!-- Page level plugins -->
-    <script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+    <script>
+        // Call the dataTables jQuery plugin
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
 {% endblock %}

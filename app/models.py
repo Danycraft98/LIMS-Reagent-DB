@@ -1,5 +1,4 @@
 from flask_login import UserMixin
-from sqlalchemy.ext.orderinglist import ordering_list
 from . import db, login_manager
 
 
@@ -55,7 +54,8 @@ class Manufacturer(db.Model):
     def get_user(self):
         return User.query.get(self.user_id)
 
-    def get_uids(self):
+    @staticmethod
+    def get_uids():
         return []
 
 
@@ -82,7 +82,7 @@ class Element(db.Model):
     quantity = db.Column(db.Integer)
     comment = db.Column(db.String(255))
     uids = db.Column(db.String(1000))
-    #used = db.Column(db.Boolean, default=False)
+    # used = db.Column(db.Boolean, default=False)
 
     def get_uids(self):
         return self.uids.split(",")

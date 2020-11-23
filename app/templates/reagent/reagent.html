@@ -8,7 +8,7 @@
 
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle btn btn-default" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    <i class="fa fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Options:</div>
@@ -163,7 +163,7 @@
                 <!-- Card Body -->
                 <form action="{{ url_for('reagent', reagent_id=reagent.id) }}" method="post">
                     <div class="modal-body">
-                        <textarea id="comment" name="comment" class="form-control"></textarea>
+                        <label for="comment"></label><textarea id="comment" name="comment" class="form-control"></textarea>
                     </div>
                     <div class="modal-footer row m-0">
                         <div class="col-3"></div>
@@ -195,42 +195,42 @@
                 <form method="post">
                     <div class="modal-body">
                         <div class="row">
-                            <input class="form-control" type="number" name="reagent_id" hidden>
+                            <label for="reagent_id"></label><input class="form-control" type="number" id="reagent_id" name="reagent_id" hidden>
                             <div class="col-4 form-group">
-                                <label>Name</label>
-                                <input class="form-control" name="name" value="{{ reagent.name }}">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" name="name" value="{{ reagent.name }}">
                             </div>
                             <div class="col-5 form-group">
-                                <label>Barcode</label>
-                                <input class="form-control" name="barcode" value="{{ reagent.barcode }}">
+                                <label for="barcode">Barcode</label>
+                                <input class="form-control" id="barcode" name="barcode" value="{{ reagent.barcode }}">
                             </div>
                             <div class="col-3 form-group">
-                                <label>Quantity</label>
-                                <input class="form-control" name="quantity" type="number" min="1" value="{{ reagent.quantity }}">
+                                <label for="quantity">Quantity</label>
+                                <input class="form-control" id="quantity" name="quantity" type="number" min="1" value="{{ reagent.quantity }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4 form-group">
-                                <label>Part Number</label>
-                                <input class="form-control" name="part_num" value="{{ reagent.part_num }}">
+                                <label for="part_num">Part Number</label>
+                                <input class="form-control" id="part_num" name="part_num" value="{{ reagent.part_num }}">
                             </div>
                             <div class="col-4 form-group">
-                                <label>Lot Number</label>
-                                <input class="form-control" name="lot_num" value="{{ reagent.lot_num }}">
+                                <label for="lot_num">Lot Number</label>
+                                <input class="form-control" id="lot_num" name="lot_num" value="{{ reagent.lot_num }}">
                             </div>
                             <div class="col-4 form-group">
-                                <label>Expiry Date</label>
-                                <input class="form-control" name="exp_date" type="date" value="{% if reagent.exp_date %}{{ reagent.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
+                                <label for="exp_date">Expiry Date</label>
+                                <input class="form-control" id="exp_date" name="exp_date" type="date" value="{% if reagent.exp_date %}{{ reagent.exp_date.strftime('%Y-%m-%d') }}{% endif %}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4 form-group">
-                                <label>Date Tested</label>
-                                <input class="form-control" name="date_tested" type="date" value="{% if reagent.date_tested %}{{ reagent.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
+                                <label for="date_tested">Date Tested</label>
+                                <input class="form-control" id="date_tested" name="date_tested" type="date" value="{% if reagent.date_tested %}{{ reagent.date_tested.strftime('%Y-%m-%d') }}{% endif %}">
                             </div>
                             <div class="col-4 form-group">
-                                <label>P#</label>
-                                <input class="form-control" name="p_num">
+                                <label for="p_num">P#</label>
+                                <input class="form-control" id="p_num" name="p_num">
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
         if sm_printer_id == "1":
             destination = "tgh_bbp12_circle"
         if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
-            templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """"^XA
+            templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """^XA
                         ^PW600^LL0300^LS00
                         ^FT360,35,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${name}^FS
                         ^FT360,60,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${expdate}^FS

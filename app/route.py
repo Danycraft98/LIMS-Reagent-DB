@@ -55,40 +55,41 @@ def index():
 @login_required
 def search():
     if request.method == "POST":
-        return redirect('/' + request.form["item"] + 's?name=' + request.form["name"])
+        query = []
+        for item in request.form:
+            if item != 'item':
+                query.append(item + "=" + request.form[item])
+        query = "&".join(query)
+        return redirect('/' + request.form["item"] + 's?' + query)
     return render_template('home/search.html', user=current_user.username)
 
 
 @app.route("/<element_types>", methods=['GET', 'POST'])
 @login_required
 def elements(element_types):
-    name = None
-    if request.method == "GET":
-        name = request.args.get("name", "")
-
     element_type = element_types[:-1]
     if element_type == 'manufacturer':
         element_list = Manufacturer.query.all()
     elif element_type == 'super_kit':
-        if name:
-            element_list = SuperKit.query.filter_by(name=name).all()
-        else:
-            element_list = SuperKit.query.all()
+        filter_result = SuperKit.query
+        for item in request.args:
+            filter_result = filter_result.filter(getattr(SuperKit, item).like("%" + request.args[item] + "%"))
+        element_list = filter_result.all()
     elif element_type == 'kit':
-        if name:
-            element_list = Kit.query.filter_by(name=name).all()
-        else:
-            element_list = Kit.query.filter_by(super_kit_id=None).all()
+        filter_result = Kit.query
+        for item in request.args:
+            filter_result = filter_result.filter(getattr(Kit, item).like("%" + request.args[item] + "%"))
+        element_list = filter_result.all()
     elif element_type == 'reagent':
-        if name:
-            element_list = Reagent.query.filter_by(name=name).all()
-        else:
-            element_list = Reagent.query.all()
+        filter_result = Reagent.query
+        for item in request.args:
+            filter_result = filter_result.filter(getattr(Reagent, item).like("%" + request.args[item] + "%"))
+        element_list = filter_result.all()
     elif element_type == 'made_reagent':
-        if name:
-            element_list = MadeReagent.query.filter_by(name=name).all()
-        else:
-            element_list = MadeReagent.query.all()
+        filter_result = MadeReagent.query
+        for item in request.args:
+            filter_result = filter_result.filter(getattr(MadeReagent, item).like("%" + request.args[item] + "%"))
+        element_list = filter_result.all()
     else:
         return page_not_found(None)
     return render_template("home/elements.html", element_type=element_type, elements=element_list)
@@ -104,8 +105,6 @@ def delete(element_type, element_id):
         element = SuperKit.query.get(element_id)
     elif element_type == 'kit':
         element = Kit.query.get(element_id)
-        #if element.get_super_kit():
-        #a    db.session.delete(element.get_super_kit())
     elif element_type == 'reagent':
         element = Reagent.query.get(element_id)
     elif element_type == 'made_reagent':

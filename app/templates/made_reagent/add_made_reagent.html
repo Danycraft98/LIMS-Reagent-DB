@@ -6,7 +6,7 @@
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h4 class="ml-5 m-0 font-weight-bold text-primary">Add Made-Reagent</h4>
         </div>
-        <form action="{{ url_for('add_made_reagent') }}" method="post" onsubmit="return confirmMsg();" onkeypress="return event.keyCode != 13;">
+        <form id="mr_form" action="{{ url_for('add_made_reagent') }}" method="post" onsubmit="return confirmMsg();">
             <div class="card-body mr-5 ml-5">
                 <div class="row mt-3">
                     <div class="col">
@@ -102,36 +102,24 @@
 
 {% block script %}
     <script>
-        document.querySelector('#name').addEventListener('keypress', function (e) {
+        document.querySelector('#mr_form').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
-                search_made_reagent(document.getElementById('name'));
+                e.preventDefault();
+                return false;
             }
         });
 
-        function barcode_to_comp_name(element) {
-            var found = false;
-            var comp_infos = {{ comp_infos | safe }};
-            for (comp_info in comp_infos) {
-                if (element.value == comp_info) {
-                    found = true;
-                    document.getElementById('comp_name' + element.id.substr(-1)).setAttribute('value', comp_infos[comp_info]);
-                }
-            }
-            if (found == false) {
-                document.getElementById('comp_name' + element.id.substr(-1)).setAttribute('value', '');
-            }
-        }
-
-        function search_made_reagent(element) {
-            let form_elements;
-            let blank_len;
-            {% for made_reagent in made_reagents %}
-            if (element.value.localeCompare('{{ made_reagent.name }}') === 0) {
-                const length = document.getElementById('comps').childElementCount - 1;
-                blank_len = 1;
-                {% for component in MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id) %}
-                if ({{ loop.index }} <= {{ MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id).count() }}) {
-                    if ({{ loop.index }} > length) {
+        document.querySelector('#name').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                let form_elements, blank_len;
+                let element = document.getElementById('name');
+                {% for made_reagent in made_reagents %}
+                    if (element.value.localeCompare('{{ made_reagent.name }}') === 0) {
+                    const length = document.getElementById('comps').childElementCount - 1;
+                    blank_len = 1;
+                    {% for component in MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id) %}
+                        if ({{ loop.index }} <= {{ MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id).count() }}) {
+                        if ({{ loop.index }} > length) {
                         clone_element(document.getElementById('comp0'));
                     }
                     form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
@@ -151,6 +139,21 @@
                 }
             }
             {% endfor %}
+            }
+        });
+
+        function barcode_to_comp_name(element) {
+            let found = false;
+            let comp_infos = {{ comp_infos | safe }};
+            for (let comp_info in comp_infos) {
+                if (element.value === comp_info) {
+                    found = true;
+                    document.getElementById('comp_name' + element.id.substr(-1)).setAttribute('value', comp_infos[comp_info]);
+                }
+            }
+            if (found === false) {
+                document.getElementById('comp_name' + element.id.substr(-1)).setAttribute('value', '');
+            }
         }
     </script>
 {% endblock script %}

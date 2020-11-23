@@ -4,7 +4,7 @@ from flask import current_app as app
 from flask_login import login_required, current_user
 
 from app import db
-from app.models import BarcodePattern, Manufacturer, MadeReagent
+from app.models import BarcodePattern, Manufacturer
 from datetime import datetime
 
 

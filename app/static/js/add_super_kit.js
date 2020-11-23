@@ -1,36 +1,9 @@
-function edit_button(element) {
-    if (element.innerText.includes('Add')) {
-        element.innerText = 'Delete Super Kit'
-    } else {
-        element.innerText = 'Add Super Kit'
-        $('input[name=sk_name').val('');
-    }
-
-    const div = document.getElementById('edit_button_div');
-    if (div.className.includes('mt-5')) {
-        div.setAttribute('class', 'row mt-3 mb-3');
-    } else {
-        div.setAttribute('class', 'row mt-5 mb-3');
-    }
-}
-
-function collapse(element) {
-    var arrow = element.firstChild;
-    if (element.innerText.includes('Expand')) {
-        arrow.className = arrow.className.replace('down', 'up');
-        element.innerHTML = element.innerHTML.replace('Expand', 'Collapse');
-    } else {
-        arrow.className = arrow.className.replace('up', 'down');
-        element.innerHTML = element.innerHTML.replace('Collapse', 'Expand');
-    }
-}
-
 function get_kit_ids() {
-    kit_ids = document.getElementById('kit_ids')
+    let kit_ids = document.getElementById('kit_ids')
     kit_ids.value = ''
     document.getElementById('kits').childNodes.forEach(function(element) {
         if (element.id && !isNaN(element.id.slice(3)) && !element.id.includes('0')) {
-            if (kit_ids.value != '')
+            if (kit_ids.value !== '')
                 kit_ids.value += ','
             kit_ids.value += element.id.slice(3)
         }
@@ -38,7 +11,7 @@ function get_kit_ids() {
 }
 
 function delete_kit(element) {
-    var kit_element = document.getElementById('kit' + element.id.slice(1));
+    const kit_element = document.getElementById('kit' + element.id.slice(1));
     kit_element.previousSibling.remove();
     kit_element.remove();
     get_kit_ids();
@@ -48,10 +21,10 @@ let counter = 1;
 let properties = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function add_kit() {
-    var container = document.getElementById('kits')
-    var index = parseInt(container.lastElementChild.id.slice(3), 10) + 1
+    const container = document.getElementById('kits');
+    const index = parseInt(container.lastElementChild.id.slice(3), 10) + 1;
 
-    var cln = document.getElementById('add_kit').cloneNode(true);
+    let cln = document.getElementById('add_kit').cloneNode(true);
     cln.children[0].children[0].setAttribute('data-target', '#kit' + index);
     cln.children[0].children[0].removeAttribute('hidden');
     cln.children[1].children[0].remove();
@@ -59,7 +32,7 @@ function add_kit() {
 
     // Copy the element and its child nodes
     cln = document.getElementById('kit0').cloneNode(true);
-    cln.querySelectorAll("[id^='k0']").forEach(function(element, test) {
+    cln.querySelectorAll("[id^='k0']").forEach(function(element) {
         if (element.id.includes('name') && element.id.includes('k')) {
             element.setAttribute('required','');
         }
@@ -75,58 +48,20 @@ function add_kit() {
     get_kit_ids();
 }
 
-function clone_element(element) {
-    var kit_num = element.id.split('_')[0];
-    let counter = parseInt(document.getElementById(kit_num + '_comps').lastElementChild.id.split('p')[1]) + 1;
-
-    var div_num;
-    if (element.id.includes('p')) {
-        div_num = element.id.split('p')[1];
-    } else {
-        div_num = element.id.split('e')[1];
-    }
-    const div = document.getElementById(kit_num + '_comp' + div_num);
-    for (let k = 0; k < document.getElementById(kit_num + '_copy_num' + div_num).value; k++) {
-        const clone = div.cloneNode(true);
-        clone.id = clone.id.slice(0, -1) + counter.toString();
-        var nodeList = clone.childNodes;
-        clone.childNodes.forEach(function (element) {
-            if (element.tagName == 'DIV') {
-                element.childNodes.forEach(function (sub_element, index, parent) {
-                    if (sub_element.childNodes.length > 3) {
-                        let input = sub_element.childNodes;
-                        if (input[1].tagName != 'LABEL') {
-                            input[1].id = input[1].id.slice(0, -1) + counter.toString();
-                        }
-                        if (input[3] != undefined) {
-                            input[3].id = input[3].id.slice(0, -1) + counter.toString();
-                        }
-                    }
-                });
-            }
-        });
-
-        clone.removeAttribute('hidden');
-        document.getElementById(kit_num + '_comps').appendChild(clone);
-        counter++;
-    }
-}
-
 function update_all(element) {
-    var kit_num = element.id.split('_')[0];
+    const kit_num = element.id.split('_')[0];
     properties = element.value.split(',');
     update_barcode(element);
     const comps = document.getElementById(kit_num + '_comps').childNodes;
     comps.forEach(function (element) {
-        if (element.tagName == 'FIELDSET') {
+        if (element.tagName === 'FIELDSET') {
             update_comp(element);
         }
     });
-
 }
 
 function update_barcode(element) {
-    var kit_num = element.id.split('_')[0];
+    const kit_num = element.id.split('_')[0];
     const barcode = document.getElementById(kit_num + '_barcode').value;
     if (properties[1] >= 0) {
         document.getElementById(kit_num + '_part_num').setAttribute('value', barcode.slice(properties[1], properties[2]));
@@ -148,7 +83,7 @@ function update_barcode(element) {
 }
 
 function update_comp(element) {
-    var kit_num = element.id.split('_')[0] + '_';
+    const kit_num = element.id.split('_')[0] + '_';
     const barcode = document.getElementById(kit_num + 'comp_barcode' + element.id.slice(-1)).value;
 
     if (properties[7] >= 0) {

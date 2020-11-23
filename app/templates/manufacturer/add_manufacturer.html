@@ -8,7 +8,7 @@
         </div>
 
         <!-- Card Body -->
-        <form action="{{ url_for('add_manufacturer') }}" method="post" onsubmit="return confirmMsg()" onkeypress="return event.keyCode != 13;">
+        <form id="manu_form" action="{{ url_for('add_manufacturer') }}" method="post" onsubmit="return confirmMsg()">
             <div class="card-body mr-5 ml-5">
                 <div class="row mt-3 mb-3">
                     <div class="col">
@@ -32,10 +32,10 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="part_num" name="part_num" readonly>
-                            <input type="text" class="form-control" id="part_start" name="part_start" hidden>
+                            <label for="part_start"></label><input type="text" class="form-control" id="part_start" name="part_start" hidden>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary" id="part_num_btn" onclick="update_master(this)">
-                                    <i class="fas fa-search"></i>
+                                    <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
@@ -46,9 +46,9 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="lot_num" name="lot_num" readonly>
-                            <input type="text" class="form-control" id="lot_start" name="lot_start" hidden>
+                            <label for="lot_start"></label><input type="text" class="form-control" id="lot_start" name="lot_start" hidden>
                             <button type="button" class="btn btn-primary" id="lot_num_btn" onclick="update_master(this)">
-                                <i class="fas fa-search"></i>
+                                <i class="fa fa-search"></i>
                             </button>
                         </div>
                     </div>
@@ -58,10 +58,10 @@
                         </label>
                         <div class="input-group">
                             <input type="date" class="form-control" id="exp_date" name="exp_date" readonly>
-                            <input type="text" class="form-control" id="exp_date_start" name="exp_date_start" hidden>
+                            <label for="exp_date_start"></label><input type="text" class="form-control" id="exp_date_start" name="exp_date_start" hidden>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary" id="exp_date_btn" onclick="update_date(this)">
-                                    <i class="fas fa-search"></i>
+                                    <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
@@ -75,32 +75,32 @@
                 </div>
                 <div class="row">
                     <div class="col-4 form-group">
-                        <input type="checkbox" class="form-check-input" name="comp_cb" checked="checked" onchange="document.getElementById('comp_barcode').disabled = !this.checked;">
+                        <label for="comp_cb"></label><input type="checkbox" class="form-check-input" id="comp_cb" name="comp_cb" checked="checked" onchange="document.getElementById('comp_barcode').disabled = !this.checked;">
                         <label for="comp_barcode">Component Barcode</label>
                         <input type="text" class="form-control" id="comp_barcode" name="comp_barcode">
                     </div>
                     <div class="col-4 form-group">
-                        <input type="checkbox" class="form-check-input" id="comp_part_num_cb" name="comp_cb" value="part_num" checked="checked" onchange="checkbox_pressed(this)">
+                        <label for="comp_part_num_cb"></label><input type="checkbox" class="form-check-input" id="comp_part_num_cb" name="comp_cb" value="part_num" checked="checked" onchange="checkbox_pressed(this)">
                         <label for="comp_part_num">Part Number</label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="comp_part_num" name="comp_part_num" readonly>
-                            <input type="text" class="form-control" id="comp_part_start" name="comp_part_start" hidden>
+                            <label for="comp_part_start"></label><input type="text" class="form-control" id="comp_part_start" name="comp_part_start" hidden>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary" id="comp_part_num_btn" onclick="update_comp_master(this)">
-                                    <i class="fas fa-search"></i>
+                                    <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="col-4 form-group">
-                        <input type="checkbox" class="form-check-input" id="comp_lot_num_cb" name="comp_cb" value="lot_num" checked="checked" onchange="checkbox_pressed(this)">
+                        <label for="comp_lot_num_cb"></label><input type="checkbox" class="form-check-input" id="comp_lot_num_cb" name="comp_cb" value="lot_num" checked="checked" onchange="checkbox_pressed(this)">
                         <label for="comp_lot_num">Lot Number</label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="comp_lot_num" name="comp_lot_num" readonly>
-                            <input type="text" class="form-control" id="comp_lot_start" name="comp_lot_start" hidden>
+                            <label for="comp_lot_start"></label><input type="text" class="form-control" id="comp_lot_start" name="comp_lot_start" hidden>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary" id="comp_lot_num_btn" onclick="update_comp_master(this)">
-                                    <i class="fas fa-search"></i>
+                                    <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
@@ -118,53 +118,16 @@
             </div>
         </form>
     </div>
+{% endblock %}
 
+{% block script %}
+    <script src="{{ url_for('static', filename='js/add_manu.js') }}"></script>
     <script>
-        function checkbox_pressed(element) {
-            document.getElementById(element.id.slice(0, -3) + "_btn").disabled = !element.checked;
-            document.getElementById(element.id.slice(0, -3)).setAttribute("value", "")
-        }
-
-        function update_master(element) {
-            const barcode = document.getElementById("barcode");
-            update_parts(element, barcode);
-        }
-
-        function update_comp_master(element) {
-            const barcode = document.getElementById("comp_barcode");
-            update_parts(element, barcode);
-        }
-
-        function update_parts(element, barcode) {
-            const id = element.id;
-            const myRegexp = /\.([^.]+)\./g;
-            const match = myRegexp.exec(barcode.value);
-            if (match != null) {
-                document.getElementById(id.slice(0, -4)).setAttribute("value", match[1]);
-                document.getElementById(id.slice(0, -7) + "start").setAttribute("value", barcode.value.indexOf("."));
-                barcode.value = barcode.value.split('.').join("");
+        document.querySelector('#manu_form').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                return false;
             }
-        }
-
-        function update_date(element) {
-            const barcode = document.getElementById("barcode");
-            const myRegexp = /\.([^.]+)\./g;
-            const match = myRegexp.exec(barcode.value);
-
-            if (match != null) {
-                var date = match[1].replace(/\//g, "-");
-                var month = parseInt(date.slice(5, 7), 10);
-                var large_month = [1, 3, 5, 7, 8, 10, 12];
-                if (large_month.includes(month)) {
-                    document.getElementById($(element).attr("id").slice(0, -4)).setAttribute("value", date + "-31");
-                } else if (month == 2) {
-                    document.getElementById($(element).attr("id").slice(0, -4)).setAttribute("value", date + "-28");
-                } else {
-                    document.getElementById($(element).attr("id").slice(0, -4)).setAttribute("value", date + "-30");
-                }
-                document.getElementById($(element).attr("id").slice(0, -3) + "start").setAttribute("value", barcode.value.indexOf("."));
-                barcode.value = barcode.value.split('.').join("");
-            }
-        }
+        });
     </script>
 {% endblock %}

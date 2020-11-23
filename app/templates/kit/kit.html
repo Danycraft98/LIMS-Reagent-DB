@@ -8,7 +8,7 @@
 
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle btn btn-default" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    <i class="fa fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">Options:</div>
@@ -316,8 +316,8 @@
                 <!-- Card Body -->
                 <form action="{{ url_for('kit', kit_id=kit.id) }}" method="post">
                     <div class="modal-body">
-                        <textarea class="form-control" id="kit_comment" name="kit_comment">{{ kit.comment }}</textarea>
-                        <textarea class="form-control" id="super_comment" name="super_comment">{{ super_kit.comment }}</textarea>
+                        <label for="kit_comment"></label><textarea class="form-control" id="kit_comment" name="kit_comment">{{ kit.comment }}</textarea>
+                        <label for="super_comment"></label><textarea class="form-control" id="super_comment" name="super_comment">{{ super_kit.comment }}</textarea>
                     </div>
                     <div class="modal-footer row m-0">
                         <div class="col-3"></div>
@@ -350,10 +350,10 @@
                 <form method="post">
                     <div class="modal-body">
                         <div class="row">
-                            <input class="form-control" type="number" name="kit_id" hidden>
+                            <label for="kit_id"></label><input class="form-control" type="number" id="kit_id" name="kit_id" hidden>
                             <div class="col-4 form-group">
-                                <label for="comp_name">Name</label>
-                                <input class="form-control" name="name" value="{{ kit.name }}">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" name="name" value="{{ kit.name }}">
                             </div>
                             <div class="col-5 form-group">
                                 <label for="kit_barcode">Barcode</label>
@@ -419,7 +419,7 @@
                 <form id="edit_form" method="post">
                     <div class="modal-body">
                         <div class="row">
-                            <input class="form-control" type="number" name="comp_id" id="comp_id" hidden>
+                            <label for="comp_id"></label><input class="form-control" type="number" name="comp_id" id="comp_id" hidden>
                             <div class="col-4 form-group">
                                 <label for="comp_name">Name</label>
                                 <input class="form-control" name="name" id="comp_name">
@@ -486,13 +486,14 @@
                         </div>
                         <div class="row">
                             <div class="col-6 form-group">
-                                <select class="form-control" name="kit_label_size">
+                                <label for="kit_label_size"></label>
+                                <select class="form-control" id="kit_label_size" name="kit_label_size">
                                     <option value="m">Medium</option>
                                     <option value="s">Small</option>
                                 </select>
                             </div>
                             <div class="col-6 form-group">
-                                <input type="number" class="form-control" name="kit_label" value="{{ kit.quantity }}" readonly/>
+                                <label for="kit_label"></label><input type="number" class="form-control" id="kit_label" name="kit_label" value="{{ kit.quantity }}" readonly/>
                             </div>
                         </div>
                         <hr/>
@@ -617,9 +618,9 @@
 
 {% block script %}
 <script>
-    var properties = "{% if kit.get_manufacturer() %}{{ kit.get_manufacturer().get_barcode_pat().part_start }},{{ kit.get_manufacturer().get_barcode_pat().part_end }},{ kit.get_manufacturer().get_barcode_pat().lot_start }},{{ kit.get_manufacturer().get_barcode_pat().lot_end }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_start }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_start }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().lot_start }}, {{ kit.get_manufacturer().get_comp_barcode_pat().lot_end }}{% else %}0,0,0,0,0,0,0,0,0,0{% endif %}".split(",");
+    const properties = "{% if kit.get_manufacturer() %}{{ kit.get_manufacturer().get_barcode_pat().part_start }},{{ kit.get_manufacturer().get_barcode_pat().part_end }},{ kit.get_manufacturer().get_barcode_pat().lot_start }},{{ kit.get_manufacturer().get_barcode_pat().lot_end }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_start }},{{ kit.get_manufacturer().get_barcode_pat().exp_date_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_start }},{{ kit.get_manufacturer().get_comp_barcode_pat().part_end }},{{ kit.get_manufacturer().get_comp_barcode_pat().lot_start }}, {{ kit.get_manufacturer().get_comp_barcode_pat().lot_end }}{% else %}0,0,0,0,0,0,0,0,0,0{% endif %}".split(",");
 
-    function update_barcode(element) {
+    function update_barcode() {
         const barcode = document.getElementById("barcode").value;
         if (properties[1] >= 0) {
             document.getElementById("kit_part_num").setAttribute("value", barcode.slice(properties[1], properties[2]));
@@ -640,7 +641,7 @@
         }
     }
 
-    function update_comp(element) {
+    function update_comp() {
         const barcode = document.getElementById("comp_barcode").value;
 
         if (properties[7] >= 0) {
@@ -661,7 +662,7 @@
             document.getElementById('update_btn').innerText = "Add";
             document.getElementById("edit_form").querySelectorAll('input').forEach(function (element) {
                 element.removeAttribute("value");
-                if (element.id == "comp_id") {
+                if (element.id === "comp_id") {
                     element.setAttribute("value", "0");
                 }
             })

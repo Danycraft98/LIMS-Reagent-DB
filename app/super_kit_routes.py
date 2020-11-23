@@ -5,42 +5,9 @@ from flask import current_app as app
 from flask_login import login_required
 
 from app import db
-from app.models import SuperKit, Kit, Manufacturer, Component
-from app.printer import print_label
+from app.helper_functions import add_component
+from app.models import SuperKit, Kit, Manufacturer
 from app.route import current_user
-
-
-# Create component method
-def add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, superk=None):
-    index = 1
-    for name, comp_num, part_num, lot_num, exp_date, size, condition in zip(names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions):
-        if name == "":
-            continue
-        try:
-            exp_date = datetime.strptime(exp_date, "%Y-%m-%d")
-        except ValueError:
-            exp_date = new_kit.date_entered.replace(year=new_kit.date_entered.year + 10)
-
-        if lot_num == "":
-            lot_num = new_kit.date_entered.date()
-
-        component = Component(
-            name=re.sub(' +', ' ', name),
-            uid=new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
-            barcode=comp_num,
-            part_num=part_num,
-            lot_num=lot_num,
-            exp_date=exp_date,
-            size=size,
-            condition=condition,
-            kit_id=new_kit.id
-        )
-
-        if superk:
-            component.uid = new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(superk[0] + 1) + "/" + str(superk[1]) + " " + str(value + 1) + "/" + str(new_kit.quantity) + " " + str(index) + "/" + str(len(names) - 1),
-        db.session.add(component)
-        db.session.commit()
-        index += 1
 
 
 # Super Kit Route
@@ -59,14 +26,14 @@ def add_super_kit():
         form = request.form
 
         # Add Super Kit
-        super_kit = SuperKit(
+        super_kit1 = SuperKit(
             name=re.sub(' +', ' ', form.get("sk_name")),
             part_num=form.get("sk_part_num"),
             comment=request.values.get("sk_comment"),
             quantity=int(form.get("sk_quantity"))
         )
 
-        db.session.add(super_kit)
+        db.session.add(super_kit1)
         db.session.commit()
 
         ids = form.get("kit_ids").split(",")
@@ -102,7 +69,7 @@ def add_super_kit():
                 quantity=int(form.get("k" + str(i) + "_quantity", 1)),
                 comment=form.get("k" + str(i) + "_value"),
                 user_id=current_user.id,
-                super_kit_id=super_kit.id
+                super_kit_id=super_kit1.id
             )
             db.session.add(new_kit)
             db.session.commit()
@@ -117,9 +84,9 @@ def add_super_kit():
 
             uids = []
             for value in range(new_kit.quantity):
-                for num in range(super_kit.quantity):
+                for num in range(super_kit1.quantity):
                     uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(num + 1) + "/" + str(super_kit.quantity) + " " + str(value + 1) + "/" + str(new_kit.quantity))
-                    add_component(value, new_kit,names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, (num, super_kit.quantity))
+                    add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, (num, super_kit.quantity))
             new_kit.uids = ",".join(uids)
             db.session.commit()
             i += 1

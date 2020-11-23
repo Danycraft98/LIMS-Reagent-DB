@@ -1,13 +1,11 @@
-import re
-from datetime import datetime
 from flask import render_template, url_for, redirect, request
 from flask import current_app as app
 from flask_login import login_required
 
-from app import db
 from app.models import Reagent, Manufacturer
 from app.printer import print_label
 from app.route import current_user
+from app.helper_functions import *
 
 
 # Reagent Route
@@ -28,12 +26,7 @@ def reagent(reagent_id):
             reagent1.barcode = request.form.get("barcode")
             reagent1.part_num = request.form.get("part_num")
             reagent1.lot_num = request.form.get("lot_num")
-            reagent1.exp_date = datetime.strptime(request.form.get("exp_date"), "%Y-%m-%d")
-            if request.form.get("date_tested"):
-                reagent1.date_tested = datetime.strptime(request.form.get("date_tested"), "%Y-%m-%d")
-            reagent1.p_num = request.form.get("p_num")
-            reagent1.quantity = int(request.form.get("quantity"))
-            reagent1.set_uids(reagent1.quantity)
+            edit_values(reagent1, request)
 
         db.session.merge(reagent1)
         db.session.commit()

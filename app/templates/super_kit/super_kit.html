@@ -5,7 +5,6 @@
         <!-- Card Header - Add Button -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h4 class="ml-5 m-0 font-weight-bold text-primary">Kits: {{ super_kit.name }}</h4>
-            <!--a class="ml-auto mr-1 btn btn-primary" href="{{ url_for('add_kit') }}" style="width: 150px">Add Kit</a-->
         </div>
 
         <!-- Card Body -->
@@ -16,7 +15,6 @@
                     <tr role="row">
                         <th>ID</th>
                         <th>Kit Name</th>
-                        <th hidden>Barcode</th>
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
                         <th hidden>UID</th>
@@ -53,9 +51,13 @@
 
 {% block script %}
     <!-- Page level plugins -->
-    <script src="{{ url_for('static', filename='vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+    <script>
+        // Call the dataTables jQuery plugin
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
 {% endblock %}
