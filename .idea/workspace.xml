@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone minor mistake.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/image/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kit_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/sb-admin-2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/sb-admin-2.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/sb-admin-2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/home/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/kit/add_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/kit/add_kit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/made_reagent/add_made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/made_reagent/add_made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/made_reagent/made_reagent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/super_kit/add_super_kit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,14 +186,7 @@
       <workItem from="1606141385992" duration="1087000" />
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
-      <workItem from="1606320358773" duration="4183000" />
-    </task>
-    <task id="LOCAL-00086" summary="Updated files">
-      <created>1585849410792</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1585849410792</updated>
+      <workItem from="1606320358773" duration="4683000" />
     </task>
     <task id="LOCAL-00087" summary="Updated files including models.py">
       <created>1585939702404</created>
@@ -546,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606155997648</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Updated global search page.">
+      <created>1606326249400</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1606326249400</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TodoView">
@@ -574,7 +559,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add component functionality added." />
     <MESSAGE value="Fixed all modals." />
     <MESSAGE value="Print comp update." />
     <MESSAGE value="Fixed bugs." />
@@ -599,7 +583,8 @@
     <MESSAGE value="Updated Reagent-db." />
     <MESSAGE value="Added other search template." />
     <MESSAGE value="Undone minor mistake." />
-    <option name="LAST_COMMIT_MESSAGE" value="Undone minor mistake." />
+    <MESSAGE value="Updated global search page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated global search page." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -610,10 +595,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606155997480">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606326249016">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606155997480" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606326249016" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -638,10 +623,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606155999183">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606326251273">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606155999183" />
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606326251273" />
     <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606161460663">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
