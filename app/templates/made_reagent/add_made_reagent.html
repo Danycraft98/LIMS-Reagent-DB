@@ -118,26 +118,26 @@
                     const length = document.getElementById('comps').childElementCount - 1;
                     blank_len = 1;
                     {% for component in MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id) %}
-                        if ({{ loop.index }} <= {{ MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id).count() }}) {
-                        if ({{ loop.index }} > length) {
-                        clone_element(document.getElementById('comp0'));
-                    }
-                    form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
-                    form_elements[0].value = '{{ component.get_comp().name }}';
-                    form_elements[1].value = '{{ component.get_comp().barcode }}';
-                }
-                blank_len = {{ loop.index }};
-                {% endfor %}
+                        if ('{{ loop.index <= MadeReagentToComp.query.filter_by(madereagent_id=made_reagent.id).count() }}'.localeCompare('True') === 0) {
+                            if (parseInt('{{ loop.index }}') > length) {
+                                clone_element(document.getElementById('comp0'));
+                            }
+                            form_elements = document.getElementById('comp{{ loop.index }}').getElementsByClassName('form-control');
+                            form_elements[0].value = '{{ component.get_comp().name }}';
+                            form_elements[1].value = '{{ component.get_comp().barcode }}';
+                        }
+                        blank_len = {{ loop.index }};
+                    {% endfor %}
 
-                while (blank_len <= length) {
-                    blank_len++;
-                    if ($('#comp' + blank_len).length) {
-                        form_elements = document.getElementById('comp' + blank_len).getElementsByClassName('form-control');
-                        form_elements[0].value = '';
-                        form_elements[1].value = '';
+                    while (blank_len <= length) {
+                        blank_len++;
+                        if ($('#comp' + blank_len).length) {
+                            form_elements = document.getElementById('comp' + blank_len).getElementsByClassName('form-control');
+                            form_elements[0].value = '';
+                            form_elements[1].value = '';
+                        }
                     }
                 }
-            }
             {% endfor %}
             }
         });

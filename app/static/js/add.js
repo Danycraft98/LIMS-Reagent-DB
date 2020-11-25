@@ -45,7 +45,7 @@ function clone_element(element) {
             if (element.tagName === 'DIV') {
                 element.childNodes.forEach(function (sub_element) {
                     if (sub_element.childNodes.length > 3) {
-                        let input = sub_element.childNodes;
+                        let input = sub_element.children;
                         if (input[1].tagName !== 'LABEL') {
                             input[1].id = input[1].id.slice(0, -1) + counter.toString();
                         }
@@ -66,20 +66,6 @@ function clone_element(element) {
 function remove_element(element) {
     const containerDiv = element.parentElement.parentElement.parentElement.id;
     document.getElementById(containerDiv).remove();
-}
-
-function enable(element) {
-    properties = element.value.split(',');
-
-    update();
-    const raw_comps = document.getElementById('containers_div');
-    if (raw_comps != null) {
-        raw_comps.childNodes.forEach(function (element) {
-            if (element.tagName === 'DIV') {
-                update_comp(element.id.slice(-1));
-            }
-        });
-    }
 }
 
 function confirmMsg() {

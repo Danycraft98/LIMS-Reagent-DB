@@ -16,6 +16,18 @@ class RegisterForm(FlaskForm):
     password = PasswordField('password', validators=[InputRequired(), Length(min=8)])
 
 
+def search_query(item_type, items):
+    filter_result = item_type.query
+    for item in items:
+        if "kit" in item:
+            filter_result = filter_result.filter(getattr(Kit, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+        elif "comp" in item:
+            filter_result = filter_result.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+        else:
+            filter_result = filter_result.filter(getattr(item_type, item).like("%" + request.args[item] + "%"))
+    return filter_result
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -57,7 +69,7 @@ def search():
     if request.method == "POST":
         query = []
         for item in request.form:
-            if item != 'item':
+            if item != 'item' and request.form[item] != '':
                 query.append(item + "=" + request.form[item])
         query = "&".join(query)
         return redirect('/' + request.form["item"] + 's?' + query)
@@ -71,25 +83,13 @@ def elements(element_types):
     if element_type == 'manufacturer':
         element_list = Manufacturer.query.all()
     elif element_type == 'super_kit':
-        filter_result = SuperKit.query
-        for item in request.args:
-            filter_result = filter_result.filter(getattr(SuperKit, item).like("%" + request.args[item] + "%"))
-        element_list = filter_result.all()
+        element_list = search_query(SuperKit, request.args).all()
     elif element_type == 'kit':
-        filter_result = Kit.query
-        for item in request.args:
-            filter_result = filter_result.filter(getattr(Kit, item).like("%" + request.args[item] + "%"))
-        element_list = filter_result.all()
+        element_list = search_query(Kit, request.args).all()
     elif element_type == 'reagent':
-        filter_result = Reagent.query
-        for item in request.args:
-            filter_result = filter_result.filter(getattr(Reagent, item).like("%" + request.args[item] + "%"))
-        element_list = filter_result.all()
+        element_list = search_query(Reagent, request.args).all()
     elif element_type == 'made_reagent':
-        filter_result = MadeReagent.query
-        for item in request.args:
-            filter_result = filter_result.filter(getattr(MadeReagent, item).like("%" + request.args[item] + "%"))
-        element_list = filter_result.all()
+        element_list = search_query(MadeReagent, request.args).all()
     else:
         return page_not_found(None)
     return render_template("home/elements.html", element_type=element_type, elements=element_list)

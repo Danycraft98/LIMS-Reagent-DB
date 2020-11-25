@@ -160,7 +160,7 @@ def add_kit():
 
         uids = []
         for value in range(new_kit.quantity):
-            uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ")+ str(value + 1) + "/" + str(new_kit.quantity))
+            uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(value + 1) + "/" + str(new_kit.quantity))
             add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions)
         new_kit.uids = ",".join(uids)
         print(uids)
