@@ -22,7 +22,20 @@ def search_query(item_type, items):
         if "kit" in item:
             filter_result = filter_result.filter(getattr(Kit, item.split("_")[-1]).like("%" + request.args[item] + "%"))
         elif "comp" in item:
-            filter_result = filter_result.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+            if item_type == MadeReagent:
+                filter_result = filter_result.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+            else:
+                mrtcs = MadeReagentToComp.query.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+                for mrtc in mrtcs.all():
+                    filter_result = filter_result.filter(getattr(MadeReagentToComp, 'compoenent_id').like(mrtc.id))
+                if mrtcs.count() == 0:
+                    filter_result = filter_result.filter_by(id=None)
+        elif "reagent" in item:
+            mrtcs = MadeReagentToComp.query.filter(getattr(Reagent, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+            for mrtc in mrtcs.all():
+                filter_result = filter_result.filter(getattr(MadeReagentToComp, 'reagent_id').like(mrtc.id))
+            if mrtcs.count() == 0:
+                filter_result = filter_result.filter_by(id=None)
         else:
             filter_result = filter_result.filter(getattr(item_type, item).like("%" + request.args[item] + "%"))
     return filter_result
