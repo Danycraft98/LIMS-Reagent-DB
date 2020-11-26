@@ -27,7 +27,7 @@ function get_date(year_month) {
 function clone_element(element) {
     let kit_num = '';
     if (element.id.split('_')[0].includes('k')) {
-        kit_num = element.split('_')[0] + '_';
+        kit_num = element.id.split('_')[0] + '_';
     }
     let counter = parseInt(document.getElementById(kit_num + 'comps').lastElementChild.id.split('p')[1]) + 1;
 
