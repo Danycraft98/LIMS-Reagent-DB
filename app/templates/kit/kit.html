@@ -45,7 +45,7 @@
                 <div class="row form-group">
                     <div class="col-4 text-right"><strong>Comments</strong></div>
                     <div class="col-small">
-                        <button type="button" class="form-control btn-circle" data-toggle="modal" data-target="#commentModal" onclick="document.getElementById('kit_comment').setAttribute('hidden','True'); document.getElementById('super_comment').removeAttribute('hidden')"><i class="fa fa-pen"></i></button>
+                        <button type="button" class="form-control btn-circle" data-toggle="modal" data-target="#commentModal" onclick="document.getElementById('kit_comment').setAttribute('hidden','True'); document.getElementById('super_comment').removeAttribute('hidden')"><i class="fa fa-pencil"></i></button>
                     </div>
                     <div class="col-5">
                         {{ super_kit.comment }}
@@ -169,7 +169,7 @@
             <div class="row form-group">
                 <div class="col-4 text-right"><strong>Comments</strong></div>
                 <div class="col-small">
-                    <button type="button" class="form-control btn-circle" data-toggle="modal" data-target="#commentModal" onclick="document.getElementById('kit_comment').removeAttribute('hidden'); document.getElementById('super_comment').setAttribute('hidden','True')"><i class="fa fa-pen"></i></button>
+                    <button type="button" class="form-control btn-circle" data-toggle="modal" data-target="#commentModal" onclick="document.getElementById('kit_comment').removeAttribute('hidden'); document.getElementById('super_comment').setAttribute('hidden','True')"><i class="fa fa-pencil"></i></button>
                 </div>
                 <div class="col-5">
                     {{ kit.comment }}
@@ -229,7 +229,7 @@
                                 <td>{{ component.size.upper() }}</td>
                                 <td>
                                     <button class="form-control" data-target="#compModal" data-toggle="modal" onclick="setTitle('Edit Component'); edit_comp{{ component.id }}();">
-                                        <i class="fa fa-pen"></i>
+                                        <i class="fa fa-pencil"></i>
                                     </button>
                                 </td>
                                 <td>
@@ -268,7 +268,7 @@
                                 <td>{{ component.size.upper() }}</td>
                                 <td>
                                     <button class="form-control" data-target="#compModal" data-toggle="modal" onclick="setTitle('Edit Component'); edit_comp{{ component.id }}();">
-                                        <i class="fa fa-pen"></i>
+                                        <i class="fa fa-pencil"></i>
                                     </button>
                                 </td>
                                 <td>
