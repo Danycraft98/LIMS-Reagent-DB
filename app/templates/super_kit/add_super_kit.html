@@ -9,10 +9,10 @@
 
         <!-- Card Body -->
         <form id="sk_form" action="{{ url_for('add_super_kit') }}" method="post" onsubmit="return confirmMsg();">
-            <label for="kit_ids"></label><input id="kit_ids" name="kit_ids" hidden>
+            <label for="kit_ids" hidden></label><input id="kit_ids" name="kit_ids" hidden>
             <div class="card-body mr-5 ml-5">
                 <fieldset id="super_kit_div">
-                    <div class="row mt-3 mb-3">
+                    <div class="row mb-3">
                         <div class="col">
                             <h4>Super Kit Information</h4>
                         </div>
@@ -51,10 +51,10 @@
                     </div>
                     <fieldset id="kit0" class="collapse show" hidden>
                         <div id="edit_button_div" class="row mt-3 mb-3">
-                            <div class="col-3">
+                            <div class="col-11">
                                 <h4>Master Information</h4>
                             </div>
-                            <div class="offset-md-8 col-1">
+                            <div class="col-1">
                                 <button type="button" id="k0" class="btn btn-outline-secondary" onclick="delete_kit(this)">
                                     <i class="fa fa-trash" style="font-size: 24px"></i>
                                 </button>
