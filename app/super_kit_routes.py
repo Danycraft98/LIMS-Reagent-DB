@@ -85,8 +85,8 @@ def add_super_kit():
             uids = []
             for value in range(new_kit.quantity):
                 for num in range(super_kit1.quantity):
-                    uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(num + 1) + "/" + str(super_kit.quantity) + " " + str(value + 1) + "/" + str(new_kit.quantity))
-                    add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, (num, super_kit.quantity))
+                    uids.append(new_kit.date_entered.strftime("%Y-%m-%d %H:%M:%S ") + str(num + 1) + "/" + str(super_kit1.quantity) + " " + str(value + 1) + "/" + str(new_kit.quantity))
+                    add_component(value, new_kit, names, comp_nums, comp_part_nums, comp_lot_nums, comp_exp_dates, sizes, conditions, (num, super_kit1.quantity))
             new_kit.uids = ",".join(uids)
             db.session.commit()
             i += 1

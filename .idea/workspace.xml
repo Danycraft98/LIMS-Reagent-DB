@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="">
+    <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone minor mistake.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/super_kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/super_kit_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,14 +187,7 @@
       <workItem from="1606141385992" duration="1087000" />
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
-      <workItem from="1606320358773" duration="9383000" />
-    </task>
-    <task id="LOCAL-00092" summary="Auto-fill function. Changed event handler (enter key). Component with empty name field does not get inputted into the database.">
-      <created>1590184139794</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1590184139795</updated>
+      <workItem from="1606320358773" duration="10358000" />
     </task>
     <task id="LOCAL-00093" summary="Fixed minor bugs.">
       <created>1590185976365</created>
@@ -530,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606415746457</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Undone minor mistake.">
+      <created>1606415797136</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1606415797136</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TodoView">
@@ -576,14 +578,14 @@
     <MESSAGE value="Used field added." />
     <MESSAGE value="Updated Reagent-db." />
     <MESSAGE value="Added other search template." />
-    <MESSAGE value="Undone minor mistake." />
     <MESSAGE value="Updated global search page." />
     <MESSAGE value="Fixed component uid field search." />
     <MESSAGE value="Fixed icon for edit." />
     <MESSAGE value="Fixed minor bugs." />
     <MESSAGE value="Updated search page." />
     <MESSAGE value="Fixed Super Kit Adding Feature." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Super Kit Adding Feature." />
+    <MESSAGE value="Undone minor mistake." />
+    <option name="LAST_COMMIT_MESSAGE" value="Undone minor mistake." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -594,47 +596,47 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606415773976">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606415796956">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606415773976" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606415796956" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="494" y="104" key="EnvironmentVariablesDialog/0.23.1280.697@0.23.1280.697" timestamp="1606142353474" />
-    <state width="1238" height="130" key="GridCell.Tab.0.bottom" timestamp="1606410540912">
+    <state width="1238" height="130" key="GridCell.Tab.0.bottom" timestamp="1606423965471">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.bottom/0.23.1280.697@0.23.1280.697" timestamp="1606410540912" />
-    <state width="1238" height="130" key="GridCell.Tab.0.center" timestamp="1606410540912">
+    <state width="1238" height="130" key="GridCell.Tab.0.bottom/0.23.1280.697@0.23.1280.697" timestamp="1606423965471" />
+    <state width="1238" height="130" key="GridCell.Tab.0.center" timestamp="1606423965471">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.center/0.23.1280.697@0.23.1280.697" timestamp="1606410540912" />
-    <state width="1238" height="130" key="GridCell.Tab.0.left" timestamp="1606410540911">
+    <state width="1238" height="130" key="GridCell.Tab.0.center/0.23.1280.697@0.23.1280.697" timestamp="1606423965471" />
+    <state width="1238" height="130" key="GridCell.Tab.0.left" timestamp="1606423965470">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.left/0.23.1280.697@0.23.1280.697" timestamp="1606410540911" />
-    <state width="1238" height="130" key="GridCell.Tab.0.right" timestamp="1606410540912">
+    <state width="1238" height="130" key="GridCell.Tab.0.left/0.23.1280.697@0.23.1280.697" timestamp="1606423965470" />
+    <state width="1238" height="130" key="GridCell.Tab.0.right" timestamp="1606423965471">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.right/0.23.1280.697@0.23.1280.697" timestamp="1606410540912" />
+    <state width="1238" height="130" key="GridCell.Tab.0.right/0.23.1280.697@0.23.1280.697" timestamp="1606423965471" />
     <state x="283" y="23" key="SettingsEditor" timestamp="1606160936432">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606415749022">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606415798413">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606415749022" />
-    <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606415221954">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606415798413" />
+    <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606424185711">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="341" y="118" width="598" height="629" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1606157737414" />
-    <state x="341" y="126" width="598" height="548" key="find.popup/0.23.1280.697@0.23.1280.697" timestamp="1606415221954" />
+    <state x="341" y="126" width="598" height="548" key="find.popup/0.23.1280.697@0.23.1280.697" timestamp="1606424185711" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lims_reagent_db$Flask.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1606142627087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/lims_reagent_db$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1606157538065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lims_reagent_db$main.coverage" NAME="main Coverage Results" MODIFIED="1606410540897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lims_reagent_db$main.coverage" NAME="main Coverage Results" MODIFIED="1606423965457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
