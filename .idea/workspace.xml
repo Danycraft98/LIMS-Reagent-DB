@@ -4,7 +4,6 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone wrong commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/route.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,14 +186,7 @@
       <workItem from="1606141385992" duration="1087000" />
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
-      <workItem from="1606320358773" duration="15022000" />
-    </task>
-    <task id="LOCAL-00097" summary="Removed unused javascript function.">
-      <created>1590588782589</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1590588782590</updated>
+      <workItem from="1606320358773" duration="15823000" />
     </task>
     <task id="LOCAL-00098" summary="Upgraded the code to simplify database creation for development. Fixed minor bug regarding component condition on made reagent.">
       <created>1590588970018</created>
@@ -532,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606447048363</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="Fixed search query function.">
+      <created>1606449773946</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1606449773946</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="TodoView">
@@ -560,7 +559,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed reagent label print." />
     <MESSAGE value="Fixed field for printer" />
     <MESSAGE value="Fixed kit error." />
     <MESSAGE value="Added Super Kit navigation button. Updated UI." />
@@ -585,7 +583,8 @@
     <MESSAGE value="clone fixed." />
     <MESSAGE value="Fixed spacings." />
     <MESSAGE value="Undone wrong commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Undone wrong commit." />
+    <MESSAGE value="Fixed search query function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed search query function." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -596,10 +595,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606447048199">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606449773753">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606447048199" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606449773753" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -624,10 +623,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606447050302">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606449776078">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606447050302" />
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606449776078" />
     <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606446714727">
       <screen x="0" y="23" width="1280" height="697" />
     </state>

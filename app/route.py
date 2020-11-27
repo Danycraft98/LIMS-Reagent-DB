@@ -21,7 +21,7 @@ def search_query(item_type, items):
     if item_type == SuperKit:
         filter_result = filter_result.join(Kit).join(Component)
     elif item_type == Kit:
-        filter_result = filter_result.join(Component)
+        filter_result = filter_result.filter_by(super_kit_id=None).join(Component)
     elif item_type == MadeReagent:
         filter_result = filter_result.join(MadeReagentToComp)
 
@@ -106,7 +106,7 @@ def elements(element_types):
     elif element_type == 'super_kit':
         element_list = search_query(SuperKit, request.args).all()
     elif element_type == 'kit':
-        element_list = search_query(Kit, request.args).filter_by(super_kit_id=None).all()
+        element_list = search_query(Kit, request.args).all()
     elif element_type == 'reagent':
         element_list = search_query(Reagent, request.args).all()
     elif element_type == 'made_reagent':
