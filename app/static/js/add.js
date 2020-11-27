@@ -31,26 +31,25 @@ function clone_element(element) {
     }
     let counter = parseInt(document.getElementById(kit_num + 'comps').lastElementChild.id.split('p')[1]) + 1;
 
-    let div_num;
-    if (element.id.includes('p')) {
-        div_num = element.id.split('p')[1];
-    } else {
-        div_num = element.id.split('e')[1];
-    }
+    let div_num = element.id.match(/\d+$/);
     const div = document.getElementById(kit_num + 'comp' + div_num);
+    console.log(div_num)
     for (let k = 0; k < document.getElementById(kit_num + 'copy_num' + div_num).value; k++) {
         const clone = div.cloneNode(true);
-        clone.id = clone.id.slice(0, -1) + counter.toString();
+        clone.id = clone.id.replace(/\d+$/, '') + counter.toString();
         clone.childNodes.forEach(function (element) {
             if (element.tagName === 'DIV') {
                 element.childNodes.forEach(function (sub_element) {
                     if (sub_element.childNodes.length > 3) {
                         let input = sub_element.children;
+                        if (input[0].tagName !== 'LABEL') {
+                            input[0].id = input[0].id.replace(/\d+$/, '') + counter.toString();
+                        }
                         if (input[1].tagName !== 'LABEL') {
-                            input[1].id = input[1].id.slice(0, -1) + counter.toString();
+                            input[1].id = input[1].id.replace(/\d+$/, '') + counter.toString();
                         }
                         if (input[3] !== undefined) {
-                            input[3].id = input[3].id.slice(0, -1) + counter.toString();
+                            input[3].id = input[3].id.replace(/\d+$/, '') + counter.toString();
                         }
                     }
                 });
