@@ -18,22 +18,30 @@ class RegisterForm(FlaskForm):
 
 def search_query(item_type, items):
     filter_result = item_type.query
+    if item_type == SuperKit:
+        filter_result = filter_result.join(Kit).join(Component)
+    elif item_type == Kit:
+        filter_result = filter_result.join(Component)
+    elif item_type == MadeReagent:
+        filter_result = filter_result.join(MadeReagentToComp)
+
     for item in items:
         if "kit" in item:
             filter_result = filter_result.filter(getattr(Kit, item.split("_")[-1]).like("%" + request.args[item] + "%"))
         elif "comp" in item:
-            if item_type == MadeReagent:
+            if item_type != MadeReagent:
                 filter_result = filter_result.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
             else:
-                mrtcs = MadeReagentToComp.query.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+                mrtcs = MadeReagentToComp.query.join(Component).filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+                print(mrtcs.all())
                 for mrtc in mrtcs.all():
-                    filter_result = filter_result.filter(getattr(MadeReagentToComp, 'compoenent_id').like(mrtc.id))
+                    filter_result = filter_result.filter(getattr(MadeReagentToComp, 'id').like(mrtc.id))
                 if mrtcs.count() == 0:
                     filter_result = filter_result.filter_by(id=None)
         elif "reagent" in item:
-            mrtcs = MadeReagentToComp.query.filter(getattr(Reagent, item.split("_")[-1]).like("%" + request.args[item] + "%"))
+            mrtcs = MadeReagentToComp.query.join(Reagent).filter(getattr(Reagent, item.split("_")[-1]).like("%" + request.args[item] + "%"))
             for mrtc in mrtcs.all():
-                filter_result = filter_result.filter(getattr(MadeReagentToComp, 'reagent_id').like(mrtc.id))
+                filter_result = filter_result.filter(getattr(MadeReagentToComp, 'id').like(mrtc.id))
             if mrtcs.count() == 0:
                 filter_result = filter_result.filter_by(id=None)
         else:
@@ -98,7 +106,7 @@ def elements(element_types):
     elif element_type == 'super_kit':
         element_list = search_query(SuperKit, request.args).all()
     elif element_type == 'kit':
-        element_list = search_query(Kit, request.args).all()
+        element_list = search_query(Kit, request.args).filter_by(super_kit_id=None).all()
     elif element_type == 'reagent':
         element_list = search_query(Reagent, request.args).all()
     elif element_type == 'made_reagent':
