@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone wrong commit.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -186,14 +185,7 @@
       <workItem from="1606141385992" duration="1087000" />
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
-      <workItem from="1606320358773" duration="15823000" />
-    </task>
-    <task id="LOCAL-00098" summary="Upgraded the code to simplify database creation for development. Fixed minor bug regarding component condition on made reagent.">
-      <created>1590588970018</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1590588970018</updated>
+      <workItem from="1606320358773" duration="16583000" />
     </task>
     <task id="LOCAL-00099" summary="Update function to delete kit with super kit">
       <created>1590596329813</created>
@@ -531,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606449773946</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="Fixed kits page.">
+      <created>1606451512146</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1606451512146</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TodoView">
@@ -559,7 +558,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed field for printer" />
     <MESSAGE value="Fixed kit error." />
     <MESSAGE value="Added Super Kit navigation button. Updated UI." />
     <MESSAGE value="Fixed add kit html file." />
@@ -584,7 +582,8 @@
     <MESSAGE value="Fixed spacings." />
     <MESSAGE value="Undone wrong commit." />
     <MESSAGE value="Fixed search query function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed search query function." />
+    <MESSAGE value="Fixed kits page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed kits page." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -595,10 +594,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606449773753">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606451511966">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606449773753" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606451511966" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -623,15 +622,15 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606449776078">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606451513482">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606449776078" />
-    <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606446714727">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606451513482" />
+    <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606451467521">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="341" y="118" width="598" height="629" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1606157737414" />
-    <state x="341" y="126" width="598" height="548" key="find.popup/0.23.1280.697@0.23.1280.697" timestamp="1606446714727" />
+    <state x="341" y="126" width="598" height="548" key="find.popup/0.23.1280.697@0.23.1280.697" timestamp="1606451467521" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lims_reagent_db$Flask.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1606142627087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
