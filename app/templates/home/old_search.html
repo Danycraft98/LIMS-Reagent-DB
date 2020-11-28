@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="card shadow mx-auto my-5 " style="width: 50%">
+        <div class="card-header">
+            <h5 class="m-0 text-primary"><i class="fa fa-search mx-2" style="font-size: smaller"></i>Search</h5>
+        </div>
+        <div class="card-body mx-5 px-1">
+            <form method="post" action="">
+                <div class="form-group form-row mb-4">
+                    <div class=" col-3 custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="super_kit" name="item" value="super_kit" checked>
+                        <label class="custom-control-label" for="super_kit">Super Kit</label>
+                    </div>
+                    <div class=" col-2 custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="kit" name="item" value="kit">
+                        <label class="custom-control-label" for="kit">Kit</label>
+                    </div>
+                    <div class=" col-3 custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="reagent" name="item" value="reagent">
+                        <label class="custom-control-label" for="reagent">Reagent</label>
+                    </div>
+                    <div class=" col-4 custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="made_reagent" name="item" value="made_reagent">
+                        <label class="custom-control-label" for="made_reagent">Made-Reagent</label>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Name</span>
+                        </div>
+                        <label for="name"></label><input type="text" id="name" name="name" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="barcode_div" class="form-group form-row" hidden>
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Barcode</span>
+                        </div>
+                        <label for="barcode"></label><input type="text" id="barcode" name="barcode" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="uids_div" class="form-group form-row" hidden>
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">UID</span>
+                        </div>
+                        <label for="uids"></label><input type="text" id="uids" name="uids" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="kit_name_div" class="form-group form-row">
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Kit Name</span>
+                        </div>
+                        <label for="kit_name"></label><input type="text" id="kit_name" name="kit_name" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="kit_uid_div" class="form-group form-row">
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Kit UID</span>
+                        </div>
+                        <label for="kit_uid"></label><input type="text" id="kit_uid" name="kit_uids" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="comp_name_div" class="form-group form-row">
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Comp Name</span>
+                        </div>
+                        <label for="comp_name"></label><input type="text" id="comp_name" name="comp_name" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="comp_uid_div" class="form-group form-row">
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Comp UID</span>
+                        </div>
+                        <label for="comp_uid"></label><input type="text" id="comp_uid" name="comp_uid" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="reagent_name_div" class="form-group form-row" hidden>
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Reagent Name</span>
+                        </div>
+                        <label for="reagent_name"></label><input type="text" id="reagent_name" name="reagent_name" class="form-control text-sm">
+                    </div>
+                </div>
+                <div id="reagent_uid_div" class="form-group form-row" hidden>
+                    <div class="col-12 input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-sm" style="width:135px">Reagent UID</span>
+                        </div>
+                        <label for="reagent_uid"></label><input type="text" id="reagent_uid" name="reagent_uids" class="form-control text-sm">
+                    </div>
+                </div>
+                <div class="form-group form-row mt-4">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary btn-block py-2">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('input[type=radio][name=item]').change(function () {
+            if (this.value === 'super_kit') {
+                $('#barcode_div').attr('hidden', '');
+                $('#barcode').val('');
+                $('#uids_div').attr('hidden', '');
+                $('#uids').val('');
+                $('div[id*=kit]').each(function () {
+                    $(this).removeAttr('hidden');
+                });
+
+                $('div[id*=comp]').each(function () {
+                    $(this).removeAttr('hidden');
+                });
+                $('div[id*=reagent]').each(function () {
+                    $(this).attr('hidden', '');
+                });
+            } else if (this.value === 'kit') {
+                $('#barcode_div').removeAttr('hidden');
+                $('#uids_div').removeAttr('hidden');
+                $('div[id*=kit]').each(function () {
+                    $(this).attr('hidden', '');
+                    $(this).val('');
+                });
+                $('div[id*=comp]').each(function () {
+                    $(this).removeAttr('hidden');
+                });
+                $('div[id*=reagent]').each(function () {
+                    $(this).attr('hidden', '');
+                });
+            } else if (this.value === 'reagent') {
+                $('#barcode_div').removeAttr('hidden');
+                $('#uids_div').removeAttr('hidden');
+                $('div[id*=kit]').each(function () {
+                    $(this).attr('hidden', '');
+                    $(this).val('');
+                });
+                $('div[id*=comp]').each(function () {
+                    $(this).attr('hidden', '');
+                    $(this).val('');
+                });
+                $('div[id*=reagent]').each(function () {
+                    $(this).attr('hidden', '');
+                });
+            } else {
+                $('#barcode_div').attr('hidden', '');
+                $('#uids_div').removeAttr('hidden');
+                $('div[id*=kit]').each(function () {
+                    $(this).attr('hidden', '');
+                    $(this).val('');
+                });
+                $('div[id*=comp]').each(function () {
+                    $(this).removeAttr('hidden');
+                });
+                $('div[id*=reagent]').each(function () {
+                    $(this).removeAttr('hidden');
+                });
+            }
+        });
+    </script>
+{% endblock %}

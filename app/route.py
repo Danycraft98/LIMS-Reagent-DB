@@ -16,7 +16,16 @@ class RegisterForm(FlaskForm):
     password = PasswordField('password', validators=[InputRequired(), Length(min=8)])
 
 
-def search_query(item_type, items):
+def search_query(items):
+    filter_result = []
+    item_types = [SuperKit, Kit, Reagent, MadeReagent]
+    for item in items:
+        for item_type in item_types:
+            if hasattr(item_type, item) and items[item] != '':
+                filter_result.extend(item_type.query.filter(getattr(item_type, item).like("%" + items[item] + "%")).all())
+    return filter_result
+
+"""def search_query(item_type, items):
     filter_result = item_type.query
     if item_type == SuperKit:
         filter_result = filter_result.join(Kit).join(Component)
@@ -33,7 +42,6 @@ def search_query(item_type, items):
                 filter_result = filter_result.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
             else:
                 mrtcs = MadeReagentToComp.query.join(Component).filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
-                print(mrtcs.all())
                 for mrtc in mrtcs.all():
                     filter_result = filter_result.filter(getattr(MadeReagentToComp, 'id').like(mrtc.id))
                 if mrtcs.count() == 0:
@@ -46,7 +54,7 @@ def search_query(item_type, items):
                 filter_result = filter_result.filter_by(id=None)
         else:
             filter_result = filter_result.filter(getattr(item_type, item).like("%" + request.args[item] + "%"))
-    return filter_result
+    return filter_result"""
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -88,12 +96,7 @@ def index():
 @login_required
 def search():
     if request.method == "POST":
-        query = []
-        for item in request.form:
-            if item != 'item' and request.form[item] != '':
-                query.append(item + "=" + request.form[item])
-        query = "&".join(query)
-        return redirect('/' + request.form["item"] + 's?' + query)
+        return render_template("home/elements.html", element_type='search_result', elements=search_query(request.form))
     return render_template('home/search.html', user=current_user.username)
 
 
@@ -104,13 +107,13 @@ def elements(element_types):
     if element_type == 'manufacturer':
         element_list = Manufacturer.query.all()
     elif element_type == 'super_kit':
-        element_list = search_query(SuperKit, request.args).all()
+        element_list = SuperKit.query.all()
     elif element_type == 'kit':
-        element_list = search_query(Kit, request.args).all()
+        element_list = Kit.query.all()
     elif element_type == 'reagent':
-        element_list = search_query(Reagent, request.args).all()
+        element_list = Reagent.query.all()
     elif element_type == 'made_reagent':
-        element_list = search_query(MadeReagent, request.args).all()
+        element_list = MadeReagent.query.all()
     else:
         return page_not_found(None)
     return render_template("home/elements.html", element_type=element_type, elements=element_list)

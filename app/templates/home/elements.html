@@ -20,6 +20,8 @@
             {% elif element_type == 'made_reagent' %}
                 <h4 class="ml-5 m-0 font-weight-bold text-primary">Made-Reagents</h4>
                 <a class="mr-5 btn btn-primary" href="{{ url_for('add_made_reagent') }}" style="width: 200px">Add Made-Reagent</a>
+            {% else %}
+                <h4 class="ml-5 m-0 font-weight-bold text-primary">Search Result</h4>
             {% endif %}
         </div>
 
@@ -41,6 +43,8 @@
                                 Reagent Name
                             {% elif element_type == 'made_reagent' %}
                                 Made-Reagent Name
+                            {% else %}
+                                Item Name
                             {% endif %}
                         </th>
                         <th hidden>Barcode</th>
@@ -48,10 +52,10 @@
                         <th hidden>Date Entered</th>
                         <th hidden>UID</th>
                         <th>Entered By</th>
-                        {% if element_type == 'super_kit' or element_type == 'kit' %}
+                        {% if 'kit' in element_type or 'search' in element_type %}
                             <th hidden>Comp UID</th>
                         {% endif %}
-                        {% if element_type == 'super_kit' %}
+                        {% if element_type == 'super_kit' or 'search' in element_type %}
                             <th hidden>Kit UID</th>
                         {% endif %}
                     </tr>
@@ -69,15 +73,17 @@
                             <th>Reagent Name</th>
                         {% elif element_type == 'made_reagent' %}
                             <th>made_reagent Name</th>
+                        {% else %}
+                            <th>Item Name</th>
                         {% endif %}
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
                         <th hidden>UID</th>
                         <th>Entered By</th>
-                        {% if element_type == 'super_kit' or element_type == 'kit' %}
+                        {% if 'kit' in element_type or 'search' in element_type %}
                             <th hidden>Comp UID</th>
                         {% endif %}
-                        {% if element_type == 'super_kit' %}
+                        {% if element_type == 'super_kit' or 'search' in element_type %}
                             <th hidden>Kit UID</th>
                         {% endif %}
                     </tr>
@@ -96,6 +102,8 @@
                                 <td><a href="{{ url_for('reagent', reagent_id=element.id) }}">{{ element.name }}</a></td>
                             {% elif element_type == 'made_reagent' %}
                                 <td><a href="{{ url_for('made_reagent', made_reagent_id=element.id) }}">{{ element.name }}</a></td>
+                            {% else %}
+                                <td><a href="?">{{ element.name }}</a></td>
                             {% endif %}
                             <td hidden>{{ element.barcode }}</td>
                             <td>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>

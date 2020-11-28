@@ -5,7 +5,6 @@ from string import Template
 # Handles printing requests and label format
 def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
     (name, expdate, credate, printer_id) = data
-    print(batch_ratio)
     expdate = expdate.strftime("%Y-%m-%d %H:%M:%S")
     credate = credate.strftime("%Y-%m-%d %H:%M:%S")
     sm_printer_id, med_printer_id = printer_id
