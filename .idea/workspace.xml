@@ -188,14 +188,7 @@
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
       <workItem from="1606320358773" duration="20951000" />
-      <workItem from="1606850297507" duration="4133000" />
-    </task>
-    <task id="LOCAL-00105" summary="Updated printer id.">
-      <created>1602248857255</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1602248857255</updated>
+      <workItem from="1606850297507" duration="5468000" />
     </task>
     <task id="LOCAL-00106" summary="Removed unused html file. Updated the update modals and functions.">
       <created>1604358998501</created>
@@ -533,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606852511960</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="Fixed search.">
+      <created>1606854546658</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1606854546658</updated>
+    </task>
+    <option name="localTasksCounter" value="155" />
     <servers />
   </component>
   <component name="TodoView">
@@ -561,7 +561,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add super kit button to main page." />
     <MESSAGE value="Updated super kit required field." />
     <MESSAGE value="Fixed Printer bugs." />
     <MESSAGE value="Used field added." />
@@ -586,7 +585,8 @@
     <MESSAGE value="Removed commented function." />
     <MESSAGE value="Fixed table columns." />
     <MESSAGE value="Fixed all table." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed all table." />
+    <MESSAGE value="Fixed search." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed search." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -597,10 +597,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606852511798">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606854546461">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606852511798" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606854546461" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -625,10 +625,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606852512833">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606854547960">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606852512833" />
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606854547960" />
     <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606852093842">
       <screen x="0" y="23" width="1280" height="697" />
     </state>

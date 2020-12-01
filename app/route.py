@@ -28,8 +28,8 @@ def search_query(items):
             comps = Component.query.filter(getattr(Component, item).like("%" + items[item] + "%"))
             if comps.count() > 0:
                 for comp in comps.all():
-                    kit_query = kit_query.filter(Component.id == comp.id)
-                filter_result.extend(kit_query)
+                    filter_result.extend(Kit.query.join(Component).filter(Component.id == comp.id))
+                filter_result = list(set(filter_result))
     return filter_result
 
 
