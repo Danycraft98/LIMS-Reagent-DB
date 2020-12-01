@@ -24,7 +24,6 @@ def search_query(items):
             if hasattr(item_type, item) and items[item] != '':
                 filter_result.extend(item_type.query.filter(getattr(item_type, item).like("%" + items[item] + "%")).all())
         if hasattr(Component, item) and items[item] != '':
-            kit_query = Kit.query.join(Component)
             comps = Component.query.filter(getattr(Component, item).like("%" + items[item] + "%"))
             if comps.count() > 0:
                 for comp in comps.all():
