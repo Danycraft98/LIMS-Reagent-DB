@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone wrong commit.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/elements.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/route.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,14 +188,7 @@
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
       <workItem from="1606320358773" duration="20951000" />
-      <workItem from="1606850297507" duration="2013000" />
-    </task>
-    <task id="LOCAL-00104" summary="Print updated.">
-      <created>1602248052335</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1602248052335</updated>
+      <workItem from="1606850297507" duration="4133000" />
     </task>
     <task id="LOCAL-00105" summary="Updated printer id.">
       <created>1602248857255</created>
@@ -532,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606852184574</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="Fixed all table.">
+      <created>1606852511960</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1606852511960</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TodoView">
@@ -560,7 +561,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed __init__ commit." />
     <MESSAGE value="Add super kit button to main page." />
     <MESSAGE value="Updated super kit required field." />
     <MESSAGE value="Fixed Printer bugs." />
@@ -585,7 +585,8 @@
     <MESSAGE value="Updated search function." />
     <MESSAGE value="Removed commented function." />
     <MESSAGE value="Fixed table columns." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed table columns." />
+    <MESSAGE value="Fixed all table." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed all table." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -596,10 +597,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606852184316">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606852511798">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606852184316" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606852511798" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -624,10 +625,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606852186118">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606852512833">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606852186118" />
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606852512833" />
     <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606852093842">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
