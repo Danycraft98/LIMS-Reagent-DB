@@ -25,37 +25,6 @@ def search_query(items):
                 filter_result.extend(item_type.query.filter(getattr(item_type, item).like("%" + items[item] + "%")).all())
     return filter_result
 
-"""def search_query(item_type, items):
-    filter_result = item_type.query
-    if item_type == SuperKit:
-        filter_result = filter_result.join(Kit).join(Component)
-    elif item_type == Kit:
-        filter_result = filter_result.filter_by(super_kit_id=None).join(Component)
-    elif item_type == MadeReagent:
-        filter_result = filter_result.join(MadeReagentToComp)
-
-    for item in items:
-        if "kit" in item:
-            filter_result = filter_result.filter(getattr(Kit, item.split("_")[-1]).like("%" + request.args[item] + "%"))
-        elif "comp" in item:
-            if item_type != MadeReagent:
-                filter_result = filter_result.filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
-            else:
-                mrtcs = MadeReagentToComp.query.join(Component).filter(getattr(Component, item.split("_")[-1]).like("%" + request.args[item] + "%"))
-                for mrtc in mrtcs.all():
-                    filter_result = filter_result.filter(getattr(MadeReagentToComp, 'id').like(mrtc.id))
-                if mrtcs.count() == 0:
-                    filter_result = filter_result.filter_by(id=None)
-        elif "reagent" in item:
-            mrtcs = MadeReagentToComp.query.join(Reagent).filter(getattr(Reagent, item.split("_")[-1]).like("%" + request.args[item] + "%"))
-            for mrtc in mrtcs.all():
-                filter_result = filter_result.filter(getattr(MadeReagentToComp, 'id').like(mrtc.id))
-            if mrtcs.count() == 0:
-                filter_result = filter_result.filter_by(id=None)
-        else:
-            filter_result = filter_result.filter(getattr(item_type, item).like("%" + request.args[item] + "%"))
-    return filter_result"""
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
