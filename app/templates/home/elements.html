@@ -72,10 +72,11 @@
                         {% elif element_type == 'reagent' %}
                             <th>Reagent Name</th>
                         {% elif element_type == 'made_reagent' %}
-                            <th>made_reagent Name</th>
+                            <th>Made-Reagent Name</th>
                         {% else %}
                             <th>Item Name</th>
                         {% endif %}
+                        <th hidden>Barcode</th>
                         <th>Date Entered</th>
                         <th hidden>Date Entered</th>
                         <th hidden>UID</th>
@@ -92,30 +93,28 @@
                     {% for element in elements %}
                         <tr>
                             <td>{{ loop.index }}</td>
-                            {% if element_type == 'manufacturer' %}
+                            {% if element_type == 'manufacturer' or element.__class__.__name__ == 'Manufacturer' %}
                                 <td><a href="{{ url_for('manufacturer', manufacturer_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'super_kit' %}
+                            {% elif element_type == 'super_kit' or element.__class__.__name__ == 'SuperKit' %}
                                 <td><a href="{{ url_for('super_kit', super_kit_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'kit' %}
+                            {% elif element_type == 'kit' or element.__class__.__name__ == 'Kit' %}
                                 <td><a href="{{ url_for('kit', kit_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'reagent' %}
+                            {% elif element_type == 'reagent' or element.__class__.__name__ == 'Reagent' %}
                                 <td><a href="{{ url_for('reagent', reagent_id=element.id) }}">{{ element.name }}</a></td>
-                            {% elif element_type == 'made_reagent' %}
+                            {% elif element_type == 'made_reagent' or element.__class__.__name__ == 'MadeReagent' %}
                                 <td><a href="{{ url_for('made_reagent', made_reagent_id=element.id) }}">{{ element.name }}</a></td>
-                            {% else %}
-                                <td><a href="?">{{ element.name }}</a></td>
                             {% endif %}
                             <td hidden>{{ element.barcode }}</td>
-                            <td>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
-                            <td hidden>{% if element_type != 'super_kit' %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
-                            <td hidden>{% if element_type != 'super_kit' %}{% for uid in element.get_uids() %}{{ uid }} {% endfor %}{% endif %}</td>
-                            <td>{% if element_type != 'super_kit' %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
-                            {% if element_type == 'kit' %}
+                            <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
+                            <td hidden>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
+                            <td hidden>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{% for uid in element.get_uids() %}{{ uid }} {% endfor %}{% endif %}</td>
+                            <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
+                            {% if element_type == 'kit' or element.__class__.__name__ == 'Kit' %}
                                 <td hidden>{% for comp in element.components %}{{ comp.uid }}{% endfor %}</td>
-                            {% elif element_type == 'super_kit' %}
+                            {% elif element_type == 'super_kit' or element.__class__.__name__ == 'SuperKit' %}
                                 {% for kit in element.kits %}
                                     <td hidden>{% for comp in kit.components %}{{ comp.uid }}{% endfor %}</td>
-                                    <td hidden>kit.uid</td>
+                                    <td hidden>{{ kit.uid }}</td>
                                 {% endfor %}
                             {% endif %}
                         </tr>
