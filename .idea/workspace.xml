@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone wrong commit.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/elements.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,21 +186,7 @@
       <workItem from="1606142806445" duration="13746000" />
       <workItem from="1606157418887" duration="4939000" />
       <workItem from="1606320358773" duration="20951000" />
-      <workItem from="1606850297507" duration="1376000" />
-    </task>
-    <task id="LOCAL-00101" summary="Updated the application">
-      <created>1601509670334</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1601509670334</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Updated the quantity of super kit. Edit function updated. Fixed collapse spacing.">
-      <created>1602176683019</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1602176683019</updated>
+      <workItem from="1606850297507" duration="1683000" />
     </task>
     <task id="LOCAL-00103" summary="Updated print id. Removed quantity edit.">
       <created>1602201450813</created>
@@ -534,7 +517,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606527596463</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="Updated search function.">
+      <created>1606851933094</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1606851933094</updated>
+    </task>
+    <task id="LOCAL-00151" summary="Removed commented function.">
+      <created>1606852010023</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1606852010024</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TodoView">
@@ -562,8 +559,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed add kit html file." />
-    <MESSAGE value="updated model uids length." />
     <MESSAGE value="Fixed quantity edit" />
     <MESSAGE value="Fixed __init__ commit." />
     <MESSAGE value="Add super kit button to main page." />
@@ -587,7 +582,9 @@
     <MESSAGE value="Fixed kits page." />
     <MESSAGE value="Fixed header." />
     <MESSAGE value="Most recent commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Most recent commit." />
+    <MESSAGE value="Updated search function." />
+    <MESSAGE value="Removed commented function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed commented function." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -598,10 +595,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606527596258">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1606852009827">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606527596258" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1606852009827" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
@@ -626,10 +623,10 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="283" y="23" key="SettingsEditor/0.23.1280.697@0.23.1280.697" timestamp="1606160936432" />
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606527597897">
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2" timestamp="1606852012141">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606527597897" />
+    <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1606852012141" />
     <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1606850877448">
       <screen x="0" y="23" width="1280" height="697" />
     </state>

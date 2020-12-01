@@ -111,11 +111,15 @@
                             <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
                             {% if element_type == 'kit' or element.__class__.__name__ == 'Kit' %}
                                 <td hidden>{% for comp in element.components %}{{ comp.uid }}{% endfor %}</td>
+                                <td hidden></td>
                             {% elif element_type == 'super_kit' or element.__class__.__name__ == 'SuperKit' %}
                                 {% for kit in element.kits %}
                                     <td hidden>{% for comp in kit.components %}{{ comp.uid }}{% endfor %}</td>
                                     <td hidden>{{ kit.uid }}</td>
                                 {% endfor %}
+                            {% else %}
+                                <td hidden></td>
+                                <td hidden></td>
                             {% endif %}
                         </tr>
                     {% endfor %}
