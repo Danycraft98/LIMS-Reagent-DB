@@ -46,7 +46,7 @@ def kit(kit_id):
                     for i in range(kit1.quantity):
                         if not form_value.get("exp_date"):
                             form_value["exp_date"] = kit1.date_entered.replace(year=kit1.date_entered.year + 10)
-                        if sk_num < 2:
+                        if not kit1.get_super_kit():
                             uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(i + 1) + "/" + str(kit1.quantity) + " " + str(count) + "/" + str(count)
                         else:
                             uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(sk_id + 1) + "/" + str(sk_num) + " " + str(i + 1) + "/" + str(kit1.quantity) + " " + str(count) + "/" + str(count)
@@ -93,7 +93,7 @@ def kit(kit_id):
                                 condition=c.condition,
                                 kit_id=kit1.id
                             )
-                            if sk_num > 1:
+                            if kit1.get_super_kit():
                                 component.uid = kit1.date_entered.strftime("%Y-%m-%d %H:%M:%S") + " " + str(sk_id + 1) + "/" + str(sk_num) + " " + str(i + 1) + "/" + str(new_quantity) + " " + str(j) + "/" + str(count)
                             db.session.add(component)
                             j += 1
