@@ -97,10 +97,10 @@
                                 <td><a href="{{ url_for('made_reagent', made_reagent_id=element.id) }}">{{ element.name }}</a></td>
                             {% endif %}
                             <td hidden>{{ element.barcode }}</td>
-                            <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
-                            <td hidden>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% else %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
+                            <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit' %}{{ element.date_entered.strftime("%B %e, %Y") }}{% elif element.kits.count() > 0 %}{{ element.kits[0].date_entered.strftime("%B %e, %Y") }}{% endif %}</td>
+                            <td hidden>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.date_entered.strftime("%m-%d-%Y") }}{% elif element.kits.count() > 0  %}{{ element.kits[0].date_entered.strftime("%m-%d-%Y") }}{% endif %}</td>
                             <td hidden>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{% for uid in element.get_uids() %}{{ uid }} {% endfor %}{% endif %}</td>
-                            <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.get_user() }}{% else %}{{ element.kits[0].get_user() }}{% endif %}</td>
+                            <td>{% if element_type != 'super_kit' and element.__class__.__name__ != 'SuperKit'  %}{{ element.get_user() }}{% elif element.kits.count() > 0 %}{{ element.kits[0].get_user() }}{% endif %}</td>
                             {% if element_type == 'kit' or element.__class__.__name__ == 'Kit' %}
                                 <td hidden>{% for comp in element.components %}{{ comp.uid }}{% endfor %}</td>
                                 <td hidden></td>

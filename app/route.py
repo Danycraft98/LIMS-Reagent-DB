@@ -20,11 +20,15 @@ def search_query(items):
     filter_result = []
     item_types = [SuperKit, Kit, Reagent, MadeReagent]
     for item in items:
+        val = items[item]
         for item_type in item_types:
-            if hasattr(item_type, item) and items[item] != '':
-                filter_result.extend(item_type.query.filter(getattr(item_type, item).like("%" + items[item] + "%")).all())
-        if hasattr(Component, item) and items[item] != '':
-            comps = Component.query.filter(getattr(Component, item).like("%" + items[item] + "%"))
+            if hasattr(item_type, item) and val != '':
+                filter_result.extend(item_type.query.filter(getattr(item_type, item).like("%" + val + "%")).all())
+
+        if item == 'uids':
+            item = 'uid'
+        if hasattr(Component, item) and val != '':
+            comps = Component.query.filter(getattr(Component, item).like("%" + val + "%"))
             if comps.count() > 0:
                 for comp in comps.all():
                     filter_result.extend(Kit.query.join(Component).filter(Component.id == comp.id))
@@ -104,12 +108,18 @@ def delete(element_type, element_id):
         element = SuperKit.query.get(element_id)
     elif element_type == 'kit':
         element = Kit.query.get(element_id)
+        if element.get_super_kit():
+            super_kit1 = element.get_super_kit()
+            if super_kit1.kits.count() == 1:
+                db.session.delete(super_kit1)
     elif element_type == 'reagent':
         element = Reagent.query.get(element_id)
     elif element_type == 'made_reagent':
         element = MadeReagent.query.get(element_id)
 
     if element:
+        if element.get_super_kit():
+            element_type = 'super_kit'
         db.session.delete(element)
         db.session.commit()
         return redirect(url_for('elements', element_types=element_type + 's'))
