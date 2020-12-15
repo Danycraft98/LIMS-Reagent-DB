@@ -4,7 +4,8 @@
     <list default="true" id="3e8ddb91-cfda-4768-9734-40889629e5b6" name="Default" comment="Undone wrong commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/kit_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kit_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/printer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/home/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,14 +190,8 @@
       <workItem from="1606157418887" duration="4939000" />
       <workItem from="1606320358773" duration="20951000" />
       <workItem from="1606850297507" duration="6890000" />
-      <workItem from="1607073754857" duration="1993000" />
-    </task>
-    <task id="LOCAL-00109" summary="Print comp update.">
-      <created>1604459741445</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1604459741445</updated>
+      <workItem from="1607073754857" duration="2665000" />
+      <workItem from="1607990206223" duration="1968000" />
     </task>
     <task id="LOCAL-00110" summary="Fixed bugs.">
       <created>1604461445570</created>
@@ -534,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607075046680</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="Update quantity update.">
+      <created>1607076368073</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1607076368073</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TodoView">
@@ -562,7 +564,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated Reagent-db." />
     <MESSAGE value="Added other search template." />
     <MESSAGE value="Updated global search page." />
     <MESSAGE value="Fixed component uid field search." />
@@ -587,7 +588,8 @@
     <MESSAGE value="Fixed search again." />
     <MESSAGE value="Fixed spacing login and register" />
     <MESSAGE value="Fixed super_kit delete and search by component uid." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed super_kit delete and search by component uid." />
+    <MESSAGE value="Update quantity update." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update quantity update." />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="23" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606157484719">
@@ -598,33 +600,33 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="377" y="168" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.697@0.23.1280.697" timestamp="1606141915743" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1607075046363">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1607076367840">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1607075046363" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1280.697@0.23.1280.697" timestamp="1607076367840" />
     <state x="494" y="104" key="EnvironmentVariablesDialog" timestamp="1606142353474">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="494" y="104" key="EnvironmentVariablesDialog/0.23.1280.697@0.23.1280.697" timestamp="1606142353474" />
-    <state width="1238" height="130" key="GridCell.Tab.0.bottom" timestamp="1606908642823">
-      <screen x="0" y="23" width="1280" height="709" />
+    <state width="1238" height="130" key="GridCell.Tab.0.bottom" timestamp="1607990815290">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.bottom/0.23.1280.697@0.23.1280.697" timestamp="1606528118749" />
+    <state width="1238" height="130" key="GridCell.Tab.0.bottom/0.23.1280.697@0.23.1280.697" timestamp="1607990815290" />
     <state width="1238" height="130" key="GridCell.Tab.0.bottom/0.23.1280.709@0.23.1280.709" timestamp="1606908642823" />
-    <state width="1238" height="130" key="GridCell.Tab.0.center" timestamp="1606908642823">
-      <screen x="0" y="23" width="1280" height="709" />
+    <state width="1238" height="130" key="GridCell.Tab.0.center" timestamp="1607990815289">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.center/0.23.1280.697@0.23.1280.697" timestamp="1606528118748" />
+    <state width="1238" height="130" key="GridCell.Tab.0.center/0.23.1280.697@0.23.1280.697" timestamp="1607990815289" />
     <state width="1238" height="130" key="GridCell.Tab.0.center/0.23.1280.709@0.23.1280.709" timestamp="1606908642823" />
-    <state width="1238" height="130" key="GridCell.Tab.0.left" timestamp="1606908642822">
-      <screen x="0" y="23" width="1280" height="709" />
+    <state width="1238" height="130" key="GridCell.Tab.0.left" timestamp="1607990815288">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.left/0.23.1280.697@0.23.1280.697" timestamp="1606528118747" />
+    <state width="1238" height="130" key="GridCell.Tab.0.left/0.23.1280.697@0.23.1280.697" timestamp="1607990815288" />
     <state width="1238" height="130" key="GridCell.Tab.0.left/0.23.1280.709@0.23.1280.709" timestamp="1606908642822" />
-    <state width="1238" height="130" key="GridCell.Tab.0.right" timestamp="1606908642823">
-      <screen x="0" y="23" width="1280" height="709" />
+    <state width="1238" height="130" key="GridCell.Tab.0.right" timestamp="1607990815289">
+      <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state width="1238" height="130" key="GridCell.Tab.0.right/0.23.1280.697@0.23.1280.697" timestamp="1606528118748" />
+    <state width="1238" height="130" key="GridCell.Tab.0.right/0.23.1280.697@0.23.1280.697" timestamp="1607990815289" />
     <state width="1238" height="130" key="GridCell.Tab.0.right/0.23.1280.709@0.23.1280.709" timestamp="1606908642823" />
     <state x="283" y="23" key="SettingsEditor" timestamp="1606160936432">
       <screen x="0" y="23" width="1280" height="697" />
@@ -634,19 +636,19 @@
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="240" y="111" key="Vcs.Push.Dialog.v2/0.23.1280.697@0.23.1280.697" timestamp="1607075048507" />
-    <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1607074097940">
+    <state x="341" y="126" width="598" height="548" key="find.popup" timestamp="1607990684797">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
     <state x="341" y="118" width="598" height="629" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1606157737414" />
-    <state x="341" y="126" width="598" height="548" key="find.popup/0.23.1280.697@0.23.1280.697" timestamp="1607074097940" />
-    <state x="305" y="44" width="670" height="676" key="search.everywhere.popup" timestamp="1606503401977">
+    <state x="341" y="126" width="598" height="548" key="find.popup/0.23.1280.697@0.23.1280.697" timestamp="1607990684797" />
+    <state x="305" y="44" width="670" height="676" key="search.everywhere.popup" timestamp="1607990663173">
       <screen x="0" y="23" width="1280" height="697" />
     </state>
-    <state x="305" y="44" width="670" height="676" key="search.everywhere.popup/0.23.1280.697@0.23.1280.697" timestamp="1606503401977" />
+    <state x="305" y="44" width="670" height="676" key="search.everywhere.popup/0.23.1280.697@0.23.1280.697" timestamp="1607990663173" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lims_reagent_db$Flask.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1606142627087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/lims_reagent_db$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1606157538065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lims_reagent_db$main.coverage" NAME="main Coverage Results" MODIFIED="1607073757563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lims_reagent_db$main.coverage" NAME="main Coverage Results" MODIFIED="1607990215066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

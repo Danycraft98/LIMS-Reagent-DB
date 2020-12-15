@@ -22,16 +22,27 @@ def print_label(data, element_type, label_size, acquiry_met, batch_ratio):
         destination = "tgh_bbp12_" + sm_printer_id
         if sm_printer_id == "1":
             destination = "tgh_bbp12_circle"
-        if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
-            templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """^XA
-                        ^PW600^LL0300^LS00
-                        ^FT360,35,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${name}^FS
-                        ^FT360,60,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${expdate}^FS
-                        ^FT360,85,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${credate}^FS
-                        ^FT360,110,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${batch_ratio}^FS
-                        ^FT350,25^BXI,5,200,,,,,^FD${batch_ratio}^FS
-                        ^FT175,15^BXI,4,200,,,,,^FD${batch_ratio}^FS
-                        ^XZ"""
+            if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
+                templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """^XA
+                            ^PW600^LL0300^LS00
+                            ^FT360,35,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${name}^FS
+                            ^FT360,60,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${expdate}^FS
+                            ^FT360,85,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${credate}^FS
+                            ^FT360,110,0^A0N,18.75,15^FB325,1,0,L^FH\^FD${batch_ratio}^FS
+                            ^FT350,25^BXI,5,200,,,,,^FD${batch_ratio}^FS
+                            ^FT175,15^BXI,4,200,,,,,^FD${batch_ratio}^FS
+                            ^XZ"""
+        else:
+            if element_type == "kit" or (acquiry_met and (acquiry_met == "m" or acquiry_met == "p")):
+                templates["LABEL_TEMPLATE_TGH_CIRCLE"] = """^XA
+                            ^PW600^LL0300^LS00
+                            ^FT400,35,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${name}^FS
+                            ^FT400,70,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${expdate}^FS
+                            ^FT400,105,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${credate}^FS
+                            ^FT400,140,0^A0N,31.25,25^FB325,1,0,L^FH\^FD${batch_ratio}^FS
+                            ^FT380,25^BXI,6,200,,,,,^FD${batch_ratio}^FS
+                            ^FT175,15^BXI,4,200,,,,,^FD${batch_ratio}^FS
+                            ^XZ"""
     elif label_size == "m":
         destination = "tgh_bbp12_" + med_printer_id
         if med_printer_id == "1":
